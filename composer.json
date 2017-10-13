@@ -1,0 +1,14 @@
+{
+	"name": "355/DJSonNate-Cascadian",
+	"authors": [
+		{
+			"name": "Duc[k] Nguyen",
+			"name": "Jeremy Manalo",
+			"name": "Nate Hascup",
+			"name": "Sonie Moon"
+		}
+	],
+	"require": {
+		"bcosca/fatfree-core": "dev-master"
+	}
+}
