@@ -7,13 +7,12 @@
 	$f3 = Base::instance();
 	
 
-	
-	//Default route
+	//Route to landing page
 	$f3->route('GET /', function() {
-			echo '<h1>Hello, world!</h1>';
+			$view = new View;
+			echo $view->render ('pages/test.html');
 		}
 	);
-	
 	
 	//Run fat-free
 	$f3->run();
