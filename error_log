@@ -18,3 +18,10 @@
 [13-Oct-2017 18:08:25 America/Chicago] Unable to open pages/test.html
 [13-Oct-2017 18:08:25 America/Chicago] [355/DJSonNate-Cascadian/index.php:13] View->render()
 [13-Oct-2017 18:08:25 America/Chicago] [355/DJSonNate-Cascadian/index.php:18] Base->run()
+[13-Oct-2017 19:03:36 America/Chicago] PHP Warning:  include(/home/jmanalo/public_html/355/DJSonNate-Cascadian/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/jmanalo/public_html/355/DJSonNate-Cascadian/vendor/composer/ClassLoader.php on line 412
+[13-Oct-2017 19:03:36 America/Chicago] PHP Warning:  include(/home/jmanalo/public_html/355/DJSonNate-Cascadian/vendor/composer/../bcosca/fatfree-core/base.php): failed to open stream: No such file or directory in /home/jmanalo/public_html/355/DJSonNate-Cascadian/vendor/composer/ClassLoader.php on line 412
+[13-Oct-2017 19:03:36 America/Chicago] PHP Warning:  include(): Failed opening '/home/jmanalo/public_html/355/DJSonNate-Cascadian/vendor/composer/../bcosca/fatfree-core/base.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home/jmanalo/public_html/355/DJSonNate-Cascadian/vendor/composer/ClassLoader.php on line 412
+[13-Oct-2017 19:03:36 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Base' not found in /home/jmanalo/public_html/355/DJSonNate-Cascadian/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/jmanalo/public_html/355/DJSonNate-Cascadian/index.php on line 7
