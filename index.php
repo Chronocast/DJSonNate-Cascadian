@@ -15,7 +15,7 @@
 	);
 
 	//Route to tracking page
-	$f3->route('GET /', function() {
+	$f3->route('GET /tracking', function() {
 			$view = new View;
 			echo $view->render ('pages/tracking.html');
 		}
