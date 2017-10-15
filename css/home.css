@@ -4,3 +4,31 @@
  * Filename: home.css
  * Description: Style page used to customize home page for Cascadian Landworks
 */
+
+.main-navigation {
+	width:25%;
+	border:2px solid red;
+}
+
+.logo {
+	width:150px;
+	height:150px;
+}
+
+
+.main-navigation div.timeline-navigation a.timeline-content {
+	display: block;
+	height: 90px;
+	width: 90px;
+	line-height: 80px;
+	font-size: 30px;
+	border-radius: 50%;
+	color: black;
+	background-color:#EAECEE;
+	text-align: center;
+}
+
+.main-view {
+	margin-left:25%;
+	border:2px solid black;
+}

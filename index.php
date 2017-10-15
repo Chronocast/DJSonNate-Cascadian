@@ -13,6 +13,13 @@
 			echo $view->render ('pages/home.html');
 		}
 	);
+
+	//Route to tracking page
+	$f3->route('GET /', function() {
+			$view = new View;
+			echo $view->render ('pages/tracking.html');
+		}
+	);
 	
 	//Run fat-free
 	$f3->run();

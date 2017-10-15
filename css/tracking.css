@@ -1,0 +1,128 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+	 position: -webkit-sticky;  // required for Safari
+    position: sticky;
+}
+
+#sidebar {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+    background: #7386D5;
+    color: #fff;
+	/*
+    transition: all 0.3s;
+	position: -webkit-sticky;  // required for Safari
+    position: sticky;
+	*/
+}
+
+#sidebar .sidebar-header img{
+    height:83px;
+	width:80px;
+	background:#fafafa;
+	padding:7px;
+}
+
+#sidebar ul.components {
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #5C6BC0/*#47748b*/;
+}
+
+#sidebar ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 1em;
+	display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+#sidebar ul li.active > a {
+    color: #fff;
+    background: #303F9F;
+}
+#sidebar ul li a i {
+    margin-right:  0;
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+#sidebar #sidebarCollapse .fa {
+	font-size:2.5em;
+}
+
+#sidebar #sidebarCollapse .fa-long-arrow-left {
+	display: none;
+}
+
+/* ---------------------------------------------------
+    RESIZING STYLE
+----------------------------------------------------- */
+#sidebar.resize{
+    min-width: 90px;
+    max-width: 90px;
+}
+
+#sidebar.resize .sidebar-header img{
+	height:93px;
+	width:90px;
+}
+
+#sidebar.resize ul li a {
+	font-size: 1.1em;
+}
+
+#sidebar.resize ul li a i {
+	font-size: 1.5em;
+}
+#sidebar.resize #sidebarCollapse .fa-long-arrow-left {
+	display: block;
+}
+#sidebar.resize #sidebarCollapse .fa-long-arrow-right {
+	display: none;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
