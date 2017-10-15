@@ -39,6 +39,7 @@ class ComposerStaticInitf51a86dff3b4aa2b36ed4734e4919dfc
         'Session' => __DIR__ . '/..' . '/bcosca/fatfree-core/session.php',
         'Template' => __DIR__ . '/..' . '/bcosca/fatfree-core/template.php',
         'Test' => __DIR__ . '/..' . '/bcosca/fatfree-core/test.php',
+        'TrackingDB' => __DIR__ . '/../..' . '/model/trackingdb.php',
         'UTF' => __DIR__ . '/..' . '/bcosca/fatfree-core/utf.php',
         'View' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Web' => __DIR__ . '/..' . '/bcosca/fatfree-core/web.php',

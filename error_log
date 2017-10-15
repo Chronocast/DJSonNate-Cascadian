@@ -91,3 +91,134 @@ Stack trace:
 [13-Oct-2017 19:59:41 America/Chicago] [355/DJSonNate-Cascadian/index.php:18] Base->run()
 [13-Oct-2017 20:00:00 America/Chicago] HTTP 404 (GET /js/bootstrap.min.js)
 [13-Oct-2017 20:00:00 America/Chicago] [355/DJSonNate-Cascadian/index.php:18] Base->run()
+[15-Oct-2017 16:28:40 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 41
+[15-Oct-2017 16:29:05 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 40
+[15-Oct-2017 16:29:18 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:29:18 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:29:56 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 25
+[15-Oct-2017 16:30:06 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 46
+[15-Oct-2017 16:30:07 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 46
+[15-Oct-2017 16:30:13 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 46
+[15-Oct-2017 16:30:16 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 46
+[15-Oct-2017 16:30:33 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:30:33 America/Chicago] [355/DJSonNate-Cascadian/index.php:59] Base->run()
+[15-Oct-2017 16:30:40 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:30:40 America/Chicago] [355/DJSonNate-Cascadian/index.php:59] Base->run()
+[15-Oct-2017 16:31:14 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:31:14 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
+[15-Oct-2017 16:31:19 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:31:19 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
+[15-Oct-2017 16:31:39 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:31:39 America/Chicago] [355/DJSonNate-Cascadian/index.php:78] Base->run()
+[15-Oct-2017 16:32:15 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 42
+[15-Oct-2017 16:32:32 America/Chicago] PHP Fatal error:  Call to a member function set() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 19
+[15-Oct-2017 16:32:32 America/Chicago] Fatal error: Call to a member function set() on a non-object
+[15-Oct-2017 16:32:32 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] 
+[15-Oct-2017 16:32:36 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:32:36 America/Chicago] [355/DJSonNate-Cascadian/index.php:71] Base->run()
+[15-Oct-2017 16:32:47 America/Chicago] PHP Fatal error:  Call to a member function set() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 19
+[15-Oct-2017 16:32:47 America/Chicago] Fatal error: Call to a member function set() on a non-object
+[15-Oct-2017 16:32:47 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] 
+[15-Oct-2017 16:33:01 America/Chicago] PHP Fatal error:  Call to a member function set() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 19
+[15-Oct-2017 16:33:01 America/Chicago] Fatal error: Call to a member function set() on a non-object
+[15-Oct-2017 16:33:01 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] 
+[15-Oct-2017 16:33:02 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:33:02 America/Chicago] [355/DJSonNate-Cascadian/index.php:50] Base->run()
+[15-Oct-2017 16:33:15 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:15 America/Chicago] [355/DJSonNate-Cascadian/index.php:50] Base->run()
+[15-Oct-2017 16:33:16 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:16 America/Chicago] [355/DJSonNate-Cascadian/index.php:50] Base->run()
+[15-Oct-2017 16:33:34 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:34 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:33:35 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:35 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:33:46 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:46 America/Chicago] [355/DJSonNate-Cascadian/index.php:50] Base->run()
+[15-Oct-2017 16:33:56 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:56 America/Chicago] [355/DJSonNate-Cascadian/index.php:37] Base->run()
+[15-Oct-2017 16:33:58 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:33:58 America/Chicago] [355/DJSonNate-Cascadian/index.php:37] Base->run()
+[15-Oct-2017 16:34:40 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:34:40 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:34:42 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:34:42 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:34:47 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:34:47 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:34:48 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:34:48 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:34:50 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:34:50 America/Chicago] [355/DJSonNate-Cascadian/index.php:51] Base->run()
+[15-Oct-2017 16:34:52 America/Chicago] PHP Fatal error:  Call to a member function getTracker() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 18
+[15-Oct-2017 16:34:52 America/Chicago] Fatal error: Call to a member function getTracker() on a non-object
+[15-Oct-2017 16:34:52 America/Chicago] [355/DJSonNate-Cascadian/index.php:18] 
+[15-Oct-2017 16:36:07 America/Chicago] PHP Fatal error:  Call to a member function getTracker() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 19
+[15-Oct-2017 16:36:07 America/Chicago] Fatal error: Call to a member function getTracker() on a non-object
+[15-Oct-2017 16:36:07 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] 
+[15-Oct-2017 16:36:08 America/Chicago] PHP Fatal error:  Call to a member function getTracker() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 19
+[15-Oct-2017 16:36:08 America/Chicago] Fatal error: Call to a member function getTracker() on a non-object
+[15-Oct-2017 16:36:08 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] 
+[15-Oct-2017 16:36:20 America/Chicago] Fatal error: Undefined index: trackingDB
+[15-Oct-2017 16:36:20 America/Chicago] [355/DJSonNate-Cascadian/index.php:7] 
+[15-Oct-2017 16:36:21 America/Chicago] Fatal error: Undefined index: trackingDB
+[15-Oct-2017 16:36:21 America/Chicago] [355/DJSonNate-Cascadian/index.php:7] 
+[15-Oct-2017 16:36:30 America/Chicago] Fatal error: Undefined index: trackingdb
+[15-Oct-2017 16:36:30 America/Chicago] [355/DJSonNate-Cascadian/index.php:7] 
+[15-Oct-2017 16:37:11 America/Chicago] PHP Fatal error:  Class 'trackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:37:41 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:37:43 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:38:51 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:39:30 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:39:31 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:39:32 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:39:43 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:40:50 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:40:51 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:41:33 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:43:02 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:43:21 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:43:59 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:44:22 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:45:10 America/Chicago] PHP Fatal error:  Class 'TrackingDB' not found in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 7
+[15-Oct-2017 16:47:50 America/Chicago] PHP Fatal error:  Call to a member function getTracker() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 19
+[15-Oct-2017 16:47:50 America/Chicago] Fatal error: Call to a member function getTracker() on a non-object
+[15-Oct-2017 16:47:50 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] 
+[15-Oct-2017 16:48:05 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:48:05 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:48:09 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:48:09 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:48:11 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:48:11 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:48:35 America/Chicago] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'smoon_admin.track_content' doesn't exist [/home/smoon/public_html/355/DJSonNate-Cascadian/model/trackingdb.php:38]
+[15-Oct-2017 16:48:35 America/Chicago] [355/DJSonNate-Cascadian/model/trackingdb.php:38] PDOStatement->execute()
+[15-Oct-2017 16:48:35 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] TrackingDB->getTracker()
+[15-Oct-2017 16:48:35 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:48:42 America/Chicago] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'smoon_admin.track_content' doesn't exist [/home/smoon/public_html/355/DJSonNate-Cascadian/model/trackingdb.php:38]
+[15-Oct-2017 16:48:42 America/Chicago] [355/DJSonNate-Cascadian/model/trackingdb.php:38] PDOStatement->execute()
+[15-Oct-2017 16:48:42 America/Chicago] [355/DJSonNate-Cascadian/index.php:19] TrackingDB->getTracker()
+[15-Oct-2017 16:48:42 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:48:58 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:48:58 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:49:37 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:49:37 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:50:11 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:50:11 America/Chicago] [355/DJSonNate-Cascadian/index.php:52] Base->run()
+[15-Oct-2017 16:51:33 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:51:33 America/Chicago] [355/DJSonNate-Cascadian/index.php:55] Base->run()
+[15-Oct-2017 16:52:15 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:52:15 America/Chicago] [355/DJSonNate-Cascadian/index.php:80] Base->run()
+[15-Oct-2017 16:52:16 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:52:16 America/Chicago] [355/DJSonNate-Cascadian/index.php:80] Base->run()
+[15-Oct-2017 16:52:25 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:52:25 America/Chicago] [355/DJSonNate-Cascadian/index.php:80] Base->run()
+[15-Oct-2017 16:52:27 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:52:27 America/Chicago] [355/DJSonNate-Cascadian/index.php:80] Base->run()
+[15-Oct-2017 16:53:48 America/Chicago] HTTP 404 (GET /home)
+[15-Oct-2017 16:53:48 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
+[15-Oct-2017 16:53:50 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:53:50 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
+[15-Oct-2017 16:53:51 America/Chicago] HTTP 404 (POST /home)
+[15-Oct-2017 16:53:51 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
+[15-Oct-2017 16:54:06 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:54:06 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
+[15-Oct-2017 16:54:19 America/Chicago] HTTP 404 (GET /images/cascadian-landworks.png)
+[15-Oct-2017 16:54:19 America/Chicago] [355/DJSonNate-Cascadian/index.php:60] Base->run()
