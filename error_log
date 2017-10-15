@@ -91,3 +91,7 @@ Stack trace:
 [13-Oct-2017 19:59:41 America/Chicago] [355/DJSonNate-Cascadian/index.php:18] Base->run()
 [13-Oct-2017 20:00:00 America/Chicago] HTTP 404 (GET /js/bootstrap.min.js)
 [13-Oct-2017 20:00:00 America/Chicago] [355/DJSonNate-Cascadian/index.php:18] Base->run()
+[15-Oct-2017 15:50:19 America/Chicago] HTTP 404 (GET /admin.html)
+[15-Oct-2017 15:50:19 America/Chicago] [355/cascadian/index.php:25] Base->run()
+[15-Oct-2017 15:53:45 America/Chicago] HTTP 404 (GET /pages/css/admin.css)
+[15-Oct-2017 15:53:45 America/Chicago] [355/cascadian/index.php:25] Base->run()
