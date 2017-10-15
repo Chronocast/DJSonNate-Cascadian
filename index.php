@@ -10,51 +10,58 @@
 	
 
 	//Route to landing page
-	$f3->route('GET /', function() {
-			
-			//if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				
-				//$f3->set('trackingID', $trackingID);
-				
-				//$track = $GLOBALS['db']->getTracker('trackingID');
-				//$f3->set('track', $track);
-				
-				
-				
-				$view = new View;
-			echo Template::instance()->render('pages/home.html');
-			
-		
-			
-			});
-	$f3->route('POST /verify', function() {
+	$f3->route('GET /', function($f3) {
+		/* please ignore
 		$trackingID = $_POST['trackingID'];
-		if(!empty($track)){
-					//show that
-					print_r('Tracking id does not exist');
-			
-				}
-				else{
-					//reroute //pass in the array
-					print_r('Tracking id exists');
-				}
- 	$view = new View;
-			echo Template::instance()->render('pages/verify.html');
-			
+		$track = $GLOBALS['db']->getTracker('trackingID');
+
+		if($trackingID!= NULL) {
+			if(!empty($track)) {
+				//show that
+				print_r('Tracking id does not exist');
+			}
+			else{
+				//reroute //pass in the array
+				print_r('Tracking id exists');
+			}
+		}
+		else {
+			print_r('put something in pleaseeeeeeee');
+		}
+		*/
+		echo Template::instance()->render('pages/home.html');
 		
-			
-			});
+	});
+	
+	/* SONIE's code */
+	$f3->route('POST /verify', function($f3) {
+		$trackingID = $_POST['trackingID'];
+		if(!empty($track)) {
+			//show that
+			print_r('Tracking id does not exist');
+	
+		}
+		else{
+			//reroute //pass in the array
+			print_r('Tracking id exists');
+		}
+		echo Template::instance()->render('pages/verify.html');
+		
+	
+		
+	});
+	
 	//Route to tracking page
-	$f3->route('POST /tracking', function() {
-		
-		
-		
-			$view = new View;
+	$f3->route('GET|POST /tracking', function($f3) {
 			echo Template::instance()->render('pages/tracking.html');
 		}
 	);
 	
-	
+	//Route to admin page
+	$f3->route('GET|POST /admin', function($f3) {
+			echo Template::instance()->render('pages/admin.html');
+		}
+	);
 	
 	//Run fat-free
 	$f3->run();
