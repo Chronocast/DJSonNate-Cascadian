@@ -24,42 +24,82 @@
 
 <body>
 	
-	<nav class="navbar navbar-inverse bg-inverse d-inline-block fixed-top">
+	<nav class="navbar navbar-dark bg-primary d-inline-block fixed-top">
 						
-						<a class="navbar-brand" href="./">
-							<img src="images/cascadian-landworks.png" width="30" height="30" alt="Cascadian Landworks">
-						</a>
-						
-						<ul class="nav navbar-nav d-inline-block">							
-							
-							<li class="nav-item d-inline-block">
-								<button type="button" class="btn btn-default navbar-toggler" alt="user"> 
-									<i class="fa fa-user"></i> 
-								</button>
-							</li>
-							
-							<li class="nav-item d-inline-block">
-								<button type="button" class="btn btn-default navbar-toggler"> 
-									<i class="fa fa-plus-circle"></i> 
-								</button>
-							</li>
-							
-							<li class="nav-item d-inline-block">
-								<button type="button" class="btn btn-default navbar-toggler"> 
-									<i class="fa fa-sort"></i> 
-								</button>
-							</li>
-							
-							<li class="nav-item d-inline-block">
-								<button type="button" class="btn btn-default navbar-toggler"> 
-									<i class="fa fa-cog"></i> 
-								</button>
-							</li>
-							
-						</ul>
-					</nav>
+		<a class="navbar-brand" href="./">
+			<img src="images/cascadian-landworks.png" width="30" height="30" alt="Cascadian Landworks">
+		</a>
+		
+		<ul class="nav navbar-nav d-inline-block">							
+			
+			<li class="nav-item d-inline-block">
+				<button type="button" class="btn btn-default navbar-toggler" alt="dashboard"> 
+					<i class="fa fa-bars"></i> 
+				</button>
+			</li>
+			
+			<li class="nav-item d-inline-block">
+				<button type="button" class="btn btn-default navbar-toggler" alt="documents"> 
+					<i class="fa fa-folder-open-o"></i> 
+				</button>
+			</li>
+			
+			<li class="nav-item d-inline-block">
+				<button type="button" class="btn btn-default navbar-toggler" alt="schedule"> 
+					<i class="fa fa-calendar"></i> 
+				</button>
+			</li>
+			
+			<li class="nav-item d-inline-block">
+				<button type="button" class="btn btn-default navbar-toggler" alt="team"> 
+					<i class="fa fa-users"></i> 
+				</button>
+			</li>
+			
+			<li class="nav-item d-inline-block">
+				<button type="button" class="btn btn-default navbar-toggler" alt="messaging"> 
+					<i class="fa fa-commenting-o"></i> 
+				</button>
+			</li>
+			
+		</ul>
+	</nav>
 	
-	This is a test of the emergency broadcast system. This is only a test.
+	<div id="portfolio" class="portfolio">
+	
+		<div class="card-deck">
+		  <div class="card">
+			<img class="card-img-top" src="..." alt="Card image cap">
+			<div class="card-body">
+			  <h4 class="card-title">Card title</h4>
+			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			</div>
+			<div class="card-footer">
+			  <small class="text-muted">Last updated 3 mins ago</small>
+			</div>
+		  </div>
+		  <div class="card">
+			<img class="card-img-top" src="..." alt="Card image cap">
+			<div class="card-body">
+			  <h4 class="card-title">Card title</h4>
+			  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+			</div>
+			<div class="card-footer">
+			  <small class="text-muted">Last updated 3 mins ago</small>
+			</div>
+		  </div>
+		  <div class="card">
+			<img class="card-img-top" src="..." alt="Card image cap">
+			<div class="card-body">
+			  <h4 class="card-title">Card title</h4>
+			  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+			</div>
+			<div class="card-footer">
+			  <small class="text-muted">Last updated 3 mins ago</small>
+			</div>
+		  </div>
+		</div>
+	</div>
 	
 	<!-- JQUERY CDN -->
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

@@ -29,22 +29,19 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="login-form" class="form-signin" action="" method="post" autocomplete="on">
+            <form id="login-form" class="form-signin" action="./admin-login" method="post" autocomplete="on">
 				
                 <!-- EMAIL SECTION + ERROR MESSAGE -->
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
-                <!--
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" autofocus required>
 				<div class="alert alert-danger">
-					<strong>Error:</strong> <span id="emailErr"></span>
+					<strong>Error:</strong> <span id="emailError"></span>
 				</div>
-                -->
+				
                 <!-- PASSWORD SECTION + ERROR MESSAGE -->
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-				<!--
                 <div class="alert alert-danger">
-					<strong>Error:</strong> <span id="passErr"></span>
+					<strong>Error:</strong> <span id="passwordError"></span>
 				</div>
-				-->
                 
                 <!-- REMEMBER ME -->
                 <div id="remember" class="checkbox">

@@ -29,7 +29,7 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="admin-signup" class="form-signup" action="./admin" method="post" autocomplete="on">
+            <form id="admin-signup" class="form-signup" action="./new-admin" method="post" autocomplete="on">
 				
 				<h3 class="text-center">Become an Admin</h3>
 				
@@ -42,7 +42,7 @@
                 -->
 				
                 <!-- EMAIL SECTION + ERROR MESSAGE -->
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                 <!--
 				<div class="alert alert-danger">
 					<strong>Error:</strong> <span id="emailError"></span>

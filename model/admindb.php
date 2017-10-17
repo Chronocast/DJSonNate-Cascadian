@@ -1,7 +1,7 @@
 <?php
 
 //Require configuration
-require_once '/home/smoon/config.php';
+require_once '/home/cascadian/config.php';
 
 /**
  * Provides CRUD acces
@@ -54,9 +54,9 @@ class AdminDB
 							VALUES (:firstName, :email, :password)';
 		
 			$statement = $this->_pdo->prepare($insert);
-			$statement ->bindValue(':firstName', $firstName->getADFirstName(), PDO::PARAM_STR);
-			$statement ->bindValue(':email', $email->geADEmail(), PDO::PARAM_STR);
-			$statement ->bindValue(':password', $password->getADPassword(), PDO::PARAM_STR);
+			$statement ->bindValue(':firstName', $admin->getADFirstName(), PDO::PARAM_STR);
+			$statement ->bindValue(':email', $admin->getADEmail(), PDO::PARAM_STR);
+			$statement ->bindValue(':password', $admin->getADPassword(), PDO::PARAM_STR);
 			
 			$statement->execute();
 			
@@ -69,12 +69,12 @@ class AdminDB
 		 *
 		 * @param admin object to retrieve
 		 */
-		function login($admin)
+		function login($username)
 		{
-			$select = 'SELECT adminID, firstName, password FROM admin WHERE email = :email';
+			$select = 'SELECT adminID, firstName, password FROM admin WHERE email = :username';
 			
 			$statement = $this->_pdo->prepare($select);
-			$statement ->bindValue(':admin', $admin, PDO::PARAM_INT);
+			$statement ->bindValue(':username', $username, PDO::PARAM_INT);
 			$statement ->execute();
 			
 			$creds = $statement->fetch(PDO::FETCH_ASSOC);
@@ -94,7 +94,7 @@ class AdminDB
 			$select = 'SELECT * FROM admin WHERE email = :email';
 			
 			$statement = $this->_pdo->prepare($select);
-			$statement ->bindValue(':username', $username, PDO::PARAM_INT);
+			$statement ->bindValue(':email', $emai, PDO::PARAM_INT);
 			$statement ->execute();
 			
 			$row = $statement->fetch(PDO::FETCH_ASSOC);

@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+	
+<!--
+	Author: Nathan Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+	Date: 10/16/17
+	Filename: home.html
+	Description: Tracking page for Track-king. Cascadian Landworks tracking system.
+-->
+	
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
