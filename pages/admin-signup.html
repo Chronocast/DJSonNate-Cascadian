@@ -29,7 +29,7 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="admin-signup" class="form-signup" action="" method="post" autocomplete="on">
+            <form id="admin-signup" class="form-signup" action="./new-admin" method="post" autocomplete="on">
 				
 				<h3 class="text-center">Become an Admin</h3>
 				
@@ -51,6 +51,14 @@
 				
                 <!-- PASSWORD SECTION + ERROR MESSAGE -->
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+				<!--
+                <div class="alert alert-danger">
+					<strong>Error:</strong> <span id="passErr"></span>
+				</div>
+				-->
+				
+                <!-- PASSWORD VERIFY + ERROR MESSAGE -->
+                <input type="password" class="form-control" id="verify" name="verify" placeholder="Verify password" required>
 				<!--
                 <div class="alert alert-danger">
 					<strong>Error:</strong> <span id="passErr"></span>

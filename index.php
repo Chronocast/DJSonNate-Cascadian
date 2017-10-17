@@ -4,7 +4,10 @@
 	require_once('vendor/autoload.php');
 	
 	session_start();
+	
+	// Create a database object
 	$db = new TrackingDB();
+	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 	
@@ -45,8 +48,6 @@
 			print_r('Tracking id exists');
 		}
 		echo Template::instance()->render('pages/verify.html');
-		
-	
 		
 	});
 	
