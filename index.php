@@ -62,5 +62,11 @@
 		}
 	);
 	
+	//Route to admin-login
+	$f3->route('GET /admin-login', function($f3) {
+			echo Template::instance()->render('pages/admin-login.html');
+		}
+	);
+	
 	//Run fat-free
 	$f3->run();
