@@ -360,3 +360,32 @@ Stack trace:
 [17-Oct-2017 06:54:29 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/cascadian/credentials/config.php on line 5
 [17-Oct-2017 06:59:03 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/cascadian/credentials/config.php on line 5
 [17-Oct-2017 12:57:29 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/cascadian/credentials/config.php on line 5
+[17-Oct-2017 13:11:23 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:11:23 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:11:23 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:14:19 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:14:19 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:14:19 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:14:32 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:14:32 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:14:32 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:15:37 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:15:37 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:15:37 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:16:03 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:16:03 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:16:03 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:16:05 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:16:05 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:16:05 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:16:22 America/Chicago] HTTP 404 (POST /new-admin)
+[17-Oct-2017 13:16:22 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:16:22 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:16:55 America/Chicago] HTTP 404 (GET /css/admin.css)
+[17-Oct-2017 13:16:55 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 13:16:55 America/Chicago] [cascadian/index.php:141] Base->run()
+[17-Oct-2017 13:35:21 America/Chicago] PHP Warning:  require_once(/home/cascadian/config.php): failed to open stream: No such file or directory in /home/cascadian/public_html/cascadian/model/trackingdb.php on line 4
+[17-Oct-2017 13:35:21 America/Chicago] PHP Fatal error:  require_once(): Failed opening required '/home/cascadian/config.php' (include_path='.:/opt/php54/lib/php') in /home/cascadian/public_html/cascadian/model/trackingdb.php on line 4
+[17-Oct-2017 13:49:00 America/Chicago] HTTP 405 (POST /)
+[17-Oct-2017 13:49:00 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1675] Base->error()
+[17-Oct-2017 13:49:00 America/Chicago] [cascadian/index.php:140] Base->run()

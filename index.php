@@ -74,7 +74,6 @@
 	
 	//Route to admin-signup validation
 	$f3->route('GET | POST /new-admin', function($f3) {
-		
 		$db = $GLOBALS['db'];
 		
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
