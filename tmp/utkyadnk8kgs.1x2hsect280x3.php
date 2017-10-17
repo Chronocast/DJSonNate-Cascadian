@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
- 	Author: Nathan Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
- 	Date: 10/13/17
- 	Filename: home.html
- 	Description: Home page for Track-king. Cascadian Landworks tracking system.
+ 	Author: Duck Nguyen
+ 	Date: 17/17/17
+ 	Filename: admin-signup.html
+ 	Description: Admin sign-up page
  -->
 <html>
 <head>
@@ -29,15 +29,15 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="admin-signup" class="form-signup" action="" method="post" autocomplete="on">
+            <form id="admin-signup" class="form-signup" action="./new-admin" method="post" autocomplete="on">
 				
 				<h3 class="text-center">Become an Admin</h3>
 				
                 <!-- FIRST NAME SECTION + ERROR MESSAGE -->
-                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" autofocus required>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" autofocus required>
                 <!--
 				<div class="alert alert-danger">
-					<strong>Error:</strong> <span id="emailErr"></span>
+					<strong>Error:</strong> <span id="firstNameError"></span>
 				</div>
                 -->
 				
@@ -45,7 +45,7 @@
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
                 <!--
 				<div class="alert alert-danger">
-					<strong>Error:</strong> <span id="emailErr"></span>
+					<strong>Error:</strong> <span id="emailError"></span>
 				</div>
                 -->
 				
@@ -53,7 +53,15 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 				<!--
                 <div class="alert alert-danger">
-					<strong>Error:</strong> <span id="passErr"></span>
+					<strong>Error:</strong> <span id="passwordError"></span>
+				</div>
+				-->
+				
+                <!-- PASSWORD VERIFY + ERROR MESSAGE -->
+                <input type="password" class="form-control" id="verify" name="verify" placeholder="Verify password" required>
+				<!--
+                <div class="alert alert-danger">
+					<strong>Error:</strong> <span id="verifyError"></span>
 				</div>
 				-->
                

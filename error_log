@@ -357,3 +357,6 @@ Stack trace:
 [17-Oct-2017 02:31:22 America/Chicago] [cascadian/index.php:72] Base->run()
 [17-Oct-2017 04:38:33 America/Chicago] HTTP 404 (GET /pages/tracking)
 [17-Oct-2017 04:38:33 America/Chicago] [cascadian/index.php:78] Base->run()
+[17-Oct-2017 06:54:29 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/cascadian/credentials/config.php on line 5
+[17-Oct-2017 06:59:03 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/cascadian/credentials/config.php on line 5
+[17-Oct-2017 12:57:29 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/cascadian/credentials/config.php on line 5

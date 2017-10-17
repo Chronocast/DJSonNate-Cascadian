@@ -1,7 +1,7 @@
 <?php
 
 //Require configuration
-require_once '/home/cascadian//credentials/config.php';
+require_once '/home/smoon/config.php';
 
 /**
  * Provides CRUD acces

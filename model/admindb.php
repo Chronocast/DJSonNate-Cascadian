@@ -1,7 +1,7 @@
 <?php
 
 //Require configuration
-require_once '/home/cascadian//credentials/config.php';
+require_once '/home/smoon/config.php';
 
 /**
  * Provides CRUD acces
@@ -15,6 +15,8 @@ require_once '/home/cascadian//credentials/config.php';
  * `firstName` VARCHAR(40) NOT NULL , `email` VARCHAR(254) NOT NULL ,
  * `password` VARCHAR(128) NOT NULL , PRIMARY KEY (`adminID`) )
  * ENGINE = MyISAM COMMENT = 'admin table for Cascadian Landworks'' admins';
+ *
+ * ALTER TABLE `admin` CHANGE `password` `password` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
  */
 
 class AdminDB
