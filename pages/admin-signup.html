@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
  	Author: Duck Nguyen
- 	Date: 10/17/17
- 	Filename: admin-login.html
- 	Description: login page for admin
+ 	Date: 17/17/17
+ 	Filename: admin-signup.html
+ 	Description: Admin sign-up page
  -->
 <html>
 <head>
@@ -11,17 +11,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>Admin Login | Cascadian Landworks</title>
+	<title>Admin Sign Up | Cascadian Landworks</title>
 	
 	<!-- Bootstrap CSS CDN -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	
 	<!-- Our Custom CSS -->
-	<link rel="stylesheet" type="text/css" href="./css/admin-login.css">
+	<link rel="stylesheet" type="text/css" href="./css/admin-signup.css">
 </head>
  
 <body>
-	
+
 	<div class="container">
         <div class="card card-container">
 			
@@ -29,15 +29,26 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="login-form" class="form-signin" action="" method="post" autocomplete="on">
+            <form id="admin-signup" class="form-signup" action="" method="post" autocomplete="on">
 				
-                <!-- EMAIL SECTION + ERROR MESSAGE -->
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
+				<h3 class="text-center">Become an Admin</h3>
+				
+                <!-- FIRST NAME SECTION + ERROR MESSAGE -->
+                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" autofocus required>
                 <!--
 				<div class="alert alert-danger">
 					<strong>Error:</strong> <span id="emailErr"></span>
 				</div>
                 -->
+				
+                <!-- EMAIL SECTION + ERROR MESSAGE -->
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                <!--
+				<div class="alert alert-danger">
+					<strong>Error:</strong> <span id="emailErr"></span>
+				</div>
+                -->
+				
                 <!-- PASSWORD SECTION + ERROR MESSAGE -->
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 				<!--
@@ -45,31 +56,15 @@
 					<strong>Error:</strong> <span id="passErr"></span>
 				</div>
 				-->
-                
-                <!-- REMEMBER ME -->
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" name="rememberMe" value="remember-me"> Remember me
-                    </label>
-                </div>
                
-			   <!-- SIGNIN BUTTON -->
-                <input class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit" value="Sign in">
+			   <!-- SIGNUP BUTTON -->
+                <input class="btn btn-lg btn-primary btn-block btn-signup" name="action" id="submit" type="submit" value="Sign up">
                 </input>
 				
-				<!--FORGOT YOUR PASSWORD-->
-				<div>
-					<a href="" class="forgot-password">
-						Forgot the password?
-					</a>
-				</div>
-				
-				
             </form>
+			
         </div><!-- /card-container -->
     </div>
-	
-	
 	
  	<!-- JQUERY CDN -->
  	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

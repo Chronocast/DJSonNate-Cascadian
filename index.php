@@ -61,6 +61,12 @@
 			echo Template::instance()->render('pages/admin.html');
 		}
 	);
+
+	//Route to admin-signup
+	$f3->route('GET /admin-signup', function($f3) {
+			echo Template::instance()->render('pages/admin-signup.html');
+		}
+	);
 	
 	//Route to admin-login
 	$f3->route('GET /admin-login', function($f3) {

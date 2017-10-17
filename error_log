@@ -355,3 +355,5 @@ Stack trace:
 [17-Oct-2017 02:31:13 America/Chicago] [cascadian/index.php:72] Base->run()
 [17-Oct-2017 02:31:22 America/Chicago] HTTP 404 (GET /images/login.png)
 [17-Oct-2017 02:31:22 America/Chicago] [cascadian/index.php:72] Base->run()
+[17-Oct-2017 04:38:33 America/Chicago] HTTP 404 (GET /pages/tracking)
+[17-Oct-2017 04:38:33 America/Chicago] [cascadian/index.php:78] Base->run()
