@@ -525,3 +525,22 @@ Stack trace:
 [17-Oct-2017 18:20:01 America/Chicago] PHP Fatal error:  Call to undefined method Admin::geADEmail() in /home/cascadian/public_html/cascadian/model/admindb.php on line 58
 [17-Oct-2017 18:20:01 America/Chicago] Fatal error: Call to undefined method Admin::geADEmail()
 [17-Oct-2017 18:20:01 America/Chicago] [cascadian/model/admindb.php:58] 
+[17-Oct-2017 18:32:48 America/Chicago] Invalid routing pattern: GET/ admin-login
+[17-Oct-2017 18:32:48 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:2189] Base->error()
+[17-Oct-2017 18:32:48 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1367] user_error()
+[17-Oct-2017 18:32:48 America/Chicago] [cascadian/index.php:136] Base->route()
+[17-Oct-2017 18:34:14 America/Chicago] Invalid routing pattern: GET/ admin-login
+[17-Oct-2017 18:34:14 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:2189] Base->error()
+[17-Oct-2017 18:34:14 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1367] user_error()
+[17-Oct-2017 18:34:14 America/Chicago] [cascadian/index.php:136] Base->route()
+[17-Oct-2017 18:34:17 America/Chicago] Invalid routing pattern: GET/ admin-login
+[17-Oct-2017 18:34:17 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:2189] Base->error()
+[17-Oct-2017 18:34:17 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1367] user_error()
+[17-Oct-2017 18:34:17 America/Chicago] [cascadian/index.php:136] Base->route()
+[17-Oct-2017 18:34:19 America/Chicago] Invalid routing pattern: GET/ admin-login
+[17-Oct-2017 18:34:19 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:2189] Base->error()
+[17-Oct-2017 18:34:19 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1367] user_error()
+[17-Oct-2017 18:34:19 America/Chicago] [cascadian/index.php:136] Base->route()
+[17-Oct-2017 18:34:56 America/Chicago] HTTP 404 (GET /...)
+[17-Oct-2017 18:34:56 America/Chicago] [cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[17-Oct-2017 18:34:56 America/Chicago] [cascadian/index.php:164] Base->run()

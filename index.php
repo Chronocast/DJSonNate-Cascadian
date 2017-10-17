@@ -130,7 +130,13 @@
 	});
 	
 	//Route to admin-login
-	$f3->route('GET|POST /admin-login', function($f3) {
+	$f3->route('GET /admin-login', function($f3) {
+		echo Template::instance()->render('pages/admin-login.html');
+			
+	});
+	
+	//Route to admin-login validation
+	$f3->route('POST /admin-validation', function($f3) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$email = $_POST['email'];
 			
@@ -144,6 +150,7 @@
 			if( !($creds['password'] == $pass) ) {
 				print_r($_SESSION);
 				$f3->set('SESSION.passwordError', 'Password incorrect');
+				$f3->reroute('/admin-login');
 			}
 			else {
 				$_SESSIION['firstName'] = $creds['firstName'];
@@ -151,8 +158,6 @@
 				unset($_POST);
 			}
 		}
-		echo Template::instance()->render('pages/admin-login.html');
-			
 	});
 	
 	//Run fat-free

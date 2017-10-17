@@ -29,7 +29,7 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="login-form" class="form-signin" action="./admin-login" method="post" autocomplete="on">
+            <form id="login-form" class="form-signin" action="./admin-validation" method="post" autocomplete="on">
 				
                 <!-- EMAIL SECTION + ERROR MESSAGE -->
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" autofocus required>
