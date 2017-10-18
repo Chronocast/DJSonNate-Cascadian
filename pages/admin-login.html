@@ -33,15 +33,21 @@
 				
                 <!-- EMAIL SECTION + ERROR MESSAGE -->
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" autofocus required>
+                
+                <!--
 				<div class="alert alert-danger">
 					<strong>Error:</strong> <span id="emailError"></span>
 				</div>
+		-->
 				
                 <!-- PASSWORD SECTION + ERROR MESSAGE -->
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                
+                <!--
                 <div class="alert alert-danger">
 					<strong>Error:</strong> <span id="passwordError"></span>
 				</div>
+                -->
                 
                 <!-- REMEMBER ME -->
                 <div id="remember" class="checkbox">

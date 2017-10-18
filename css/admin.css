@@ -4,3 +4,11 @@
   padding-top:50px;
   margin-top:50px;
 }
+
+.navbar-brand img{
+	width:45px;
+	height:45px;
+}
+.nav .btn .fa{
+	color:white;
+}
