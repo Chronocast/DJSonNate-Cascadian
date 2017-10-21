@@ -82,7 +82,18 @@
 
 	<!-- Page Content Holder -->
 	<div id="content">
+			
 	<div class="container-fluid">
+		
+		<!-- NAVIGATION TOGGLE START -->
+		<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+			<!--
+			<span id="show">Show navigation</span>
+			<span id="hide">Hide navigation</span>
+			-->
+		</button>
+		<!-- NAVIGATION TOGGLE END -->
 		
 		<!-- INSTRUCTION START -->
 		<div id="div0" class="targetDiv instruction">
@@ -135,7 +146,9 @@
 
 			<h2>Testing 2</h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 			<div class="line"></div>
 		</div>
@@ -196,7 +209,7 @@
 		<!-- DIV 6 ENDS -->
 		
 	</div>
-	
+	<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Back to top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>
 	<!-- END OF CONTENT -->
 	</div>
 </div>
@@ -229,10 +242,38 @@
 	
 	<!-- RESIZE SIDE-NAV-->
 	<script>
-		jQuery(function (){
-			jQuery('#sidebarCollapse').click(function () {
-				jQuery('#sidebar').toggleClass('resize');
-			});
+		jQuery('#sidebarCollapse').click(function () {
+			jQuery('#sidebar').toggleClass('resize');
+		});
+	</script>
+	
+	<script>
+		jQuery('#navigation-toggle').click(function () {
+			jQuery('#navigation-toggle').toggleClass('hide-navigation');
+			jQuery('#sidebar').toggleClass('navigation-toggle');
+		});
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+			$(window).scroll(function () {
+				   if ($(this).scrollTop() > 50) {
+					   $('#back-to-top').fadeIn();
+				   } else {
+					   $('#back-to-top').fadeOut();
+				   }
+			   });
+			   // scroll body to 0px on click
+			   $('#back-to-top').click(function () {
+				   $('#back-to-top').tooltip('hide');
+				   $('body,html').animate({
+					   scrollTop: 0
+				   }, 800);
+				   return false;
+			   });
+			   
+			   $('#back-to-top').tooltip('show');
+		
 		});
 	</script>
     </body>

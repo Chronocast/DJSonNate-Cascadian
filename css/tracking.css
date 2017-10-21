@@ -92,6 +92,50 @@ a, a:hover, a:focus {
 }
 
 /* ---------------------------------------------------
+    TOGGLING NAVIGATION
+----------------------------------------------------- */
+#sidebar.navigation-toggle{
+    display: none;
+}
+#navigation-toggle span{
+	margin-left:2px;	
+}
+#navigation-toggle #hide {
+	display: inline-block;
+}
+#navigation-toggle #show {
+	display: none;
+}
+#navigation-toggle.hide-navigation #hide {
+	display: none;
+}
+
+#navigation-toggle.hide-navigation #show {
+	display: inline-block;
+}
+
+.btn.btn-navigation-toggle {
+	color:black;
+	background-color:#D6DBDF;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-navigation-toggle:hover,
+.btn.btn-navigation-toggle:focus {
+    background-color:#D6DBDF;
+}
+
+/* ---------------------------------------------------
     RESIZING STYLE
 ----------------------------------------------------- */
 #sidebar.resize{
@@ -125,4 +169,15 @@ a, a:hover, a:focus {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    BACK TO TOP BUTTON
+----------------------------------------------------- */
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
 }
