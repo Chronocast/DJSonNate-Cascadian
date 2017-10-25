@@ -29,7 +29,7 @@
   			
  			<div class="main-view">
 				<!-- TRACKING FORM START -->
-				<form id="tracking-form" class="form-track" action="" method="post" autocomplete="on">
+				<form id="tracking-form" class="form-track" action="./tracking" method="post" autocomplete="on">
 					
 					<div class="form-group">
 						<h2><label class="control-label" for="trackingID">
@@ -60,5 +60,7 @@
 	
 	<!-- JAVASCRIPT -->
 	<script src="js/validate.js"></script>
+	
+	
 </body>
 </html>

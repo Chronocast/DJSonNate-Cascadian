@@ -18,11 +18,8 @@ $(document).ready(function()
         //removeErrors();
         var error = false;
         
-        //empoyee id must be 10 characters
+        //tracking id must be 10 characters
         var trackingNum = $("#trackingID").val();
-        //console.log("trackingNum is: " + trackingNum);
-        //console.log(typeof trackingNum);
-        //console.log(trackingNum.length);
         
         //if tracking number is empty, it is considered false
         //so the following if statement will evaluate to true
@@ -32,9 +29,7 @@ $(document).ready(function()
             report("error", "The Tracking ID cannot be empty!");
             error = true;
         }
-        else
-        {
-            if(trackingNum.length != 10)
+        else if(trackingNum.length != 10)
             {
                 report("error", "Please enter the 10 digit tracking number!");
                 error = true;
@@ -43,25 +38,18 @@ $(document).ready(function()
             {
                 trackingNum = parseInt(trackingNum, 10);
                 //console.log(typeof trackingNum);
-                if (trackingNum.isNaN || trackingNum <= 0)
+                if (trackingNum.isNaN)
                 {
                     report("error", "Please enter a valid tracking number!");
                     error = true;
                 }
                 else
                 {
-                    console.log("Success!");
-                    //change isError to false
-                    //error = false;
+                    console.log("youre in");
+                    document.getElementById("tracking-form").submit();
                 }
             }
-        }
-        
-        if(!error)
-        {
-            $('#track').submit();
-        }
-	}
+    }
     
     function report (id, message)
     {
