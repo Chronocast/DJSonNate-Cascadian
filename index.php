@@ -63,12 +63,21 @@
 		
 	});
 	
+	
+	/* Nate's Code */
 	//Route to admin page
 	$f3->route('GET|POST /admin', function($f3) {
-			echo Template::instance()->render('pages/admin.html');
+		
+		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
+		
+		$f3->set('projectDisplay', $projectDisplay);
+		
+		echo Template::instance()->render('pages/admin.html');
 		
 	});
-
+	/* End Nate's Code */
+	
+	
 	//Route to admin-signup
 	$f3->route('GET /admin-signup', function($f3) {
 			echo Template::instance()->render('pages/admin-signup.html');

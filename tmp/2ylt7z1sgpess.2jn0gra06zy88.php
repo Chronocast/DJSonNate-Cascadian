@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<script src="js/scripts.js"></script>
+	<script src="js/admin.js"></script>
 	
 	<title>Admin | Cascadian Landworks</title>
 	
@@ -26,6 +26,7 @@
 
 <body>
 	
+	<!-- NAVBAR -->
 	<nav class="navbar navbar-dark bg-primary d-inline-block fixed-top">
 						
 		<a class="navbar-brand" href="./">
@@ -42,39 +43,40 @@
 		
 		<ul class="nav navbar-nav d-inline-block">							
 			
+			<!-- Nav button -->
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="dashboard"> 
 					<i class="fa fa-bars"></i> 
 				</button>
 			</li>
 			
+			<!-- Nav button -->
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="documents"> 
 					<i class="fa fa-folder-open-o"></i> 
 				</button>
 			</li>
 			
+			<!-- Nav button -->
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="schedule"> 
 					<i class="fa fa-calendar"></i> 
 				</button>
 			</li>
 			
+			<!-- Nav button -->
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="team"> 
 					<i class="fa fa-users"></i> 
 				</button>
 			</li>
 			
+			<!-- Nav button -->
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="messaging"> 
 					<i class="fa fa-commenting-o"></i> 
 				</button>
 			</li>
-			
-			
-			
-			
 			
 		</ul>
 	</nav>
@@ -83,70 +85,60 @@
 	
 	<div id="portfolio" class="portfolio container-fluid">
 		
+		<!-- begin card deck/columns -->
 		<div class="card-deck">
 		  
-		  <div class="card">
-
-			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-				Project 1
-			</button>
-
-
-			<div class="card-body">
-			  <h4 class="card-title">title</h4>
-			  <p class="card-text">details</p>
-			</div>
-			<div class="card-footer">
-			  <small class="text-muted">Last updated 3 mins ago</small>
-			</div>
-			
-			
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					  <span aria-hidden="true">&times;</span>
-					</button>
-				  </div>
-				  <div class="modal-body">
-					...
-				  </div>
-				  <div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+		  <?php foreach (($projectDisplay?:[]) as $track): ?>
+		  
+			<!-- Card -->
+			<div class="card">
+  
+  
+			  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+				  Project # <?= ($track['track_id'])."
+" ?>
+			  </button>
+  
+  
+			  <div class="card-body">
+				<h4 class="card-title">Current Stage: <?= ($track['current_step']) ?></h4>
+				<p class="card-text">Tracking # <?= ($track['track_id']) ?></p>
+				<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
+				<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
+			  </div>
+			  <div class="card-footer">
+				<small class="text-muted">Last updated 3 mins ago</small>
+			  </div>
+			  
+			  
+			  <!-- Modal -->
+			  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" id="exampleModalLabel">Tracking # <?= ($track['track_id']) ?></h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+						<p class="card-text">Current Stage: <?= ($track['current_step']) ?></p>
+						<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
+						<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					  <button type="button" class="btn btn-primary">Save changes</button>
+					</div>
 				  </div>
 				</div>
 			  </div>
+			  <!-- END Modal -->
+			  
 			</div>
-			
-			
-		  </div>
+			<!-- END Card -->
 		  
-		  <div class="card">
-			<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-sm">Project 1</button>
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-			  <h4 class="card-title">Card title</h4>
-			  <p class="card-text">content.</p>
-			</div>
-			<div class="card-footer">
-			  <small class="text-muted">Last updated 3 mins ago</small>
-			</div>
-		  </div>
-		  <div class="card">
-			<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-sm">Project 1</button>
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-			  <h4 class="card-title">Card title</h4>
-			  <p class="card-text">T.</p>
-			</div>
-			<div class="card-footer">
-			  <small class="text-muted">Last updated 3 mins ago</small>
-			</div>
-		  </div>
+		  <?php endforeach; ?>
 		  
 		  
 		</div>

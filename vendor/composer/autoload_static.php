@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInitf74df864652fd754f5695988f184416d
 {
     public static $classMap = array (
-        'Admin' => __DIR__ . '/../..' . '/classes/admin.php',
+        'Admin' => __DIR__ . '/../..' . '/model/admin.php',
         'AdminDB' => __DIR__ . '/../..' . '/model/admindb.php',
         'Audit' => __DIR__ . '/..' . '/bcosca/fatfree-core/audit.php',
         'Auth' => __DIR__ . '/..' . '/bcosca/fatfree-core/auth.php',
@@ -43,6 +43,7 @@ class ComposerStaticInitf74df864652fd754f5695988f184416d
         'Test' => __DIR__ . '/..' . '/bcosca/fatfree-core/test.php',
         'TrackingDB' => __DIR__ . '/../..' . '/model/trackingdb.php',
         'UTF' => __DIR__ . '/..' . '/bcosca/fatfree-core/utf.php',
+        'User' => __DIR__ . '/../..' . '/model/projects.php',
         'View' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Web' => __DIR__ . '/..' . '/bcosca/fatfree-core/web.php',
         'Web\\Geo' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/geo.php',

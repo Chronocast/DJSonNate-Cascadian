@@ -50,5 +50,27 @@ class TrackingDB
          
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+    
+     /**
+         * Returns all active projects.
+         * @return an associative array of project and their specific data
+         */
+        
+        function activeProjectDisplay()
+        {
+            
+            $select = 'SELECT * FROM tracking ORDER BY start_date';
+            
+            $results = $this->_pdo->prepare($select);
+            //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
+            $results->execute();
+             
+            $resultsArray = array();
+             
+            //map each project to a row of data by date
+            $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+             
+            return $rows;
+        }
 }
 ?>

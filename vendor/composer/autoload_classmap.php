@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Admin' => $baseDir . '/classes/admin.php',
+    'Admin' => $baseDir . '/model/admin.php',
     'AdminDB' => $baseDir . '/model/admindb.php',
     'Audit' => $vendorDir . '/bcosca/fatfree-core/audit.php',
     'Auth' => $vendorDir . '/bcosca/fatfree-core/auth.php',
@@ -42,6 +42,7 @@ return array(
     'Test' => $vendorDir . '/bcosca/fatfree-core/test.php',
     'TrackingDB' => $baseDir . '/model/trackingdb.php',
     'UTF' => $vendorDir . '/bcosca/fatfree-core/utf.php',
+    'User' => $baseDir . '/model/projects.php',
     'View' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Web' => $vendorDir . '/bcosca/fatfree-core/web.php',
     'Web\\Geo' => $vendorDir . '/bcosca/fatfree-core/web/geo.php',
