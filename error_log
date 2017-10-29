@@ -3261,3 +3261,30 @@ Stack trace:
 [29-Oct-2017 13:46:30 America/Chicago] ','SERVER_SOFTWARE'=>'Apache','UNIQUE_ID'=>'WfYiBsC5U1IADZ2ptgMAAACD','PHP_SELF'=>'/355/DJSonNate-Cascadian/index.php','REQUEST_TIME_FLOAT'=>1509302790.97012805938720703125,'REQUEST_TIME'=>1509302790,'argv'=>[],'argc'=>0],'ENV'=>['DOCUMENT_ROOT'=>'/home/smoon/public_html','GATEWAY_INTERFACE'=>'CGI/1.1','HTTP_ACCEPT'=>'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8','HTTP_ACCEPT_ENCODING'=>'gzip, deflate','HTTP_ACCEPT_LANGUAGE'=>'en-US,en;q=0.8,ko;q=0.6','HTTP_CONNECTION'=>'close','HTTP_COOKIE'=>'PHPSESSID=27d7d88f70eb1126c05e52d4fe25fb20; cpsession=cascadian%3acUjOe6rE0B84Wl3Q%2c0721b1cfe67e2d9d4aeeb038ad87c8b0; _ga=GA1.2.786930134.1493263948','HTTP_HOST'=>'smoon.greenrivertech.net','HTTP_UPGRADE_INSECURE_REQUESTS'=>'1','HTTP_USER_AGENT'=>'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36','HTTP_X_HTTP_PROTO'=>'HTTP/1.1','HTTP_X_LOG_7721'=>'73.83.13.172','HTTP_X_REAL_IP'=>'73.83.13.172','PATH'=>'/bin:/usr/bin','QUERY_STRING'=>'','REDIRECT_STATUS'=>'200','REDIRECT_UNIQUE_ID'=>'WfYiBsC5U1IADZ2ptgMAAACD','REDIRECT_URL'=>'/355/DJSonNate-Cascadian/admin','REMOTE_ADDR'=>'73.83.13.172','REMOTE_PORT'=>'49284','REQUEST_METHOD'=>'GET','REQUEST_URI'=>'/355/DJSonNate-Cascadian/admin','SCRIPT_FILENAME'=>'/home/smoon/public_html/355/DJSonNate-Cascadian/index.php','SCRIPT_NAME'=>'/355/DJSonNate-Cascadian/index.php','SERVER_ADDR'=>'192.185.191.50','SERVER_ADMIN'=>'webmaster@smoon.greenrivertech.net','SERVER_NAME'=>'smoon.greenrivertech.net','SERVER_PORT'=>'80','SERVER_PROTOCOL'=>'HTTP/1.1','SERVER_SIGNATURE'=>'<address>Apache Server at smoon.greenrivertech.net Port 80</address>
 [29-Oct-2017 13:46:30 America/Chicago] ','SERVER_SOFTWARE'=>'Apache','UNIQUE_ID'=>'WfYiBsC5U1IADZ2ptgMAAACD']],'languages'=>['en-US','en','ko'],'locks'=>[],'fallback'=>'en']),['/admin'],Closure::__set_state([])],'beforeroute,afterroute')
 [29-Oct-2017 13:46:30 America/Chicago] [355/DJSonNate-Cascadian/index.php:173] Base->run()
+[29-Oct-2017 14:02:36 America/Chicago] PHP Fatal error:  Call to undefined method TrackingDB::activeProjectDetails() in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 64
+[29-Oct-2017 14:02:36 America/Chicago] Fatal error: Call to undefined method TrackingDB::activeProjectDetails()
+[29-Oct-2017 14:02:36 America/Chicago] [355/DJSonNate-Cascadian/index.php:64] 
+[29-Oct-2017 14:02:58 America/Chicago] PHP Fatal error:  Call to undefined method TrackingDB::projectDetails() in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 64
+[29-Oct-2017 14:02:58 America/Chicago] Fatal error: Call to undefined method TrackingDB::projectDetails()
+[29-Oct-2017 14:02:58 America/Chicago] [355/DJSonNate-Cascadian/index.php:64] 
+[29-Oct-2017 14:02:59 America/Chicago] PHP Fatal error:  Call to undefined method TrackingDB::projectDetails() in /home/smoon/public_html/355/DJSonNate-Cascadian/index.php on line 64
+[29-Oct-2017 14:02:59 America/Chicago] Fatal error: Call to undefined method TrackingDB::projectDetails()
+[29-Oct-2017 14:02:59 America/Chicago] [355/DJSonNate-Cascadian/index.php:64] 
+[29-Oct-2017 14:07:34 America/Chicago] PHP Fatal error:  Call to a member function fetchAll() on a non-object in /home/smoon/public_html/355/DJSonNate-Cascadian/model/trackingdb.php on line 91
+[29-Oct-2017 14:07:34 America/Chicago] Fatal error: Call to a member function fetchAll() on a non-object
+[29-Oct-2017 14:07:34 America/Chicago] [355/DJSonNate-Cascadian/model/trackingdb.php:91] 
+[29-Oct-2017 14:24:33 America/Chicago] HTTP 404 (GET /3%20people%20have%20been%20scheduled%20for%20---.)
+[29-Oct-2017 14:24:33 America/Chicago] [355/DJSonNate-Cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[29-Oct-2017 14:24:33 America/Chicago] [355/DJSonNate-Cascadian/index.php:179] Base->run()
+[29-Oct-2017 14:24:33 America/Chicago] HTTP 404 (GET /contract%20file%20created)
+[29-Oct-2017 14:24:33 America/Chicago] [355/DJSonNate-Cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[29-Oct-2017 14:24:33 America/Chicago] [355/DJSonNate-Cascadian/index.php:179] Base->run()
+[29-Oct-2017 14:24:33 America/Chicago] HTTP 404 (GET /50%20units%20of%20blah%20has%20been%20created)
+[29-Oct-2017 14:24:33 America/Chicago] [355/DJSonNate-Cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[29-Oct-2017 14:24:33 America/Chicago] [355/DJSonNate-Cascadian/index.php:179] Base->run()
+[29-Oct-2017 14:25:31 America/Chicago] HTTP 404 (GET /contract%20file%20created)
+[29-Oct-2017 14:25:31 America/Chicago] [355/DJSonNate-Cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[29-Oct-2017 14:25:31 America/Chicago] [355/DJSonNate-Cascadian/index.php:179] Base->run()
+[29-Oct-2017 14:26:03 America/Chicago] HTTP 404 (GET /contract%20file%20created)
+[29-Oct-2017 14:26:03 America/Chicago] [355/DJSonNate-Cascadian/vendor/bcosca/fatfree-core/base.php:1659] Base->error()
+[29-Oct-2017 14:26:03 America/Chicago] [355/DJSonNate-Cascadian/index.php:179] Base->run()

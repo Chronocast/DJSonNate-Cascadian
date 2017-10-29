@@ -58,7 +58,10 @@
             return $rows;
         }
         
-        
+        /**
+         * returns project details 
+         *
+         */
         function projectDetails($track_id)
         {
         $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
