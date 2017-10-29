@@ -59,7 +59,13 @@
 	
 	//Route to tracking page
 	$f3->route('GET|POST /tracking', function($f3) {
-			echo Template::instance()->render('pages/tracking.html');
+		
+		
+		$projectDetails = $GLOBALS['db']->projectDetails('0987654321');
+		
+		$f3->set('projectDetails', $projectDetails);
+		
+		echo Template::instance()->render('pages/tracking.html');
 		
 	});
 	

@@ -59,7 +59,7 @@ class TrackingDB
         function activeProjectDisplay()
         {
             
-            $select = 'SELECT * FROM tracking ORDER BY start_date';
+            $select = 'SELECT * FROM track_content ORDER BY start_date';
             
             $results = $this->_pdo->prepare($select);
             //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
@@ -71,6 +71,21 @@ class TrackingDB
             $rows = $results->fetchAll(PDO::FETCH_ASSOC);
              
             return $rows;
+        }
+        
+         /**
+         * returns project details 
+         *
+         */
+        function projectDetails($track_id)
+        {
+        $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
+
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement->execute();
+         
+        return $statement->fetch(PDO::FETCH_ASSOC);
         }
 }
 ?>
