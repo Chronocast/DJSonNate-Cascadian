@@ -200,7 +200,7 @@
 				<h1>Material &amp; Labor</h1>
 			</div>
 
-			
+			<h1>{{ @projectDetails['material_labor'] }}</h1>
 			<div class="line"></div>
 		</div>
 		<!-- DIV 3 ENDS -->
@@ -211,7 +211,7 @@
 				<h1>Construction</h1>
 			</div>
 
-			<p><img src="{{ @projectDetails['construction_photos'] }}"></p>
+			<h2><img src="{{ @projectDetails['construction_photos'] }}"></h2>
 			
 			<div class="line"></div>
 		</div>
@@ -223,8 +223,8 @@
 				<h1>Final punch list</h1>
 			</div>
 
-			<h2>Testing 5</h2>
-			<p>Not yet applied</p>
+			<h2>{{ @projectDetails['final_stage'] }}</h2>
+			
 
 			<div class="line"></div>
 		</div>
@@ -236,8 +236,7 @@
 				<h1>Acceptance</h1>
 			</div>
 
-			<h2>Testing 6</h2>
-			<p>Not yet applied</p>
+			<h2>{{ @projectDetails['final_stage'] }}</h2>
 
 			<div class="line"></div>
 		</div>
