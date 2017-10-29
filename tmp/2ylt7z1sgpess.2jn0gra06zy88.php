@@ -36,7 +36,7 @@
 		<a class="navbar-brand" href="./">
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-warning"> 
-					Welcome back Nate!
+					Welcome Nate!
 				</button>
 			</li>
 		</a>
@@ -98,7 +98,28 @@
 				  Project # <?= ($track['track_id'])."
 " ?>
 			  </button>
-  
+			  <div class=" d-inline-block">
+			  <a href="<?= ($track['documentation_link']) ?>">
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-folder-open-o"></i> 
+				</button>
+			  </a>
+			  <a>
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-calendar"></i> 
+				</button>
+			  </a>
+			  <a>
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-users"></i>
+				</button>
+			  </a>
+			  <a>
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-commenting-o"></i> 
+				</button>
+			  </a>
+			</div>
   
 			  <div class="card-body">
 				<h4 class="card-title">Current Stage: <?= ($track['current_step']) ?></h4>
