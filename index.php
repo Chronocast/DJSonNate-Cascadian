@@ -22,7 +22,7 @@
 	$f3->route('GET /', function($f3) {
 		/* please ignore
 		$trackingID = $_POST['trackingID'];
-		$track = $GLOBALS['db']->getTracker('trackingID');
+		$track = $GLOBALS['db']->getTracker(trackingID);
 
 		if($trackingID!= NULL) {
 			if(!empty($track)) {
@@ -45,21 +45,29 @@
 	/* SONIE's code */
 	$f3->route('POST /verify', function($f3) {
 		$trackingID = $_POST['trackingID'];
-		if(!empty($track)) {
-			//show that
-			print_r('Tracking id does not exist');
+		$track = $GLOBALS['db']->getTracker($trackingID);
+
+		if($trackingID!= NULL) {
+			if(empty($track)) {
+				$f3->reroute('/admin-login');
+			}
+			else{
+				//reroute //pass in the array
+				$f3->reroute('/admin');
+			}
 		}
-		else{
-			//reroute //pass in the array
-			print_r('Tracking id exists');
-		}
-		echo Template::instance()->render('pages/verify.html');
 		
 	});
 	
 	//Route to tracking page
 	$f3->route('GET|POST /tracking', function($f3) {
-			echo Template::instance()->render('pages/tracking.html');
+		
+		
+		$projectDetails = $GLOBALS['db']->projectDetails('0987654321');
+		
+		$f3->set('projectDetails', $projectDetails);
+		
+		echo Template::instance()->render('pages/tracking.html');
 		
 	});
 	
