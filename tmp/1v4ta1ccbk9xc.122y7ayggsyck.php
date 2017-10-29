@@ -29,7 +29,7 @@
   			
  			<div class="main-view">
 				<!-- TRACKING FORM START -->
-				<form id="tracking-form" class="form-track" action="./tracking" method="post" autocomplete="on">
+				<form id="tracking-form" class="form-track" action="./verify" method="post" autocomplete="on">
 					
 					<div class="form-group">
 						<h2><label class="control-label" for="trackingID">
@@ -37,7 +37,7 @@
 							Tracking ID
 						</label></h2><span class="red" hidden="hidden">&emsp;&emsp; *</span><span class="red" id="error"></span>
 						
-						<div class="input-group col-sm-12"><input type="text" class="form-control" id="trackingID" placeholder="Enter your tracking ID" required autofocus></div>
+						<div class="input-group col-sm-12"><input type="text" name="trackingID" class="form-control" id="trackingID" placeholder="Enter your tracking ID" required autofocus></div>
 					</div>
 	 
 					<!-- TRACK BUTTON -->

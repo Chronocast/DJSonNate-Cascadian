@@ -20,6 +20,25 @@
 	
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="./css/tracking.css">
+	
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="./android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -40,37 +59,37 @@
 			<li>
 				<a class="showStep" target="1">
 					<i class="fa fa-handshake-o" aria-hidden="true"></i>
-					Step 1
+					Document
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="2">
 					<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-					Step 2
+					Schedule
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="3">
 					<i class="fa fa-cogs" aria-hidden="true"></i>
-					Step 3
+					Material
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="4">
 					<i class="fa fa-cubes" aria-hidden="true"></i>
-					Step 4
+					Progress
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="5">
 					<i class="fa fa-list-ol" aria-hidden="true"></i>
-					Step 5
+					Punch List
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="6">
 					<i class="fa fa-check" aria-hidden="true"></i>
-					Step 6
+					Accept
 				</a>
 			</li>
 		</ul>
@@ -85,17 +104,37 @@
 			
 	<div class="container-fluid">
 		
-		<!-- NAVIGATION TOGGLE START -->
-		<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
-			<i class="fa fa-bars" aria-hidden="true"></i>
-			<!--
-			<span id="show">Show navigation</span>
-			<span id="hide">Hide navigation</span>
-			-->
-		</button>
-		<!-- NAVIGATION TOGGLE END -->
 		
-		<!-- INSTRUCTION START -->
+		<div class="col-12">
+			<div class="col-2">
+				<!-- NAVIGATION TOGGLE START -->
+				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+					<!--
+					<span id="show">Show navigation</span>
+					<span id="hide">Hide navigation</span>
+					-->
+				</button>
+				<!-- NAVIGATION TOGGLE END -->
+			</div>
+		</div>
+		
+		<div class="progress">
+			<div class="progress-bar progress-bar-success role="progressbar" style="width:25%">
+				Documentation
+			</div>
+			<div class="progress-bar progress-bar-warning role="progressbar" style="width:25%">
+				Scheduling
+			</div>
+			<div class="progress-bar progress-bar-danger role="progressbar" style="width:25%">
+				Material & labor
+			</div>
+			<div class="progress-bar progress-bar-warning role="progressbar" style="width:25%">
+				Progress construction
+			</div>
+		</div>		
+		
+<!-- INSTRUCTION START -->
 		<div id="div0" class="targetDiv instruction">
 			<div class="bg-info">
 				<h1>Tracking with Cascadian Landworks</h1>
@@ -130,10 +169,9 @@
 				<h1>Contract</h1>
 			</div>
 
-			<h2>Testing 1</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+			
+			<p><img src="<?= ($projectDetails['documentation_link']) ?>"></p>
+			
 			<div class="line"></div>
 		</div>
 		<!-- DIV 1 ENDS -->
@@ -144,12 +182,10 @@
 				<h1>Scheduling</h1>
 			</div>
 
-			<h2>Testing 2</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+			
+			<p><?= ($projectDetails['scheduling']) ?></p>
+			<p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>
+			
 			<div class="line"></div>
 		</div>
 		<!-- DIV 2 ENDS -->
@@ -160,9 +196,7 @@
 				<h1>Material &amp; Labor</h1>
 			</div>
 
-			<h2>Testing 3</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+			<h1><?= ($projectDetails['material_labor']) ?></h1>
 			<div class="line"></div>
 		</div>
 		<!-- DIV 3 ENDS -->
@@ -173,11 +207,8 @@
 				<h1>Construction</h1>
 			</div>
 
-			<h2>Testing 4</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-
+			<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+			
 			<div class="line"></div>
 		</div>
 		<!-- DIV 4 ENDS -->
@@ -188,8 +219,8 @@
 				<h1>Final punch list</h1>
 			</div>
 
-			<h2>Testing 5</h2>
-			<p>Not yet applied</p>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
+			
 
 			<div class="line"></div>
 		</div>
@@ -201,8 +232,7 @@
 				<h1>Acceptance</h1>
 			</div>
 
-			<h2>Testing 6</h2>
-			<p>Not yet applied</p>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
 
 			<div class="line"></div>
 		</div>
