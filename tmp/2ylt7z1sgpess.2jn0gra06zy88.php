@@ -128,7 +128,7 @@
 				<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
 			  </div>
 			  <div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
+				<small class="text-muted">Last updated <?= ($track['last_update']) ?></small>
 			  </div>
 			  
 			  
