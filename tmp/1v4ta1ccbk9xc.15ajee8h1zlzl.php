@@ -29,19 +29,25 @@
 				<img class="card-img-top" src="./images/cascadian-landworks.png">
 			</div>
 			
-            <form id="login-form" class="form-signin" action="./admin-validation" method="post" autocomplete="on">
+            <form id="login-form" class="form-signin" action="./admin-validation" method="post">
 				
                 <!-- EMAIL SECTION + ERROR MESSAGE -->
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" autofocus required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" autofocus>
+                
+                <!--
 				<div class="alert alert-danger">
 					<strong>Error:</strong> <span id="emailError"></span>
 				</div>
+		-->
 				
                 <!-- PASSWORD SECTION + ERROR MESSAGE -->
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                
+                
                 <div class="alert alert-danger">
-					<strong>Error:</strong> <span id="passwordError"></span>
+					<strong>Error:</strong> <span id="error"></span>
 				</div>
+                
                 
                 <!-- REMEMBER ME -->
                 <div id="remember" class="checkbox">
@@ -51,7 +57,7 @@
                 </div>
                
 			   <!-- SIGNIN BUTTON -->
-                <input class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="submit" type="submit" value="Sign in">
+                <input class="btn btn-lg btn-primary btn-block btn-signin" name="action" id="login" type="submit" value="Sign in">
                 </input>
 				
 				<!--FORGOT YOUR PASSWORD-->
@@ -76,5 +82,9 @@
  	
  	<!-- FONT AWESOME -->
  	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
+	
+	<!-- JAVASCRIPT -->
+	<script src="js/login.js"></script>
+	
 </body>
 </html>
