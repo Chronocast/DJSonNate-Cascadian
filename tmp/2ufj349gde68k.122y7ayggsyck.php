@@ -29,13 +29,13 @@
   			
  			<div class="main-view">
 				<!-- TRACKING FORM START -->
-				<form id="tracking-form" class="form-track" action="" method="post" autocomplete="on">
+				<form id="tracking-form" class="form-track" action="./tracking" method="post" autocomplete="on">
 					
 					<div class="form-group">
 						<h2><label class="control-label" for="trackingID">
 							<i class="fa fa-search" aria-hidden="true"></i>
 							Tracking ID
-						</label></h2>
+						</label></h2><span class="red" hidden="hidden">&emsp;&emsp; *</span><span class="red" id="error"></span>
 						
 						<div class="input-group col-sm-12"><input type="text" class="form-control" id="trackingID" placeholder="Enter your tracking ID" required autofocus></div>
 					</div>
@@ -57,5 +57,10 @@
  	
  	<!-- FONT AWESOME -->
  	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
+	
+	<!-- JAVASCRIPT -->
+	<script src="js/validate.js"></script>
+	
+	
 </body>
 </html>
