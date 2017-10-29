@@ -49,11 +49,11 @@
 
 		if($trackingID!= NULL) {
 			if(empty($track)) {
-				$f3->reroute('/admin-login');
+				$f3->reroute('/');
 			}
 			else{
 				//reroute //pass in the array
-				$f3->reroute('/admin');
+				$f3->reroute('/tracking');
 			}
 		}
 		
