@@ -179,7 +179,9 @@ a, a:hover, a:focus {
     CONTENT STYLE
 ----------------------------------------------------- */
 .progress {
-	height:33px;
+	height:36px;
+	padding-top:1px;
+	padding-bottom:1px;
 }
 .progress-bar{
 	padding-top:6px;
@@ -189,10 +191,22 @@ a, a:hover, a:focus {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    flex:1;
+    flex:1;	
+}
+#green {
+	color:#5cb85c	;
+}
+#yellow {
+	color:#f0ad4e;
+}
+#blue {
+	color:#428bca;
 }
 
-
+.imgholder{
+	height:420px;
+	width:420px;
+}
 /* ---------------------------------------------------
     BACK TO TOP BUTTON
 ----------------------------------------------------- */

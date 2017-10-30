@@ -154,9 +154,9 @@
 				<li>
 					Progress Bar Color indication
 					<ul>
-						<li>Green: task is completed</li>
-						<li>Yellow: task is in progress</li>
-						<li>Blue: recently updated</li>
+						<li id="green">Green: task is completed</li>
+						<li id="yellow">Yellow: task is in progress</li>
+						<li id="blue">Blue: recently updated</li>
 					</ul>
 				</li>
 			</ol>
@@ -184,11 +184,24 @@
 			<div class="bg-info">
 				<h1>Contract</h1>
 			</div>
-
 			
-			<p><img src="<?= ($projectDetails['documentation_link']) ?>"></p>
+			<div class="col-md-12">
+				<div class="col-md-4">
+					<h3 class="text-center">Document 1</h3>
+					<p><img class="imgholder" src="<?= ($projectDetails['documentation_link']) ?>"></p>
+				</div>
+				<div class="col-md-4">
+					<h3 class="text-center">Document 2</h3>
+					<p><img class="imgholder"  src="<?= ($projectDetails['documentation_link']) ?>"></p>
+				</div>
+				<div class="col-md-4">
+					<h3 class="text-center">Document 3</h3>
+					<p><img class="imgholder"  src="<?= ($projectDetails['documentation_link']) ?>"></p>
+				</div>
+			</div>
 			
-			<div class="line"></div>
+			
+			
 		</div>
 		<!-- DIV 1 ENDS -->
 
@@ -200,7 +213,9 @@
 
 			
 			<p><?= ($projectDetails['scheduling']) ?></p>
-			<p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>
+			<p>1 person scheduled for site-manager</p>
+			<p>2 person from Example company on site</p>
+			<!--p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>-->
 			
 			<div class="line"></div>
 		</div>
@@ -212,7 +227,10 @@
 				<h1>Material &amp; Labor</h1>
 			</div>
 
-			<h1><?= ($projectDetails['material_labor']) ?></h1>
+			<p><?= ($projectDetails['material_labor']) ?></p>
+			<p>20 units of hardwoord</p>
+			<p>2 big dumptrucks ordered (new)</p>
+			<p>1 ton of sand ordered (new)</p>
 			<div class="line"></div>
 		</div>
 		<!-- DIV 3 ENDS -->
@@ -222,8 +240,36 @@
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
-
-			<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+				
+			<br>
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+				</div>
+				<div class="col-md-9">
+					<p>Good looking guys finished work #1</p>
+					<ol>
+						<li>Despcription #1</li>
+						<li>Despcription #2</li>
+						<li>Despcription #3</li>
+					</ol>
+				</div>
+			</div>
+			
+			<br>
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+				</div>
+				<div class="col-md-9">
+					<p>Good looking guys finished work #2</p>
+					<ol>
+						<li>Despcription #4</li>
+						<li>Despcription #5</li>
+						<li>Despcription #6</li>
+					</ol>
+				</div>
+			</div>
 			
 			<div class="line"></div>
 		</div>
