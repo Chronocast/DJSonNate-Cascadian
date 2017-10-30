@@ -39,14 +39,15 @@ a, a:hover, a:focus {
 	 position: -webkit-sticky;  // required for Safari
     position: sticky;
     */
-    width:100%;
-    height:100%;
     display: flex;
+	align-items: stretch;
+	position: -webkit-sticky;  // required for Safari
+    position: sticky;
 }
 
 #sidebar {
-    min-width: 90px;
-    max-width: 90px;
+    min-width: 98px;
+    max-width: 98px;
     text-align: center;
     background: #7386D5;
     color: #fff;
@@ -55,11 +56,14 @@ a, a:hover, a:focus {
 	position: -webkit-sticky;  // required for Safari
     position: sticky;
 	*/
+    transition: all 0.3s;
+	position: -webkit-sticky;  // required for Safari
+    position: sticky;
 }
 
 #sidebar .sidebar-header img{
-    height:93px;
-	width:90px;
+    height:101px;
+	width:98px;
 	background:#fafafa;
 	padding:7px;
 }
@@ -72,7 +76,7 @@ a, a:hover, a:focus {
 #sidebar ul li a {
     padding: 20px 10px;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.9em;
 	display: block;
 }
 
@@ -87,7 +91,7 @@ a, a:hover, a:focus {
 #sidebar ul li a i {
     margin-right:  0;
     display: block;
-    font-size: 1.8em;
+    font-size: 1.9em;
     margin-bottom: 5px;
 }
 
@@ -157,7 +161,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar.resize ul li a {
-	font-size: 0.8em;
+	font-size: 0.7em;
 	
 }
 
@@ -174,12 +178,20 @@ a, a:hover, a:focus {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
+.progress {
+	height:33px;
+}
+.progress-bar{
+	padding-top:6px;
+}
+
 #content {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
     flex:1;
 }
+
 
 /* ---------------------------------------------------
     BACK TO TOP BUTTON
