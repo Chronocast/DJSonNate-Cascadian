@@ -22,67 +22,101 @@
 	
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+	
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="./android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
 	
-	<!-- NAVBAR -->
+	<!-- NAVBAR START -->
 	<nav class="navbar navbar-dark bg-primary d-inline-block fixed-top">
 						
-		<a class="navbar-brand" href="./">
-			<img src="images/cascadian-landworks.png" width="30" height="30" alt="Cascadian Landworks">
+		<a class="navbar-brand" href="./admin">
+			<img src="images/cascadian-landworks.png" alt="Cascadian Landworks">
 		</a>
 		
 		<a class="navbar-brand" href="./">
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-warning"> 
-					Welcome back Nate!
+					Welcome Nate!
 				</button>
 			</li>
 		</a>
 		
+		<!--
+			link to fontawesome
+			http://fontawesome.io/icons/
+		-->
 		<ul class="nav navbar-nav d-inline-block">							
 			
-			<!-- Nav button -->
-			<li class="nav-item d-inline-block">
-				<button type="button" class="btn btn-primary navbar-toggler" alt="dashboard"> 
-					<i class="fa fa-bars"></i> 
+			<!-- NAV BUTTON - HOME -->
+			<li class="nav-item d-inline-block active">
+				<a href="" title="Home">
+				<button type="button" class="btn btn-primary navbar-toggler" alt="dashboard">
+						<i class="fa fa-home"></i>
+					<!--<i class="fa fa-th-list"></i>-->
 				</button>
+				</a>
 			</li>
 			
-			<!-- Nav button -->
+			<!-- NAV BUTTON - PROJECTS LIST -->
 			<li class="nav-item d-inline-block">
-				<button type="button" class="btn btn-primary navbar-toggler" alt="documents"> 
-					<i class="fa fa-folder-open-o"></i> 
+				<a href="" title="Projects history">
+				<button type="button" class="btn btn-primary navbar-toggler" alt="documents">
+						<i class="fa fa-th-list"></i> 
+					<!--<i class="fa fa-folder-open-o"></i>-->
 				</button>
+				</a>
 			</li>
 			
-			<!-- Nav button -->
+			<!-- NAV BUTTON - ADD NEW PROJECT -->
 			<li class="nav-item d-inline-block">
-				<button type="button" class="btn btn-primary navbar-toggler" alt="schedule"> 
-					<i class="fa fa-calendar"></i> 
+				<a href="" title="New project">
+				<button type="button" class="btn btn-primary navbar-toggler" alt="schedule">
+						<i class="fa fa-plus-square"></i> 
 				</button>
+				</a>
 			</li>
 			
-			<!-- Nav button -->
+			<!-- NAV BUTTON - SLACK -->
 			<li class="nav-item d-inline-block">
-				<button type="button" class="btn btn-primary navbar-toggler" alt="team"> 
-					<i class="fa fa-users"></i> 
+				<a href="" title="Slack talk">
+				<button type="button" class="btn btn-primary navbar-toggler" alt="team">
+						<i class="fa fa-slack"></i> 
 				</button>
+				</a>
 			</li>
 			
-			<!-- Nav button -->
+			<!-- NAV BUTTON - SEARCH????? -->
 			<li class="nav-item d-inline-block">
-				<button type="button" class="btn btn-primary navbar-toggler" alt="messaging"> 
-					<i class="fa fa-commenting-o"></i> 
+				<a href="" title="Site search">
+				<button type="button" class="btn btn-primary navbar-toggler" alt="team">
+						<i class="fa fa-search"></i> 
 				</button>
+				</a>
 			</li>
-			
 		</ul>
 	</nav>
+	<!-- NAVBAR ENDS -->
 	
-	
-	
+	<!-- ACTIVE PROJECT START -->
 	<div id="portfolio" class="portfolio container-fluid">
 		
 		<!-- begin card deck/columns -->
@@ -98,7 +132,28 @@
 				  Project # <?= ($track['track_id'])."
 " ?>
 			  </button>
-  
+			  <div class=" d-inline-block">
+			  <a href="<?= ($track['documentation_link']) ?>">
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-folder-open-o"></i> 
+				</button>
+			  </a>
+			  <a>
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-calendar"></i> 
+				</button>
+			  </a>
+			  <a>
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-users"></i>
+				</button>
+			  </a>
+			  <a>
+				<button type="button" class="btn btn-primary" alt="documents"> 
+				  <i class="fa fa-commenting-o"></i> 
+				</button>
+			  </a>
+			</div>
   
 			  <div class="card-body">
 				<h4 class="card-title">Current Stage: <?= ($track['current_step']) ?></h4>
@@ -107,7 +162,7 @@
 				<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
 			  </div>
 			  <div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
+				<small class="text-muted">Last updated <?= ($track['last_update']) ?></small>
 			  </div>
 			  
 			  
@@ -140,9 +195,9 @@
 		  
 		  <?php endforeach; ?>
 		  
-		  
 		</div>
 	</div>
+	<!-- ACTIVE PROJECT END -->
 	
 	<a id="document"></a>
 	
@@ -181,11 +236,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-	
+
 	
 	<!-- FONT AWESOME -->
 	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
-	
 
 </body>
 </html>

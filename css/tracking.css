@@ -1,3 +1,9 @@
+/*
+ * Author: Duck Nguyen
+ * Filename: tracking.css
+ * Description: styling for tracking page
+ */
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
@@ -33,12 +39,6 @@ a, a:hover, a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 .wrapper {
-    /*
-    display: flex;
-    align-items: stretch;
-	 position: -webkit-sticky;  // required for Safari
-    position: sticky;
-    */
     display: flex;
 	align-items: stretch;
 	position: -webkit-sticky;  // required for Safari
@@ -51,11 +51,6 @@ a, a:hover, a:focus {
     text-align: center;
     background: #7386D5;
     color: #fff;
-	/*
-    transition: all 0.3s;
-	position: -webkit-sticky;  // required for Safari
-    position: sticky;
-	*/
     transition: all 0.3s;
 	position: -webkit-sticky;  // required for Safari
     position: sticky;
@@ -70,7 +65,7 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 0 0 15px 0;
-    border-bottom: 1px solid #5C6BC0/*#47748b*/;
+    border-bottom: 1px solid #5C6BC0;
 }
 
 #sidebar ul li a {
