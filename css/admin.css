@@ -45,7 +45,6 @@ a, a:hover, a:focus {
 	font-size:1.6em;
 	color:#fff;
 }
-
 .navbar-nav .nav-item a button:hover{
 	color:#007bff;
 	background:#fff;
@@ -53,6 +52,35 @@ a, a:hover, a:focus {
 
 /* ---------------------------------------------------
     BODY - ACTIVE PROJECTS 
+----------------------------------------------------- */
+.card .btn.btn-title{
+	background:#DCAE10;
+	color:white;
+}
+.card .d-inline-block {
+	/*background:#00303F;*/
+	background:#F7F5E6;
+}
+.card .d-inline-block a .btn {
+	width:60px;
+	height:40px;
+	margin: 0.5em 0.5em;
+	/*background:#00303F;*/
+	background:#F7F5E6;
+	border:1px solid #52658F;
+}
+.card .d-inline-block a .btn:hover{
+	border:2px solid #ffc107;
+}
+.card .d-inline-block a .btn .fa {
+	font-size: 1.3em;
+	/*color:#DCAE10;*/
+	color:#333A56;
+	
+}
+
+/* ---------------------------------------------------
+    BODY - INACTIVE PROJECTS 
 ----------------------------------------------------- */
 .portfolio {
   width: 100%;

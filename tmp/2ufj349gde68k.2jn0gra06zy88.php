@@ -47,7 +47,7 @@
 	
 	<!-- NAVBAR START -->
 	<nav class="navbar navbar-dark bg-primary d-inline-block fixed-top">
-						
+		<!-- LOGO AND WELCOME USER -->				
 		<a class="navbar-brand" href="./admin">
 			<img src="images/cascadian-landworks.png" alt="Cascadian Landworks">
 		</a>
@@ -60,10 +60,7 @@
 			</li>
 		</a>
 		
-		<!--
-			link to fontawesome
-			http://fontawesome.io/icons/
-		-->
+		<!-- MAIN NAVIGATION START -->
 		<ul class="nav navbar-nav d-inline-block">							
 			
 			<!-- NAV BUTTON - HOME -->
@@ -113,123 +110,142 @@
 				</a>
 			</li>
 		</ul>
+		<!-- MAIN NAVIGATION ENDS -->
 	</nav>
 	<!-- NAVBAR ENDS -->
 	
 	<!-- ACTIVE PROJECT START -->
-	<div id="portfolio" class="portfolio container-fluid">
+	<div id="active-div" class="portfolio container-fluid">
+		<div class="col-sm-12">
+			<h1>Active projects:</h1>
+		</div>
 		
-		<!-- begin card deck/columns -->
+		<!-- CARD DECK/COLUMNS START -->
 		<div class="card-deck">
 		  
 		  <?php foreach (($projectDisplay?:[]) as $track): ?>
 		  
-			<!-- Card -->
+			<!-- CARD -->
 			<div class="card">
-  
-  
-			  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-				  Project # <?= ($track['track_id'])."
+				<!-- CARD TITLE + OPTIONS BUTTONS-->
+				<!-- button class was btn-info -->
+				<button type="button" class="btn btn-title" data-toggle="modal" data-target="#exampleModal">
+					<!-- consider putting project title here-->
+					Project # <?= ($track['track_id'])."
 " ?>
-			  </button>
-			  <div class=" d-inline-block">
-			  <a href="<?= ($track['documentation_link']) ?>">
-				<button type="button" class="btn btn-primary" alt="documents"> 
-				  <i class="fa fa-folder-open-o"></i> 
 				</button>
-			  </a>
-			  <a>
-				<button type="button" class="btn btn-primary" alt="documents"> 
-				  <i class="fa fa-calendar"></i> 
-				</button>
-			  </a>
-			  <a>
-				<button type="button" class="btn btn-primary" alt="documents"> 
-				  <i class="fa fa-users"></i>
-				</button>
-			  </a>
-			  <a>
-				<button type="button" class="btn btn-primary" alt="documents"> 
-				  <i class="fa fa-commenting-o"></i> 
-				</button>
-			  </a>
-			</div>
-  
-			  <div class="card-body">
-				<h4 class="card-title">Current Stage: <?= ($track['current_step']) ?></h4>
-				<p class="card-text">Tracking # <?= ($track['track_id']) ?></p>
-				<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
-				<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
-			  </div>
-			  <div class="card-footer">
-				<small class="text-muted">Last updated <?= ($track['last_update']) ?></small>
-			  </div>
-			  
-			  
-			  <!-- Modal -->
-			  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-				  <div class="modal-content">
-					<div class="modal-header">
-					  <h5 class="modal-title" id="exampleModalLabel">Tracking # <?= ($track['track_id']) ?></h5>
-					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					  </button>
-					</div>
-					<div class="modal-body">
-						<p class="card-text">Current Stage: <?= ($track['current_step']) ?></p>
-						<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
-						<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
-					</div>
-					<div class="modal-footer">
-					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					  <button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				  </div>
+				
+				<div class="d-inline-block text-center">
+					<a href="<?= ($track['documentation_link']) ?>">
+						<button type="button" class="btn btn-warning" alt="documents"> 
+							<i class="fa fa-file-text-o"></i> 
+						</button>
+					</a>
+					<a>
+						<button type="button" class="btn btn-warning" alt="documents"> 
+							<i class="fa fa-calendar-check-o"></i> 
+						</button>
+					</a>
+					<a>
+						<button type="button" class="btn btn-warning" alt="documents"> 
+							<i class="fa fa-cogs"></i>
+						</button>
+					</a>
+					<a>
+						<button type="button" class="btn btn-warning" alt="documents"> 
+							<i class="fa fa-cubes"></i> 
+						</button>
+					</a>
+					<a>
+						<button type="button" class="btn btn-warning" alt="documents"> 
+							<i class="fa fa-list-ol"></i> 
+						</button>
+					</a>
+					<a>
+						<button type="button" class="btn btn-warning" alt="documents"> 
+							<i class="fa fa-check"></i> 
+						</button>
+					</a>
 				</div>
-			  </div>
-			  <!-- END Modal -->
+				
+				<!-- CARD BODY -->
+				<div class="card-body">
+					<h6 class="card-title">Current Stage: <?= ($track['current_stage']) ?></h6>
+					<p class="card-text">Tracking # <?= ($track['track_id']) ?></p>
+					<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
+					<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
+				</div>
+				<div class="card-footer">
+					<small class="text-muted">Last updated <?= ($track['last_update']) ?></small>
+				</div>
+			  
+			  
+				<!-- MODAL -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Tracking # <?= ($track['track_id']) ?></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p class="card-text">Current Stage: <?= ($track['current_stage']) ?></p>
+								<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
+								<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END Modal -->
 			  
 			</div>
 			<!-- END Card -->
 		  
-		  <?php endforeach; ?>
-		  
+			<?php endforeach; ?>
 		</div>
 	</div>
 	<!-- ACTIVE PROJECT END -->
 	
-	<a id="document"></a>
-	
-	<div id="portfolio" class="portfolio container-fluid">
+
+	<!-- INACTIVE PROJECT START -->
+	<div id="inactive-div" class="portfolio container-fluid">
+		<div class="col-sm-12">
+			<h1>Inactive projects</h1>
+		</div>
 		<div class="list-group">
 			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-			  <div class="d-flex w-100 justify-content-between">
-				<h5 class="mb-1">List group item heading</h5>
-				<small>3 days ago</small>
-			  </div>
-			  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-			  <small>Donec id elit non mi porta.</small>
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">List group item heading</h5>
+					<small>3 days ago</small>
+				</div>
+				<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<small>Donec id elit non mi porta.</small>
 			</a>
 			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-			  <div class="d-flex w-100 justify-content-between">
-				<h5 class="mb-1">List group item heading</h5>
-				<small class="text-muted">3 days ago</small>
-			  </div>
-			  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-			  <small class="text-muted">Donec id elit non mi porta.</small>
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">List group item heading</h5>
+					<small class="text-muted">3 days ago</small>
+				</div>
+				<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<small class="text-muted">Donec id elit non mi porta.</small>
 			</a>
 			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-			  <div class="d-flex w-100 justify-content-between">
-				<h5 class="mb-1">List group item heading</h5>
-				<small class="text-muted">3 days ago</small>
-			  </div>
-			  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-			  <small class="text-muted">Donec id elit non mi porta.</small>
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">List group item heading</h5>
+					<small class="text-muted">3 days ago</small>
+				</div>
+				<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+				<small class="text-muted">Donec id elit non mi porta.</small>
 			</a>
 		</div>
-		
 	</div>
+	<!-- INACTIVE PROJECT END -->
 	
 	<!-- BOOTSTRAP JS/JQUERY/POPPER CDN -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
