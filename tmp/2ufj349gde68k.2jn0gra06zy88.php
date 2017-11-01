@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	
 	<!-- Our Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="./css/admin-layout.css">
 	<link rel="stylesheet" type="text/css" href="./css/admin.css">
 	
 	<!-- Favicon -->
@@ -94,7 +95,7 @@
 			
 			<!-- NAV BUTTON - SLACK -->
 			<li class="nav-item d-inline-block">
-				<a href="" title="Slack talk">
+				<a href="./admin-slack" title="Slack talk">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="team">
 						<i class="fa fa-slack"></i> 
 				</button>

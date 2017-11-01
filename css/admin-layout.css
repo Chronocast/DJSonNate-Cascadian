@@ -1,0 +1,61 @@
+/*
+ * Author: Duck Nguyen
+ * Filename: admin-layout.css
+ * Description: styling for admin layout
+ */
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    TOP NAVIGATION 
+----------------------------------------------------- */
+.navbar-brand img{
+	width:55px;
+	height:55px;
+	filter:invert(100%); /* just checking if white logo looks better*/
+}
+.navbar-brand .nav-item{
+	margin-right:0.5em;
+}
+.navbar-nav .nav-item.active > a > button{
+	background:#01579B;
+}
+.navbar-nav .nav-item a button{
+	width:55px;
+	height:50px;
+	font-size:1.6em;
+	color:#fff;
+}
+.navbar-nav .nav-item a button:hover{
+	color:#007bff;
+	background:#fff;
+}
+
+/* ---------------------------------------------------
+    BODY - PORTFOLIO
+----------------------------------------------------- */
+.portfolio {
+  width: 100%;
+  height: 100%;
+  padding-top:50px;
+  margin-top:50px;
+}

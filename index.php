@@ -177,5 +177,11 @@
 		}
 	});
 	
+	
+	//Route to admin-slack
+	$f3->route('GET /admin-slack', function($f3) {
+		echo Template::instance()->render('pages/admin-slack.html');
+			
+	});
 	//Run fat-free
 	$f3->run();
