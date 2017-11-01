@@ -106,7 +106,7 @@
 		
 		
 		<div class="row">
-			<div class="col-sm-1">
+			<div class="col-md-1">
 				<!-- NAVIGATION TOGGLE START -->
 				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
 					<i class="fa fa-bars" aria-hidden="true"></i>
@@ -115,19 +115,19 @@
 				</button>
 				<!-- NAVIGATION TOGGLE END -->
 			</div>
-			<div class="col-sm-11">
+			<div class="col-md-11">
 				<div class="progress">
-					<div class="progress-bar progress-bar-success role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
 						Documentation
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-primary role="progressbar" style="width:25%">
-						Material & labor
+					<div class="progress-bar progress-bar-striped progress-bar-primary" role="progressbar" style="width:25%">
+						Material
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning role="progressbar" style="width:25%">
-						Progress construction
+					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+						Construction
 					</div>
 				</div>		
 			</div>
@@ -174,7 +174,6 @@
 				<li>Acceptance: all crterias are met</li>
 				<li>Left/ right arrow: click to resize the navigation panel</li>
 			</ol>
-
 			<div class="line"></div>
 		</div>
 		<!-- INSTRUCTION END -->
