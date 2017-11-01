@@ -88,3 +88,16 @@ a, a:hover, a:focus {
   padding-top:50px;
   margin-top:50px;
 }
+
+#inactive-div{
+	padding-top:10px;
+	padding-bottom:50px;
+	margin-bottom:50px;
+}
+
+#inactive-div .list-group-item:hover{
+	background: #007bff;
+	color:#333A56;
+	color:#fff;
+	border:2px solid #ffc107;
+}
