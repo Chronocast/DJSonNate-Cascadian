@@ -66,7 +66,7 @@
 			
 			<!-- NAV BUTTON - HOME -->
 			<li class="nav-item d-inline-block active">
-				<a href="" title="Home">
+				<a href="./admin" title="Home">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="dashboard">
 						<i class="fa fa-home"></i>
 					<!--<i class="fa fa-th-list"></i>-->
