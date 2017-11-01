@@ -1,0 +1,25 @@
+/*
+ * Author: Duck Nguyen
+ * Filename: admin-slack.css
+ * Description: styling for admin slack page
+ */
+
+body, html{
+	height:100%;
+	width:100%;
+}
+
+#external-page:hover{
+	color:#3f46ad;
+	text-decoration: underline;
+}
+/* ---------------------------------------------------
+    IFRAME
+----------------------------------------------------- */
+#slack-div iframe{
+	width:90%;
+	height:75%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

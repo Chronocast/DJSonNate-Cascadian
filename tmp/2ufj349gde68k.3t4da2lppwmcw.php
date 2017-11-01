@@ -65,7 +65,7 @@
 		<ul class="nav navbar-nav d-inline-block">							
 			
 			<!-- NAV BUTTON - HOME -->
-			<li class="nav-item d-inline-block active">
+			<li class="nav-item d-inline-block">
 				<a href="" title="Home">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="dashboard">
 						<i class="fa fa-home"></i>
@@ -94,7 +94,7 @@
 			</li>
 			
 			<!-- NAV BUTTON - SLACK -->
-			<li class="nav-item d-inline-block">
+			<li class="nav-item d-inline-block active">
 				<a href="./admin-slack" title="Slack talk">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="team">
 						<i class="fa fa-slack"></i> 
@@ -116,39 +116,20 @@
 	<!-- NAVBAR ENDS -->
 	
 	
-	<!-- INACTIVE PROJECT START -->
-	<div id="inactive-div" class="portfolio container-fluid">
+	<!-- SLACK PAGE START -->
+	<div id="slack-div" class="portfolio container-fluid">
 		<div class="col-sm-12">
-			<h1>Inactive projects:</h1>
-		</div>
-		<div class="list-group">
-			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">List group item heading</h5>
-					<small>3 days ago</small>
-				</div>
-				<h6 class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</h6>
-				<small class="text-muted">Donec id elit non mi porta.</small>
-			</a>
-			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">List group item heading</h5>
-					<small>3 days ago</small>
-				</div>
-				<h6 class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</h6>
-				<small class="text-muted">Donec id elit non mi porta.</small>
-			</a>
-			<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">List group item heading</h5>
-					<small>3 days ago</small>
-				</div>
-				<h6 class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</h6>
-				<small class="text-muted">Donec id elit non mi porta.</small>
+			<a id="external-page" href="https://slack.com/">
+				<h1>Slack chat <i class="fa fa-external-link" aria-hidden="true"></i></h1>
 			</a>
 		</div>
+		<!--
+			NOTE: IFRAME DOES NOT WORK W SLACK ACTUAL SITE
+			SUBSTITUTE: https://www.reddit.com/r/Slack/comments/45o6kq/embed_a_slack_channel_into_a_website/
+		-->
+		<iframe src="https://chatlio.com/"></iframe>
 	</div>
-	<!-- INACTIVE PROJECT END -->
+	<!-- SLACK PAGE END -->
 	
 	<!-- BOOTSTRAP JS/JQUERY/POPPER CDN -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
