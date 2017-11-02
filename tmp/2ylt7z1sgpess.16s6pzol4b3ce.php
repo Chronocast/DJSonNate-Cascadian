@@ -5,7 +5,7 @@
 	Description: Admin page for Track-king. Cascadian Landworks tracking system.
 -->
 
-<include href="pages/admin-header.html" />
+<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
 
     <!-- Portfolio container -->
     <div id="active-div" class="portfolio container-fluid">
@@ -41,4 +41,4 @@
 
 
 
-<include href="pages/admin-footer.html" />
+<?php echo $this->render('pages/admin-footer.html',NULL,get_defined_vars(),0); ?>

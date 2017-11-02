@@ -83,6 +83,17 @@
 		echo Template::instance()->render('pages/admin.html');
 		
 	});
+	
+	//Route to admin-project page
+	$f3->route('GET|POST /admin-projects', function($f3) {
+		
+		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
+		
+		$f3->set('projectDisplay', $projectDisplay);
+		
+		echo Template::instance()->render('pages/admin-projects.html');
+		
+	});
 	/* End Nate's Code */
 	
 	

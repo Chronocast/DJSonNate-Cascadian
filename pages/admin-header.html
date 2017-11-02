@@ -23,6 +23,9 @@
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="./css/admin-layout.css">
 	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha256-HAaDW5o2+LelybUhfuk0Zh2Vdk8Y2W2UeKmbaXhalfA=" crossorigin="anonymous" />
 	
 	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
@@ -76,7 +79,7 @@
 			
 			<!-- NAV BUTTON - PROJECTS LIST -->
 			<li class="nav-item d-inline-block">
-				<a href="" title="Projects history">
+				<a href="./admin-projects" title="Projects">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="documents">
 						<i class="fa fa-th-list"></i> 
 					<!--<i class="fa fa-folder-open-o"></i>-->

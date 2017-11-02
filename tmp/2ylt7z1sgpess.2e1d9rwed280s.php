@@ -51,14 +51,14 @@
 
 		<ul class="list-unstyled components">
 			<li class="active">
-				<a class="showStep" target="0">
-					<i class="fa fa-map-o" aria-hidden="true"></i>
+				<a class="showStep" target="0">					
+					<i class="fa fa-question-circle" aria-hidden="true"></i>
 					Guide
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="1">
-					<i class="fa fa-handshake-o" aria-hidden="true"></i>
+					<i class="fa fa-file-text-o" aria-hidden="true"></i>
 					Document
 				</a>
 			</li>
@@ -77,7 +77,7 @@
 			<li>
 				<a class="showStep" target="4">
 					<i class="fa fa-cubes" aria-hidden="true"></i>
-					Progress
+					Construction
 				</a>
 			</li>
 			<li>
@@ -105,40 +105,36 @@
 	<div class="container-fluid">
 		
 		
-		<div class="col-12">
-			<div class="col-2">
+		<div class="row">
+			<div class="col-md-1">
 				<!-- NAVIGATION TOGGLE START -->
 				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
 					<i class="fa fa-bars" aria-hidden="true"></i>
-					<!--
-					<span id="show">Show navigation</span>
-					<span id="hide">Hide navigation</span>
-					-->
+					<span id="show">Show</span>
+					<span id="hide">Hide</span>
 				</button>
 				<!-- NAVIGATION TOGGLE END -->
 			</div>
-			
-			<div class="col-10">
+			<div class="col-md-11">
 				<div class="progress">
-					<div class="progress-bar progress-bar-success role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
 						Documentation
 					</div>
-					<div class="progress-bar progress-bar-warning role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-danger role="progressbar" style="width:25%">
-						Material & labor
+					<div class="progress-bar progress-bar-striped progress-bar-primary" role="progressbar" style="width:25%">
+						Material
 					</div>
-					<div class="progress-bar progress-bar-warning role="progressbar" style="width:25%">
-						Progress construction
+					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+						Construction
 					</div>
-				</div>				
+				</div>		
 			</div>
-
 		</div>
 		
 		
-		<!-- INSTRUCTION START -->
+<!-- INSTRUCTION START -->
 		<div id="div0" class="targetDiv instruction">
 			<div class="bg-info">
 				<h1>Tracking with Cascadian Landworks</h1>
@@ -149,20 +145,33 @@
 			
 			<div class="line"></div>
 			
-			<h3>Navigating the system</h3>
+			<h3>Navigation toggler and Progress Bar</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<ol>
+				<li>Hide/show navigation: Click to hide or show navigation</li>
+				<li>
+					Progress Bar Color indication
+					<ul>
+						<li id="green">Green: task is completed</li>
+						<li id="yellow">Yellow: task is in progress</li>
+						<li id="blue">Blue: recently updated</li>
+					</ul>
+				</li>
+			</ol>
+			<div class="line"></div>
+			
+			<h3>Navigating the side-panel</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			
 			<ol>
-				<li>Guide</li>
 				<li>Contract: see the settled contract</li>
 				<li>Scheduling: see the accepted schedule</li>
-				<li>Material &amp; Labor: list of material &amp; labor</li>
-				<li>Construction: construction progress</li>
-				<li>Final punch list: punchy</li>
-				<li>Acceptance</li>
-				<li>Expand navigation: click to resize the navigation panel</li>
+				<li>Material &amp; Labor: see list of material &amp; labor</li>
+				<li>Construction: see construction progress</li>
+				<li>Final punch list: ssee ummary of your order</li>
+				<li>Acceptance: all crterias are met</li>
+				<li>Left/ right arrow: click to resize the navigation panel</li>
 			</ol>
-
 			<div class="line"></div>
 		</div>
 		<!-- INSTRUCTION END -->
@@ -172,12 +181,21 @@
 			<div class="bg-info">
 				<h1>Contract</h1>
 			</div>
-
-			<h2>Testing 1</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-			<div class="line"></div>
+			
+			<div class="col-md-12">
+				<div class="col-md-4">
+					<h3 class="text-center">Document 1</h3>
+					<p><img class="imgholder" src="<?= ($projectDetails['documentation_link']) ?>"></p>
+				</div>
+				<div class="col-md-4">
+					<h3 class="text-center">Document 2</h3>
+					<p><img class="imgholder"  src="<?= ($projectDetails['documentation_link']) ?>"></p>
+				</div>
+				<div class="col-md-4">
+					<h3 class="text-center">Document 3</h3>
+					<p><img class="imgholder"  src="<?= ($projectDetails['documentation_link']) ?>"></p>
+				</div>
+			</div>
 		</div>
 		<!-- DIV 1 ENDS -->
 
@@ -187,12 +205,12 @@
 				<h1>Scheduling</h1>
 			</div>
 
-			<h2>Testing 2</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+			
+			<p><?= ($projectDetails['scheduling']) ?></p>
+			<p>1 person scheduled for site-manager</p>
+			<p>2 person from Example company on site</p>
+			<!--p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>-->
+			
 			<div class="line"></div>
 		</div>
 		<!-- DIV 2 ENDS -->
@@ -203,9 +221,10 @@
 				<h1>Material &amp; Labor</h1>
 			</div>
 
-			<h2>Testing 3</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+			<p><?= ($projectDetails['material_labor']) ?></p>
+			<p>20 units of hardwoord</p>
+			<p>2 big dumptrucks ordered (new)</p>
+			<p>1 ton of sand ordered (new)</p>
 			<div class="line"></div>
 		</div>
 		<!-- DIV 3 ENDS -->
@@ -215,12 +234,37 @@
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
-
-			<h2>Testing 4</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-
+				
+			<br>
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+				</div>
+				<div class="col-md-9">
+					<p>Good looking guys finished work #1</p>
+					<ol>
+						<li>Despcription #1</li>
+						<li>Despcription #2</li>
+						<li>Despcription #3</li>
+					</ol>
+				</div>
+			</div>
+			
+			<br>
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+				</div>
+				<div class="col-md-9">
+					<p>Good looking guys finished work #2</p>
+					<ol>
+						<li>Despcription #4</li>
+						<li>Despcription #5</li>
+						<li>Despcription #6</li>
+					</ol>
+				</div>
+			</div>
+			
 			<div class="line"></div>
 		</div>
 		<!-- DIV 4 ENDS -->
@@ -231,8 +275,8 @@
 				<h1>Final punch list</h1>
 			</div>
 
-			<h2>Testing 5</h2>
-			<p>Not yet applied</p>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
+			
 
 			<div class="line"></div>
 		</div>
@@ -244,8 +288,7 @@
 				<h1>Acceptance</h1>
 			</div>
 
-			<h2>Testing 6</h2>
-			<p>Not yet applied</p>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
 
 			<div class="line"></div>
 		</div>
