@@ -1,5 +1,5 @@
 <!--
-	Author: Nathan Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+	Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
 	Date: 10/13/17
 	Filename: admin-footer.html
 	Description: Admin page for Track-king. Cascadian Landworks tracking system.

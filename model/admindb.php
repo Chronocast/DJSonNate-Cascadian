@@ -8,7 +8,7 @@ require_once '/home/cascadian/config.php';
  *
  * PHP Version 5
  *
- * @author Duck Nguyen
+ * @author Nathan Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
  * @version 1.0
  *
  * CREATE TABLE `cascadia_tracking`.`admin` ( `adminID` INT NOT NULL AUTO_INCREMENT ,

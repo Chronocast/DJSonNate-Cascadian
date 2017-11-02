@@ -27,6 +27,7 @@ class ComposerStaticInitf74df864652fd754f5695988f184416d
         'DB\\SQL' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql.php',
         'DB\\SQL\\Mapper' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/mapper.php',
         'DB\\SQL\\Session' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/session.php',
+        'DocumentDB' => __DIR__ . '/../..' . '/model/documentsDB.php',
         'F3' => __DIR__ . '/..' . '/bcosca/fatfree-core/f3.php',
         'ISO' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Image' => __DIR__ . '/..' . '/bcosca/fatfree-core/image.php',

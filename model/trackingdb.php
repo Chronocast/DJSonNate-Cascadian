@@ -51,10 +51,10 @@ class TrackingDB
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
     
-     /**
-         * Returns all active projects.
-         * @return an associative array of project and their specific data
-         */
+        /**
+        * Returns all active projects.
+        * @return an associative array of project and their specific data
+        */
         
         function activeProjectDisplay()
         {

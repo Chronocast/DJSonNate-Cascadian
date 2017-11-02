@@ -11,6 +11,9 @@
 	// Create a admin database object
 	$adminDB = new AdminDB();
 	
+	// Create a document database object
+	$docsDB = new DocumentDB();
+	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 	
@@ -78,7 +81,10 @@
 		
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		
+		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
+		
 		$f3->set('projectDisplay', $projectDisplay);
+		$f3->set('docDisplay', $docDisplay);
 		
 		echo Template::instance()->render('pages/admin.html');
 		
