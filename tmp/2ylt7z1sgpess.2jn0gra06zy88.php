@@ -37,8 +37,10 @@
 								</button>
 								<div class="dropdown-menu" aria-labelledby="docDropdown">
 									<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-<?= ($track['track_id']) ?>">Doc 1</button>
-									<button class="dropdown-item" type="button">Another action</button>
-									<button class="dropdown-item" type="button">Something else here</button>
+									<button class="dropdown-item" type="button">Another Doc</button>
+									<button class="dropdown-item" type="button">Doc the Third</button>
+									<div class="dropdown-divider"></div>
+									<button class="dropdown-item" type="button">Upload a new Document</button>
 								</div>
 							</div>
 						</a>
@@ -48,13 +50,16 @@
 							</button>
 						</a>
 						<a>
-							<button type="button"  title="Settings" class="btn btn-warning" alt="Settings"> 
-								<i class="fa fa-cogs"></i>
-							</button>
-						</a>
-						<a>
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
 								<i class="fa fa-cubes"></i> 
+							</button>
+						</a>
+						<!-- We should chnage the construction icon to a hammer, wrench, or other tool;
+							I swapped the material and construction icons because the blocks make better sense as "building blocks"-->
+						<a>
+							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
+								<!-- <i class="fa fa-cogs"></i>-->
+								<i class="fa fa-wrench"></i>
 							</button>
 						</a>
 						<a>

@@ -7,31 +7,44 @@
 
 <?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
 
-    <!-- Portfolio container -->
-    <div id="active-div" class="portfolio container-fluid">
 
-        <!-- PROJECT START -->
-        <div id="inactive-div" class="portfolio container-fluid">
-            <div class="col-sm-12">
-                <h1>Projects:</h1>
-            </div>
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small>3 days ago</small>
+            <!-- PROJECT START -->
+            <div id="inactive-div" class="portfolio container-fluid">
+                <div class="col-sm-12">
+                    <h1>Projects:</h1>
+                </div>
+                
+                <!-- Portfolio container -->
+                <div id="active-div" class="portfolio container-fluid">
+                
+                    <div class="list-group">
+                        
+                        <!-- repeat to display templated data -->  
+                        <?php foreach (($projectDisplay?:[]) as $track): ?>
+                        
+                            <!-- BEGIN PROJECT ENTRY -->
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">List group item heading</h5>
+                                    <small>3 days ago</small>
+                                </div>
+                                <h6 class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</h6>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                                
+                            <!-- END PROJECT ENTRY -->
+                            </a>
+                            
+                            
+                    
+                    
+                        <!-- REPEAT END -->
+                        <?php endforeach; ?>
+                    <!-- END LIST GROUP -->  
                     </div>
-                    <h6 class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</h6>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                
-                
-                
-                
-                
+            <!-- PROJECT END -->
             </div>
-        </div>
-        <!-- PROJECT END -->
+        
+        
     
     <!-- Portfolio container END -->
     </div>
