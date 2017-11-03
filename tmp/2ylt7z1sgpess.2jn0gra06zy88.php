@@ -37,27 +37,26 @@
 								</button>
 								<div class="dropdown-menu" aria-labelledby="docDropdown">
 									
-									
-									<?php foreach (($docDisplay?:[]) as $doc): ?>
-										<?= ($doc['documentName'])."
-" ?>
-										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-<?= ($doc['documentName']) ?>"><?= ($doc['documentName']) ?></button>
+									<!-- DOCUMENT DROPDOWN -->
+									<!--<?php foreach (($docDisplay?:[]) as $doc): ?>
+										<?= ($doc['documentName']) ?>-->
+										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-<?= ($track['track_id']) ?>"><?= ($track['project_name']) ?></button>
 									
 										<!-- DOCUMENT MODAL -->
-										<div class="modal fade" id="documentModal-<?= ($doc['documentName']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
+										<div class="modal fade" id="documentModal-<?= ($track['track_id']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="documentModalLabel"><?= ($doc['documentName']) ?></h5>
+														<h5 class="modal-title" id="documentModalLabel"><?= ($track['project_name']) ?></h5>
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 														</button>
 													</div>
 													<div class="modal-body">
-														<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">
-															<!--<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
-															<iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>
-														</a>
+														<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">-->
+															<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >
+															<!--<iframe src="<?= ($track['documentation_link']) ?>" width="640" height="480"></iframe>
+														<!--</a>-->
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -69,8 +68,8 @@
 											
 										<!-- END Modal -->
 										</div>
-									
-									<?php endforeach; ?>	
+									<!--
+									<?php endforeach; ?>	-->
 										
 										<!--<button class="dropdown-item" type="button">Another Doc</button>
 										<button class="dropdown-item" type="button">Doc the Third</button>-->
@@ -148,32 +147,7 @@
 					</div>
 					<!-- END Modal -->
 					
-					<!-- DOCUMENT MODAL -->
-					<div class="modal fade" id="documentModal-<?= ($track['track_id']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="documentModalLabel">Tracking # <?= ($track['track_id']) ?></h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<a href="<?= ($track['documentation_link']) ?>" data-toggle="lightbox" data-footer="Img Footer">
-										<!--<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
-										<iframe src="https://drive.google.com/file/d/0BwaUrJgcHr5HdWdoeGZkb0wxeDA/preview" width="640" height="480"></iframe>
-									</a>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-success">Download</button>
-									<button type="button" class="btn btn-danger">Delete</button>
-								</div>
-							</div>
-						</div>
-						
-					<!-- END Modal -->
-					</div>
+					
 				  
 				<!-- END Card -->
 				</div>
