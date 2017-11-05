@@ -81,11 +81,11 @@
 	$f3->route('GET|POST /admin', function($f3) {
 		
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
-		
+		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
 		
 		
 		$f3->set('projectDisplay', $projectDisplay);
-		
+		$f3->set('docDisplay', $docDisplay);
 		
 		echo Template::instance()->render('pages/admin.html');
 		

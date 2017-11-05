@@ -35,42 +35,47 @@
 								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-file-text-o"></i> 
 								</button>
-								<div class="dropdown-menu" aria-labelledby="docDropdown">
+								<div class="dropdown-menu" aria-labelledby="docDropdown" aria-haspopup="true">
 									
 									<!-- DOCUMENT DROPDOWN -->
 									<?php foreach (($docDisplay?:[]) as $doc): ?>
 										
-										<!-- BUTTON TRIGGER FOR DOCUMENT MODAL -->
-										<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-<?= ($doc['documentID']) ?>">
-											<?= ($doc['documentName'])."
+										<?php if ($doc['track_id']==$track['track_id']): ?>
+											
+											
+												<!-- BUTTON TRIGGER FOR DOCUMENT MODAL -->
+												<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-<?= ($doc['documentID']) ?>">
+													<?= ($doc['documentName'])."
 " ?>
-										</button>
-									
-										<!-- DOCUMENT MODAL -->
-										<div class="modal fade" id="documentModal-<?= ($doc['documentID']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="documentModalLabel">Test</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
+												</button>
+											
+												<!-- DOCUMENT MODAL -->
+												<div class="modal fade" id="documentModal-<?= ($doc['documentID']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="documentModalLabel">Test</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">
+																	<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
+																	<iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>
+																<!--</a>-->
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																<button type="button" class="btn btn-success">Download</button>
+																<button type="button" class="btn btn-danger">Delete</button>
+															</div>
+														</div>
 													</div>
-													<div class="modal-body">
-														<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">
-															<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
-															<iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>
-														<!--</a>-->
-														...
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-														<button type="button" class="btn btn-success">Download</button>
-														<button type="button" class="btn btn-danger">Delete</button>
-													</div>
-												</div>
-											</div>
-										</div><!-- END Modal -->
+												</div><!-- END Modal -->
+												
+											
+										<?php endif; ?>
 									<?php endforeach; ?><!--END REPEAT: DROPDOWN-->
 									
 									<div class="dropdown-divider"></div>

@@ -183,18 +183,14 @@
 			</div>
 			
 			<div class="col-md-12">
+				<?php foreach (($documentDetails?:[]) as $document): ?>
 				<div class="col-md-4">
-					<h3 class="text-center">Document 1</h3>
-					<p><img class="imgholder" src="<?= ($projectDetails['documentation_link']) ?>"></p>
+					<h3 class="text-center"><?= ($document['documentName']) ?></h3>
+					<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
+				<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-info">Download this document</button></a>
+				
 				</div>
-				<div class="col-md-4">
-					<h3 class="text-center">Document 2</h3>
-					<p><img class="imgholder"  src="<?= ($projectDetails['documentation_link']) ?>"></p>
-				</div>
-				<div class="col-md-4">
-					<h3 class="text-center">Document 3</h3>
-					<p><img class="imgholder"  src="<?= ($projectDetails['documentation_link']) ?>"></p>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 		<!-- DIV 1 ENDS -->
