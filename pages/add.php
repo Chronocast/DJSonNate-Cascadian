@@ -106,7 +106,7 @@
 
 <!DOCTYPE html>
 <!--
-    Author: Nathan Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+    Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
  	Date: 11/5/17
  	Filename: add.html
  	Description: Form to add a new project for Cascadian Landworks tracking system.
@@ -125,7 +125,7 @@
     
     <body>
         <header>Add a new project</header><br>
-        <form action="form.php" method="post" id="form">
+        <form action="add.php" method="post" id="form">
             <input value="<?php if(isset($_POST['project_name'])) echo $_POST['project_name']; ?>" name="project_name" id="project_name" type="text" placeholder="Project Name"><br><br>
 			<input value="<?php if(isset($_POST['track_id'])) echo $_POST['track_id']; ?>" name="track_id" id="track_id" type="text" placeholder="Tracking ID"><br><br>
 			<input value="<?php if(isset($_POST['start_date'])) echo $_POST['start_date']; ?>" name="start_date" id="start_date" type="text" placeholder="Start Date"><br><br>

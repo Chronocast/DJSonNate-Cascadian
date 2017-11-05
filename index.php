@@ -170,6 +170,12 @@
 			
 	});
 	
+	//Route to add-a-project page
+	$f3->route('GET|POST /add', function($f3) {
+		echo Template::instance()->render('pages/add.php');
+			
+	});
+	
 	//Route to admin-login validation
 	$f3->route('POST /admin-validation', function($f3) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
