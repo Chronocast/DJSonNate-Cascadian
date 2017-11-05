@@ -50,7 +50,7 @@
         }
         
         
-        require('database-constants.php');
+        require('trackingdb.php');
     
         // 1. Create a connection and check to see if it was created successfully.
         $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
