@@ -67,8 +67,9 @@
 		
 		
 		$projectDetails = $GLOBALS['db']->projectDetails('0987654321');
-		
+		$documentDetails = $GLOBALS['docsDB']->documentDetails('24601');
 		$f3->set('projectDetails', $projectDetails);
+		$f3->set('documentDetails', $documentDetails);
 		
 		echo Template::instance()->render('pages/tracking.html');
 		
@@ -81,10 +82,10 @@
 		
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		
-		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
+		
 		
 		$f3->set('projectDisplay', $projectDisplay);
-		$f3->set('docDisplay', $docDisplay);
+		
 		
 		echo Template::instance()->render('pages/admin.html');
 		

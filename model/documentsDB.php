@@ -61,5 +61,23 @@ require_once '/home/cascadian/config.php';
          
         return $rows;
     }
+    
+            /**
+         * returns project details 
+         *
+         */
+        function documentDetails($track_id)
+        {
+        $select = 'SELECT * FROM documents WHERE track_id=:track_id';
+
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement->execute();
+         
+         
+         
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        }
 }
 ?>
