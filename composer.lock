@@ -35,7 +35,7 @@
             ],
             "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
             "homepage": "http://fatfreeframework.com/",
-            "time": "2017-10-28 16:50:31"
+            "time": "2017-10-28T16:50:31+00:00"
         }
     ],
     "packages-dev": [],
