@@ -3,6 +3,6 @@
 //Filename: admin.js
 //Description: javascript validation for admin page
 
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+//$('#myModal').on('shown.bs.modal', function () {
+//  $('#myInput').focus()
+//})

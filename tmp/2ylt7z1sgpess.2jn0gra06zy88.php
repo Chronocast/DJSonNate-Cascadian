@@ -32,10 +32,10 @@
 						<a>
 							<div class="dropdown">
 								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
-								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown<?= ($track['track_id']) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-file-text-o"></i> 
 								</button>
-								<div class="dropdown-menu" aria-labelledby="docDropdown" aria-haspopup="true">
+								<div class="dropdown-menu" aria-labelledby="docDropdown<?= ($track['track_id']) ?>">
 									
 									<!-- DOCUMENT DROPDOWN -->
 									<?php foreach (($docDisplay?:[]) as $doc): ?>
@@ -48,31 +48,6 @@
 													<?= ($doc['documentName'])."
 " ?>
 												</button>
-											
-												<!-- DOCUMENT MODAL -->
-												<div class="modal fade" id="documentModal-<?= ($doc['documentID']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
-													<div class="modal-dialog" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="documentModalLabel">Test</h5>
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">&times;</span>
-																</button>
-															</div>
-															<div class="modal-body">
-																<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">
-																	<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
-																	<iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>
-																<!--</a>-->
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-																<button type="button" class="btn btn-success">Download</button>
-																<button type="button" class="btn btn-danger">Delete</button>
-															</div>
-														</div>
-													</div>
-												</div><!-- END Modal -->
 												
 											
 										<?php endif; ?>
@@ -85,9 +60,38 @@
 							</div>
 						</a>
 						<a>
-							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule"> 
+							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>
+							
+							<!-- Modal -->
+											
+												<!-- DOCUMENT MODAL -->
+												<div class="modal fade" id="documentModal-test" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="documentModalLabel">Test</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">
+																	<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
+																	<!-- <iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>-->
+																	<?= ($doc['documentLink'])."
+" ?>
+																<!--</a>-->
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																<button type="button" class="btn btn-success">Download</button>
+																<button type="button" class="btn btn-danger">Delete</button>
+															</div>
+														</div>
+													</div>
+												</div><!-- END Modal -->
 						</a>
 						<a>
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
@@ -151,6 +155,46 @@
 						</div>
 					</div>
 					<!-- END Modal -->
+					
+					<!-- repeat to display templated data -->  
+					<?php foreach (($projectDisplay?:[]) as $track): ?>
+						<!-- DOCUMENT DROPDOWN -->
+						<?php foreach (($docDisplay?:[]) as $doc): ?>
+							
+							<?php if ($doc['track_id']==$track['track_id']): ?>
+								
+								
+									
+								
+									<!-- DOCUMENT MODAL -->
+									<div class="modal fade" id="documentModal-<?= ($doc['documentID']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true" >
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="documentModalLabel"><?= ($doc['documentName']) ?></h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">-->
+														<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >
+														<iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>
+													<!--</a>-->
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-success">Download</button>
+													<button type="button" class="btn btn-danger">Delete</button>
+												</div>
+											</div>
+										</div>
+									</div><!-- END Modal -->
+							
+								
+							<?php endif; ?>
+						<?php endforeach; ?><!--END REPEAT: DROPDOWN-->
+					<?php endforeach; ?>
 				  
 				<!-- END Card -->
 				</div>
