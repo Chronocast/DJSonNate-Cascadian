@@ -3,7 +3,7 @@
 /**
  * This class represents a Cascadian admin
  *
- * @author Duck Nguyen
+ * @author Duck Nguyen, Nate Hascup, Jeremy Manalo, Sonie Moon
  * @version 1.0
  */
 
