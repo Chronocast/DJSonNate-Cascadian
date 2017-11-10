@@ -41,10 +41,8 @@ a, a:hover, a:focus {
 .wrapper {
     display: flex;
 	align-items: stretch;
-	position: -webkit-sticky;  // required for Safari
-    position: sticky;
+	position: relative;
 }
-
 #sidebar {
     min-width: 98px;
     max-width: 98px;
@@ -52,8 +50,7 @@ a, a:hover, a:focus {
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
-	position: -webkit-sticky;  // required for Safari
-    position: sticky;
+	position:relative;
 }
 
 #sidebar .sidebar-header img{
@@ -69,6 +66,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul li a {
+	position: relative;
     padding: 20px 10px;
     text-align: center;
     font-size: 0.9em;
@@ -88,6 +86,18 @@ a, a:hover, a:focus {
     display: block;
     font-size: 1.9em;
     margin-bottom: 5px;
+}
+
+#sidebar ul li a .notification{
+	position: absolute;
+    top: -3px;
+    right: -5px;
+	padding:1px 8px;
+	border-radius:7px;
+    background-color: rgba(212, 19, 13, 1);
+    color: #fff;
+    font-size:12px;
+	font-weight: 600;
 }
 
 #sidebar #sidebarCollapse .fa {
@@ -146,23 +156,24 @@ a, a:hover, a:focus {
     RESIZING STYLE
 ----------------------------------------------------- */
 #sidebar.resize{
-    min-width: 80px;
-    max-width: 80px;
+    min-width: 60px;
+    max-width: 60px;
 }
 
 #sidebar.resize .sidebar-header img{
-	height:83px;
-	width:80px;
+	height:63px;
+	width:60px;
 }
 
-#sidebar.resize ul li a {
-	font-size: 0.7em;
-	
-}
 
 #sidebar.resize ul li a i {
-	font-size: 2.5em;
+	font-size: 2em;
 }
+
+#sidebar.resize ul li a .nav-text {
+	display: none;
+}
+
 #sidebar.resize #sidebarCollapse .fa-long-arrow-right {
 	display: block;
 }
@@ -183,6 +194,7 @@ a, a:hover, a:focus {
 }
 
 #content {
+    position: relative;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;

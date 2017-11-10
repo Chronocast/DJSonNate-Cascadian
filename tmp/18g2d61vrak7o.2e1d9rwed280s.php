@@ -178,14 +178,14 @@
 			</div>
 			
 			<div class="col-md-12">
-				<repeat group="{{ @documentDetails }}" value="{{ @document }}">
+				<?php foreach (($documentDetails?:[]) as $document): ?>
 				<div class="col-md-4">
-					<h3 class="text-center">{{ @document['documentName'] }}</h3>
-					<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="{{ @document['documentLink'] }}"></p></a>
-				<a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-info">Download this document</button></a>
+					<h3 class="text-center"><?= ($document['documentName']) ?></h3>
+					<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
+				<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-info">Download this document</button></a>
 				
 				</div>
-				</repeat>
+				<?php endforeach; ?>
 			</div>
 		</div>
 		<!-- DIV 1 ENDS -->
@@ -197,10 +197,10 @@
 			</div>
 
 			
-			<p>{{ @projectDetails['scheduling'] }}</p>
+			<p><?= ($projectDetails['scheduling']) ?></p>
 			<p>1 person scheduled for site-manager</p>
 			<p>2 person from Example company on site</p>
-			<!--p>Daily Progress Report : <img src="{{ @projectDetails['daily_progress_report'] }}"></p>-->
+			<!--p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>-->
 			
 			<div class="line"></div>
 		</div>
@@ -212,7 +212,7 @@
 				<h1>Material &amp; Labor</h1>
 			</div>
 
-			<p>{{ @projectDetails['material_labor'] }}</p>
+			<p><?= ($projectDetails['material_labor']) ?></p>
 			<p>20 units of hardwoord</p>
 			<p>2 big dumptrucks ordered (new)</p>
 			<p>1 ton of sand ordered (new)</p>
@@ -229,7 +229,7 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="{{ @projectDetails['construction_photos'] }}"></h2>
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #1</p>
@@ -244,7 +244,7 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="{{ @projectDetails['construction_photos'] }}"></h2>
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #2</p>
@@ -266,7 +266,7 @@
 				<h1>Final punch list</h1>
 			</div>
 
-			<h2>{{ @projectDetails['final_stage'] }}</h2>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
 			
 
 			<div class="line"></div>
@@ -279,7 +279,7 @@
 				<h1>Acceptance</h1>
 			</div>
 
-			<h2>{{ @projectDetails['final_stage'] }}</h2>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
 
 			<div class="line"></div>
 		</div>
