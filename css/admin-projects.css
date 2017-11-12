@@ -1,0 +1,24 @@
+/*
+ * Author: Duck Nguyen
+ * Filename: admin-projects.css
+ * Description: styling for admin's projects list page
+ */
+
+
+/* ---------------------------------------------------
+    BODY - INACTIVE PROJECTS 
+----------------------------------------------------- */
+#inactive-div{
+	margin-top:-2px;
+	padding-top:5px;
+	padding-bottom:50px;
+	margin-bottom:50px;
+}
+#inactive-div .list-group-item {
+	margin-bottom: 1em;
+	border:1px solid #52658F;
+}
+#inactive-div .list-group-item:hover{
+	border:2px solid #ffc107;
+	color:#333A56;
+}

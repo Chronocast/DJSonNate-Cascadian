@@ -1,5 +1,5 @@
 /*
- * Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+ * Author: Nate Hascup, Duck Nguyen
  * Filename: admin.css
  * Description: styling for admin home page
  */
@@ -11,44 +11,33 @@
 	background:#DCAE10;
 	color:white;
 }
+.card .btn.btn-title:hover{
+	cursor: pointer;
+}
+
 .card .d-inline-block {
 	/*background:#00303F;*/
 	background:#F7F5E6;
 }
 .card .d-inline-block a .dropdown{
 	display: inline-block;
-	}
+}
 .card .d-inline-block a .btn {
 	display: inline-block;
 	width:50px;
 	height: 40px;
-	margin: 0.5em 0.5em;
+	margin: 0.5em 0.2em;
 	/*background:#00303F;*/
 	background:#F7F5E6;
 	border:1px solid #52658F;
 }
 .card .d-inline-block a .btn:hover{
 	border:2px solid #ffc107;
+	cursor:pointer;
 }
 .card .d-inline-block a .btn .fa {
 	font-size: 1.2em;
 	/*color:#DCAE10;*/
 	color:#333A56;
 	
-}
-
-/* ---------------------------------------------------
-    BODY - INACTIVE PROJECTS 
------------------------------------------------------ */
-#inactive-div{
-	padding-top:10px;
-	padding-bottom:50px;
-	margin-bottom:50px;
-}
-
-#inactive-div .list-group-item:hover{
-	background: #007bff;
-	color:#333A56;
-	color:#fff;
-	border:2px solid #ffc107;
 }

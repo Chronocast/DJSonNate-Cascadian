@@ -1,7 +1,7 @@
 /**
  * upload script for pdf documents
  *
- * @author Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+ * @author Nate Hascup,Sonie Moon
  * @version 1.0
  */
 
