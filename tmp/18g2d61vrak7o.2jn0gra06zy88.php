@@ -66,9 +66,7 @@
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>
 							
-							<!-- Modal -->
-											
-												
+							<!-- Modal -->					
 						</a>
 						<a>
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 

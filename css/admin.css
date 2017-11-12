@@ -15,9 +15,13 @@
 	/*background:#00303F;*/
 	background:#F7F5E6;
 }
+.card .d-inline-block a .dropdown{
+	display: inline-block;
+	}
 .card .d-inline-block a .btn {
-	width:60px;
-	height:40px;
+	display: inline-block;
+	width:50px;
+	height: 40px;
 	margin: 0.5em 0.5em;
 	/*background:#00303F;*/
 	background:#F7F5E6;
@@ -27,7 +31,7 @@
 	border:2px solid #ffc107;
 }
 .card .d-inline-block a .btn .fa {
-	font-size: 1.3em;
+	font-size: 1.2em;
 	/*color:#DCAE10;*/
 	color:#333A56;
 	
