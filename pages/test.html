@@ -149,7 +149,6 @@
 					<ul>
 						<li id="green">Solid Green: task is completed</li>
 						<li id="yellow">Striped Yellow: task is in progress</li>
-						<li id="blue">Striped Blue: recently updated</li>
 					</ul>
 				</li>
 			</ol>
