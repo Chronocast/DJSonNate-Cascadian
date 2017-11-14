@@ -6,6 +6,7 @@
 -->
 
 	<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<title>Admin | Cascadian Landworks Tracking</title>
 	<link rel="stylesheet" type="text/css" href="./css/admin.css">
 </head>
 	

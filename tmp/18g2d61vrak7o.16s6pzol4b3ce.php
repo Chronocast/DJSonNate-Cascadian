@@ -1,11 +1,12 @@
 <!--
-	Author: Nathan Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+	Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
 	Date: 10/13/17
 	Filename: home.html
 	Description: Admin page for Track-king. Cascadian Landworks tracking system.
 -->
 
 	<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<title>Admin | Projects list</title>
 	<link rel="stylesheet" type="text/css" href="./css/admin-projects.css">
 </head>	
 	
@@ -19,7 +20,7 @@
 		</div>
 		
 		<!-- Portfolio container -->
-		<div id="inactive-div" class="portfolio container-fluid">	
+		<div id="inactive-div" class="portfolio">	
 			<div class="list-group">
 				<!-- repeat to display templated data -->  
 				<?php foreach (($projectDisplay?:[]) as $track): ?>

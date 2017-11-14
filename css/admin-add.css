@@ -7,25 +7,16 @@
 .error{
     color: red;
 }
-.navbar-brand img{
-	width:55px;
-	height:55px;
-	filter:invert(100%); /* just checking if white logo looks better*/
+#form-div{
+	padding:20px;
+	margin-top:0;
 }
-.navbar-brand .nav-item{
-	margin-right:0.5em;
+#form{
+	padding:10px;
+	max-width:850px;
+	margin-left:auto;
+	margin-right:auto;
 }
-.navbar-nav .nav-item > a.active > button{
-	/*background:#01579B;*/
-	border:2px solid #FDFEFE;
-}
-.navbar-nav .nav-item a button{
-	width:55px;
-	height:50px;
-	font-size:1.6em;
-	color:#fff;
-}
-.navbar-nav .nav-item a button:hover{
-	color:#007bff;
-	background:#fff;
+.btn-submit{
+	width:100%;
 }

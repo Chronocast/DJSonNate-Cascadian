@@ -6,6 +6,7 @@
 -->
 
 	<include href="pages/admin-header.html" />
+	<title>Admin | Projects list</title>
 	<link rel="stylesheet" type="text/css" href="./css/admin-projects.css">
 </head>	
 	
@@ -19,7 +20,7 @@
 		</div>
 		
 		<!-- Portfolio container -->
-		<div id="inactive-div" class="portfolio container-fluid">	
+		<div id="inactive-div" class="portfolio">	
 			<div class="list-group">
 				<!-- repeat to display templated data -->  
 				<repeat group="{{ @projectDisplay }}" value="{{ @track }}">

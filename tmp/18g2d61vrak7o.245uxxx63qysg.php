@@ -39,7 +39,7 @@
 			
 			<!-- NAV BUTTON - ADD NEW PROJECT -->
 			<li class="nav-item d-inline-block">
-				<a href="./add" title="New project">
+				<a href="./admin-add" title="New project">
 				<button type="button" class="btn btn-primary navbar-toggler" alt="schedule">
 						<i class="fa fa-plus-square"></i> 
 				</button>

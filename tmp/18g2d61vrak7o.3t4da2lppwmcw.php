@@ -9,6 +9,7 @@
 -->
 	
 	<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<title>Admin | Slack Page</title>
 	<link rel="stylesheet" type="text/css" href="./css/admin-slack.css">
 </head>
 	
