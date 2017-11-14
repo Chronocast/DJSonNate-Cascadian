@@ -160,6 +160,7 @@
 [12-Nov-2017 03:14:08 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/dnguyen/public_html/355/cascadian/model/upload.php on line 10
 [12-Nov-2017 03:14:16 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/dnguyen/public_html/355/cascadian/model/upload.php on line 10
 [12-Nov-2017 03:14:19 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/dnguyen/public_html/355/cascadian/model/upload.php on line 10
+<<<<<<< Updated upstream
 [12-Nov-2017 14:38:15 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/jmanalo/public_html/355/djsonnate/model/upload.php on line 10
 [12-Nov-2017 14:38:32 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/jmanalo/public_html/355/djsonnate/model/upload.php on line 10
 [12-Nov-2017 14:38:35 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/jmanalo/public_html/355/djsonnate/model/upload.php on line 10
@@ -439,3 +440,26 @@
 [14-Nov-2017 13:15:33 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/dnguyen/public_html/355/cascadian/model/upload.php on line 10
 [14-Nov-2017 13:15:44 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/dnguyen/public_html/355/cascadian/model/upload.php on line 10
 [14-Nov-2017 13:16:05 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '$' in /home/dnguyen/public_html/355/cascadian/model/upload.php on line 10
+=======
+[12-Nov-2017 14:30:54 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 14:30:58 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 14:31:00 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 14:41:48 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 14:41:50 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:20:02 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:20:08 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:20:16 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:20:18 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:20:21 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:20:40 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:21:11 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 15:21:18 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 17:52:12 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 17:56:01 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[12-Nov-2017 17:59:44 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[13-Nov-2017 00:06:03 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 10
+[13-Nov-2017 00:20:43 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 12
+[13-Nov-2017 00:20:56 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 12
+[13-Nov-2017 00:21:47 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 12
+[13-Nov-2017 00:22:49 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting variable (T_VARIABLE) or '{' or '$' in /home/nhascup/public_html/355/cascadian/model/upload.php on line 12
+>>>>>>> Stashed changes

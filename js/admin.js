@@ -1,4 +1,4 @@
-//Author: Nathan Hascup, Duck Nguyen
+//Author: Nate Hascup, Duck Nguyen
 //Date: 11/11/17
 //Filename: admin.js
 //Description: javascript for admin pages

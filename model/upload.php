@@ -1,35 +1,37 @@
 /**
  * upload script for pdf documents
  *
- * @author Nate Hascup,Sonie Moon
+ * @author Nate Hascup, Sonie Moon, Duck Nguyen, Jeremy Manalo
  * @version 1.0
+ * Filename: upload.php
  */
 
 <?php
-
-$("#button-send").click(sendFormData);
-			
-			function sendFormData(){
-				var formData = new FormData($("#form-demo").get(0));
-				
-				var ajaxUrl = "process-upload.php";
-				
-				$.ajax({
-					url : ajaxUrl,
-					type : "POST",
-					data : formData,
-					// both 'contentType' and 'processData' parameters are
-					// required so that all data are correctly transferred
-					contentType : false,
-					processData : false
-				}).done(function(response){
-					// In this callback you get the AJAX response to check
-					// if everything is right...
-				}).fail(function(){
-					// Here you should treat the http errors (e.g., 403, 404)
-				}).always(function(){
-					alert("AJAX request finished!");
-				});
-			}
-		</script>
-?>
+if(isset($_POST) == true){
+    //generate unique file name
+    $fileName = time().'_'.basename($_FILES["file"]["name"]);
+    
+    //file upload path
+    $targetDir = "uploads/";
+    $targetFilePath = $targetDir . $fileName;
+    
+    //allow certain file formats
+    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    $allowTypes = array('jpg','png','jpeg','gif');
+    
+    if(in_array($fileType, $allowTypes)){
+        //upload file to server
+        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+            //insert file data into the database if needed
+            //........
+            $response['status'] = 'ok';
+        }else{
+            $response['status'] = 'err';
+        }
+    }else{
+        $response['status'] = 'type_err';
+    }
+    
+    //render response data in JSON format
+    echo json_encode($response);
+}

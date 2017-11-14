@@ -5,7 +5,12 @@
 	Description: Admin page for Track-king. Cascadian Landworks tracking system.
 -->
 
-<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+</head>
+	
+	<!-- ADMIN - NAVIGATION -->
+	<?php echo $this->render('pages/admin-navbar.html',NULL,get_defined_vars(),0); ?>
 	
 	<!-- ACTIVE PROJECT START -->
 	<div id="active-div" class="portfolio container-fluid">
@@ -64,11 +69,7 @@
 						<a>
 							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
 								<i class="fa fa-calendar-check-o"></i> 
-							</button>
-							
-							<!-- Modal -->
-											
-												
+							</button>				
 						</a>
 						<a>
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
@@ -101,6 +102,10 @@
 						<p class="card-text">Tracking # <?= ($track['track_id']) ?></p>
 						<p class="card-text">Start Date: <?= ($track['start_date']) ?></p>
 						<p class="card-text">End Date: <?= ($track['end_date']) ?></p>
+						
+						
+						
+						
 					</div>
 					<div class="card-footer">
 						<small class="text-muted">Last updated <?= ($track['last_update']) ?></small>
@@ -137,23 +142,26 @@
 					<div class="modal fade" id="uploadModal-<?= ($track['track_id']) ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Project: <?= ($track['project_name']) ?></h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<p class="card-text">Upload a PDF related to the case</p>
-									<form id="form-demo" onsubmit="return false">
-										<input type="file" id="image" name="image"><br><br>
-										<button id="button-send">Send</button>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save changes</button>
-								</div>
+								<form id="form" enctype="multipart/form-data" role="form">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Project: <?= ($track['project_name']) ?></h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form>      
+											<div id="dropBox">
+												<p>Select file to upload</p>
+											</div>
+											<!--<input type="hidden" name="projectID" value="<?= ($track['track_ID']) ?>">-->
+											<input type="file" name="fileInput" id="fileInput" />
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -212,6 +220,5 @@
 	<!-- ACTIVE PROJECT END -->
 	</div>
 	
-	
-	
-<?php echo $this->render('pages/admin-footer.html',NULL,get_defined_vars(),0); ?>
+	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
+	<?php echo $this->render('pages/admin-footer.html',NULL,get_defined_vars(),0); ?>
