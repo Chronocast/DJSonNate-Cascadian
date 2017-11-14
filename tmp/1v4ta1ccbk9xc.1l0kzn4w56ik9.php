@@ -21,9 +21,9 @@
     
     <body>
         <header>Add a new project</header><br>
-        <form action="add.php" method="post" id="form">
+        <form action="./add" method="post" id="form">
+            <!--<input value="" name="email" id="email" type="text" placeholder="Email"><br><br>-->
             <input value="" name="project_name" id="project_name" type="text" placeholder="Project Name"><br><br>
-			<input value="" name="track_id" id="track_id" type="text" placeholder="Tracking ID"><br><br>
 			<input value="" name="start_date" id="start_date" type="text" placeholder="Start Date"><br><br>
 			<input value="" name="end_date" id="end_date" type="text" placeholder="End Date"><br><br>			
             <textarea name="message" rows="10" cols="30">Disregard women and acquire currency</textarea><br><br>

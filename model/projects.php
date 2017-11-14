@@ -72,23 +72,4 @@
          
         return $statement->fetch(PDO::FETCH_ASSOC);
         }
-        
-        function addProject($project_name, $track_id, $start_date, $end_date)
-        {
-            $insert = 'INSERT INTO track_content (project_name, track_id, start_date, end_date)
-            VALUES (:project_name, :track_id, :start_date, :end_date)';
-            
-            $statement = $this->_pdo->prepare($insert);
-            $statement->bindValue(':project_name', $project_name, PDO::PARAM_STR);
-            $statement->bindValue(':track_id', $track_id, PDO::PARAM_STR);
-            $statement->bindValue(':start_date', $start_date, PDO::PARAM_STR);
-            $statement->bindValue(':end_date', $end_date, PDO::PARAM_STR);
-
-           
-            $statement->execute();
-            
-            //Return ID of inserted row
-            return $this->_pdo->lastInsertId();
-        }
-
     }

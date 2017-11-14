@@ -5,7 +5,12 @@
 	Description: Admin page for Track-king. Cascadian Landworks tracking system.
 -->
 
-<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<?php echo $this->render('pages/admin-header.html',NULL,get_defined_vars(),0); ?>
+	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+</head>
+	
+	<!-- ADMIN - NAVIGATION -->
+	<?php echo $this->render('pages/admin-navbar.html',NULL,get_defined_vars(),0); ?>
 	
 	<!-- ACTIVE PROJECT START -->
 	<div id="active-div" class="portfolio container-fluid">
@@ -32,10 +37,10 @@
 						<a>
 							<div class="dropdown">
 								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
-								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown<?= ($track['track_id']) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-file-text-o"></i> 
 								</button>
-								<div class="dropdown-menu" aria-labelledby="docDropdown" aria-haspopup="true">
+								<div class="dropdown-menu" aria-labelledby="docDropdown<?= ($track['track_id']) ?>">
 									
 									<!-- DOCUMENT DROPDOWN -->
 									<?php foreach (($docDisplay?:[]) as $doc): ?>
@@ -48,46 +53,25 @@
 													<?= ($doc['documentName'])."
 " ?>
 												</button>
-											
-												<!-- DOCUMENT MODAL -->
-												<div class="modal fade" id="documentModal-<?= ($doc['documentID']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true">
-													<div class="modal-dialog" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="documentModalLabel">Test</h5>
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">&times;</span>
-																</button>
-															</div>
-															<div class="modal-body">
-																<!--<a href="<?= ($doc['documentatLink']) ?>" data-toggle="lightbox" data-footer="Img Footer">
-																	<img src="<?= ($track['documentation_link']) ?>" class="img-fluid" >-->
-																	<iframe src="<?= ($doc['documentLink']) ?>" width="640" height="480"></iframe>
-																<!--</a>-->
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-																<button type="button" class="btn btn-success">Download</button>
-																<button type="button" class="btn btn-danger">Delete</button>
-															</div>
-														</div>
-													</div>
-												</div><!-- END Modal -->
 												
 											
 										<?php endif; ?>
 									<?php endforeach; ?><!--END REPEAT: DROPDOWN-->
 									
 									<div class="dropdown-divider"></div>
-									<button class="dropdown-item" type="button">Upload a new Document</button>
+									<button class="dropdown-item" type="button" data-toggle="modal" data-target="#uploadModal-<?= ($track['track_id']) ?>">
+										Upload a new Document
+									</button>
 									
 								</div>
 							</div>
 						</a>
 						<a>
-							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule"> 
+							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>
+							
+							<!-- Modal -->					
 						</a>
 						<a>
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
@@ -151,6 +135,73 @@
 						</div>
 					</div>
 					<!-- END Modal -->
+					
+					<!-- UPLOAD DOC MODAL -->
+					<div class="modal fade" id="uploadModal-<?= ($track['track_id']) ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Project: <?= ($track['project_name']) ?></h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p class="card-text">Upload a PDF related to the case</p>
+									<form id="form-demo" onsubmit="return false">
+										<input type="file" id="image" name="image"><br><br>
+										<button id="button-send">Send</button>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Save changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END Modal -->
+					
+					
+					<!-- DOCUMENT MODAL CODE -->
+					<!-- repeat to display templated data -->  
+					<?php foreach (($projectDisplay?:[]) as $track): ?>
+						
+						<?php foreach (($docDisplay?:[]) as $doc): ?>
+							
+							<?php if ($doc['track_id']==$track['track_id']): ?>
+								
+								
+									
+								
+									<!-- DOCUMENT MODAL -->
+									<div class="modal fade" id="documentModal-<?= ($doc['documentID']) ?>" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true" >
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="documentModalLabel"><?= ($doc['documentName']) ?></h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<iframe src="uploads/pdf/<?= ($doc['documentName']) ?>.pdf" width="640" height="480"></iframe>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-success">Download</button>
+													<button type="button" class="btn btn-danger">Delete</button>
+												</div>
+											</div>
+										</div>
+									</div><!-- END Modal -->
+							
+								
+							<?php endif; ?>
+						<?php endforeach; ?><!--END REPEAT: DROPDOWN-->
+						
+						
+					<?php endforeach; ?>
 				  
 				<!-- END Card -->
 				</div>
@@ -164,6 +215,5 @@
 	<!-- ACTIVE PROJECT END -->
 	</div>
 	
-	
-	
-<?php echo $this->render('pages/admin-footer.html',NULL,get_defined_vars(),0); ?>
+	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
+	<?php echo $this->render('pages/admin-footer.html',NULL,get_defined_vars(),0); ?>

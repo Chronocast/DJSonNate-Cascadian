@@ -170,10 +170,81 @@
 			
 	});
 	
+	/* Jeremy's Code */
 	//Route to add-a-project page
-	$f3->route('GET|POST /add', function($f3) {
-		echo Template::instance()->render('pages/add.php');
+	$f3->route('GET|POST /admin-add', function($f3)
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST')
+		{		
+			$error = false;
+			$errorsArray = [];
 			
+			// TODO: REMOVE THE NEXT LINE
+			$trackingId = $_POST['tracking_id'];
+			
+			if(!empty($_POST['project_name']))
+			{
+				$project_name = $_POST['project_name'];
+			}
+			else
+			{
+				$error = true;
+				$errorsArray["projectNameErr"] = "Project Name cannot be empty!";
+			}
+			
+			if(!empty($_POST['start_date']))
+			{
+				$start_date = $_POST['start_date'];
+			}
+			else
+			{
+				$error = true;
+				$errorsArray["startDateErr"] = "Start date cannot be empty!";
+			}
+			
+			if(!empty($_POST['end_date']))
+			{
+				$end_date = $_POST['end_date'];
+			}
+			else
+			{
+				$error = true;
+				$errorsArray["endDateErr"] = "End date cannot be empty!";
+			}
+			
+			if(!empty($_POST['project_description']))
+			{
+				$project_description = $_POST['project_description'];
+			}
+			else
+			{
+				$error = true;
+				$errorsArray["projectDescErr"] = "Project description cannot be empty!";
+			}
+			
+			$verify = $_POST['verify'];
+			
+			//TODO:  Refactor to remove $trackingId
+			if(!$error && !empty($_POST['tracking_id']))
+			{
+				$GLOBALS['db']->addProject($trackingId, $project_name, $start_date, $end_date, $project_description);
+				$f3->reroute('http://cascadianlandworks.greenrivertech.net/admin');
+			}
+			else
+			{
+				$f3->set("errors", $errorsArray);
+				$f3->set("projectName", $_POST['project_name']);
+				$f3->set("startDate", $_POST['start_date']);
+				$f3->set("endDate", $_POST['end']);
+				$f3->set("projectDescription", $_POST['project_description']);
+				
+				echo Template::instance()->render('pages/admin-add.html');
+			}
+		}
+		else
+		{
+			echo Template::instance()->render('pages/admin-add.html');
+		}
 	});
 	
 	//Route to admin-login validation
