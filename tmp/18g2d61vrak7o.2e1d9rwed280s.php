@@ -117,16 +117,16 @@
 			
 			<div class="col-md-11">
 				<div class="progress">
-					<div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-success showStep" target="1" role="progressbar" style="width:25%">
 						Documentation
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="2" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-primary" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-primary showStep" target="3" role="progressbar" style="width:25%">
 						Material
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="4" role="progressbar" style="width:25%">
 						Construction
 					</div>
 				</div>		
@@ -179,11 +179,12 @@
 			
 			<div class="col-md-12">
 				<?php foreach (($documentDetails?:[]) as $document): ?>
-				<div class="col-md-4">
-					<h3 class="text-center"><?= ($document['documentName']) ?></h3>
-					<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
-				<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-info">Download this document</button></a>
-				
+				<div class="col-md-4 document-box">
+					<div class="document-card">
+						<h2 class="text-center"><?= ($document['documentName']) ?></h2>
+						<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
+						<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+					</div>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -225,7 +226,32 @@
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
-				
+			
+			<!-- LIGHTBOX START -->
+			<div class="wrapper1 col-sm-12">
+				<a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+				</a>
+				<a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
+				</a>
+				<a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
+				</a>
+			</div>
+			<div class="wrapper1 col-sm-12">
+				<a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+				</a>
+				<a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+				</a>
+				<a href="" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+				</a>
+			</div>
+			<!-- LIGHTBOX ENDS -->
+			
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
@@ -301,6 +327,9 @@
 	<!-- FONT AWESOME -->
 	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
 	
+	<!-- LIGHT BOX -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
 		jQuery(function(){
@@ -364,6 +393,14 @@
 				console.log("testing 2");
 			}
 		});
+	</script>
+	
+	<!-- LIGHTBOX -->
+	<script>
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
 	</script>
     </body>
 </html>

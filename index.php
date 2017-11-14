@@ -74,7 +74,11 @@
 		echo Template::instance()->render('pages/tracking.html');
 		
 	});
-	
+	//ROUTE TO TEST PAGE, DELETE LATER
+	$f3->route('GET|POST /test', function($f3) {
+		echo Template::instance()->render('pages/test.html');
+		
+	});
 	
 	/* Nate's Code */
 	//Route to admin page
