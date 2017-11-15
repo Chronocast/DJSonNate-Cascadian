@@ -53,43 +53,44 @@
 			<li class="active">
 				<a class="showStep" target="0">					
 					<i class="fa fa-question-circle" aria-hidden="true"></i>
-					Guide
+					<span class="nav-text">Guide</span>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="1">
 					<i class="fa fa-file-text-o" aria-hidden="true"></i>
-					Document
+					<span class="nav-text">Document</span>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="2">
 					<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-					Schedule
+					<span class="nav-text">Schedule</span>
 				</a>
 			</li>
 			<li>
-				<a class="showStep" target="3">
+				<a class="showStep notification" target="3">
 					<i class="fa fa-cogs" aria-hidden="true"></i>
-					Material
+					<span class="nav-text">Material</span>
+					<span class="notification">!</span>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="4">
 					<i class="fa fa-cubes" aria-hidden="true"></i>
-					Construction
+					<span class="nav-text">Construction</span>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="5">
 					<i class="fa fa-list-ol" aria-hidden="true"></i>
-					Punch List
+					<span class="nav-text">Punch List</span>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="6">
 					<i class="fa fa-check" aria-hidden="true"></i>
-					Accept
+					<span class="nav-text">Accept</span>
 				</a>
 			</li>
 		</ul>
@@ -102,31 +103,30 @@
 	<!-- Page Content Holder -->
 	<div id="content">
 			
-	<div class="container-fluid">
-		
-		
+	<div class="container-fluid">	
 		<div class="row">
-			<div class="col-md-1">
+			<div class="col-md-1 test">
 				<!-- NAVIGATION TOGGLE START -->
 				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
 					<i class="fa fa-bars" aria-hidden="true"></i>
-					<span id="show">Show</span>
-					<span id="hide">Hide</span>
+					<!--<span id="show">Show</span>
+					<span id="hide">Hide</span>-->
 				</button>
 				<!-- NAVIGATION TOGGLE END -->
 			</div>
+			
 			<div class="col-md-11">
 				<div class="progress">
-					<div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-success showStep" target="1" role="progressbar" style="width:25%">
 						Documentation
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="2" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-primary" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-primary showStep" target="3" role="progressbar" style="width:25%">
 						Material
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="4" role="progressbar" style="width:25%">
 						Construction
 					</div>
 				</div>		
@@ -139,11 +139,6 @@
 			<div class="bg-info">
 				<h1>Tracking with Cascadian Landworks</h1>
 			</div>
-
-			<h3>Little bit about the tracking system</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			
-			<div class="line"></div>
 			
 			<h3>Navigation toggler and Progress Bar</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -152,9 +147,9 @@
 				<li>
 					Progress Bar Color indication
 					<ul>
-						<li id="green">Green: task is completed</li>
-						<li id="yellow">Yellow: task is in progress</li>
-						<li id="blue">Blue: recently updated</li>
+						<li id="green">Solid Green: task is completed</li>
+						<li id="yellow">Striped Yellow: task is in progress</li>
+						<li id="blue">Striped Blue: recently updated</li>
 					</ul>
 				</li>
 			</ol>
@@ -184,13 +179,15 @@
 			
 			<div class="col-md-12">
 				<?php foreach (($documentDetails?:[]) as $document): ?>
-				<div class="col-md-4">
-					<h3 class="text-center"><?= ($document['documentName']) ?></h3>
-					<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
-				<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-info">Download this document</button></a>
-				
+				<div class="col-md-4 document-box">
+					<div class="document-card">
+						<h2 class="text-center"><?= ($document['documentName']) ?></h2>
+						<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
+						<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+					</div>
 				</div>
 				<?php endforeach; ?>
+				
 			</div>
 		</div>
 		<!-- DIV 1 ENDS -->
@@ -230,11 +227,36 @@
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
-				
+			
+			<!-- LIGHTBOX START -->
+			<div class="wrapper1 col-sm-12">
+				<a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
+				</a>
+			</div>
+			<div class="wrapper1 col-sm-12">
+				<a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+				</a>
+			</div>
+			<!-- LIGHTBOX ENDS -->
+			
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>" class="construction-img"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #1</p>
@@ -249,7 +271,8 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+					<h2><img src="http://image-store.slidesharecdn.com/377e624d-a4a6-4578-96b1-1876ec310eac-original.jpeg"
+					class="construction-img"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #2</p>
@@ -306,6 +329,9 @@
 	<!-- FONT AWESOME -->
 	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
 	
+	<!-- LIGHT BOX -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
 		jQuery(function(){
@@ -319,6 +345,7 @@
 				jQuery('#div'+$(this).attr('target')).show();
 				
 			});
+			
 		});
 	</script>
 	
@@ -333,30 +360,53 @@
 		jQuery('#navigation-toggle').click(function () {
 			jQuery('#navigation-toggle').toggleClass('hide-navigation');
 			jQuery('#sidebar').toggleClass('navigation-toggle');
+
 		});
 	</script>
 	
 	<script>
 		$(document).ready(function(){
 			$(window).scroll(function () {
-				   if ($(this).scrollTop() > 50) {
-					   $('#back-to-top').fadeIn();
-				   } else {
-					   $('#back-to-top').fadeOut();
-				   }
-			   });
-			   // scroll body to 0px on click
-			   $('#back-to-top').click(function () {
-				   $('#back-to-top').tooltip('hide');
-				   $('body,html').animate({
-					   scrollTop: 0
-				   }, 800);
-				   return false;
-			   });
-			   
-			   $('#back-to-top').tooltip('show');
-		
+				if ($(this).scrollTop() > 50) {
+					$('#back-to-top').fadeIn();
+				} else {
+					$('#back-to-top').fadeOut();
+				}
+			});
+			// scroll body to 0px on click
+			$('#back-to-top').click(function () {
+				$('#back-to-top').tooltip('hide');
+				$('body,html').animate({
+					scrollTop: 0
+				}, 800);
+				return false;
+			});
+			
+			$('#back-to-top').tooltip('show');
 		});
+	</script>
+	
+	<script>
+		$(window).load(function() {
+			if ($(window).width() < 1366) {
+				jQuery('#sidebar').toggleClass('navigation-toggle');
+			}
+			else {
+				console.log("testing 2");
+			}
+		});
+	</script>
+	
+	<!-- LIGHTBOX -->
+	<script>
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
 	</script>
     </body>
 </html>
+
+
+
+

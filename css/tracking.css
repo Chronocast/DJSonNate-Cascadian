@@ -234,13 +234,18 @@ a, a:hover, a:focus {
 }
 .imgholder{
 	height:420px;
-	width:420px;
+	width:90%;
+}
+.construction-img{
+    width: 300px;
+    height: 200px;
 }
 
 
 /* ---------------------------------------------------
     BACK TO TOP BUTTON
 ----------------------------------------------------- */
+
 .back-to-top {
     cursor: pointer;
     position: fixed;
