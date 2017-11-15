@@ -123,7 +123,7 @@
 					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="2" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-primary showStep" target="3" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="3" role="progressbar" style="width:25%">
 						Material
 					</div>
 					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="4" role="progressbar" style="width:25%">
@@ -331,7 +331,8 @@
 	
 	<!-- LIGHT BOX -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+	
+	
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
 		jQuery(function(){
@@ -343,7 +344,14 @@
 				jQuery('.active:first').removeClass('active');
 				jQuery($(this)).parent().addClass('active');
 				jQuery('#div'+$(this).attr('target')).show();
-				
+				if ( $(this).children().hasClass("notification")) {
+					($(this)).children().removeClass("notification");
+					/*
+					setTimeout(function() {
+						($(this)).children().removeClass("notification");
+						}, 300);
+					*/
+				}
 			});
 			
 		});
@@ -399,10 +407,10 @@
 	
 	<!-- LIGHTBOX -->
 	<script>
-	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
 	</script>
     </body>
 </html>
