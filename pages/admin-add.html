@@ -27,7 +27,7 @@
 				<!-- FORM BEGIN -->
 				<form action="./admin-add" method="post" id="form">
 					<!-- TODO: remove the tracking_id input from this form -->
-					<input name="tracking_id" id="tracking_id" type="number" class="form-control" placeholder="TrackingId: This will be removed..." /><br><br>
+					<input name="tracking_id" id="tracking_id" type="number" class="form-control" placeholder="Tracking ID" /><br><br>
 					
 					<check if="{{ isset(@errors) }}">
 						
@@ -66,11 +66,12 @@
 								<span class="error">{{ @errors['endDateErr'] }}</span><br/>
 							</div>
 							
-							<!-- SAMPLE TEST DATE INPUT TYPE - DOES NOT DO ANYTHING-->
+							<!-- SAMPLE TEST DATE INPUT TYPE - DOES NOT DO ANYTHING
 							<div class="form-group">
 								<label class="col-form-label" for="start_date">Sample date</label>
 								<input class="form-control" type="date">
 							</div>
+							-->
 							
 							<!-- project description -->
 							<div class="form-group">
@@ -116,12 +117,12 @@
 								<input name="end_date" id="end_date" class="form-control" type="text" placeholder="2018-01-11">
 							</div>
 							
-							<!-- SAMPLE TEST DATE INPUT TYPE - DOES NOT DO ANYTHING-->
+							<!-- SAMPLE TEST DATE INPUT TYPE - DOES NOT DO ANYTHING
 							<div class="form-group">
 								<label class="col-form-label" for="start_date">Sample date</label>
 								<input class="form-control" type="date">
 							</div>
-							
+							-->
 							<!-- project description -->
 							<div class="form-group">
 								<label class="col-form-label" for="project_description">Description</label>

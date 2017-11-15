@@ -6,7 +6,7 @@
 			<img src="images/cascadian-landworks.png" alt="Cascadian Landworks">
 		</a>
 		
-		<a class="navbar-brand" href="./">
+		<a class="navbar-brand" href="./admin">
 			<li class="nav-item d-inline-block">
 				<button type="button" class="btn btn-warning"> 
 					Welcome Nate!
