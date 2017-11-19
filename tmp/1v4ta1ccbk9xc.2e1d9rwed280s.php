@@ -50,12 +50,14 @@
 		</div>
 
 		<ul class="list-unstyled components">
+			<!--
 			<li class="active">
 				<a class="showStep" target="0">					
 					<i class="fa fa-question-circle" aria-hidden="true"></i>
 					<span class="nav-text">Guide</span>
 				</a>
 			</li>
+			-->
 			<li>
 				<a class="showStep" target="1">
 					<i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -107,12 +109,16 @@
 		<div class="row">
 			<div class="col-md-1 test">
 				<!-- NAVIGATION TOGGLE START -->
-				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
+				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle" title="Toggle navigation">
 					<i class="fa fa-bars" aria-hidden="true"></i>
-					<!--<span id="show">Show</span>
-					<span id="hide">Hide</span>-->
 				</button>
 				<!-- NAVIGATION TOGGLE END -->
+				
+				<!-- GUIDE START -->
+				<button class="btn btn-primary btn-guide showStep" target="0" title="Toggle guide">
+					<i class="fa fa-question-circle" aria-hidden="true"></i>
+				</button>
+				<!-- GUIDE END -->
 			</div>
 			
 			<div class="col-md-11">
@@ -123,7 +129,7 @@
 					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="2" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-primary showStep" target="3" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="3" role="progressbar" style="width:25%">
 						Material
 					</div>
 					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="4" role="progressbar" style="width:25%">
@@ -331,7 +337,8 @@
 	
 	<!-- LIGHT BOX -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+	
+	
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
 		jQuery(function(){
@@ -343,7 +350,9 @@
 				jQuery('.active:first').removeClass('active');
 				jQuery($(this)).parent().addClass('active');
 				jQuery('#div'+$(this).attr('target')).show();
-				
+				if ( $(this).children().hasClass("notification")) {
+					($(this)).children().removeClass("notification");
+				}
 			});
 			
 		});
@@ -399,10 +408,10 @@
 	
 	<!-- LIGHTBOX -->
 	<script>
-	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
 	</script>
     </body>
 </html>
