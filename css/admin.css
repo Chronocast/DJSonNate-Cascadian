@@ -7,9 +7,22 @@
 /* ---------------------------------------------------
     BODY - ACTIVE PROJECTS 
 ----------------------------------------------------- */
+.card-deck{
+	margin-top:-1em;
+}
+.card{
+	margin-top: 2em;
+	border-bottom: 1px groove #DCAE10;
+	border-left: 1px groove #DCAE10;
+	border-right: 1px groove #DCAE10;
+}
 .card .btn.btn-title{
 	background:#DCAE10;
 	color:white;
+	text-overflow: ellipsis;
+	
+	white-space: nowrap;
+	overflow: hidden;
 }
 .card .btn.btn-title:hover{
 	cursor: pointer;
@@ -18,6 +31,9 @@
 .card .d-inline-block {
 	/*background:#00303F;*/
 	background:#F7F5E6;
+	border-bottom: 1px groove #DCAE10;
+	padding-top:6px;
+	padding-bottom:4px;
 }
 .card .d-inline-block a .dropdown{
 	display: inline-block;
@@ -39,5 +55,4 @@
 	font-size: 1.2em;
 	/*color:#DCAE10;*/
 	color:#333A56;
-	
 }

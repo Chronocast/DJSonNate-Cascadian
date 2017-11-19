@@ -115,28 +115,13 @@ a, a:hover, a:focus {
 #sidebar.navigation-toggle{
     display: none;
 }
-#navigation-toggle span{
-	margin-left:2px;	
-}
-#navigation-toggle #hide {
-	display: inline-block;
-}
-#navigation-toggle #show {
-	display: none;
-}
-#navigation-toggle.hide-navigation #hide {
-	display: none;
-}
-
-#navigation-toggle.hide-navigation #show {
-	display: inline-block;
-}
-
-.btn.btn-navigation-toggle {
-	color:black;
-	background-color:#D6DBDF;
+.btn.btn-navigation-toggle,
+.btn.btn-guide{
+    background: #7386D5;
+    border-color: #7386D5;
+    color: #fff;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     height: 36px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -149,22 +134,28 @@ a, a:hover, a:focus {
 }
 
 .btn.btn-navigation-toggle:hover,
-.btn.btn-navigation-toggle:focus {
-    background-color:#D6DBDF;
+.btn.btn-navigation-toggle:focus,
+.btn.btn-guide:hover,
+.btn.btn-guide:focus {
+    border-color: #7386D5;
+    background: #7386D5;
 }
 
 /* ---------------------------------------------------
     RESIZING STYLE
 ----------------------------------------------------- */
-#sidebar.resize{
-    min-width: 60px;
-    max-width: 60px;
-}
-
 #sidebar.resize .sidebar-header img{
 	height:63px;
 	width:60px;
+	transition: all 0.3s;
 }
+#sidebar.resize{
+    min-width: 60px;
+    max-width: 60px;
+    transition: all 0.3s;
+}
+
+
 
 
 #sidebar.resize ul li a i {
