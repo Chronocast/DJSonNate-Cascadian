@@ -41,6 +41,7 @@
 			print_r('put something in pleaseeeeeeee');
 		}
 		*/
+				
 		echo Template::instance()->render('pages/home.html');
 		
 	});
@@ -56,6 +57,7 @@
 			}
 			else{
 				//reroute //pass in the array
+				$_SESSION['trackingID'] = $trackingID;
 				$f3->reroute('/tracking');
 			}
 		}
@@ -66,8 +68,10 @@
 	$f3->route('GET|POST /tracking', function($f3) {
 		
 		
-		$projectDetails = $GLOBALS['db']->projectDetails('0987654321');
-		$documentDetails = $GLOBALS['docsDB']->documentDetails('24601');
+		//$projectDetails = $GLOBALS['db']->projectDetails('0987654321');
+		$projectDetails = $GLOBALS['db']->projectDetails($_SESSION['trackingID']);
+		//$documentDetails = $GLOBALS['docsDB']->documentDetails('24601');
+		$documentDetails = $GLOBALS['docsDB']->documentDetails($_SESSION['trackingID']);
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
 		

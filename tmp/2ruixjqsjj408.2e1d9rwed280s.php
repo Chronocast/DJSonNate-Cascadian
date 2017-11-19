@@ -50,12 +50,14 @@
 		</div>
 
 		<ul class="list-unstyled components">
+			<!--
 			<li class="active">
 				<a class="showStep" target="0">					
 					<i class="fa fa-question-circle" aria-hidden="true"></i>
 					<span class="nav-text">Guide</span>
 				</a>
 			</li>
+			-->
 			<li>
 				<a class="showStep" target="1">
 					<i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -107,26 +109,30 @@
 		<div class="row">
 			<div class="col-md-1 test">
 				<!-- NAVIGATION TOGGLE START -->
-				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle">
+				<button id="navigation-toggle" class="btn btn-primary btn-navigation-toggle" title="Toggle navigation">
 					<i class="fa fa-bars" aria-hidden="true"></i>
-					<!--<span id="show">Show</span>
-					<span id="hide">Hide</span>-->
 				</button>
 				<!-- NAVIGATION TOGGLE END -->
+				
+				<!-- GUIDE START -->
+				<button class="btn btn-primary btn-guide showStep" target="0" title="Toggle guide">
+					<i class="fa fa-question-circle" aria-hidden="true"></i>
+				</button>
+				<!-- GUIDE END -->
 			</div>
 			
 			<div class="col-md-11">
 				<div class="progress">
-					<div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-success showStep" target="1" role="progressbar" style="width:25%">
 						Documentation
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="2" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-primary" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="3" role="progressbar" style="width:25%">
 						Material
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning" role="progressbar" style="width:25%">
+					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="4" role="progressbar" style="width:25%">
 						Construction
 					</div>
 				</div>		
@@ -179,13 +185,15 @@
 			
 			<div class="col-md-12">
 				<?php foreach (($documentDetails?:[]) as $document): ?>
-				<div class="col-md-4">
-					<h3 class="text-center"><?= ($document['documentName']) ?></h3>
-					<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
-				<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-info">Download this document</button></a>
-				
+				<div class="col-md-4 document-box">
+					<div class="document-card">
+						<h2 class="text-center"><?= ($document['documentName']) ?></h2>
+						<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="<?= ($document['documentLink']) ?>"></p></a>
+						<a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+					</div>
 				</div>
 				<?php endforeach; ?>
+				
 			</div>
 		</div>
 		<!-- DIV 1 ENDS -->
@@ -225,36 +233,36 @@
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
-				<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="row">
-            <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-            </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-            </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-            </a>
-        </div>
-        <div class="row">
-            <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
-            </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
-            </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
-            </a>
-        </div>
-    </div>
-</div>
+			
+			<!-- LIGHTBOX START -->
+			<div class="wrapper1 col-sm-12">
+				<a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
+				</a>
+			</div>
+			<div class="wrapper1 col-sm-12">
+				<a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+				</a>
+				<a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+					<img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+				</a>
+			</div>
+			<!-- LIGHTBOX ENDS -->
+			
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>" class="construction-img"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #1</p>
@@ -269,7 +277,8 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="<?= ($projectDetails['construction_photos']) ?>"></h2>
+					<h2><img src="http://image-store.slidesharecdn.com/377e624d-a4a6-4578-96b1-1876ec310eac-original.jpeg"
+					class="construction-img"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #2</p>
@@ -328,7 +337,8 @@
 	
 	<!-- LIGHT BOX -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+	
+	
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
 		jQuery(function(){
@@ -340,7 +350,9 @@
 				jQuery('.active:first').removeClass('active');
 				jQuery($(this)).parent().addClass('active');
 				jQuery('#div'+$(this).attr('target')).show();
-				
+				if ( $(this).children().hasClass("notification")) {
+					($(this)).children().removeClass("notification");
+				}
 			});
 			
 		});
@@ -396,10 +408,14 @@
 	
 	<!-- LIGHTBOX -->
 	<script>
-	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
 	</script>
     </body>
 </html>
+
+
+
+
