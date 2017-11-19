@@ -188,8 +188,15 @@
 				<div class="col-md-4 document-box">
 					<div class="document-card">
 						<h2 class="text-center">{{ @document['documentName'] }}</h2>
-						<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" src="{{ @document['documentLink'] }}"></p></a>
-						<a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+						<iframe src="{{ @document['documentLink'] }}"></iframe>
+						
+						
+						<!--<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="{{ @document['documentLink'] }}"></iframe></p></a>
+						--><a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+					
+					
+					
+					
 					</div>
 				</div>
 				</repeat>
