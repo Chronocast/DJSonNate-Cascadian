@@ -113,5 +113,17 @@ class TrackingDB
        
         $statement->execute();
     }
+    
+    /** Sonie's code **/
+        function schedulingDetails($track_id)
+        {
+        $select = 'SELECT * FROM scheduling WHERE track_id=:track_id';
+
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement->execute();
+         
+        return $statement->fetch(PDO::FETCH_ASSOC);
+        }
 }
 ?>

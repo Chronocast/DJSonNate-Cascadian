@@ -212,7 +212,36 @@
 			</div>
 
 			
-			<p><?= ($projectDetails['scheduling']) ?></p>
+			<div class="container">
+         
+  <table class="table table-hover">
+    <thead>
+		
+      <tr>
+        <th>Work Type</th>
+        <th>Schedule Detail </th>
+        <th>Cost</th>
+		<th>Contact</th>
+		<th>Progress</th>
+      </tr>
+    </thead>
+    <tbody>
+		<?php foreach (($schedulingDetails?:[]) as $schedule): ?>
+      <tr>
+        <td><?= ($schedule['workType']) ?></td>
+        <td><?= ($schedule['schedule']) ?></td>
+        <td><?= ($schedule['cost']) ?></td>
+		<td><?= ($schedule['contact']) ?></td>
+		<td><?= ($schedule['progress']) ?></td>
+      </tr>
+	  <?php endforeach; ?>
+    </tbody>
+  </table>
+
+			
+			
+			
+			
 			<p>1 person scheduled for site-manager</p>
 			<p>2 person from Example company on site</p>
 			<!--p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>-->
