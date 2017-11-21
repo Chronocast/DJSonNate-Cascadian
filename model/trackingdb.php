@@ -123,7 +123,7 @@ class TrackingDB
         $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
         $statement->execute();
          
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 }
 ?>

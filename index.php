@@ -76,8 +76,8 @@
 		$documentDetails = $GLOBALS['docsDB']->documentDetails($_SESSION['trackingID']);
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
-		print_r($schedulingDetails);
-		//$f3->set('schedulingDetails', $schedulingDetails);
+		//print_r($schedulingDetails);
+		$f3->set('schedulingDetails', $schedulingDetails);
 		
 		echo Template::instance()->render('pages/tracking.html');
 		
