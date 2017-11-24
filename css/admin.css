@@ -7,14 +7,28 @@
 /* ---------------------------------------------------
     BODY - ACTIVE PROJECTS 
 ----------------------------------------------------- */
-.card-deck{
+.card-columns{
 	margin-top:-1em;
 }
+
+@media (min-width:34em) {
+    .card-deck > .card
+    {
+        width: 30%;
+        flex-wrap: wrap;
+        flex: initial;
+        
+    }
+}
+
 .card{
 	margin-top: 2em;
 	border-bottom: 1px groove #DCAE10;
 	border-left: 1px groove #DCAE10;
 	border-right: 1px groove #DCAE10;
+    
+    /*flex: 0 0 100px;*/
+    
 }
 .card .btn.btn-title{
 	background:#DCAE10;
@@ -34,13 +48,14 @@
 	border-bottom: 1px groove #DCAE10;
 	padding-top:6px;
 	padding-bottom:4px;
+    width: 100%;
 }
 .card .d-inline-block a .dropdown{
 	display: inline-block;
 }
 .card .d-inline-block a .btn {
 	display: inline-block;
-	width:50px;
+	width:55px;
 	height: 40px;
 	margin: 0.5em 0.2em;
 	/*background:#00303F;*/
