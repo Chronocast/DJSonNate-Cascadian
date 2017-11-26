@@ -76,7 +76,7 @@
            /** Sonie's code **/
         function schedulingDetails($track_id)
         {
-                $select = 'SSELECT * FROM scheduling WHERE track_id=:track_id';
+                $select = 'SELECT * FROM scheduling WHERE track_id=:track_id';
         
         $results = $this->_pdo->prepare($select);
         //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
@@ -89,4 +89,8 @@
          
         return $rows;
         }
+        
+
+        
+        
     }
