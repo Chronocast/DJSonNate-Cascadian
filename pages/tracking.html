@@ -62,25 +62,45 @@
 				<a class="showStep" target="1">
 					<i class="fa fa-file-text-o" aria-hidden="true"></i>
 					<span class="nav-text">Document</span>
+					
+					<!-- DISPLAY NOTIFICATION -->
+					<check if= "{{ @progressStatus['documentStatus'] == 2 }}">
+						<true><span class="notification"></span></true>
+					</check>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="2">
 					<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 					<span class="nav-text">Schedule</span>
+					
+					<!-- DISPLAY NOTIFICATION -->
+					<check if= "{{ @progressStatus['schedulingStatus'] == 2 }}">
+						<true><span class="notification"></span></true>
+					</check>
+					
 				</a>
 			</li>
 			<li>
-				<a class="showStep notification" target="3">
+				<a class="showStep" target="3">
 					<i class="fa fa-cogs" aria-hidden="true"></i>
 					<span class="nav-text">Material</span>
-					<span class="notification">!</span>
+					
+					<!-- DISPLAY NOTIFICATION -->
+					<check if= "{{ @progressStatus['materialStatus'] == 2 }}">
+						<true><span class="notification"></span></true>
+					</check>
 				</a>
 			</li>
 			<li>
 				<a class="showStep" target="4">
 					<i class="fa fa-cubes" aria-hidden="true"></i>
 					<span class="nav-text">Construction</span>
+					
+					<!-- DISPLAY NOTIFICATION -->
+					<check if= "{{ @progressStatus['constructionStatus'] == 2 }}">
+						<true><span class="notification"></span></true>
+					</check>
 				</a>
 			</li>
 			<li>
@@ -122,17 +142,20 @@
 			</div>
 			
 			<div class="col-md-11">
+				<!--
+				Do we need this? ->  progress-bar-striped
+				-->
 				<div class="progress">
-					<div class="progress-bar progress-bar-success showStep" target="1" role="progressbar" style="width:25%">
+					<div class="progress-bar {{ @progressBar[0] }} showStep" target="1" role="progressbar" style="width:25%">
 						Documentation
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="2" role="progressbar" style="width:25%">
+					<div class="progress-bar {{ @progressBar[1] }} showStep" target="2" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="3" role="progressbar" style="width:25%">
+					<div class="progress-bar {{ @progressBar[2] }} showStep" target="3" role="progressbar" style="width:25%">
 						Material
 					</div>
-					<div class="progress-bar progress-bar-striped progress-bar-warning showStep" target="4" role="progressbar" style="width:25%">
+					<div class="progress-bar {{ @progressBar[3] }} showStep" target="4" role="progressbar" style="width:25%">
 						Construction
 					</div>
 				</div>		
@@ -140,7 +163,7 @@
 		</div>
 		
 		
-<!-- INSTRUCTION START -->
+		<!-- INSTRUCTION START -->
 		<div id="div0" class="targetDiv instruction">
 			<div class="bg-info">
 				<h1>Tracking with Cascadian Landworks</h1>
@@ -177,7 +200,7 @@
 		</div>
 		<!-- INSTRUCTION END -->
 		
-		<!-- DIV 1 START -->
+		<!-- DIV 1 - CONTRACT START -->
 		<div id="div1" class="targetDiv">
 			<div class="bg-info">
 				<h1>Contract</h1>
@@ -205,7 +228,7 @@
 		</div>
 		<!-- DIV 1 ENDS -->
 
-		<!-- DIV 2 START -->
+		<!-- DIV 2 - SCHEDULING START -->
 		<div id="div2" class="targetDiv">
 			<div class="bg-info">
 				<h1>Scheduling </h1>
@@ -254,8 +277,9 @@
 			<!--<div class="line"></div>-->
 		
 		<!-- DIV 2 ENDS -->
+		
 
-		<!-- DIV 3 START -->
+		<!-- DIV 3 - MATERIAL & LABOR START -->
 		<div id="div3" class="targetDiv">
 			<div class="bg-info">
 				<h1>Material &amp; Labor</h1>
@@ -299,7 +323,8 @@
 		</div>
 		<!-- DIV 3 ENDS -->
 		
-		<!-- DIV 4 START -->
+		
+		<!-- DIV 4 - CONSTRUCTION START -->
 		<div id="div4" class="targetDiv">
 			<div class="bg-info">
 				<h1>Construction</h1>
@@ -365,7 +390,8 @@
 		</div>
 		<!-- DIV 4 ENDS -->
 
-		<!-- DIV 5 START -->
+
+		<!-- DIV 5 - PUNCH LIST START -->
 		<div id="div5" class="targetDiv">
 			<div class="bg-info">
 				<h1>Final punch list</h1>
@@ -378,7 +404,8 @@
 		</div>
 		<!-- DIV 5 ENDS -->
 		
-		<!-- DIV 6 START -->
+		
+		<!-- DIV 6 - ACCEPTANCE START -->
 		<div id="div6" class="targetDiv">
 			<div class="bg-info">
 				<h1>Acceptance</h1>
@@ -391,7 +418,10 @@
 		<!-- DIV 6 ENDS -->
 		
 	</div>
+	
+	<!-- back to top button -->
 	<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Back to top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>
+	
 	<!-- END OF CONTENT -->
 	</div>
 </div>
@@ -425,7 +455,6 @@
 					($(this)).children().removeClass("notification");
 				}
 			});
-			
 		});
 	</script>
 	

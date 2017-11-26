@@ -36,6 +36,7 @@ return array(
     'Matrix' => $vendorDir . '/bcosca/fatfree-core/matrix.php',
     'Prefab' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Preview' => $vendorDir . '/bcosca/fatfree-core/base.php',
+    'ProgressStatusDB' => $baseDir . '/model/progressStatusDB.php',
     'Registry' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'SMTP' => $vendorDir . '/bcosca/fatfree-core/smtp.php',
     'Session' => $vendorDir . '/bcosca/fatfree-core/session.php',

@@ -37,6 +37,7 @@ class ComposerStaticInitbdcf50f922025aef46ab638bf0983fef
         'Matrix' => __DIR__ . '/..' . '/bcosca/fatfree-core/matrix.php',
         'Prefab' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Preview' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
+        'ProgressStatusDB' => __DIR__ . '/../..' . '/model/progressStatusDB.php',
         'Registry' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'SMTP' => __DIR__ . '/..' . '/bcosca/fatfree-core/smtp.php',
         'Session' => __DIR__ . '/..' . '/bcosca/fatfree-core/session.php',
