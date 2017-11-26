@@ -184,22 +184,22 @@
 			</div>
 			
 			<div class="col-md-12">
-				<repeat group="{{ @documentDetails }}" value="{{ @document }}">
+				<?php foreach (($documentDetails?:[]) as $document): ?>
 				<div class="col-md-4 document-box">
 					<div class="document-card">
-						<h2 class="text-center">{{ @document['documentName'] }}</h2>
-						<iframe src="{{ @document['documentLink'] }}"></iframe>
+						<h2 class="text-center"><?= ($document['documentName']) ?></h2>
+						<iframe src="<?= ($document['documentLink']) ?>"></iframe>
 						
 						
-						<!--<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="{{ @document['documentLink'] }}"></iframe></p></a>
-						--><a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+						<!--<a href="javascript:window.open('<?= ($document['documentLink']) ?>','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="<?= ($document['documentLink']) ?>"></iframe></p></a>
+						--><a href="<?= ($document['documentLink']) ?>" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
 					
 					
 					
 					
 					</div>
 				</div>
-				</repeat>
+				<?php endforeach; ?>
 				
 			</div>
 		</div>
@@ -226,15 +226,15 @@
       </tr>
     </thead>
     <tbody>
-		<repeat group="{{ @schedulingDetails }}" value="{{ @schedule }}">
+		<?php foreach (($schedulingDetails?:[]) as $schedule): ?>
       <tr>
-        <td>{{ @schedule['workType'] }}</td>
-        <td>{{ @schedule['schedule'] }}</td>
-        <td>{{ @schedule['cost'] }}</td>
-		<td>{{ @schedule['contact'] }}</td>
-		<td>{{ @schedule['progress'] }}</td>
+        <td><?= ($schedule['workType']) ?></td>
+        <td><?= ($schedule['schedule']) ?></td>
+        <td><?= ($schedule['cost']) ?></td>
+		<td><?= ($schedule['contact']) ?></td>
+		<td><?= ($schedule['progress']) ?></td>
       </tr>
-	  </repeat>
+	  <?php endforeach; ?>
 		
 
     </tbody>
@@ -249,7 +249,7 @@
 			
 			</div>
 			</div>	
-			<!--p>Daily Progress Report : <img src="{{ @projectDetails['daily_progress_report'] }}"></p>-->
+			<!--p>Daily Progress Report : <img src="<?= ($projectDetails['daily_progress_report']) ?>"></p>-->
 			
 			<!--<div class="line"></div>-->
 		
@@ -262,7 +262,7 @@
 				
 			</div>
 <!--
-			<p>{{ @projectDetails['material_labor'] }}</p>
+			<p><?= ($projectDetails['material_labor']) ?></p>
 			<p>20 units of hardwoord</p>
 			<p>2 big dumptrucks ordered (new)</p>
 			<p>1 ton of sand ordered (new)</p>-->
@@ -279,15 +279,15 @@
       </tr>
     </thead>
     <tbody>
-		<repeat group="{{ @materialDetails }}" value="{{ @schedule1 }}">
+		<?php foreach (($materialDetails?:[]) as $schedule1): ?>
       <tr>
-        <td>{{ @schedule1['materialType'] }}</td>
-        <td>{{ @schedule1['materialUnit'] }}</td>
-        <td>{{ @schedule1['cost'] }}</td>
-		<td>{{ @schedule1['notes'] }}</td>
-		<td>{{ @schedule1['progress'] }}</td>
+        <td><?= ($schedule1['materialType']) ?></td>
+        <td><?= ($schedule1['materialUnit']) ?></td>
+        <td><?= ($schedule1['cost']) ?></td>
+		<td><?= ($schedule1['notes']) ?></td>
+		<td><?= ($schedule1['progress']) ?></td>
       </tr>
-	  </repeat>
+	  <?php endforeach; ?>
 
     </tbody>
   </table>
@@ -333,7 +333,7 @@
 			<br>
 			<div class="col-md-12">
 				<div class="col-md-3">
-					<h2><img src="{{ @projectDetails['construction_photos'] }}" class="construction-img"></h2>
+					<h2><img src="<?= ($projectDetails['construction_photos']) ?>" class="construction-img"></h2>
 				</div>
 				<div class="col-md-9">
 					<p>Good looking guys finished work #1</p>
@@ -371,7 +371,7 @@
 				<h1>Final punch list</h1>
 			</div>
 
-			<h2>{{ @projectDetails['final_stage'] }}</h2>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
 			
 
 			<div class="line"></div>
@@ -384,7 +384,7 @@
 				<h1>Acceptance</h1>
 			</div>
 
-			<h2>{{ @projectDetails['final_stage'] }}</h2>
+			<h2><?= ($projectDetails['final_stage']) ?></h2>
 
 			<div class="line"></div>
 		</div>

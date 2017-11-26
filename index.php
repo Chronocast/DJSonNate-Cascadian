@@ -74,10 +74,14 @@
 		$schedulingDetails = $GLOBALS['db']->schedulingDetails($_SESSION['trackingID']);
 		//$documentDetails = $GLOBALS['docsDB']->documentDetails('24601');
 		$documentDetails = $GLOBALS['docsDB']->documentDetails($_SESSION['trackingID']);
+		$materialDetails = $GLOBALS['db']->materialDetails($_SESSION['trackingID']);
+
+		
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
 		//print_r($schedulingDetails);
 		$f3->set('schedulingDetails', $schedulingDetails);
+		$f3->set('materialDetails', $materialDetails);
 		
 		echo Template::instance()->render('pages/tracking.html');
 		
