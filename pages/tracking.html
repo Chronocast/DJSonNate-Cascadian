@@ -233,49 +233,33 @@
 			<div class="bg-info">
 				<h1>Scheduling </h1>
 			</div>
-
 			
 			<div class="container">
-         
-		   <table class="table table-hover">
-    <thead>
-				
-      <tr>
-        <th>Work Type</th>
-        <th>Schedule Detail </th>
-        <th>Cost</th>
-		<th>Contact</th>
-		<th>Progress</th>
-      </tr>
-    </thead>
-    <tbody>
-		<repeat group="{{ @schedulingDetails }}" value="{{ @schedule }}">
-      <tr>
-        <td>{{ @schedule['workType'] }}</td>
-        <td>{{ @schedule['schedule'] }}</td>
-        <td>{{ @schedule['cost'] }}</td>
-		<td>{{ @schedule['contact'] }}</td>
-		<td>{{ @schedule['progress'] }}</td>
-      </tr>
-	  </repeat>
-		
-
-    </tbody>
-  </table>
-		
-		 
-		 
-
-
-			
-			
-			
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Work Type</th>
+							<th>Schedule Detail </th>
+							<th>Cost</th>
+							<th>Contact</th>
+							<th>Progress</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<repeat group="{{ @schedulingDetails }}" value="{{ @schedule }}">
+							<tr>
+								<td>{{ @schedule['workType'] }}</td>
+								<td>{{ @schedule['schedule'] }}</td>
+								<td>{{ @schedule['cost'] }}</td>
+								<td>{{ @schedule['contact'] }}</td>
+								<td>{{ @schedule['progress'] }}</td>
+							</tr>
+						</repeat>
+					</tbody>
+				</table>
 			</div>
-			</div>	
-			<!--p>Daily Progress Report : <img src="{{ @projectDetails['daily_progress_report'] }}"></p>-->
-			
-			<!--<div class="line"></div>-->
-		
+		</div>	
 		<!-- DIV 2 ENDS -->
 		
 
@@ -283,43 +267,33 @@
 		<div id="div3" class="targetDiv">
 			<div class="bg-info">
 				<h1>Material &amp; Labor</h1>
-				
 			</div>
-<!--
-			<p>{{ @projectDetails['material_labor'] }}</p>
-			<p>20 units of hardwoord</p>
-			<p>2 big dumptrucks ordered (new)</p>
-			<p>1 ton of sand ordered (new)</p>-->
-<div class="container">
-		 <table class="table table-hover">
-    <thead>
-		
-      <tr>
-        <th>Material Type</th>
-        <th>Material Unit </th>
-        <th>Cost</th>
-		<th>Notes</th>
-		<th>Progress</th>
-      </tr>
-    </thead>
-    <tbody>
-		<repeat group="{{ @materialDetails }}" value="{{ @schedule1 }}">
-      <tr>
-        <td>{{ @schedule1['materialType'] }}</td>
-        <td>{{ @schedule1['materialUnit'] }}</td>
-        <td>{{ @schedule1['cost'] }}</td>
-		<td>{{ @schedule1['notes'] }}</td>
-		<td>{{ @schedule1['progress'] }}</td>
-      </tr>
-	  </repeat>
-
-    </tbody>
-  </table>
-
-
-
-			<div class="line"></div>
-		</div>
+			
+			<div class="container">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Material Type</th>
+							<th>Material Unit </th>
+							<th>Cost</th>
+							<th>Notes</th>
+							<th>Progress</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<repeat group="{{ @materialDetails }}" value="{{ @schedule1 }}">
+						<tr>
+							<td>{{ @schedule1['materialType'] }}</td>
+							<td>{{ @schedule1['materialUnit'] }}</td>
+							<td>{{ @schedule1['cost'] }}</td>
+							<td>{{ @schedule1['notes'] }}</td>
+							<td>{{ @schedule1['progress'] }}</td>
+						</tr>
+						</repeat>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<!-- DIV 3 ENDS -->
 		
