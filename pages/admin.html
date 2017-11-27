@@ -169,10 +169,10 @@
 									<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Edit</button>
-									<button type="button" class="btn btn-primary">Delete</button>
-									<button type="button" class="btn btn-primary">Save changes</button>
+									<button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" id="edit" class="btn btn-primary">Edit</button>
+									<a type="button" id="archive" class="btn btn-primary" href="./archive={{ @track['track_id'] }}" >Archive</a>
+									<button type="button" id="save" class="btn btn-primary">Save changes</button>
 								</div>
 							</div>
 						</div>
@@ -232,7 +232,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 													<button type="button" class="btn btn-success">Download</button>
-													<button type="button" class="btn btn-danger">Delete</button>
+													<button type="button" class="btn btn-danger">Archive</button>
 												</div>
 											</div>
 										</div>

@@ -73,6 +73,27 @@ class TrackingDB
         return $rows;
     }
     
+    /**
+    * Returns all inactive projects.
+    * @return an associative array of project and their specific data
+    */
+    function inactiveProjectDisplay()
+    {
+        
+        $select = 'SELECT * FROM track_content WHERE project_status = 0 ORDER BY start_date';
+        
+        $results = $this->_pdo->prepare($select);
+        //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
+        $results->execute();
+         
+        $resultsArray = array();
+         
+        //map each project to a row of data by date
+        $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+         
+        return $rows;
+    }
+    
      /**
      * returns project details 
      *
@@ -88,7 +109,7 @@ class TrackingDB
     return $statement->fetch(PDO::FETCH_ASSOC);
     }
     
-    // Jeremy's Code
+    /** Jeremy's Code **/
     //TODO: remove $trackingId from this method after we figure out how to
     //automatically generate tracking ids
     function addProject($trackingId, $project_name, $start_date, $end_date, $project_description)
@@ -125,5 +146,17 @@ class TrackingDB
          
         return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
+        
+    /** Jeremy's code **/
+        function archiveProject($track_id)
+        {
+            $update = 'UPDATE track_content SET project_status = 0 WHERE track_id=:track_id';
+            
+            $statement = $this->_pdo->prepare($update);
+            $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+            $statement->execute();
+        }
+    
+   
 }
 ?>
