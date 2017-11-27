@@ -2,10 +2,7 @@
 	"name": "355/cascadian",
 	"authors": [
 		{
-			"name": "Duc[k] Nguyen",
-			"name": "Jeremy Manalo",
-			"name": "Nate Hascup",
-			"name": "Sonie Moon"
+			"name": "Duc[k] Nguyen, Jeremy Manalo, Nate Hascup, Sonie Moon"
 		}
 	],
 	"require": {
@@ -14,5 +11,6 @@
 	
 	"autoload": {
 		"classmap": ["model/", "classes/"]
+
 	}
 }

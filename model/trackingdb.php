@@ -147,6 +147,7 @@ class TrackingDB
         return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
         
+
     /** Jeremy's code **/
         function archiveProject($track_id)
         {
@@ -158,5 +159,21 @@ class TrackingDB
         }
     
    
+
+        
+        /** Sonie's code **/
+        function materialDetails($track_id)
+        {
+        $select = 'SELECT * FROM material WHERE track_id=:track_id';
+        
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement->execute();
+         
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
+        
+
 }
 ?>
