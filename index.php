@@ -68,11 +68,13 @@
 	//Route to tracking page
 	$f3->route('GET|POST /tracking', function($f3) {
 		
+		$trackingID = $_SESSION['trackingID'];
+		
 		// Sonie's codes
-		$projectDetails = $GLOBALS['db']->projectDetails($_SESSION['trackingID']);
-		$schedulingDetails = $GLOBALS['db']->schedulingDetails($_SESSION['trackingID']);
-		$documentDetails = $GLOBALS['docsDB']->documentDetails($_SESSION['trackingID']);
-		$materialDetails = $GLOBALS['db']->materialDetails($_SESSION['trackingID']);
+		$projectDetails = $GLOBALS['db']->projectDetails($trackingID);
+		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
+		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
+		$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
 		
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
@@ -81,11 +83,12 @@
 		// end Sonie
 		
 		// Duck's codes
-		$progressStatus = $GLOBALS['statusDB']->getStatus($_SESSION['trackingID']);
+		$progressStatus = $GLOBALS['statusDB']->getStatus($trackingID);
 		$progressBar = $GLOBALS['statusDB']->toProgressBar($progressStatus);
 		
 		//print_r($progressStatus);
 		
+		$f3->set('trackingID', $trackingID);
 		$f3->set('progressStatus', $progressStatus);
 		$f3->set('progressBar', $progressBar);
 		//end Duck

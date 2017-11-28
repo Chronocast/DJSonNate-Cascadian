@@ -1,0 +1,13 @@
+[28-Nov-2017 03:00:20 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 17
+[28-Nov-2017 03:02:45 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 7
+[28-Nov-2017 03:02:46 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 7
+[28-Nov-2017 03:12:05 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 7
+[28-Nov-2017 03:12:26 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 18
+[28-Nov-2017 03:13:25 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 18
+[28-Nov-2017 03:14:27 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 18
+[28-Nov-2017 03:15:32 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 18
+[28-Nov-2017 03:18:36 America/Chicago] PHP Fatal error:  Undefined class constant 'PARAM_STRING' in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 17
+[28-Nov-2017 03:19:07 America/Chicago] PHP Fatal error:  Undefined class constant 'PARAM_STRING' in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 17
+[28-Nov-2017 03:19:54 America/Chicago] PHP Fatal error:  Undefined class constant 'PARAM_STRING' in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 17
+[28-Nov-2017 03:20:13 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 18
+[28-Nov-2017 03:21:11 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/dnguyen/public_html/355/cascadian/controller/logic.php on line 18

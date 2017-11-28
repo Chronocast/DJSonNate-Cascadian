@@ -165,6 +165,7 @@
 		
 		<!-- INSTRUCTION START -->
 		<div id="div0" class="targetDiv instruction">
+			<!--
 			<div class="bg-info">
 				<h1>Tracking with Cascadian Landworks</h1>
 			</div>
@@ -197,8 +198,13 @@
 				<li>Left/ right arrow: click to resize the navigation panel</li>
 			</ol>
 			<div class="line"></div>
+			-->
+			<h1 id="trackingID">{{ @trackingID }}</h1>
+			<p id="result"></p>
 		</div>
 		<!-- INSTRUCTION END -->
+		
+		
 		
 		<!-- DIV 1 - CONTRACT START -->
 		<div id="div1" class="targetDiv">
@@ -424,13 +430,27 @@
 				
 				jQuery('#div'+$(this).attr('target')).show();
 				
+				//console.log( $(':nth-child(2)', current).text() );
+					
 				if ( $(this).children().hasClass("notification") ) {
 					setTimeout(function() {
 						// remove notification
 						// $(this).children().removeClass("notification");
 						$(':nth-child(3)', current).removeClass("notification");
 					}, 400);
-
+					
+					// get title of the current tab
+					var track_id = $('#trackingID').html();
+					var targetName = $(':nth-child(2)', current).html().toLowerCase();
+					
+					console.log(track_id + " --- " + targetName);
+					$.post(
+						   "./controller/logic.php",
+						   { track_id : track_id, targetName : targetName },
+						   function(result) {
+							$('#result').html(result);
+						   } 
+						);
 				}
 			});
 		});
