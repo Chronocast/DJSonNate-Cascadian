@@ -16,7 +16,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: #566573;
 }
 
 a, a:hover, a:focus {
@@ -49,6 +49,11 @@ a, a:hover, a:focus {
 .navbar-nav .nav-item a button:hover{
 	color:#007bff;
 	background:#fff;
+	transition: all 0.3s;
+	-o-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 /* ---------------------------------------------------

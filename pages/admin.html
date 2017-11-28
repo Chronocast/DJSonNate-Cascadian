@@ -21,7 +21,6 @@
 		
 		<!-- CARD DECK/COLUMNS START -->
 		<div class="card-deck">
-		  
 			<!-- repeat to display templated data -->  
 			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
 				
@@ -81,9 +80,7 @@
 									
 									<!-- DOCUMENT DROPDOWN -->
 									<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
-										
 										<check if="{{ @doc['track_id']==@track['track_id'] }}">
-											
 											<true>
 												<!-- BUTTON TRIGGER FOR DOCUMENT MODAL -->
 												<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-{{ @doc['documentID'] }}">
@@ -153,18 +150,11 @@
 					
 					<!-- CARD BODY -->
 					<div class="card-body">
-						<h6 class="card-title">Current Stage: {{ @track['current_stage'] }}</h6>
+						<h6 class="card-title">Project overview:</h6>
 						<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
 						<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 						<p class="card-text">End Date: {{ @track['end_date'] }}</p>
-						
-						<check if="{{ @track['track_id']==1234567890 }}">
-											
-							<true>
-								This is a test of the emergency broadcast system. Please remain calm, this is only a test.
-								
-							</true>
-						</check>
+						<p>{{ @track['project_description'] }}</p>
 					</div>
 					<!-- CARD FOOTER -->
 					<div class="card-footer">

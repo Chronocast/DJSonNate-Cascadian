@@ -8,7 +8,7 @@
     BODY - ACTIVE PROJECTS 
 ----------------------------------------------------- */
 #active-div{
-	margin-bottom: 3em;
+	margin-bottom: 1em;
 }
 .card-columns{
 	margin-top:-1em;
@@ -17,14 +17,14 @@
 @media (min-width:34em) {
     .card-deck > .card
     {
-        width: 30%;
+        width: 40%;
         flex-wrap: wrap;
         flex: initial;
+		display: block;
+		margin: 2em auto;
     }
 }
-
 .card{
-	margin-top: 2em;
 	border-bottom: 1px groove #DCAE10;
 	border-left: 1px groove #DCAE10;
 	border-right: 1px groove #DCAE10;
@@ -72,4 +72,14 @@
 	font-size: 1.2em;
 	/*color:#DCAE10;*/
 	color:#333A56;
+}
+.card .card-body{
+	margin-bottom: 2.5em;
+}
+
+.card .card-footer{
+	position: absolute;
+	bottom:0;
+	left:0;
+	right:0;
 }
