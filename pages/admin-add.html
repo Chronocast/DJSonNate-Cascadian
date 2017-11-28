@@ -31,24 +31,25 @@
 					<check if="{{ isset(@errors) }}">
 						
 						<true>
-							<!-- JEREMY OG CODES 
-							<span class="error">{{ @errors['projectNameErr'] }}</span><br/>
-							<input name="project_name" id="project_name" type="text" value="{{ @projectName }}" placeholder="Example Name">
-								<br><br>
-							<span class="error">{{ @errors['startDateErr'] }}</span><br/>
-							<input name="start_date" id="start_date" type="text" value="{{ @startDate }}" placeholder="2017-11-01"><br><br>
-							<span class="error">{{ @errors['endDateErr'] }}</span><br/>
-							<input name="end_date" id="end_date" type="text" value="{{ @endDate }}" placeholder="2018-01-11"><br><br>	
-							<span class="error">{{ @errors['projectDescErr'] }}</span><br/>
-							<textarea name="project_description" rows="10" cols="30" placeholder="Description about project">{{ @projectDesciption }}</textarea><br><br>
-							<input type="submit" value="Submit">
-							-->
-							
 							<!-- project name -->
 							<div class="form-group">
 								<label class="col-form-label" for="project_name">Project title</label>
 								<input name="project_name" id="project_name" class="form-control" type="text" placeholder="Project name">
 								<span class="error">{{ @errors['projectNameErr'] }}</span><br/>
+							</div>
+							
+							<!-- client name -->
+							<div class="form-group">
+								<label class="col-form-label" for="client_name">Client</label>
+								<input name="client_name" id="client_name" class="form-control" type="text" placeholder="Client name">
+								<span class="error">{{ @errors['clientNameErr'] }}</span><br/>
+							</div>
+							
+							<!-- client email -->
+							<div class="form-group">
+								<label class="col-form-label" for="client_email">Contact information</label>
+								<input name="client_email" id="client_email" class="form-control" type="email" placeholder="Client email">
+								<span class="error">{{ @errors['clientEmailErr'] }}</span><br/>
 							</div>
 							
 							<!-- project start date -->
@@ -84,24 +85,26 @@
 								<input type="submit" value="Submit" class="btn btn-primary btn-submit">
 							</div>
 						</true>
+						
+						
 						<false>
-							<!-- The actual form 
-							<span class="error"></span><br/>
-							<h4>PROJECT NAME</h4>
-							<input name="project_name" id="project_name" type="text" placeholder="Example Name"><br><br>
-							<h4>START DATE</h4>
-							<input name="start_date" id="start_date" type="text" placeholder="2017-11-01"><br><br>
-							<h4>END DATE</h4>
-							<input name="end_date" id="end_date" type="text" placeholder="2018-01-11"><br><br>
-							<h4>PROJECT DESCRIPTION</h4>
-							<textarea name="project_description" rows="10" cols="30" placeholder="Description about project"></textarea><br><br>
-							<input type="submit" value="Submit">
-							-->
 							<span class="error"></span><br/>
 							<!-- project name -->
 							<div class="form-group">
 								<label class="col-form-label" for="project_name">Project title</label>
 								<input name="project_name" id="project_name" class="form-control" type="text" placeholder="Project name">
+							</div>
+							
+							<!-- client name -->
+							<div class="form-group">
+								<label class="col-form-label" for="client_name">Client</label>
+								<input name="client_name" id="client_name" class="form-control" type="text" placeholder="Client name">
+							</div>
+							
+							<!-- client email -->
+							<div class="form-group">
+								<label class="col-form-label" for="client_email">Contact information</label>
+								<input name="client_email" id="client_email" class="form-control" type="email" placeholder="Client email">
 							</div>
 							
 							<!-- project start date -->
@@ -115,13 +118,6 @@
 								<label class="col-form-label" for="end_date">End date</label>
 								<input name="end date" id="end_date" class="form-control" type="date">
 							</div>
-							
-							<!-- SAMPLE TEST DATE INPUT TYPE - DOES NOT DO ANYTHING 
-							<div class="form-group">
-								<label class="col-form-label" for="start_date">Sample date</label>
-								<input class="form-control" type="date">
-							</div>
-							-->
 							
 							<!-- project description -->
 							<div class="form-group">

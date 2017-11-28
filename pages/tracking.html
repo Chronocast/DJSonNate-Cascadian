@@ -158,44 +158,11 @@
 		
 		<!-- OVERVIEW START -->
 		<div id="div0" class="targetDiv overview">
-			<!--
-			<div class="bg-info">
-				<h1>Tracking with Cascadian Landworks</h1>
-			</div>
-			
-			<h3>Navigation toggler and Progress Bar</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			<ol>
-				<li>Hide/show navigation: Click to hide or show navigation</li>
-				<li>
-					Progress Bar Color indication
-					<ul>
-						<li id="green">Solid Green: task is completed</li>
-						<li id="yellow">Striped Yellow: task is in progress</li>
-						<li id="blue">Striped Blue: recently updated</li>
-					</ul>
-				</li>
-			</ol>
-			<div class="line"></div>
-			
-			<h3>Navigating the side-panel</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			
-			<ol>
-				<li>Contract: see the settled contract</li>
-				<li>Scheduling: see the accepted schedule</li>
-				<li>Material &amp; Labor: see list of material &amp; labor</li>
-				<li>Construction: see construction progress</li>
-				<li>Final punch list: ssee ummary of your order</li>
-				<li>Acceptance: all crterias are met</li>
-				<li>Left/ right arrow: click to resize the navigation panel</li>
-			</ol>
-			<div class="line"></div>
-			-->
 			<div class="bg-info">
 				<h1>{{ @$projectDetails['project_name'] }}</h1>
 			</div>
-			<h3 id="trackingID">Project ID: {{ @trackingID }}</h3>
+			<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
+			
 			
 			<br>
 			<h4>Description:</h4>
@@ -206,8 +173,6 @@
 			<h4>Your Information:</h4>
 			<p>Name: {{ @clientInfo['name'] }}</p>
 			<p>Email: {{ @clientInfo['email'] }}</p>
-			
-			<h1 id="result"></h1>
 		</div>
 		<!-- OVERVIEW END -->
 		

@@ -7,6 +7,9 @@
 /* ---------------------------------------------------
     BODY - ACTIVE PROJECTS 
 ----------------------------------------------------- */
+#active-div{
+	margin-bottom: 3em;
+}
 .card-columns{
 	margin-top:-1em;
 }
@@ -17,7 +20,6 @@
         width: 30%;
         flex-wrap: wrap;
         flex: initial;
-        
     }
 }
 

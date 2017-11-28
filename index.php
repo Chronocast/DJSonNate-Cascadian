@@ -200,6 +200,27 @@
 				$errorsArray["projectNameErr"] = "Project Name cannot be empty!";
 			}
 			
+			/* added by duck */
+			if(!empty($_POST['client_name']))
+			{
+				$client_name = $_POST['client_name'];
+			}
+			else
+			{
+				$error = true;
+				$errorsArray["clientNameErr"] = "Name cannot be empty!";
+			}
+			if(!empty($_POST['client_email']) && filter_var($_POST['client_email'], FILTER_VALIDATE_EMAIL))
+			{
+				$client_email = $_POST['client_email'];
+			}
+			else
+			{
+				$error = true;
+				$errorsArray["clientEmailErr"] = "Invalid email address!";
+			}
+			/*quack*/
+			
 			if(!empty($_POST['start_date']))
 			{
 				$start_date = $_POST['start_date'];
@@ -236,6 +257,7 @@
 			if(!$error && !empty($_POST['tracking_id']))
 			{
 				$GLOBALS['db']->addProject($trackingId, $project_name, $start_date, $end_date, $project_description);
+				$GLOBALS['clientDB']->addClient($trackingId, $client_name, $client_email); 
 				$f3->reroute('http://cascadianlandworks.greenrivertech.net/admin');
 			}
 			else
