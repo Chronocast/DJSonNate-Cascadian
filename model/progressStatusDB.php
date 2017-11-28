@@ -14,7 +14,7 @@ require_once '/home/cascadian/config.php';
 
  
  /*
- SELECT documents.progress, scheduling.progress FROM documents, scheduling WHERE documents.track_id AND scheduling.track_id = "1234567890"
+SELECT documents.progress, scheduling.progress FROM documents, scheduling WHERE documents.track_id AND scheduling.track_id = "1234567890"
 
 CREATE TABLE `cascadia_tracking`.`progress_status` ( `documentStatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0 - not done, 1 - done, 2 - updated' ,
 `schedulingStatus` TINYINT NOT NULL DEFAULT '0' , `materialStatus` TINYINT NOT NULL DEFAULT '0' , `constructionStatus` TINYINT NOT NULL DEFAULT '0' )
@@ -91,6 +91,22 @@ VALUES ('1234567890', '0', '1', '1', '2');
 		
 		//print_r($progressClass);
 		return $progressClass;
+	}
+	
+	/**
+	 * update status of a column 
+	 *
+	 * @param - tracking ID of a project
+	 * @param - name of column associated with ID to be updated
+	 */
+	function updateStatus($track_id, $columnName)
+	{
+		$update = 'UPDATE progress_status SET :columnName = 1 WHERE track_id=:track_id';
+		
+		$statement = $this->_pdo->prepare($update);
+		$statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+		
+		$statement->execute();
 	}
  }
  

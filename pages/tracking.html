@@ -208,22 +208,16 @@
 			
 			<div class="col-md-12">
 				<repeat group="{{ @documentDetails }}" value="{{ @document }}">
-				<div class="col-md-4 document-box">
-					<div class="document-card">
-						<h2 class="text-center">{{ @document['documentName'] }}</h2>
-						<iframe src="{{ @document['documentLink'] }}"></iframe>
-						
-						
-						<!--<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="{{ @document['documentLink'] }}"></iframe></p></a>
-						--><a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
-					
-					
-					
-					
+					<div class="col-md-4 document-box">
+						<div class="document-card">
+							<h2 class="text-center">{{ @document['documentName'] }}</h2>
+							<iframe src="{{ @document['documentLink'] }}"></iframe>
+								
+							<!--<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="{{ @document['documentLink'] }}"></iframe></p></a>
+							--><a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+						</div>
 					</div>
-				</div>
 				</repeat>
-				
 			</div>
 		</div>
 		<!-- DIV 1 ENDS -->
@@ -423,10 +417,20 @@
 			jQuery('.showStep').click(function(){
 				jQuery('.targetDiv').hide();
 				jQuery('.active:first').removeClass('active');
-				jQuery($(this)).parent().addClass('active');
+				
+				// add active class to current tab
+				var current = jQuery($(this)).parent();
+				current.parent().addClass('active');
+				
 				jQuery('#div'+$(this).attr('target')).show();
-				if ( $(this).children().hasClass("notification")) {
-					($(this)).children().removeClass("notification");
+				
+				if ( $(this).children().hasClass("notification") ) {
+					setTimeout(function() {
+						// remove notification
+						// $(this).children().removeClass("notification");
+						$(':nth-child(3)', current).removeClass("notification");
+					}, 400);
+
 				}
 			});
 		});
@@ -439,6 +443,7 @@
 		});
 	</script>
 	
+	<!-- SHOW/ HIDE SIDE-NAV -->
 	<script>
 		jQuery('#navigation-toggle').click(function () {
 			jQuery('#navigation-toggle').toggleClass('hide-navigation');
@@ -447,6 +452,7 @@
 		});
 	</script>
 	
+	<!-- BACK-TO-TOP BUTTON -->
 	<script>
 		$(document).ready(function(){
 			$(window).scroll(function () {
@@ -469,6 +475,7 @@
 		});
 	</script>
 	
+	<!-- HIDE SIDE-NAV IF SCREEN SIZE IS LESS THAN -->
 	<script>
 		$(window).load(function() {
 			if ($(window).width() < 1366) {

@@ -99,6 +99,10 @@ a, a:hover, a:focus {
     color: #fff;
     height:15px;
 }
+#sidebar ul li a .test{
+	border:5px solid red;	
+	
+}
 
 #sidebar #sidebarCollapse .fa {
 	font-size:2.5em;
