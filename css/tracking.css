@@ -117,6 +117,7 @@ a, a:hover, a:focus {
 ----------------------------------------------------- */
 #sidebar.navigation-toggle{
     display: none;
+	width:4em;
 }
 .btn.btn-navigation-toggle,
 .btn.btn-guide{
@@ -199,6 +200,12 @@ a, a:hover, a:focus {
     flex:1;	
 }
 
+.table>thead>tr>th{
+	font-size:20px;
+}
+.table>tbody>tr>td{
+	font-size:16px;
+}
 /* ---------------------------------------------------
     GUIDE TAB
 ----------------------------------------------------- */
@@ -215,6 +222,10 @@ a, a:hover, a:focus {
 /* ---------------------------------------------------
     CONTRACT TAB
 ----------------------------------------------------- */
+.document-box{
+	width:30em;
+	margin-top:1em;
+}
 .document-box a .imgholder,
 .document-box a .btn-download{
 	display: block;
@@ -223,8 +234,18 @@ a, a:hover, a:focus {
 }
 
 .document-box .document-card{
-	border:4px solid #7386D5;
+	border-top:3px solid #7386D5;
+	border-bottom:3px solid #7386D5;
+	border-left:2px solid #7386D5;
+	border-right:2px solid #7386D5;
 	padding: 25px 0;
+	background-color: #F7F5E6;
+}
+.document-box .document-card iframe{
+	display: block;
+	width:22em;
+	height:20em;
+	margin:1.5em auto;
 }
 .imgholder{
 	height:420px;
@@ -234,6 +255,29 @@ a, a:hover, a:focus {
     width: 300px;
     height: 200px;
 }
+
+/* ---------------------------------------------------
+    ACCEPTANCE
+----------------------------------------------------- */
+.acceptance{
+	padding:10px;
+}
+.acceptance img{
+	margin-top:1em;
+	height:250px;
+	width:250px;
+}
+#accepted{
+	color:#5cb85c;
+}
+#unaccepted{
+	color:#f0ad4e;
+}
+#accepted .fa,
+#unaccepted .fa{
+	font-size:40px;
+}
+
 
 
 /* ---------------------------------------------------

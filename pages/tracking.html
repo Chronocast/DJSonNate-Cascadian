@@ -71,7 +71,7 @@
 			<li>
 				<a class="showStep" target="2">
 					<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-					<span class="nav-text">Schedule</span>
+					<span class="nav-text">Scheduling</span>
 					
 					<!-- DISPLAY NOTIFICATION -->
 					<check if= "{{ @progressStatus['schedulingStatus'] == 2 }}">
@@ -132,12 +132,6 @@
 					<i class="fa fa-bars" aria-hidden="true"></i>
 				</button>
 				<!-- NAVIGATION TOGGLE END -->
-				
-				<!-- GUIDE START -->
-				<button class="btn btn-primary btn-guide showStep" target="0" title="Toggle guide">
-					<i class="fa fa-question-circle" aria-hidden="true"></i>
-				</button>
-				<!-- GUIDE END -->
 			</div>
 			
 			<div class="col-md-11">
@@ -198,8 +192,22 @@
 			</ol>
 			<div class="line"></div>
 			-->
-			<h1 id="trackingID">{{ @trackingID }}</h1>
-			<p id="result"></p>
+			<div class="bg-info">
+				<h1>{{ @$projectDetails['project_name'] }}</h1>
+			</div>
+			<h3 id="trackingID">Project ID: {{ @trackingID }}</h3>
+			
+			<br>
+			<h4>Description:</h4>
+			<p>{{ @projectDetails['project_description'] }}</p>
+			
+			<div class="line"></div>
+			
+			<h4>Your Information:</h4>
+			<p>Name: {{ @clientInfo['name'] }}</p>
+			<p>Email: {{ @clientInfo['email'] }}</p>
+			
+			<h1 id="result"></h1>
 		</div>
 		<!-- OVERVIEW END -->
 		
@@ -208,7 +216,7 @@
 		<!-- DIV 1 - CONTRACT START -->
 		<div id="div1" class="targetDiv">
 			<div class="bg-info">
-				<h1>Contract</h1>
+				<h1>Documents</h1>
 			</div>
 			
 			<div class="col-md-12">
@@ -234,7 +242,7 @@
 			</div>
 			
 			<div class="container">
-				<table class="table table-hover">
+				<table class="mytable table table-hover">
 					<thead>
 						<tr>
 							<th>Work Type</th>
@@ -384,9 +392,22 @@
 				<h1>Acceptance</h1>
 			</div>
 
-			<h2>{{ @projectDetails['final_stage'] }}</h2>
-
-			<div class="line"></div>
+			<div class="container">
+				<div class="acceptance">
+					<div class="text-center">
+						<img src="images/cascadian-landworks.png">
+						<check if= "{{ @projectDetails['acceptance'] == 1 }}">
+							<true>
+								<h2 id="accepted"><i class="fa fa-check" aria-hidden="true"></i> Approved by Cascadian Landwork and friends</h2
+								<h4>Thank you for working with us</h4>
+							</true>
+							<false>
+								<h2 id="unaccepted"><i class="fa fa-times" aria-hidden="true"></i> Not yet approved by Cascadian Landwork and friends</h2>
+							</false>
+						</check>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- DIV 6 ENDS -->
 		
@@ -425,7 +446,7 @@
 				
 				// add active class to current tab
 				var current = jQuery($(this)).parent();
-				current.parent().addClass('active');
+				current.addClass('active');
 				
 				jQuery('#div'+$(this).attr('target')).show();
 				

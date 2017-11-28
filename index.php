@@ -11,6 +11,9 @@
 	// Create a admin database object
 	$adminDB = new AdminDB();
 	
+	// Create a client database object
+	$clientDB = new ClientDB();
+	
 	// Create a document database object
 	$docsDB = new DocumentDB();
 	
@@ -66,11 +69,12 @@
 		// end Sonie
 		
 		// Duck's codes
+		$clientInfo = $GLOBALS['clientDB']->getClientInfo($trackingID);
 		$progressStatus = $GLOBALS['statusDB']->getStatus($trackingID);
 		$progressBar = $GLOBALS['statusDB']->toProgressBar($progressStatus);
 		
 		//print_r($progressStatus);
-		
+		$f3->set('clientInfo', $clientInfo);
 		$f3->set('trackingID', $trackingID);
 		$f3->set('progressStatus', $progressStatus);
 		$f3->set('progressBar', $progressBar);
