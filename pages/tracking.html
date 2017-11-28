@@ -50,14 +50,13 @@
 		</div>
 
 		<ul class="list-unstyled components">
-			<!--
 			<li class="active">
 				<a class="showStep" target="0">					
-					<i class="fa fa-question-circle" aria-hidden="true"></i>
-					<span class="nav-text">Guide</span>
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+					<span class="nav-text">Overview</span>
 				</a>
 			</li>
-			-->
+			
 			<li>
 				<a class="showStep" target="1">
 					<i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -163,8 +162,8 @@
 		</div>
 		
 		
-		<!-- INSTRUCTION START -->
-		<div id="div0" class="targetDiv instruction">
+		<!-- OVERVIEW START -->
+		<div id="div0" class="targetDiv overview">
 			<!--
 			<div class="bg-info">
 				<h1>Tracking with Cascadian Landworks</h1>
@@ -202,7 +201,7 @@
 			<h1 id="trackingID">{{ @trackingID }}</h1>
 			<p id="result"></p>
 		</div>
-		<!-- INSTRUCTION END -->
+		<!-- OVERVIEW END -->
 		
 		
 		
@@ -418,7 +417,7 @@
 	<script>
 		jQuery(function(){
 			jQuery('.targetDiv').hide();
-			jQuery('.instruction').show();
+			jQuery('.overview').show();
 			
 			jQuery('.showStep').click(function(){
 				jQuery('.targetDiv').hide();

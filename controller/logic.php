@@ -1,4 +1,13 @@
+
 <?php
+/**
+ * Logic stuffs
+ *
+ * PHP Version 5
+ *
+ * @author Duck Nguyen
+ * @version 1.0
+ */
 	
 	// retrive the ID and column name from POST array
 	$track_id = $_POST['track_id'];

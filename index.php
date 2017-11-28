@@ -24,32 +24,15 @@
 	$f3->set('DEBUG', 3);
 
 	
-	//Route to landing page
+	// Route to landing page
 	$f3->route('GET /', function($f3) {
-		/* please ignore
-		$trackingID = $_POST['trackingID'];
-		$track = $GLOBALS['db']->getTracker(trackingID);
-
-		if($trackingID!= NULL) {
-			if(!empty($track)) {
-				//show that
-				print_r('Tracking id does not exist');
-			}
-			else{
-				//reroute //pass in the array
-				print_r('Tracking id exists');
-			}
-		}
-		else {
-			print_r('put something in pleaseeeeeeee');
-		}
-		*/
-				
 		echo Template::instance()->render('pages/home.html');
 	});
 	
-	/* SONIE's code */
+	
+	// Route to verify tracking ID
 	$f3->route('POST /verify', function($f3) {
+		/* SONIE's code */
 		$trackingID = $_POST['trackingID'];
 		$track = $GLOBALS['db']->getTracker($trackingID);
 
@@ -65,7 +48,7 @@
 		}
 	});
 	
-	//Route to tracking page
+	// Route to tracking page
 	$f3->route('GET|POST /tracking', function($f3) {
 		
 		$trackingID = $_SESSION['trackingID'];
@@ -98,7 +81,7 @@
 	});
 	
 	/* Nate's Code */
-	//Route to admin page
+	// Route to admin page
 	$f3->route('GET|POST /admin', function($f3) {
 		
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
@@ -112,7 +95,7 @@
 		
 	});
 	
-	//Route to admin-project page
+	// Route to admin-project page
 	$f3->route('GET|POST /admin-projects', function($f3) {
 		
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
@@ -125,13 +108,13 @@
 	/* End Nate's Code */
 	
 	
-	//Route to admin-signup
+	// Route to admin-signup
 	$f3->route('GET /admin-signup', function($f3) {
 			echo Template::instance()->render('pages/admin-signup.html');
 		
 	});
 	
-	//Route to admin-signup validation
+	// Route to admin-signup validation
 	$f3->route('POST /new-admin', function($f3) {
 		$adminDB = $GLOBALS['adminDB'];
 		

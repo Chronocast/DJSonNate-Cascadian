@@ -28,54 +28,37 @@
 				<!-- CARD START -->
 				<div class="card mx-auto">
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
-					<!-- button class was btn-info -->
 					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
 						{{ @track['project_name'] }}
 					</button>
 					
 					<div class="d-inline-block text-center">
+						<!-- temporally removing this code - BLOG AND IMAGE UPLOAD
 						<a>
 							<button type="button"  title="Blog" class="btn btn-warning" alt="Blog"> 
 								<i class="fa fa-newspaper-o"></i> 
 							</button>				
 						</a>
 						<a>
-							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
-								<i class="fa fa-calendar-check-o"></i> 
-							</button>				
-						</a>
-						<a>
-							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
-								<i class="fa fa-cubes"></i> 
-							</button>
-						</a>
-						<a>
-							<button type="button" title="Punch List" class="btn btn-warning" alt="Punch List"> 
-								<i class="fa fa-list-ol"></i> 
-							</button>
-						</a>
-						<a>
 							<div class="dropdown">
-								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
+								<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">
 								<button type="button" title="Photos" class="btn btn-warning dropdown-toggle" alt="Photos"  id="picDropdown{{ @track['track_id'] }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-picture-o"></i> 
 								</button>
 								<div class="dropdown-menu" aria-labelledby="picDropdown{{ @track['track_id'] }}">
 									
-									<!-- DOCUMENT DROPDOWN -->
 									<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
 										
 										<check if="{{ @doc['track_id']==@track['track_id'] }}">
 											
 											<true>
-												<!-- BUTTON TRIGGER FOR DOCUMENT MODAL -->
 												<button class="dropdown-item" type="button" data-toggle="modal" data-target="#picModal-{{ @doc['documentID'] }}">
 													{{ @doc['documentName'] }}
 												</button>
 												
 											</true>
 										</check>
-									</repeat><!--END REPEAT: DROPDOWN-->
+									</repeat>
 									
 									<div class="dropdown-divider"></div>
 									<button class="dropdown-item" type="button" data-toggle="modal" data-target="#uploadModal-{{ @track['track_id'] }}">
@@ -85,6 +68,9 @@
 								</div>
 							</div>
 						</a>
+						-->
+						
+						<!-- DOCUMENT BUTTON START -->
 						<a>
 							<div class="dropdown">
 								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
@@ -106,7 +92,8 @@
 												
 											</true>
 										</check>
-									</repeat><!--END REPEAT: DROPDOWN-->
+									</repeat>
+									<!--END REPEAT: DROPDOWN-->
 									
 									<div class="dropdown-divider"></div>
 									<button class="dropdown-item" type="button" data-toggle="modal" data-target="#uploadModal-{{ @track['track_id'] }}">
@@ -116,20 +103,52 @@
 								</div>
 							</div>
 						</a>
+						<!-- DOCUMENT BUTTON END -->
+						
+						<!-- SCHEDULING BUTTON START -->
+						<a>
+							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
+								<i class="fa fa-calendar-check-o"></i> 
+							</button>				
+						</a>
+						<!-- SCHEDULING BUTTON START -->
 						
 						
+						<!-- MATERIAL BUTTON END -->
+						<a>
+							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
+								<i class="fa fa-cubes"></i> 
+							</button>
+						</a>
+						<!-- MATERIAL BUTTON END -->
+						
+						
+						<!-- CONSTRUCTION BUTTON START -->
 						<a>
 							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
 								<!-- <i class="fa fa-cogs"></i>-->
 								<i class="fa fa-wrench"></i>
 							</button>
 						</a>
+						<!-- CONSTRUCTION BUTTON END -->
 						
+						
+						<!-- PUNCH LIST BUTTON START -->
+						<a>
+							<button type="button" title="Punch List" class="btn btn-warning" alt="Punch List"> 
+								<i class="fa fa-list-ol"></i> 
+							</button>
+						</a>
+						<!-- PUNCH LIST BUTTON END -->
+						
+						
+						<!-- APPROVAL BUTTON START -->
 						<a>
 							<button type="button" title="Approval" class="btn btn-warning" alt="Approval"> 
 								<i class="fa fa-check"></i> 
 							</button>
 						</a>
+						<!-- APPROVAL BUTTON END -->
 					</div>
 					
 					<!-- CARD BODY -->
