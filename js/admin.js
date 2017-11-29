@@ -7,6 +7,7 @@
 // Duck's codes modified from
 // https://stackoverflow.com/questions/35427641/how-to-dynamically-set-the-active-class-in-bootstrap-navbar/35428555
 $(document).ready(function () {
+	console.log("we're in the js file");
 	var url = window.location;
 	$('ul.nav a[href="'+ url +'"]').addClass('active');
 	$('ul.nav a').filter(function() {

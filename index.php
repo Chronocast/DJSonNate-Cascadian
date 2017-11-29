@@ -102,10 +102,11 @@
 	// Route to admin-project page
 	$f3->route('GET|POST /admin-projects', function($f3) {
 		
-		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
+		$projectDisplay = $GLOBALS['db']->inactiveProjectDisplay();
+		$clientsInfo = $GLOBALS['clientDB']->getAllClient();
 		
 		$f3->set('projectDisplay', $projectDisplay);
-		
+		$f3->set('clientsInfo', $clientsInfo);
 		echo Template::instance()->render('pages/admin-projects.html');
 		
 	});

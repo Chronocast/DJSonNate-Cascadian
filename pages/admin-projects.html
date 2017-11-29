@@ -16,29 +16,34 @@
 	<!-- PROJECT START -->
 	<div id="" class="portfolio container-fluid">
 		<div class="col-sm-12">
-			<h1>Projects List:</h1>
+			<h1>Inactive Projects:</h1>
 		</div>
 		
 		<!-- Portfolio container -->
 		<div id="inactive-div" class="portfolio">	
 			<div class="list-group">
-				<!-- repeat to display templated data -->  
+				<!-- repeat to display templated data -->
 				<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
-				
-					<!-- BEGIN PROJECT ENTRY -->
-					<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">List group item heading</h5>
-							<small>3 days ago</small>
-						</div>
-						<h6 class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</h6>
-						<small class="text-muted">Donec id elit non mi porta.</small>
-						
-					<!-- END PROJECT ENTRY -->
-					</a>
-			
-				<!-- REPEAT END -->
+				<repeat group="{{ @clientsInfo }}" value="{{ @info }}">
+					<check if="{{ @track['track_id']==@info['track_id'] }}">
+						<true>
+							<!-- BEGIN PROJECT ENTRY -->
+							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+								<div class="d-flex w-100 justify-content-between">
+									<h5 class="mb-1">{{ @track['project_name'] }}</h5>
+									<small>End date: {{ @track['end_date'] }}</small>
+								</div>
+								<h6 class="mb-1">{{ @track['project_description'] }}</h6>
+								<small class="text-muted">Client: {{ @info['name'] }}</small>
+								<br>
+								<small class="text-muted">Email: {{ @info['email'] }}</small>
+							</a>
+							<!-- END PROJECT ENTRY -->
+						</true>
+					</check>
 				</repeat>
+				</repeat>
+				<!-- REPEAT END -->
 			<!-- END LIST GROUP -->  
 			</div>
 		</div>
