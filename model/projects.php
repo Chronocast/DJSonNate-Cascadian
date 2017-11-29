@@ -44,10 +44,31 @@
         function activeProjectDisplay()
         {
             
-            $select = 'SELECT * FROM track_content ORDER BY start_date';
+            $select = 'SELECT * FROM track_content WHERE project_status = 1 ORDER BY start_date';
             
             $results = $this->_pdo->prepare($select);
             //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
+            $results->execute();
+             
+            $resultsArray = array();
+             
+            //map each project to a row of data by date
+            $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+             
+            return $rows;
+        }
+        
+        /**
+         * return list of inactive projects from db
+         *
+         * @author duck
+         * @return list of inactive projects
+         */
+        function inactiveProjectDisplay()
+        {
+            $select = 'SELECT * FROM track_content WHERE project_status = 0 ORDER BY start_date';
+            
+            $results = $this->_pdo->prepare($select);
             $results->execute();
              
             $resultsArray = array();
@@ -64,51 +85,46 @@
          */
         function projectDetails($track_id)
         {
-        $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
-
-        $statement = $this->_pdo->prepare($select);
-        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
-        $statement->execute();
-         
-        return $statement->fetch(PDO::FETCH_ASSOC);
+            $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
+    
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+            $statement->execute();
+             
+            return $statement->fetch(PDO::FETCH_ASSOC);
         }
         
-           /** Sonie's code **/
+        /** Sonie's code **/
         function schedulingDetails($track_id)
         {
-                $select = 'SELECT * FROM scheduling WHERE track_id=:track_id';
+            $select = 'SELECT * FROM scheduling WHERE track_id=:track_id';
         
-        $results = $this->_pdo->prepare($select);
-        //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
-        $results->execute();
-         
-        $resultsArray = array();
-         
-        //map each project to a row of data by date
-        $rows = $results->fetchAll(PDO::FETCH_ASSOC);
-         
-        return $rows;
+            $results = $this->_pdo->prepare($select);
+            //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
+            $results->execute();
+             
+            $resultsArray = array();
+             
+            //map each project to a row of data by date
+            $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+             
+            return $rows;
         }
         
         /** Sonie's code **/
         function materialDetails($track_id)
         {
-        $select = 'SELECT * FROM material WHERE track_id=:track_id';
-        
-        $results = $this->_pdo->prepare($select);
-        //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
-        $results->execute();
-         
-        $resultsArray = array();
-         
-        //map each project to a row of data by date
-        $rows = $results->fetchAll(PDO::FETCH_ASSOC);
-         
-        return $rows;
+            $select = 'SELECT * FROM material WHERE track_id=:track_id';
+            
+            $results = $this->_pdo->prepare($select);
+            //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
+            $results->execute();
+             
+            $resultsArray = array();
+             
+            //map each project to a row of data by date
+            $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+             
+            return $rows;
         }
-        
-        
-
-        
-        
     }

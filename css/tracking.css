@@ -145,6 +145,12 @@ a, a:hover, a:focus {
     background: #7386D5;
 }
 
+.progress-bar-success{
+    background-color:#428bca;
+}
+.progress-bar-warning{
+    background-color: white;
+}
 /* ---------------------------------------------------
     RESIZING STYLE
 ----------------------------------------------------- */
@@ -158,9 +164,6 @@ a, a:hover, a:focus {
     max-width: 60px;
     transition: all 0.3s;
 }
-
-
-
 
 #sidebar.resize ul li a i {
 	font-size: 2em;
@@ -283,7 +286,6 @@ a, a:hover, a:focus {
 /* ---------------------------------------------------
     BACK TO TOP BUTTON
 ----------------------------------------------------- */
-
 .back-to-top {
     cursor: pointer;
     position: fixed;

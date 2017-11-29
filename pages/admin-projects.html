@@ -34,13 +34,17 @@
 									<h5 class="mb-1">{{ @track['project_name'] }}</h5>
 									<small>End date: {{ @track['end_date'] }}</small>
 								</div>
-								<h6 class="mb-1">{{ @track['project_description'] }}</h6>
+								<h6 class="mb-1 text-muted">{{ @track['project_description'] }}</h6>
 								<small class="text-muted">Client: {{ @info['name'] }}</small>
 								<br>
 								<small class="text-muted">Email: {{ @info['email'] }}</small>
 							</a>
-							<a type="button" id="archive" class="btn btn-danger" href="./activate={{ @track['track_id'] }}" >Archive</a>
+							
+
+							<a type="button" id="archive" class="btn btn-danger pull-left" href="./activate={{ @track['track_id'] }}" >Archive</a>
 							</div>
+							<br>
+							
 							<!-- END PROJECT ENTRY -->
 						</true>
 					</check>
