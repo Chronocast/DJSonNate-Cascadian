@@ -304,6 +304,18 @@
 		
 	});
 	
+	// activate
+	$f3->route('GET /activate=@id', function($f3, $params)
+	{
+		$trackingID = $params['id'];
+		$track = $GLOBALS['db']->activateProject($trackingID);
+
+		//print_r($trackingID);
+		
+		$f3->reroute('/admin');
+		
+	});
+	
 	//Route to admin-login validation
 	$f3->route('POST /admin-validation', function($f3) {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {

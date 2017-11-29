@@ -158,7 +158,15 @@ class TrackingDB
             $statement->execute();
         }
     
-   
+        /** Nate's code **/
+        function activateProject($track_id)
+        {
+            $update = 'UPDATE track_content SET project_status = 1 WHERE track_id=:track_id';
+            
+            $statement = $this->_pdo->prepare($update);
+            $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+            $statement->execute();
+        }
 
         
         /** Sonie's code **/

@@ -28,6 +28,7 @@
 					<check if="{{ @track['track_id']==@info['track_id'] }}">
 						<true>
 							<!-- BEGIN PROJECT ENTRY -->
+							<div>
 							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
 								<div class="d-flex w-100 justify-content-between">
 									<h5 class="mb-1">{{ @track['project_name'] }}</h5>
@@ -38,6 +39,8 @@
 								<br>
 								<small class="text-muted">Email: {{ @info['email'] }}</small>
 							</a>
+							<a type="button" id="archive" class="btn btn-danger" href="./activate={{ @track['track_id'] }}" >Archive</a>
+							</div>
 							<!-- END PROJECT ENTRY -->
 						</true>
 					</check>
