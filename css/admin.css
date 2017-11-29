@@ -83,3 +83,22 @@
 	left:0;
 	right:0;
 }
+
+.card .nav-item {
+    background:#F7F5E6;
+}
+
+.card .nav-tabs {
+    background:#F7F5E6;
+}
+
+.nav-item:active {
+    background:white;
+}
+
+.card .nav-item:hover{
+	border-left:2px solid #ffc107;
+    border-right: 2px solid #ffc107;
+    border-top:2px solid #ffc107;
+	cursor:pointer;
+}
