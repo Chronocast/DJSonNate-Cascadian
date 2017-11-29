@@ -1,0 +1,200 @@
+<!--
+	Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+	Date: 10/13/17
+	Filename: home.html
+	Description: Admin page for Track-king. Cascadian Landworks tracking system.
+-->
+
+	<include href="pages/admin-header.html" />
+	<title>Admin | Cascadian Landworks Tracking</title>
+	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+</head>
+	
+	<!-- ADMIN - NAVIGATION -->
+	<include href="pages/admin-navbar.html"/>
+	
+	<!-- ACTIVE PROJECT START -->
+	<div id="active-div" class="portfolio container-fluid">
+		<div class="col-sm-12">
+			<h1>Active Projects:</h1>
+		</div>
+		
+		<!-- CARD DECK/COLUMNS START -->
+		<div class="card-deck">
+			<!-- repeat to display templated data -->  
+			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
+				
+                <!-- CARD START -->
+				<div class="card mx-auto">
+					<!-- CARD TITLE + OPTIONS BUTTONS-->
+					<!-- button class was btn-info -->
+					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
+						{{ @track['project_name'] }}
+					</button>
+					
+					
+					<nav class="nav nav-tabs" id="myTab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
+						<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Blog</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Schedule</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Materials</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Punch</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Documents</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">Document 1</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Upload Doc</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Photos</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">Pic 1</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Upload Pic</a>
+							</div>
+						</li>
+						
+					</nav>
+					
+					<div class="tab-content" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+							<!-- CARD BODY -->
+							<div class="card-body">
+								<h6 class="card-title">Current Stage: {{ @track['current_stage'] }}</h6>
+								
+								
+								
+								<check if="{{ @track['track_id']==1234567890 }}">
+													
+									<true>
+										This is a test of the emergency broadcast system. Please remain calm, this is only a test.
+										
+									</true>
+								</check>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
+							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
+						</div>
+						<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
+						</div>
+					</div>
+					
+					
+					
+					<!-- CARD FOOTER -->
+					<div class="card-footer">
+						<small class="text-muted">Last updated {{ @track['last_update'] }}</small>
+					</div>
+				  
+				  
+					<!-- Info MODAL -->
+					<div class="modal fade" id="infoModal-{{ @track['track_id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Project: {{ @track['project_name'] }}</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p class="card-text">Current Stage: {{ @track['current_stage'] }}</p>
+									<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
+									<p class="card-text">End Date: {{ @track['end_date'] }}</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Edit</button>
+									<button type="button" class="btn btn-primary">Delete</button>
+									<button type="button" class="btn btn-primary">Save changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END Modal -->
+					
+					<!-- UPLOAD DOC MODAL -->
+					<div class="modal fade" id="uploadModal-{{ @track['track_id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<form id="form" enctype="multipart/form-data" role="form">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Project: {{ @track['project_name'] }}</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form>      
+											<div id="dropBox">
+												<p>Select file to upload</p>
+											</div>
+											<!--<input type="hidden" name="projectID" value="{{ @track['track_ID'] }}">-->
+											<input type="file" name="fileInput" id="fileInput" />
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- END Modal -->
+					
+					
+					<!-- DOCUMENT MODAL CODE -->
+					<!-- repeat to display templated data -->  
+					<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
+						
+						<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
+							<check if="{{ @doc['track_id']==@track['track_id'] }}">
+								<true>
+									<!-- DOCUMENT MODAL -->
+									<div class="modal fade" id="documentModal-{{ @doc['documentID'] }}" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true" >
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="documentModalLabel">{{ @doc['documentName'] }}</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<iframe src="uploads/pdf/{{ @doc['documentName'] }}.pdf" width="640" height="480"></iframe>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-success">Download</button>
+													<button type="button" class="btn btn-danger">Delete</button>
+												</div>
+											</div>
+										</div>
+									</div><!-- END Modal -->
+								</true>
+							</check>
+						</repeat>
+						<!--END REPEAT: DROPDOWN-->
+						
+					</repeat>
+				  
+				
+				</div>
+				<!-- END Card -->
+
+			<!-- END repeat to display templated data -->
+			</repeat>
+			
+		<!-- CARD DECK/COLUMNS END -->
+		</div>
+		
+	<!-- ACTIVE PROJECT END -->
+	</div>
+	
+	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
+	<include href="pages/admin-footer.html" />
