@@ -87,11 +87,16 @@
 	/* Nate's Code */
 	// Route to admin page
 	$f3->route('GET|POST /admin', function($f3) {
+		if ($_SESSION['adminID'] == NULL)
+		{
+			$f3->reroute('/admin-login');	
+		}
 		
+		$adminName = $_SESSION['adminName'];
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
 		
-		
+		$f3->set('adminName', $adminName);
 		$f3->set('projectDisplay', $projectDisplay);
 		$f3->set('docDisplay', $docDisplay);
 		
@@ -171,7 +176,7 @@
 				$f3->set('SESSION.verify', 'Passwords do not match');
 				$error = true;
 			}
-			print_r($_SESSION);
+			
 			//Routing base on error
 			if (error) {
 				$admin = new Admin($firstName, $email, $password);
@@ -188,8 +193,41 @@
 	});
 	
 	//Route to admin-login
-	$f3->route('GET /admin-login', function($f3) {
-		echo Template::instance()->render('pages/admin-login.html');
+	$f3->route('GET|POST /admin-login', function($f3) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$email = $_POST['email'];
+			
+			// HASH THIS THING PLEASE
+			$pass = $_POST['password'];
+			
+			$adminDB = $GLOBALS['adminDB'];
+			$creds = $adminDB->login($email);
+			
+			//if( !($creds['email'] == $email) )
+			//{
+			//	$f3->set('SESSION.emailError', "testing 1");
+			//}
+			//else if( !($creds['password'] == $pass) )
+			//{
+			//	$f3->set('SESSION.passwordError', "testing2");
+			//}
+			//else
+			if ( $creds['password'] == $pass ) 
+			{
+				$f3->set('SESSION.adminID',$id);
+				$f3->set('SESSION.adminName', $name);
+				$_SESSION['adminID'] = $creds['adminID'];
+				$_SESSION['adminName'] = $creds['firstName'];
+				unset($_POST);
+			}
+			
+		}
+		
+		if ($_SESSION['adminID'] != NULL && $_SESSION['adminName'] != NULL)
+		{
+			$f3->reroute('/admin');
+		}
+		echo Template::instance()->render('pages/admin-login.php');
 			
 	});
 	
@@ -318,27 +356,7 @@
 	
 	//Route to admin-login validation
 	$f3->route('POST /admin-validation', function($f3) {
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$email = $_POST['email'];
-			
-			// Hash it for proper check
-			$pass = $_POST['password'];
-			
-			$adminDB = $GLOBALS['adminDB'];
-			
-			$creds = $adminDB->login($email);
-			
-			if( !($creds['password'] == $pass) ) {
-				print_r($_SESSION);
-				$f3->set('SESSION.passwordError', 'Password incorrect');
-				$f3->reroute('/admin-login');
-			}
-			else {
-				$_SESSIION['firstName'] = $creds['firstName'];
-				$f3->reroute('/admin');
-				unset($_POST);
-			}
-		}
+
 	});
 	
 	
