@@ -54,6 +54,12 @@
 	// Route to tracking page
 	$f3->route('GET|POST /tracking', function($f3) {
 		
+		// reroute to home if no id was found
+		if ($_SESSION['trackingID'] == NULL)
+		{
+			$f3->reroute('/');
+		}
+		
 		$trackingID = $_SESSION['trackingID'];
 		
 		// Sonie's codes

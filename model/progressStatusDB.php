@@ -55,7 +55,7 @@ VALUES ('1234567890', '0', '1', '1', '2');
 	 */
 	function getStatus($track_id)
 	{
-		$select = 'SELECT documentStatus, schedulingStatus, materialStatus, constructionStatus FROM progress_status WHERE track_id=:track_id';
+		$select = 'SELECT documentsStatus, schedulingStatus, materialStatus, constructionStatus FROM progress_status WHERE track_id=:track_id';
 		
 		$statement = $this ->_pdo->prepare($select);
 		$statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);

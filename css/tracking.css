@@ -88,17 +88,6 @@ a, a:hover, a:focus {
     font-size: 1.9em;
     margin-bottom: 5px;
 }
-
-#sidebar ul li a .notification{
-	position: absolute;
-    top: -3px;
-    right: -7px;
-	padding:8px;
-	border-radius:45%;
-    background-color: rgba(212, 19, 13, 1);
-    color: #fff;
-    height:15px;
-}
 #sidebar ul li a .test{
 	border:5px solid red;	
 	
@@ -112,6 +101,22 @@ a, a:hover, a:focus {
 	display: none;
 }
 
+/* ---------------------------------------------------
+    TOGGLING NOTIFICATION
+----------------------------------------------------- */
+#sidebar ul li a .notification{
+	position: absolute;
+    top: -3px;
+    right: -7px;
+	padding:8px;
+	border-radius:45%;
+    background-color: rgba(212, 19, 13, 1);
+    color: #fff;
+    height:15px;
+}
+.recently-updated{
+	border:3px solid #F1C40F;
+}
 /* ---------------------------------------------------
     TOGGLING NAVIGATION
 ----------------------------------------------------- */
@@ -208,19 +213,7 @@ a, a:hover, a:focus {
 }
 .table>tbody>tr>td{
 	font-size:16px;
-}
-/* ---------------------------------------------------
-    GUIDE TAB
------------------------------------------------------ */
-#green {
-	color:#5cb85c	;
-}
-#yellow {
-	color:#f0ad4e;
-}
-#blue {
-	color:#428bca;
-}
+} 
 
 /* ---------------------------------------------------
     CONTRACT TAB
@@ -235,14 +228,18 @@ a, a:hover, a:focus {
 	margin-left:auto;
 	margin-right:auto;
 }
-
-.document-box .document-card{
+.document-card{
+	padding: 25px 0;
+	background-color: #F7F5E6;
+}
+.document-box .card{
 	border-top:3px solid #7386D5;
 	border-bottom:3px solid #7386D5;
 	border-left:2px solid #7386D5;
 	border-right:2px solid #7386D5;
-	padding: 25px 0;
-	background-color: #F7F5E6;
+}
+.document-box .recently-updated{
+	border:5px solid #F1C40F;
 }
 .document-box .document-card iframe{
 	display: block;
@@ -257,6 +254,14 @@ a, a:hover, a:focus {
 .construction-img{
     width: 300px;
     height: 200px;
+}
+/* ---------------------------------------------------
+    CONSTRUCTION 
+----------------------------------------------------- */
+.construction-item{
+	margin-top:1em;
+	margin-bottom:1em;
+	padding:15px;
 }
 
 /* ---------------------------------------------------
@@ -282,7 +287,6 @@ a, a:hover, a:focus {
 }
 
 
-
 /* ---------------------------------------------------
     BACK TO TOP BUTTON
 ----------------------------------------------------- */
@@ -293,7 +297,6 @@ a, a:hover, a:focus {
     right: 20px;
     display:none;
 }
-
 .wrapper1{
 	padding:0;
 	margin-left:0;

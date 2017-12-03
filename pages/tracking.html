@@ -60,7 +60,7 @@
 			<li>
 				<a class="showStep" target="1">
 					<i class="fa fa-file-text-o" aria-hidden="true"></i>
-					<span class="nav-text">Document</span>
+					<span class="nav-text">Documents</span>
 					
 					<!-- DISPLAY NOTIFICATION -->
 					<check if= "{{ @progressStatus['documentStatus'] == 2 }}">
@@ -140,8 +140,8 @@
 				-->
 				<div class="progress">
 					<div class="progress-bar {{ @progressBar[0] }}" role="progressbar" style="width:25%">
-						Documentation
-					</div>
+						Documents
+					</div> 
 					<div class="progress-bar {{ @progressBar[1] }}" role="progressbar" style="width:25%">
 						Scheduling
 					</div>
@@ -160,10 +160,8 @@
 		<div id="div0" class="targetDiv overview">
 			<div class="bg-info">
 				<h1>{{ @$projectDetails['project_name'] }}</h1>
-			</div>
+			</div> 
 			<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
-			
-			
 			<br>
 			<h4>Description:</h4>
 			<p>{{ @projectDetails['project_description'] }}</p>
@@ -187,7 +185,10 @@
 			<div class="col-md-12">
 				<repeat group="{{ @documentDetails }}" value="{{ @document }}">
 					<div class="col-md-4 document-box">
-						<div class="document-card">
+						<check if="{{ @document['viewStatus'] == 0 }}">
+							<true><div class="document-card card recently-updated"></true>
+							<false><div class="document-card card"></false>
+						</check>
 							<h2 class="text-center">{{ @document['documentName'] }}</h2>
 							<iframe src="{{ @document['documentLink'] }}"></iframe>
 								
@@ -205,32 +206,30 @@
 			<div class="bg-info">
 				<h1>Scheduling </h1>
 			</div>
-			
-			<div class="container">
-				<table class="mytable table table-hover">
-					<thead>
-						<tr>
-							<th>Work Type</th>
-							<th>Schedule Detail </th>
-							<th>Cost</th>
-							<th>Contact</th>
-							<th>Progress</th>
+			<table class="mytable table table-hover">
+				<thead>
+					<tr>
+						<th>Work Type</th>
+						<th>Schedule Detail </th>
+						<th>Cost</th>
+						<th>Contact</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<repeat group="{{ @schedulingDetails }}" value="{{ @schedule }}">
+						<check if= "{{ @schedule['viewStatus'] == 0 }}">
+							<true><tr class="recently-updated"></true>
+							<false><tr></false>
+						</check>
+							<td>{{ @schedule['workType'] }}</td>
+							<td>{{ @schedule['schedule'] }}</td>
+							<td>{{ @schedule['cost'] }}</td>
+							<td>{{ @schedule['contact'] }}</td>
 						</tr>
-					</thead>
-					
-					<tbody>
-						<repeat group="{{ @schedulingDetails }}" value="{{ @schedule }}">
-							<tr>
-								<td>{{ @schedule['workType'] }}</td>
-								<td>{{ @schedule['schedule'] }}</td>
-								<td>{{ @schedule['cost'] }}</td>
-								<td>{{ @schedule['contact'] }}</td>
-								<td>{{ @schedule['progress'] }}</td>
-							</tr>
-						</repeat>
-					</tbody>
-				</table>
-			</div>
+					</repeat>
+				</tbody>
+			</table>
 		</div>	
 		<!-- DIV 2 ENDS -->
 		
@@ -241,31 +240,30 @@
 				<h1>Material &amp; Labor</h1>
 			</div>
 			
-			<div class="container">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>Material Type</th>
-							<th>Material Unit </th>
-							<th>Cost</th>
-							<th>Notes</th>
-							<th>Progress</th>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Unit</th>
+						<th>Cost</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<repeat group="{{ @materialDetails }}" value="{{ @material }}">
+						<check if= "{{ @material['viewStatus'] == 0 }}">
+							<true><tr class="recently-updated"></true>
+							<false><tr></false>
+						</check>
+							<td>{{ @material['materialType'] }}</td>
+							<td>{{ @material['materialUnit'] }}</td>
+							<td>{{ @material['cost'] }}</td>
+							<td>{{ @material['notes'] }}</td>
 						</tr>
-					</thead>
-					
-					<tbody>
-						<repeat group="{{ @materialDetails }}" value="{{ @schedule1 }}">
-						<tr>
-							<td>{{ @schedule1['materialType'] }}</td>
-							<td>{{ @schedule1['materialUnit'] }}</td>
-							<td>{{ @schedule1['cost'] }}</td>
-							<td>{{ @schedule1['notes'] }}</td>
-							<td>{{ @schedule1['progress'] }}</td>
-						</tr>
-						</repeat>
-					</tbody>
-				</table>
-			</div>
+					</repeat>
+				</tbody>
+			</table>
 		</div>
 		<!-- DIV 3 ENDS -->
 		
@@ -302,33 +300,12 @@
 			<!-- LIGHTBOX ENDS -->
 			
 			<br>
-			<div class="col-md-12">
+			<div class="col-sm-12 construction-item recently-updated">
 				<div class="col-md-3">
 					<h2><img src="{{ @projectDetails['construction_photos'] }}" class="construction-img"></h2>
 				</div>
-				<div class="col-md-9">
-					<p>Good looking guys finished work #1</p>
-					<ol>
-						<li>Despcription #1</li>
-						<li>Despcription #2</li>
-						<li>Despcription #3</li>
-					</ol>
-				</div>
-			</div>
-			
-			<br>
-			<div class="col-md-12">
-				<div class="col-md-3">
-					<h2><img src="http://image-store.slidesharecdn.com/377e624d-a4a6-4578-96b1-1876ec310eac-original.jpeg"
-					class="construction-img"></h2>
-				</div>
-				<div class="col-md-9">
-					<p>Good looking guys finished work #2</p>
-					<ol>
-						<li>Despcription #4</li>
-						<li>Despcription #5</li>
-						<li>Despcription #6</li>
-					</ol>
+				<div class="col-sm-9">
+					<h1>PULL ME FROM DB PLEASE</h1>
 				</div>
 			</div>
 			
@@ -402,6 +379,7 @@
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
 		jQuery(function(){
+			
 			jQuery('.targetDiv').hide();
 			jQuery('.overview').show();
 			
@@ -413,16 +391,21 @@
 				var current = jQuery($(this)).parent();
 				current.addClass('active');
 				
-				jQuery('#div'+$(this).attr('target')).show();
-				
-				//console.log( $(':nth-child(2)', current).text() );
+				var currentDiv = jQuery('#div'+$(this).attr('target'));
+				currentDiv.show();
+								
 					
 				if ( $(this).children().hasClass("notification") ) {
+					
+					// remove notification
 					setTimeout(function() {
-						// remove notification
-						// $(this).children().removeClass("notification");
 						$(':nth-child(3)', current).removeClass("notification");
-					}, 400);
+					}, 2500);
+					
+					// remove recently-updated
+					setTimeout(function() {
+						currentDiv.find("*").removeClass("recently-updated");
+					}, 4000);
 					
 					// get title of the current tab
 					var track_id = $('#trackingID').html();
@@ -430,7 +413,7 @@
 					
 					console.log(track_id + " --- " + targetName);
 					$.post(
-						   "./controller/logic.php",
+						   "./controller/notification-logic.php",
 						   { track_id : track_id, targetName : targetName },
 						   function(result) {
 							$('#result').html(result);
@@ -483,11 +466,8 @@
 	<!-- HIDE SIDE-NAV IF SCREEN SIZE IS LESS THAN -->
 	<script>
 		$(window).load(function() {
-			if ($(window).width() < 1366) {
+			if ($(window).width() < 1024) {
 				jQuery('#sidebar').toggleClass('navigation-toggle');
-			}
-			else {
-				console.log("testing 2");
 			}
 		});
 	</script>
