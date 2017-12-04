@@ -365,6 +365,29 @@
 
 	});
 	
+	$f3->route('POST /upload', function($f3) {
+			$project_dir = "uploads/" . $_POST['projectID'];
+			$upload_dir = $project_dir . "/documents/";
+			$fileName = basename($_FILES["fileInput"]["name"]);
+			$destination = $upload_dir . $fileName;
+			
+			if (!file_exists($project_dir)) {
+				mkdir ($project_dir, 0777);
+			}
+			
+			if (!file_exists($upload_dir)) {
+				mkdir ($upload_dir, 0777);
+			}
+			
+			if (file_exists($destination)) {
+				$fileName .= "_1";
+				$destination = $upload_dir . $fileName;
+			}
+			
+			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+			
+			$f3->reroute('/admin');
+	});
 	
 	//Route to admin-slack
 	$f3->route('GET /admin-slack', function($f3) {

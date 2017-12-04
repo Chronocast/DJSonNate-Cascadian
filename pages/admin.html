@@ -192,7 +192,7 @@
 					<div class="modal fade" id="uploadModal-{{ @track['track_id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
-								<form id="form" enctype="multipart/form-data" role="form">
+								<form id="form" enctype="multipart/form-data" role="form" action="./upload" method="post">
 									<div class="modal-header">
 										<h5 class="modal-title" id="exampleModalLabel">Project: {{ @track['project_name'] }}</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -200,22 +200,22 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form>      
 											<div id="dropBox">
 												<p>Select file to upload</p>
 											</div>
-											<!--<input type="hidden" name="projectID" value="{{ @track['track_ID'] }}">-->
+											<input type="hidden" name="projectID" value="{{ @track['track_id'] }}">
 											<input type="file" name="fileInput" id="fileInput" />
-										</form>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 									</div>
+									<input name="action" type="submit" value="Submit Image" class="btn">
 								</form>
 							</div>
 						</div>
 					</div>
 					<!-- END Modal -->
+					
 					
 					
 					<!-- DOCUMENT MODAL CODE -->
