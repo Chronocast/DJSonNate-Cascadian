@@ -220,7 +220,7 @@
 		$_SESSION = array();
 		session_destroy();
 		$f3->reroute('/');
-	}
+	});
 
 	//Route to admin-login
 	$f3->route('GET|POST /admin-login', function($f3) {
