@@ -1,5 +1,4 @@
 <?php
-
 	//Require the autoload file
 	require_once('vendor/autoload.php');
 	
@@ -7,6 +6,10 @@
 	
 	// Create a tracking database object
 	$db = new TrackingDB();
+	
+	// Create a progress status database object
+	$statusDB = new ProgressStatusDB();
+	
 	
 	// Create a admin database object
 	$adminDB = new AdminDB();
@@ -17,15 +20,17 @@
 	// Create a document database object
 	$docsDB = new DocumentDB();
 	
-	// Create a progress status database object
-	$statusDB = new ProgressStatusDB();
+	// Create a scheduling database object
+	$schedulingDB = new SchedulingDB();
+	
+	// Create a material database object
+	$materialDB = new MaterialDB();
 	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 	
 	//Set debug level
 	$f3->set('DEBUG', 3);
-
 	
 	// Route to landing page
 	$f3->route('GET /', function($f3) {
@@ -38,7 +43,6 @@
 		/* SONIE's code */
 		$trackingID = $_POST['trackingID'];
 		$track = $GLOBALS['db']->getTracker($trackingID);
-
 		if($trackingID!= NULL) {
 			if(empty($track)) {
 				$f3->reroute('/');
@@ -64,8 +68,8 @@
 		
 		// Sonie's codes
 		$projectDetails = $GLOBALS['db']->projectDetails($trackingID);
-		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
 		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
+		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
 		$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
 		$punchListDetails = $GLOBALS['db']->punchListDetails($trackingID);
 		
@@ -104,10 +108,18 @@
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
 		
-		$f3->set('i', 0); // increment value
 		$f3->set('adminName', $adminName);
 		$f3->set('projectDisplay', $projectDisplay);
 		$f3->set('docDisplay', $docDisplay);
+		
+		/* Duck codes */
+		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
+		$materialDisplay = $GLOBALS['materialDB']->projectMaterialDisplay();
+		
+		$f3->set('i', 0); // increment value
+		$f3->set('scheduleDisplay', $scheduleDisplay);
+		$f3->set('materialDisplay', $materialDisplay);
+		/* End Duck */
 		
 		echo Template::instance()->render('pages/admin.html');
 		
@@ -344,7 +356,6 @@
 	{
 		$trackingID = $params['id'];
 		$track = $GLOBALS['db']->archiveProject($trackingID);
-
 		//print_r($trackingID);
 		
 		$f3->reroute('/admin');
@@ -356,7 +367,6 @@
 	{
 		$trackingID = $params['id'];
 		$track = $GLOBALS['db']->activateProject($trackingID);
-
 		//print_r($trackingID);
 		
 		$f3->reroute('/admin');
@@ -365,7 +375,6 @@
 	
 	//Route to admin-login validation
 	$f3->route('POST /admin-validation', function($f3) {
-
 	});
 	
 	$f3->route('POST /upload', function($f3) {
