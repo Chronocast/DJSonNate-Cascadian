@@ -8,7 +8,7 @@ require_once '/home/cascadian/config.php';
  *
  * PHP Version 5
  *
- * @author Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon 
+ * @author Nate Hascup
  * @version 1.0
  */
  

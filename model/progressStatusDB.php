@@ -12,40 +12,26 @@ require_once '/home/cascadian/config.php';
  * @version 1.0
  */
 
- 
- /*
-SELECT documents.progress, scheduling.progress FROM documents, scheduling WHERE documents.track_id AND scheduling.track_id = "1234567890"
-
-CREATE TABLE `cascadia_tracking`.`progress_status` ( `documentStatus` TINYINT NOT NULL DEFAULT '0' COMMENT '0 - not done, 1 - done, 2 - updated' ,
-`schedulingStatus` TINYINT NOT NULL DEFAULT '0' , `materialStatus` TINYINT NOT NULL DEFAULT '0' , `constructionStatus` TINYINT NOT NULL DEFAULT '0' )
-ENGINE = MyISAM;
-
-ALTER TABLE progress_status ADD FOREIGN KEY (track_id) REFERENCES track_content(track_id)
-
-INSERT INTO `cascadia_tracking`.`progress_status` (`track_id`, `documentStatus`, `schedulingStatus`, `materialStatus`, `constructionStatus`)
-VALUES ('1234567890', '0', '1', '1', '2');
- */
- 
- class ProgressStatusDB {
+class ProgressStatusDB {
 	private $_pdo;
 	
- function __construct()
- {
-     
-     try {
-         //Establish database connection
-         $this->_pdo = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD);
-         
-         //keep the connection open for reuse
-         $this->_pdo->setAttribute( PDO::ATTR_PERSISTENT, true);
-         
-         //Throw an exception whenever a database error occurs
-         $this->_pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-     }
-     catch (PDOException $e) {
-         die($e->getMessage());
-     }
- }
+	function __construct()
+	{
+		 
+		 try {
+			  //Establish database connection
+			  $this->_pdo = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD);
+			  
+			  //keep the connection open for reuse
+			  $this->_pdo->setAttribute( PDO::ATTR_PERSISTENT, true);
+			  
+			  //Throw an exception whenever a database error occurs
+			  $this->_pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		 }
+		 catch (PDOException $e) {
+			  die($e->getMessage());
+		 }
+	}
 	
 	/**
 	 * get a project progress status

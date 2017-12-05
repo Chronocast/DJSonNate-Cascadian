@@ -17,7 +17,7 @@
 @media (min-width:34em) {
     .card-deck > .card
     {
-        width: 40%;
+        width: 48%;
         flex-wrap: wrap;
         flex: initial;
 		display: block;
@@ -36,7 +36,6 @@
 	background:#DCAE10;
 	color:white;
 	text-overflow: ellipsis;
-	
 	white-space: nowrap;
 	overflow: hidden;
 }
@@ -52,6 +51,9 @@
 	padding-bottom:4px;
     width: 100%;
 }
+.card .d-inline-block a{
+	cursor:pointer;
+}
 .card .d-inline-block a .dropdown{
 	display: inline-block;
 }
@@ -64,9 +66,11 @@
 	background:#F7F5E6;
 	border:1px solid #52658F;
 }
+.card .d-inline-block a .btn .active{
+	border:3px solid #ffc107;
+}
 .card .d-inline-block a .btn:hover{
 	border:2px solid #ffc107;
-	cursor:pointer;
 }
 .card .d-inline-block a .btn .fa {
 	font-size: 1.2em;

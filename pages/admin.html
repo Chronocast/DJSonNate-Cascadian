@@ -21,17 +21,20 @@
 		
 		<!-- CARD DECK/COLUMNS START -->
 		<div class="card-deck">
+			
 			<!-- repeat to display templated data -->  
 			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
+				
 				<!-- CARD START -->
 				<div class="card mx-auto">
+					
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
 					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
-						<h1>{{ @i }}</h1>{{ @track['project_name'] }}
+						<h3>{{ @track['project_name'] }}</h3>
 					</button>
 					
-					<div class="d-inline-block text-center data-{{ @i }}">
-						
+					<!-- TOOLS BUTTONS START -->
+					<div class="d-inline-block text-center data-{{ @i }}">						
 						<!-- OVERVIEW BUTTON START -->
 						<a class="showStep" target="{{ @i }}">
 							<button type="button"  title="Overview" class="btn btn-warning" alt="Overview"> 
@@ -43,39 +46,16 @@
 						<!-- DOCUMENT BUTTON START -->
 						<a class="showStep" target="{{ @i + 1 }}">
 							<div class="dropdown">
-								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
-								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown{{ @track['track_id'] }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" title="Documents" class="btn btn-warning" alt="Documents" >
 									<i class="fa fa-file-text-o"></i> 
 								</button>
-								<div class="dropdown-menu" aria-labelledby="docDropdown{{ @track['track_id'] }}">
-									
-									<!-- DOCUMENT DROPDOWN -->
-									<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
-										<check if="{{ @doc['track_id']==@track['track_id'] }}">
-											<true>
-												<!-- BUTTON TRIGGER FOR DOCUMENT MODAL -->
-												<button class="dropdown-item" type="button" data-toggle="modal" data-target="#documentModal-{{ @doc['documentID'] }}">
-													{{ @doc['documentName'] }}
-												</button>
-												
-											</true>
-										</check>
-									</repeat>
-									<!--END REPEAT: DROPDOWN-->
-									
-									<div class="dropdown-divider"></div>
-									<button class="dropdown-item" type="button" data-toggle="modal" data-target="#uploadModal-{{ @track['track_id'] }}">
-										Upload a new Document
-									</button>
-									
-								</div>
 							</div>
 						</a>
 						<!-- DOCUMENT BUTTON END -->
 						
 						<!-- SCHEDULING BUTTON START -->
 						<a class="showStep" target="{{ @i + 2 }}">
-							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
+							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule"> 
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>				
 						</a>
@@ -120,151 +100,173 @@
 						</a>
 						<!-- APPROVAL BUTTON END -->
 					</div>
+					<!-- TOOLS BUTTONS END -->
 					
 					<!-- CARD BODY -->
 					<div class="card-body">
+						
+						<!-- OVERVIEW START -->
 						<div id="div{{ @i }}" class="targetDiv{{ @i }} overview{{ @i }}">
-							<h6 class="card-title">Project overview:</h6>
+							<div class="overview-headings">
+								
+								<h5 class="card-title">Overview:</h5>
+								<div class="overview-options">
+									<i class="fa fa-pencil-square" aria-hidden="true"></i>
+									<i class="fa fa-archive" aria-hidden="true"></i>
+								</div>
+								
+							</div>
+							<br>
 							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
 							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 							<p>{{ @track['project_description'] }}</p>
 						</div>
+						
+						<!-- DOCUMENTS START -->
 						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
-							<h1>DOCUMENT</h1>
-							<p>{{ @track['project_name'] }}</p>
+							<h5 class="card-title">Documents:</h5>
+							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<br>
+							
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Document tittle</th>
+										<th>View</th> <!-- is this necessary -->
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<!-- CHECK FOR VALID DOC -->
+									<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
+										<check if="{{ @doc['track_id']==@track['track_id'] }}">
+											<true>
+												<tr>
+													<td>{{ @doc['documentName'] }}</td>
+													<td><i class="fa fa-download" aria-hidden="true"></i></td>
+													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+												</tr>
+											</true>
+										</check>
+									</repeat>
+								</tbody>
+							</table>
 						</div>
+						
+						<!-- SCHEDULING START -->
 						<div id="div{{ @i + 2 }}" class="targetDiv{{ @i }}">
-							<h1>SCHEDULING</h1>
-							<p>{{ @track['project_name'] }}</p>
+							<h5 class="card-title">Scheduling:</h5>
+							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<br>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Work type</th>
+										<th>Schedule</th> <!-- should this be date? -->
+										<th>Cost</th>
+										<th>Contact</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<repeat group="{{ @scheduleDisplay }}" value="{{ @schedule }}">
+										<check if="{{ @schedule['track_id']==@track['track_id'] }}">
+											<true>
+												<tr>
+													<td>{{ @schedule['workType'] }}</td>
+													<td>{{ @schedule['schedule'] }}</td>
+													<td>{{ @schedule['cost'] }}</td>
+													<td>{{ @schedule['contact'] }}</td>
+													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+												</tr>
+											</true>
+									</repeat>
+								</tbody>
+							</table>
 						</div>
+						
+						<!-- MATERIALS START -->
 						<div id="div{{ @i + 3 }}" class="targetDiv{{ @i }}">
-							<h1>MATERIAL</h1>
-							<p>{{ @track['project_name'] }}</p>
+							<h5 class="card-title">Materials:</h5>
+							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<br>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Type</th>
+										<th>Unit</th>
+										<td>Cost</td> <!-- is this necessary? -->
+										<td>Notes</td>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<!-- CHECK FOR VALID DOC -->
+									<repeat group="{{ @materialDisplay }}" value="{{ @material }}">
+										<check if="{{ @material['track_id']==@track['track_id'] }}">
+											<true>
+												<tr>
+													<td>{{ @material['materialType'] }}</td>
+													<td>{{ @material['materialUnit'] }}</td>
+													<td>{{ @material['cost'] }}</td>
+													<td>{{ @material['notes'] }}</td>
+													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+												</tr>
+											</true>
+										</check>
+									</repeat>
+								</tbody>
+							</table>
+							
 						</div>
+						
+						<!-- CONSTRUCTION START -->
 						<div id="div{{ @i + 4 }}" class="targetDiv{{ @i }}">
-							<h1>CONSTRUCTION</h1>
+							<h5 class="card-title">Construction:</h5>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
+						
+						<!-- PUNCH LIST START -->
 						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
-							<h1>PUNCH LIST</h1>
+							<h5 class="card-title">Final Punch List:</h5>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
+						
+						<!-- ACCEPTANCE START -->
 						<div id="div{{ @i + 6 }}" class="targetDiv{{ @i }}">
-							<h1>ACCEPTANCE</h1>
+							<h5 class="card-title">Acceptance:</h5>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
 					</div>										
+					<!-- END CARD BODY -->
 					
-					<!-- CARD FOOTER -->
+					<!-- CARD FOOTER START-->
 					<div class="card-footer">
 						<small class="text-muted">Last updated {{ @track['last_update'] }}</small>
-					</div>
-				  
-				  
-					<!-- Info MODAL -->
-					<div class="modal fade" id="infoModal-{{ @track['track_id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Project: {{ @track['project_name'] }}</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<p class="card-text">Current Stage: {{ @track['current_stage'] }}</p>
-									<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
-									<p class="card-text">End Date: {{ @track['end_date'] }}</p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="button" id="edit" class="btn btn-warning">Edit</button>
-									<a type="button" id="archive" class="btn btn-danger" href="./archive={{ @track['track_id'] }}" >Archive</a>
-									<button type="button" id="save" class="btn btn-primary">Save changes</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END Modal -->
-					
-					<!-- UPLOAD DOC MODAL -->
-					<div class="modal fade" id="uploadModal-{{ @track['track_id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<form id="form" enctype="multipart/form-data" role="form" action="./upload" method="post">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Project: {{ @track['project_name'] }}</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-											<div id="dropBox">
-												<p>Select file to upload</p>
-											</div>
-											<input type="hidden" name="projectID" value="{{ @track['track_id'] }}">
-											<input type="file" name="fileInput" id="fileInput" />
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									</div>
-									<input name="action" type="submit" value="Submit Image" class="btn">
-								</form>
-							</div>
-						</div>
-					</div>
-					<!-- END Modal -->
-					
-					
-					
-					<!-- DOCUMENT MODAL CODE repeat to display templated data 
-					<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
-						
-						<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
-							<check if="{{ @doc['track_id']==@track['track_id'] }}">
-								<true>
-									<div class="modal fade" id="documentModal-{{ @doc['documentID'] }}" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true" >
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="documentModalLabel">{{ @doc['documentName'] }}</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													<iframe src="uploads/pdf/{{ @doc['documentName'] }}.pdf" width="640" height="480"></iframe>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-success">Download</button>
-													<button type="button" class="btn btn-danger">Archive</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</true>
-							</check>
-						</repeat>
-						END REPEAT: DROPDOWN
-						
-					</repeat>
-				  -->
-				
+					</div>				
 				</div>
-				<!-- END Card -->
-			
-			
-			{~ @i+=7 ~} <!--incremental value-->
-			</repeat>
-			<!-- END repeat to display templated data -->
-			
-		<!-- CARD DECK/COLUMNS END -->
-		</div>
+				<!-- END CARD -->
 		
-	<!-- ACTIVE PROJECT END -->
+			
+			 <!--incremental value-->
+			{~ @i+=7 ~}
+			
+			</repeat>
+			<!-- END repeat to display templated data -->			
+		</div>
+		<!-- CARD DECK/COLUMNS END -->
 	</div>
+	<!-- ACTIVE PROJECT END -->
 	
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />

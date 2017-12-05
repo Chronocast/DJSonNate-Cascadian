@@ -8,7 +8,7 @@ require_once '/home/cascadian/config.php';
  *
  * PHP Version 5
  *
- * @author Sonie Moon 
+ * @author Sonie Moon, Nate Hascup, Jeremy Manalo, Duck Nguyen 
  * @version 1.0
  */
     
@@ -50,11 +50,58 @@ class TrackingDB
          
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
-    
     /**
-    * Returns all active projects.
-    * @return an associative array of project and their specific data
+     * returns project details 
+     * THIS CODE AND THE ONE ABOVE ARE THE SAME!!!
+     */
+      function projectDetails($track_id)
+      {
+      $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
+  
+      $statement = $this->_pdo->prepare($select);
+      $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+      $statement->execute();
+       
+      return $statement->fetch(PDO::FETCH_ASSOC);
+      }
+
+    /** Sonie's code **/
+        function schedulingDetails($track_id)
+        {
+        $select = 'SELECT * FROM scheduling WHERE track_id=:track_id';
+
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement->execute();
+         
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+    /** Sonie's code **/
+        function materialDetails($track_id)
+        {
+        $select = 'SELECT * FROM material WHERE track_id=:track_id';
+        
+        $statement = $this->_pdo->prepare($select);
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement->execute();
+         
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+              
+
+        
+   /*
+    *********************************************************************************************************************************************************
+    ***         I DON'T WHY IT'S HERE BUT CODES BELOW THIS LINE BELONGS TO ADMIN PAGE - NEED TO REFACTOR / COMMENT / MOVE CODES AROUND LATER              ***
+    *********************************************************************************************************************************************************
     */
+        
+        
+    /**
+     * @author Nate
+     * Returns all active projects.
+     * @return an associative array of project and their specific data
+     */
     
     function activeProjectDisplay()
     {
@@ -74,9 +121,10 @@ class TrackingDB
     }
     
     /**
-    * Returns all inactive projects.
-    * @return an associative array of project and their specific data
-    */
+     * @author Nate
+     * Returns all inactive projects.
+     * @return an associative array of project and their specific data
+     */
     function inactiveProjectDisplay()
     {
         
@@ -93,21 +141,7 @@ class TrackingDB
          
         return $rows;
     }
-    
-     /**
-     * returns project details 
-     *
-     */
-    function projectDetails($track_id)
-    {
-    $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
 
-    $statement = $this->_pdo->prepare($select);
-    $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
-    $statement->execute();
-     
-    return $statement->fetch(PDO::FETCH_ASSOC);
-    }
     
     /** Jeremy's Code **/
     //TODO: remove $trackingId from this method after we figure out how to
@@ -134,19 +168,6 @@ class TrackingDB
        
         $statement->execute();
     }
-    
-    /** Sonie's code **/
-        function schedulingDetails($track_id)
-        {
-        $select = 'SELECT * FROM scheduling WHERE track_id=:track_id';
-
-        $statement = $this->_pdo->prepare($select);
-        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
-        $statement->execute();
-         
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-        }
-        
 
     /** Jeremy's code **/
         function archiveProject($track_id)
@@ -158,7 +179,7 @@ class TrackingDB
             $statement->execute();
         }
     
-        /** Nate's code **/
+    /** Nate's code **/
         function activateProject($track_id)
         {
             $update = 'UPDATE track_content SET project_status = 1 WHERE track_id=:track_id';
@@ -167,21 +188,6 @@ class TrackingDB
             $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
             $statement->execute();
         }
-
-        
-        /** Sonie's code **/
-        function materialDetails($track_id)
-        {
-        $select = 'SELECT * FROM material WHERE track_id=:track_id';
-        
-        $statement = $this->_pdo->prepare($select);
-        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
-        $statement->execute();
-         
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-        }
-        
-        
 
 }
 ?>
