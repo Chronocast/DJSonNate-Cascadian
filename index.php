@@ -102,6 +102,7 @@
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
 		
+		$f3->set('i', 0); // increment value
 		$f3->set('adminName', $adminName);
 		$f3->set('projectDisplay', $projectDisplay);
 		$f3->set('docDisplay', $docDisplay);

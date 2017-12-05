@@ -22,18 +22,29 @@
 	<script>
 		jQuery(function(){
 			
-			jQuery('.targetDiv').hide();
-			jQuery('.overview').show();
+			//jQuery('.targetDiv').hide();
+			jQuery('div[class*=targetDiv]').hide();
+			jQuery('div[class*=overview]').show();
+			
+			
+			
 			
 			jQuery('.showStep').click(function(){
-				jQuery('.targetDiv').hide();
+				
+				var classData = jQuery($(this)).parent().attr('class');
+				var target = classData.substring(classData.indexOf("data-")+5);
+				
+				console.log(target);
+				console.log(jQuery('.targetDiv'+target));
+				jQuery('.targetDiv'+target).hide();
 				jQuery('.active:first').removeClass('active');
 				
 				// add active class to current tab
-				var current = jQuery($(this)).parent();
-				current.addClass('active');
+				//var current = jQuery($(this)).parent();
+				//current.addClass('active');
 				
 				var currentDiv = jQuery('#div'+$(this).attr('target'));
+				console.log(currentDiv);
 				currentDiv.show();
 			});
 		});

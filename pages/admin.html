@@ -23,27 +23,25 @@
 		<div class="card-deck">
 			<!-- repeat to display templated data -->  
 			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
-				
-				
 				<!-- CARD START -->
 				<div class="card mx-auto">
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
 					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
-						{{ @track['project_name'] }}
+						<h1>{{ @i }}</h1>{{ @track['project_name'] }}
 					</button>
 					
-					<div class="d-inline-block text-center">
+					<div class="d-inline-block text-center data-{{ @i }}">
 						
 						<!-- OVERVIEW BUTTON START -->
-						<a class="showStep" target="0">
+						<a class="showStep" target="{{ @i }}">
 							<button type="button"  title="Overview" class="btn btn-warning" alt="Overview"> 
-								<i class="fa fa-info-circle"></i> 
+								<i class="fa fa-info-circle"></i>
 							</button>				
 						</a>
 						<!-- OVERVIEW BUTTON START -->
 					
 						<!-- DOCUMENT BUTTON START -->
-						<a class="showStep" target="1">
+						<a class="showStep" target="{{ @i + 1 }}">
 							<div class="dropdown">
 								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
 								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown{{ @track['track_id'] }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,7 +74,7 @@
 						<!-- DOCUMENT BUTTON END -->
 						
 						<!-- SCHEDULING BUTTON START -->
-						<a class="showStep" target="2">
+						<a class="showStep" target="{{ @i + 2 }}">
 							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>				
@@ -85,7 +83,7 @@
 						
 						
 						<!-- MATERIAL BUTTON END -->
-						<a class="showStep" target="3">
+						<a class="showStep" target="{{ @i + 3 }}">
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
 								<i class="fa fa-cogs"></i>
 							</button>
@@ -94,7 +92,7 @@
 						
 						
 						<!-- CONSTRUCTION BUTTON START -->
-						<a class="showStep" target="4">
+						<a class="showStep" target="{{ @i + 4 }}">
 							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
 								<!-- temporarally removed for consistency with tracking page
 								<i class="fa fa-wrench"></i>
@@ -106,7 +104,7 @@
 						
 						
 						<!-- PUNCH LIST BUTTON START -->
-						<a class="showStep" target="5">
+						<a class="showStep" target="{{ @i + 5 }}">
 							<button type="button" title="Punch List" class="btn btn-warning" alt="Punch List"> 
 								<i class="fa fa-list-ol"></i> 
 							</button>
@@ -115,7 +113,7 @@
 						
 						
 						<!-- APPROVAL BUTTON START -->
-						<a class="showStep" target="6">
+						<a class="showStep" target="{{ @i + 6 }}">
 							<button type="button" title="Approval" class="btn btn-warning" alt="Approval"> 
 								<i class="fa fa-check"></i> 
 							</button>
@@ -125,34 +123,34 @@
 					
 					<!-- CARD BODY -->
 					<div class="card-body">
-						<div id="div0" class="targetDiv overview">
+						<div id="div{{ @i }}" class="targetDiv{{ @i }} overview{{ @i }}">
 							<h6 class="card-title">Project overview:</h6>
 							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
 							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 							<p>{{ @track['project_description'] }}</p>
 						</div>
-						<div id="div1" class="targetDiv">
+						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
 							<h1>DOCUMENT</h1>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
-						<div id="div2" class="targetDiv">
+						<div id="div{{ @i + 2 }}" class="targetDiv{{ @i }}">
 							<h1>SCHEDULING</h1>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
-						<div id="div3" class="targetDiv">
+						<div id="div{{ @i + 3 }}" class="targetDiv{{ @i }}">
 							<h1>MATERIAL</h1>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
-						<div id="div4" class="targetDiv">
+						<div id="div{{ @i + 4 }}" class="targetDiv{{ @i }}">
 							<h1>CONSTRUCTION</h1>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
-						<div id="div5" class="targetDiv">
+						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
 							<h1>PUNCH LIST</h1>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
-						<div id="div6" class="targetDiv">
+						<div id="div{{ @i + 6 }}" class="targetDiv{{ @i }}">
 							<h1>ACCEPTANCE</h1>
 							<p>{{ @track['project_name'] }}</p>
 						</div>
@@ -220,14 +218,12 @@
 					
 					
 					
-					<!-- DOCUMENT MODAL CODE -->
-					<!-- repeat to display templated data -->  
+					<!-- DOCUMENT MODAL CODE repeat to display templated data 
 					<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
 						
 						<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
 							<check if="{{ @doc['track_id']==@track['track_id'] }}">
 								<true>
-									<!-- DOCUMENT MODAL -->
 									<div class="modal fade" id="documentModal-{{ @doc['documentID'] }}" tabindex="-1" role="dialog" aria-labelledby="documentModalLabel" aria-hidden="true" >
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
@@ -247,20 +243,22 @@
 												</div>
 											</div>
 										</div>
-									</div><!-- END Modal -->
+									</div>
 								</true>
 							</check>
 						</repeat>
-						<!--END REPEAT: DROPDOWN-->
+						END REPEAT: DROPDOWN
 						
 					</repeat>
-				  
+				  -->
 				
 				</div>
 				<!-- END Card -->
-
-			<!-- END repeat to display templated data -->
+			
+			
+			{~ @i+=7 ~} <!--incremental value-->
 			</repeat>
+			<!-- END repeat to display templated data -->
 			
 		<!-- CARD DECK/COLUMNS END -->
 		</div>
