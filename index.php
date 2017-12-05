@@ -77,12 +77,14 @@
 		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
 		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
 		$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
+		$constructionDetails = $GLOBALS['db']->constructionDetails($trackingID);
 		$punchListDetails = $GLOBALS['db']->punchListDetails($trackingID);
 
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
 		$f3->set('schedulingDetails', $schedulingDetails);
 		$f3->set('materialDetails', $materialDetails);
+		$f3->set('constructionDetails', $constructionDetails);
 		$f3->set('punchListDetails', $punchListDetails);
 		// end Sonie
 
@@ -243,15 +245,6 @@
 			$adminDB = $GLOBALS['adminDB'];
 			$creds = $adminDB->login($email);
 
-			//if( !($creds['email'] == $email) )
-			//{
-			//	$f3->set('SESSION.emailError', "testing 1");
-			//}
-			//else if( !($creds['password'] == $pass) )
-			//{
-			//	$f3->set('SESSION.passwordError', "testing2");
-			//}
-			//else
 			if ( $creds['password'] == $pass )
 			{
 				$f3->set('SESSION.adminID',$id);
@@ -262,7 +255,6 @@
 			}
 
 		}
-
 		if ($_SESSION['adminID'] != NULL && $_SESSION['adminName'] != NULL)
 		{
 			$f3->reroute('/admin');

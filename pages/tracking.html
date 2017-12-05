@@ -159,8 +159,9 @@
 		<!-- OVERVIEW START -->
 		<div id="div0" class="targetDiv overview">
 			<div class="bg-info">
-				<h1>{{ @$projectDetails['project_name'] }}</h1>
-			</div> 
+				<h1>Overview</h1>
+			</div>
+			<h3>{{ @$projectDetails['project_name'] }}</h3>
 			<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
 			<br>
 			<h4>Description:</h4>
@@ -298,17 +299,21 @@
 				</a>
 			</div>
 			<!-- LIGHTBOX ENDS -->
-			
 			<br>
-			<div class="col-sm-12 construction-item recently-updated">
-				<div class="col-md-3">
-					<h2><img src="{{ @projectDetails['construction_photos'] }}" class="construction-img"></h2>
+			<repeat group="{{ @constructionDetails }}" value="{{ @construction }}">
+				<check if= "{{ @construction['viewStatus'] == 0 }}">
+					<true><div class="col-sm-12 construction-item recently-updated"></true>
+					<false><div class="col-sm-12 construction-item"></false>
+				</check>
+					<div class="col-md-3">
+						<h2><img src="{{ @construction['photo'] }}" class="construction-img"></h2>
+					</div>
+					<div class="col-sm-9">
+						<h3>{{ @construction['reportName'] }} <p class="pull-right text-muted">{{ @construction['reportDate'] }}</p></h3>
+						<p>{{ @construction['details'] }}</p>
+					</div>
 				</div>
-				<div class="col-sm-9">
-					<h1>PULL ME FROM DB PLEASE</h1>
-				</div>
-			</div>
-			
+			</repeat>
 			<div class="line"></div>
 		</div>
 		<!-- DIV 4 ENDS -->
@@ -319,25 +324,19 @@
 			<div class="bg-info">
 				<h1>Final punch list</h1>
 			</div>
-
-			
+			<repeat group="{{ @punchListDetails }}" value="{{ @list }}">
+				<check if= "{{ @list['viewStatus'] == 0 }}">
+					<true><div class="punch-list-item recently-updated"></true>
+					<false><div class="punch-list-item"></false>
+				</check>
 				
-				<repeat group="{{ @punchListDetails }}" value="{{ @list }}">
-						<check if= "{{ @list['viewStatus'] == 0 }}">
-							<true><div class="recently-updated"></true></div>
-							<false></false>
-						</check>
-						<check if="{{ @list['status'] == 1 }}">
-							<true><h2><i class="fa fa-check-square-o" aria-hidden="true"></i></true>
-							<false><h2><i class="fa fa-square-o" aria-hidden="true"></i></false>
-						</check>
-							{{ @list['name'] }}</h2>
-					</repeat>
-				
-				
-			
-			
-
+				<check if="{{ @list['status'] == 1 }}">
+					<true><h2><i class="fa fa-check-square-o" aria-hidden="true"></i></true>
+					<false><h2><i class="fa fa-square-o" aria-hidden="true"></i></false>
+				</check>
+					{{ @list['name'] }}</h2>
+				</div>
+			</repeat>
 			<div class="line"></div>
 		</div>
 		<!-- DIV 5 ENDS -->

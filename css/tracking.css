@@ -265,6 +265,18 @@ a, a:hover, a:focus {
 }
 
 /* ---------------------------------------------------
+    PUNCH LIST
+----------------------------------------------------- */
+.punch-list-item{
+	padding:5px;
+}
+.punch-list-item .fa-check-square-o {
+	color:#5cb85c;
+}
+.punch-list-item .fa-square-o{
+	color:#d9534f;
+}
+/* ---------------------------------------------------
     ACCEPTANCE
 ----------------------------------------------------- */
 .acceptance{
