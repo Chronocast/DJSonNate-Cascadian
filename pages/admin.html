@@ -33,45 +33,17 @@
 					</button>
 					
 					<div class="d-inline-block text-center">
-						<!-- temporally removing this code - BLOG AND IMAGE UPLOAD
-						<a>
-							<button type="button"  title="Blog" class="btn btn-warning" alt="Blog"> 
-								<i class="fa fa-newspaper-o"></i> 
+						
+						<!-- OVERVIEW BUTTON START -->
+						<a class="showStep" target="0">
+							<button type="button"  title="Overview" class="btn btn-warning" alt="Overview"> 
+								<i class="fa fa-info-circle"></i> 
 							</button>				
 						</a>
-						<a>
-							<div class="dropdown">
-								<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">
-								<button type="button" title="Photos" class="btn btn-warning dropdown-toggle" alt="Photos"  id="picDropdown{{ @track['track_id'] }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-picture-o"></i> 
-								</button>
-								<div class="dropdown-menu" aria-labelledby="picDropdown{{ @track['track_id'] }}">
-									
-									<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
-										
-										<check if="{{ @doc['track_id']==@track['track_id'] }}">
-											
-											<true>
-												<button class="dropdown-item" type="button" data-toggle="modal" data-target="#picModal-{{ @doc['documentID'] }}">
-													{{ @doc['documentName'] }}
-												</button>
-												
-											</true>
-										</check>
-									</repeat>
-									
-									<div class="dropdown-divider"></div>
-									<button class="dropdown-item" type="button" data-toggle="modal" data-target="#uploadModal-{{ @track['track_id'] }}">
-										Upload a new Document
-									</button>
-									
-								</div>
-							</div>
-						</a>
-						-->
-						
+						<!-- OVERVIEW BUTTON START -->
+					
 						<!-- DOCUMENT BUTTON START -->
-						<a class="showStep" target="0">
+						<a class="showStep" target="1">
 							<div class="dropdown">
 								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
 								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown{{ @track['track_id'] }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,7 +76,7 @@
 						<!-- DOCUMENT BUTTON END -->
 						
 						<!-- SCHEDULING BUTTON START -->
-						<a class="showStep" target="1">
+						<a class="showStep" target="2">
 							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>				
@@ -113,26 +85,28 @@
 						
 						
 						<!-- MATERIAL BUTTON END -->
-						<a class="showStep" target="2">
+						<a class="showStep" target="3">
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
-								<i class="fa fa-cubes"></i> 
+								<i class="fa fa-cogs"></i>
 							</button>
 						</a>
 						<!-- MATERIAL BUTTON END -->
 						
 						
 						<!-- CONSTRUCTION BUTTON START -->
-						<a class="showStep" target="3">
+						<a class="showStep" target="4">
 							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
-								<!-- <i class="fa fa-cogs"></i>-->
+								<!-- temporarally removed for consistency with tracking page
 								<i class="fa fa-wrench"></i>
+								-->
+								<i class="fa fa-cubes"></i> 
 							</button>
 						</a>
 						<!-- CONSTRUCTION BUTTON END -->
 						
 						
 						<!-- PUNCH LIST BUTTON START -->
-						<a class="showStep" target="4">
+						<a class="showStep" target="5">
 							<button type="button" title="Punch List" class="btn btn-warning" alt="Punch List"> 
 								<i class="fa fa-list-ol"></i> 
 							</button>
@@ -141,7 +115,7 @@
 						
 						
 						<!-- APPROVAL BUTTON START -->
-						<a class="showStep" target="5">
+						<a class="showStep" target="6">
 							<button type="button" title="Approval" class="btn btn-warning" alt="Approval"> 
 								<i class="fa fa-check"></i> 
 							</button>
@@ -149,58 +123,40 @@
 						<!-- APPROVAL BUTTON END -->
 					</div>
 					
-					<!-- OVERVIEW START -->
-					<div id="div0" class="targetDiv overview">
-						<div class="bg-info">
-							<h1>{{ @$projectDetails['project_name'] }}</h1>
-						</div> 
-						<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
-						<br>
-						<h4>Description:</h4>
-						<p>{{ @projectDetails['project_description'] }}</p>
-						
-						<div class="line"></div>
-						
-						<h4>Your Information:</h4>
-						<p>Name: {{ @clientInfo['name'] }}</p>
-						<p>Email: {{ @clientInfo['email'] }}</p>
-					</div>
-					<!-- OVERVIEW END -->
-					
 					<!-- CARD BODY -->
-					<div id="div1" class="card-body targetDiv">
-						<h6 class="card-title">Project overview:</h6>
-						<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
-						<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
-						<p class="card-text">End Date: {{ @track['end_date'] }}</p>
-						<p>{{ @track['project_description'] }}</p>
-					</div>
-					
-					<!-- DIV 1 - CONTRACT START -->
-					<div id="div2" class="targetDiv">
-						<div class="bg-info">
-							<h1>Documents</h1>
+					<div class="card-body">
+						<div id="div0" class="targetDiv overview">
+							<h6 class="card-title">Project overview:</h6>
+							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
+							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
+							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
+							<p>{{ @track['project_description'] }}</p>
 						</div>
-						
-						<div class="col-md-12">
-							<repeat group="{{ @documentDetails }}" value="{{ @document }}">
-								<div class="col-md-4 document-box">
-									<check if="{{ @document['viewStatus'] == 0 }}">
-										<true><div class="document-card card recently-updated"></true>
-										<false><div class="document-card card"></false>
-									</check>
-										<h2 class="text-center">{{ @document['documentName'] }}</h2>
-										<iframe src="{{ @document['documentLink'] }}"></iframe>
-											
-										<!--<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="{{ @document['documentLink'] }}"></iframe></p></a>
-										--><a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
-									</div>
-								</div>
-							</repeat>
+						<div id="div1" class="targetDiv">
+							<h1>DOCUMENT</h1>
+							<p>{{ @track['project_name'] }}</p>
 						</div>
-					</div>
-					<!-- DIV 1 ENDS -->
-					
+						<div id="div2" class="targetDiv">
+							<h1>SCHEDULING</h1>
+							<p>{{ @track['project_name'] }}</p>
+						</div>
+						<div id="div3" class="targetDiv">
+							<h1>MATERIAL</h1>
+							<p>{{ @track['project_name'] }}</p>
+						</div>
+						<div id="div4" class="targetDiv">
+							<h1>CONSTRUCTION</h1>
+							<p>{{ @track['project_name'] }}</p>
+						</div>
+						<div id="div5" class="targetDiv">
+							<h1>PUNCH LIST</h1>
+							<p>{{ @track['project_name'] }}</p>
+						</div>
+						<div id="div6" class="targetDiv">
+							<h1>ACCEPTANCE</h1>
+							<p>{{ @track['project_name'] }}</p>
+						</div>
+					</div>										
 					
 					<!-- CARD FOOTER -->
 					<div class="card-footer">
@@ -311,54 +267,6 @@
 		
 	<!-- ACTIVE PROJECT END -->
 	</div>
-	
-	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
-	<script>
-		jQuery(function(){
-			
-			jQuery('.targetDiv').hide();
-			jQuery('.overview').show();
-			
-			jQuery('.showStep').click(function(){
-				jQuery('.targetDiv').hide();
-				jQuery('.active:first').removeClass('active');
-				
-				// add active class to current tab
-				var current = jQuery($(this)).parent();
-				current.addClass('active');
-				
-				var currentDiv = jQuery('#div'+$(this).attr('target'));
-				currentDiv.show();
-								
-					
-				if ( $(this).children().hasClass("notification") ) {
-					
-					// remove notification
-					setTimeout(function() {
-						$(':nth-child(3)', current).removeClass("notification");
-					}, 2500);
-					
-					// remove recently-updated
-					setTimeout(function() {
-						currentDiv.find("*").removeClass("recently-updated");
-					}, 4000);
-					
-					// get title of the current tab
-					var track_id = $('#trackingID').html();
-					var targetName = $(':nth-child(2)', current).html().toLowerCase();
-					
-					console.log(track_id + " --- " + targetName);
-					$.post(
-						   "./controller/notification-logic.php",
-						   { track_id : track_id, targetName : targetName },
-						   function(result) {
-							$('#result').html(result);
-						   } 
-						);
-				}
-			});
-		});
-	</script>
 	
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />

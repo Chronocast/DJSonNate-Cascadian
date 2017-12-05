@@ -1,5 +1,5 @@
 <!--
-	Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+	Author: Nate Hascup, Duck Nguyen
 	Date: 10/13/17
 	Filename: admin-footer.html
 	Description: Admin page for Track-king. Cascadian Landworks tracking system.
@@ -14,10 +14,30 @@
 	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
 	
 	<!-- CUSTOM JS -->
-	
     <script type="text/javascript" src="./js/upload.js"></script>
     <script src="./js/admin.js"></script>
     
+	
+		<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
+	<script>
+		jQuery(function(){
+			
+			jQuery('.targetDiv').hide();
+			jQuery('.overview').show();
+			
+			jQuery('.showStep').click(function(){
+				jQuery('.targetDiv').hide();
+				jQuery('.active:first').removeClass('active');
+				
+				// add active class to current tab
+				var current = jQuery($(this)).parent();
+				current.addClass('active');
+				
+				var currentDiv = jQuery('#div'+$(this).attr('target'));
+				currentDiv.show();
+			});
+		});
+	</script>
 
 
 </body>
