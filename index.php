@@ -397,6 +397,7 @@
 	});
 
 	$f3->route('POST /upload', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
 			$project_dir = "uploads/" . $_POST['projectID'];
 			$upload_dir = $project_dir . "/documents/";
 			$fileName = basename($_FILES["fileInput"]["name"]);
@@ -416,6 +417,8 @@
 			}
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+			
+			$adminDB->addDocument($fileName, $_POST['projectID']);
 
 			$f3->reroute('/admin');
 	});

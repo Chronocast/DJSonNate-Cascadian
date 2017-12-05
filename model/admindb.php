@@ -74,5 +74,24 @@ class AdminDB
 			
 			return $creds;
 		}
+		
+		/**
+		 * Method to upload a new document
+		 *
+		 * @param Name of the document
+		 * @param Tracking ID
+		 */
+		function addDocument($name, $trackID)
+		{
+			$select = "INSERT INTO documents (track_id, documentName, viewStatus) VALUES (:track_id, :name, 0)";
+			
+			$statement = $this->_pdo->prepare($select);
+			$statement ->bindValue(':track_id', $trackID, PDO::PARAM_INT);
+			$statement ->bindValue(':name', $name, PDO::PARAM_STR);
+			$statement ->execute();
+			
+			//Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+		}
     }
 ?>

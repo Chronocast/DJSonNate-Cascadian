@@ -126,8 +126,13 @@
 						<!-- DOCUMENTS START -->
 						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Documents:</h5>
+							<form action="./upload" method="post" enctype="multipart/form-data">
 							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<input type="file" name="fileInput" accept="image/*" required/>
+							<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
 							<br>
+							<input name="action" type="submit" value="Add Document" class="btn">
+							</form>
 							
 							<table class="table table-striped">
 								<thead>
