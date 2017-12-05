@@ -8,10 +8,6 @@
 	// Create a tracking database object
 	$db = new TrackingDB();
 	
-	// Create a progress status database object
-	$statusDB = new ProgressStatusDB();
-	
-	
 	// Create a admin database object
 	$adminDB = new AdminDB();
 	
@@ -21,12 +17,8 @@
 	// Create a document database object
 	$docsDB = new DocumentDB();
 	
-	// Create a scheduling database object
-	$schedulingDB = new SchedulingDB();
-	
-	// Create a material database object
-	$materialDB = new MaterialDB();
-
+	// Create a progress status database object
+	$statusDB = new ProgressStatusDB();
 	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
@@ -72,14 +64,16 @@
 		
 		// Sonie's codes
 		$projectDetails = $GLOBALS['db']->projectDetails($trackingID);
-		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
 		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
+		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
 		$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
+		$punchListDetails = $GLOBALS['db']->punchListDetails($trackingID);
 		
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
 		$f3->set('schedulingDetails', $schedulingDetails);
 		$f3->set('materialDetails', $materialDetails);
+		$f3->set('punchListDetails', $punchListDetails);
 		// end Sonie
 		
 		// Duck's codes
@@ -110,18 +104,10 @@
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
 		
+		$f3->set('i', 0); // increment value
 		$f3->set('adminName', $adminName);
 		$f3->set('projectDisplay', $projectDisplay);
 		$f3->set('docDisplay', $docDisplay);
-		
-		/* Duck codes */
-		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
-		$materialDisplay = $GLOBALS['materialDB']->projectMaterialDisplay();
-		
-		$f3->set('i', 0); // increment value
-		$f3->set('scheduleDisplay', $scheduleDisplay);
-		$f3->set('materialDisplay', $materialDisplay);
-		/* End Duck */
 		
 		echo Template::instance()->render('pages/admin.html');
 		

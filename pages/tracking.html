@@ -320,7 +320,22 @@
 				<h1>Final punch list</h1>
 			</div>
 
-			<h2>{{ @projectDetails['final_stage'] }}</h2>
+			
+				
+				<repeat group="{{ @punchListDetails }}" value="{{ @list }}">
+						<check if= "{{ @list['viewStatus'] == 0 }}">
+							<true><div class="recently-updated"></true></div>
+							<false></false>
+						</check>
+						<check if="{{ @list['status'] == 1 }}">
+							<true><h2><i class="fa fa-check-square-o" aria-hidden="true"></i></true>
+							<false><h2><i class="fa fa-square-o" aria-hidden="true"></i></false>
+						</check>
+							{{ @list['name'] }}</h2>
+					</repeat>
+				
+				
+			
 			
 
 			<div class="line"></div>
