@@ -125,3 +125,7 @@ body, html{
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+
+.login_text{
+	padding-left: 10px;
+}
