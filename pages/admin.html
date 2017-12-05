@@ -24,6 +24,7 @@
 			<!-- repeat to display templated data -->  
 			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
 				
+				
 				<!-- CARD START -->
 				<div class="card mx-auto">
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
@@ -70,7 +71,7 @@
 						-->
 						
 						<!-- DOCUMENT BUTTON START -->
-						<a>
+						<a class="showStep" target="0">
 							<div class="dropdown">
 								<!--<button type="button" class="btn btn-warning" alt="documents" data-toggle="modal" data-target="#documentModal">-->
 								<button type="button" title="Documents" class="btn btn-warning dropdown-toggle" alt="Documents"  id="docDropdown{{ @track['track_id'] }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -103,7 +104,7 @@
 						<!-- DOCUMENT BUTTON END -->
 						
 						<!-- SCHEDULING BUTTON START -->
-						<a>
+						<a class="showStep" target="1">
 							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule" data-toggle="modal" data-target="#documentModal-test"> 
 								<i class="fa fa-calendar-check-o"></i> 
 							</button>				
@@ -112,7 +113,7 @@
 						
 						
 						<!-- MATERIAL BUTTON END -->
-						<a>
+						<a class="showStep" target="2">
 							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
 								<i class="fa fa-cubes"></i> 
 							</button>
@@ -121,7 +122,7 @@
 						
 						
 						<!-- CONSTRUCTION BUTTON START -->
-						<a>
+						<a class="showStep" target="3">
 							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
 								<!-- <i class="fa fa-cogs"></i>-->
 								<i class="fa fa-wrench"></i>
@@ -131,7 +132,7 @@
 						
 						
 						<!-- PUNCH LIST BUTTON START -->
-						<a>
+						<a class="showStep" target="4">
 							<button type="button" title="Punch List" class="btn btn-warning" alt="Punch List"> 
 								<i class="fa fa-list-ol"></i> 
 							</button>
@@ -140,7 +141,7 @@
 						
 						
 						<!-- APPROVAL BUTTON START -->
-						<a>
+						<a class="showStep" target="5">
 							<button type="button" title="Approval" class="btn btn-warning" alt="Approval"> 
 								<i class="fa fa-check"></i> 
 							</button>
@@ -148,14 +149,59 @@
 						<!-- APPROVAL BUTTON END -->
 					</div>
 					
+					<!-- OVERVIEW START -->
+					<div id="div0" class="targetDiv overview">
+						<div class="bg-info">
+							<h1>{{ @$projectDetails['project_name'] }}</h1>
+						</div> 
+						<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
+						<br>
+						<h4>Description:</h4>
+						<p>{{ @projectDetails['project_description'] }}</p>
+						
+						<div class="line"></div>
+						
+						<h4>Your Information:</h4>
+						<p>Name: {{ @clientInfo['name'] }}</p>
+						<p>Email: {{ @clientInfo['email'] }}</p>
+					</div>
+					<!-- OVERVIEW END -->
+					
 					<!-- CARD BODY -->
-					<div class="card-body">
+					<div id="div1" class="card-body targetDiv">
 						<h6 class="card-title">Project overview:</h6>
 						<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
 						<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 						<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 						<p>{{ @track['project_description'] }}</p>
 					</div>
+					
+					<!-- DIV 1 - CONTRACT START -->
+					<div id="div2" class="targetDiv">
+						<div class="bg-info">
+							<h1>Documents</h1>
+						</div>
+						
+						<div class="col-md-12">
+							<repeat group="{{ @documentDetails }}" value="{{ @document }}">
+								<div class="col-md-4 document-box">
+									<check if="{{ @document['viewStatus'] == 0 }}">
+										<true><div class="document-card card recently-updated"></true>
+										<false><div class="document-card card"></false>
+									</check>
+										<h2 class="text-center">{{ @document['documentName'] }}</h2>
+										<iframe src="{{ @document['documentLink'] }}"></iframe>
+											
+										<!--<a href="javascript:window.open('{{ @document['documentLink'] }}','mypopuptitle','width=800,height=800')"><p><img class="imgholder" iframe src="{{ @document['documentLink'] }}"></iframe></p></a>
+										--><a href="{{ @document['documentLink'] }}" download><button type="button" class="btn btn-primary btn-download">Download this document</button></a>
+									</div>
+								</div>
+							</repeat>
+						</div>
+					</div>
+					<!-- DIV 1 ENDS -->
+					
+					
 					<!-- CARD FOOTER -->
 					<div class="card-footer">
 						<small class="text-muted">Last updated {{ @track['last_update'] }}</small>
@@ -265,6 +311,54 @@
 		
 	<!-- ACTIVE PROJECT END -->
 	</div>
+	
+	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
+	<script>
+		jQuery(function(){
+			
+			jQuery('.targetDiv').hide();
+			jQuery('.overview').show();
+			
+			jQuery('.showStep').click(function(){
+				jQuery('.targetDiv').hide();
+				jQuery('.active:first').removeClass('active');
+				
+				// add active class to current tab
+				var current = jQuery($(this)).parent();
+				current.addClass('active');
+				
+				var currentDiv = jQuery('#div'+$(this).attr('target'));
+				currentDiv.show();
+								
+					
+				if ( $(this).children().hasClass("notification") ) {
+					
+					// remove notification
+					setTimeout(function() {
+						$(':nth-child(3)', current).removeClass("notification");
+					}, 2500);
+					
+					// remove recently-updated
+					setTimeout(function() {
+						currentDiv.find("*").removeClass("recently-updated");
+					}, 4000);
+					
+					// get title of the current tab
+					var track_id = $('#trackingID').html();
+					var targetName = $(':nth-child(2)', current).html().toLowerCase();
+					
+					console.log(track_id + " --- " + targetName);
+					$.post(
+						   "./controller/notification-logic.php",
+						   { track_id : track_id, targetName : targetName },
+						   function(result) {
+							$('#result').html(result);
+						   } 
+						);
+				}
+			});
+		});
+	</script>
 	
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />
