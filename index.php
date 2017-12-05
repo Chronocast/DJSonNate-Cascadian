@@ -25,7 +25,13 @@
 
 	// Create a material database object
 	$materialDB = new MaterialDB();
-
+	
+	// Create a material database object
+	$constructionDB = new ConstructionDB();
+	
+	// Create a punchlist database object
+	$punchListDB = new PunchListDB();
+	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 
@@ -115,10 +121,14 @@
 		/* Duck codes */
 		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
 		$materialDisplay = $GLOBALS['materialDB']->projectMaterialDisplay();
-
+		$constructionDisplay = $GLOBALS['constructionDB']->projectConstructionDisplay();
+		$punchListDisplay = $GLOBALS['punchListDB']->projectPunchListDisplay();
+		
 		$f3->set('i', 0); // increment value
 		$f3->set('scheduleDisplay', $scheduleDisplay);
 		$f3->set('materialDisplay', $materialDisplay);
+		$f3->set('constructionDisplay', $constructionDisplay);
+		$f3->set('punchListDisplay', $punchListDisplay);
 		/* End Duck */
 
 		echo Template::instance()->render('pages/admin.html');

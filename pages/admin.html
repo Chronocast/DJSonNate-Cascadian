@@ -142,7 +142,7 @@
 								<tbody>
 									<!-- CHECK FOR VALID DOC -->
 									<repeat group="{{ @docDisplay }}" value="{{ @doc }}">
-										<check if="{{ @doc['track_id']==@track['track_id'] }}">
+										<check if="{{ @doc['track_id'] == @track['track_id'] }}">
 											<true>
 												<tr>
 													<td>{{ @doc['documentName'] }}</td>
@@ -166,7 +166,7 @@
 								<thead>
 									<tr>
 										<th>Work type</th>
-										<th>Schedule</th> <!-- should this be date? -->
+										<th>Schedule</th>
 										<th>Cost</th>
 										<th>Contact</th>
 										<th>Edit</th>
@@ -175,8 +175,9 @@
 								</thead>
 								
 								<tbody>
+									<!-- CHECK FOR VALID SCHEDULE -->
 									<repeat group="{{ @scheduleDisplay }}" value="{{ @schedule }}">
-										<check if="{{ @schedule['track_id']==@track['track_id'] }}">
+										<check if="{{ @schedule['track_id'] == @track['track_id'] }}">
 											<true>
 												<tr>
 													<td>{{ @schedule['workType'] }}</td>
@@ -187,6 +188,7 @@
 													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
 												</tr>
 											</true>
+										</check>
 									</repeat>
 								</tbody>
 							</table>
@@ -202,15 +204,15 @@
 									<tr>
 										<th>Type</th>
 										<th>Unit</th>
-										<td>Cost</td> <!-- is this necessary? -->
-										<td>Notes</td>
+										<th>Cost</th> <!-- is this necessary? -->
+										<th>Notes</th>
 										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
 								</thead>
 								
 								<tbody>
-									<!-- CHECK FOR VALID DOC -->
+									<!-- CHECK FOR VALID MATERIAL -->
 									<repeat group="{{ @materialDisplay }}" value="{{ @material }}">
 										<check if="{{ @material['track_id']==@track['track_id'] }}">
 											<true>
@@ -233,13 +235,83 @@
 						<!-- CONSTRUCTION START -->
 						<div id="div{{ @i + 4 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Construction:</h5>
-							<p>{{ @track['project_name'] }}</p>
+							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<br>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Title</th>
+										<!-- <th>Date</th>
+										<th>Image</th> is this necessary? 
+										<th>Details</td>-->
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<!-- CHECK FOR VALID CONSTRUCTION INFO -->
+									<repeat group="{{ @constructionDisplay }}" value="{{ @construction }}">
+										<check if="{{ @construction['track_id']==@track['track_id'] }}">
+											<true>
+												<tr>
+													<td>
+														<div class="construction-heading">
+															<h5>{{ @construction['reportName'] }}</h5>
+															<p>{{ @construction['reportDate'] }}</p>
+														</div>
+														<div class="construction-body">
+															<p><img src="{{ @construction['photo'] }}" class="construction-image">{{ @construction['details'] }}</p>
+														</div>
+													</td>
+													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+												</tr>
+											</true>
+										</check>
+									</repeat>
+								</tbody>
+							</table>
 						</div>
 						
 						<!-- PUNCH LIST START -->
 						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Final Punch List:</h5>
-							<p>{{ @track['project_name'] }}</p>
+							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<br>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>{~ @num = 0 ~}</th>
+										<th>Item</th>
+										<th>Status</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<!-- CHECK FOR VALID PUNCH LIST INFO -->
+									<repeat group="{{ @punchListDisplay }}" value="{{ @punchy }}">
+										<check if="{{ @punchy['track_id']==@track['track_id'] }}">
+											<true>
+												<tr>
+													<td>{{ @num++ }}</td>
+													<td>{{ @punchy['name'] }}</td>
+													<td>
+														<check if="{{ @punchy['status']==0 }}">
+															<true>Not done</true>
+															<false>Done</false>
+														</check>
+													</td>
+													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+												</tr>
+											</true>
+										</check>
+									</repeat>
+								</tbody>
+							</table>
 						</div>
 						
 						<!-- ACCEPTANCE START -->

@@ -17,7 +17,7 @@
 @media (min-width:34em) {
     .card-deck > .card
     {
-        width: 48%;
+        width: 46%;
         flex-wrap: wrap;
         flex: initial;
 		display: block;
@@ -105,4 +105,27 @@
     border-right: 2px solid #ffc107;
     border-top:2px solid #ffc107;
 	cursor:pointer;
+}
+
+
+.construction-heading h5,
+.construction-heading p{
+	display: inline-block;
+}
+.construction-heading p{
+	float:right;
+}
+
+.construction-body img,
+.construction-body p{
+	display: inline-block;
+	float:left;
+}
+.construction-body img{
+	margin:3px;
+}
+.construction-body .construction-image{
+	height:160px;
+	width:140px;
+	margin:0 10px 10px 10px;
 }
