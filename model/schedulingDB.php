@@ -41,7 +41,7 @@ class SchedulingDB {
 	 */
 	function projectSchedulingDisplay()
 	{
-		$select = 'SELECT b.track_id, a.schedulingID, a.workType, a.schedule,a.cost, a.contact
+		$select = 'SELECT b.track_id, a.schedulingID, a.title, a.quantity, a.notes
                     FROM scheduling a LEFT JOIN track_content b
                     ON a.track_id = b.track_id
                     ORDER BY b.start_date';

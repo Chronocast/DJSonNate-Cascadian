@@ -55,21 +55,11 @@
 						
 						<!-- SCHEDULING BUTTON START -->
 						<a class="showStep" target="{{ @i + 2 }}">
-							<button type="button"  title="Schedule" class="btn btn-warning" alt="Schedule"> 
-								<i class="fa fa-calendar-check-o"></i> 
+							<button type="button"  title="Schedule & Labor" class="btn btn-warning" alt="Schedule"> 
+								<i class="fa fa-cogs"></i> 
 							</button>				
 						</a>
 						<!-- SCHEDULING BUTTON START -->
-						
-						
-						<!-- MATERIAL BUTTON END -->
-						<a class="showStep" target="{{ @i + 3 }}">
-							<button type="button" title="Material" class="btn btn-warning" alt="Material"> 
-								<i class="fa fa-cogs"></i>
-							</button>
-						</a>
-						<!-- MATERIAL BUTTON END -->
-						
 						
 						<!-- CONSTRUCTION BUTTON START -->
 						<a class="showStep" target="{{ @i + 4 }}">
@@ -218,7 +208,7 @@
 								
 								<tbody>
 									<!-- CHECK FOR VALID MATERIAL -->
-									<repeat group="{{ @materialDisplay }}" value="{{ @material }}">
+									<!--<repeat group="{{ @materialDisplay }}" value="{{ @material }}">
 										<check if="{{ @material['track_id']==@track['track_id'] }}">
 											<true>
 												<tr>
@@ -231,7 +221,7 @@
 												</tr>
 											</true>
 										</check>
-									</repeat>
+									</repeat>-->
 								</tbody>
 							</table>
 							

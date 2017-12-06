@@ -70,25 +70,14 @@
 			</li>
 			<li>
 				<a class="showStep" target="2">
-					<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-					<span class="nav-text">Scheduling</span>
+					<i class="fa fa-cogs" aria-hidden="true"></i>
+					<span class="nav-text">Labor & Mats</span>
 					
 					<!-- DISPLAY NOTIFICATION -->
 					<check if= "{{ @progressStatus['schedulingStatus'] == 2 }}">
 						<true><span class="notification"></span></true>
 					</check>
 					
-				</a>
-			</li>
-			<li>
-				<a class="showStep" target="3">
-					<i class="fa fa-cogs" aria-hidden="true"></i>
-					<span class="nav-text">Material</span>
-					
-					<!-- DISPLAY NOTIFICATION -->
-					<check if= "{{ @progressStatus['materialStatus'] == 2 }}">
-						<true><span class="notification"></span></true>
-					</check>
 				</a>
 			</li>
 			<li>
@@ -234,71 +223,11 @@
 		</div>	
 		<!-- DIV 2 ENDS -->
 		
-
-		<!-- DIV 3 - MATERIAL & LABOR START -->
-		<div id="div3" class="targetDiv">
-			<div class="bg-info">
-				<h1>Material &amp; Labor</h1>
-			</div>
-			
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Unit</th>
-						<th>Cost</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<repeat group="{{ @materialDetails }}" value="{{ @material }}">
-						<check if= "{{ @material['viewStatus'] == 0 }}">
-							<true><tr class="recently-updated"></true>
-							<false><tr></false>
-						</check>
-							<td>{{ @material['materialType'] }}</td>
-							<td>{{ @material['materialUnit'] }}</td>
-							<td>{{ @material['cost'] }}</td>
-							<td>{{ @material['notes'] }}</td>
-						</tr>
-					</repeat>
-				</tbody>
-			</table>
-		</div>
-		<!-- DIV 3 ENDS -->
-		
-		
 		<!-- DIV 4 - CONSTRUCTION START -->
 		<div id="div4" class="targetDiv">
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
-			
-			<!-- LIGHTBOX START -->
-			<div class="wrapper1 col-sm-12">
-				<a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-					<img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-				</a>
-				<a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-					<img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-				</a>
-				<a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-					<img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-				</a>
-			</div>
-			<div class="wrapper1 col-sm-12">
-				<a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-					<img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
-				</a>
-				<a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-					<img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
-				</a>
-				<a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-					<img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
-				</a>
-			</div>
-			<!-- LIGHTBOX ENDS -->
 			<br>
 			<repeat group="{{ @constructionDetails }}" value="{{ @construction }}">
 				<check if= "{{ @construction['viewStatus'] == 0 }}">
