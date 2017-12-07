@@ -47,7 +47,7 @@
 						<a class="showStep" target="{{ @i + 1 }}">
 							<div class="dropdown">
 								<button type="button" title="Documents" class="btn btn-warning" alt="Documents" >
-									<i class="fa fa-file-text-o"></i> 
+									<i class="fa fa-file-text"></i> 
 								</button>
 							</div>
 						</a>
@@ -56,13 +56,13 @@
 						<!-- SCHEDULING BUTTON START -->
 						<a class="showStep" target="{{ @i + 2 }}">
 							<button type="button"  title="Schedule & Labor" class="btn btn-warning" alt="Schedule"> 
-								<i class="fa fa-cogs"></i> 
+								<i class="fa fa-truck"></i> 
 							</button>				
 						</a>
 						<!-- SCHEDULING BUTTON START -->
 						
 						<!-- CONSTRUCTION BUTTON START -->
-						<a class="showStep" target="{{ @i + 4 }}">
+						<a class="showStep" target="{{ @i + 3 }}">
 							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
 								<!-- temporarally removed for consistency with tracking page
 								<i class="fa fa-wrench"></i>
@@ -74,7 +74,7 @@
 						
 						
 						<!-- PUNCH LIST BUTTON START -->
-						<a class="showStep" target="{{ @i + 5 }}">
+						<a class="showStep" target="{{ @i + 4 }}">
 							<button type="button" title="Punch List" class="btn btn-warning" alt="Punch List"> 
 								<i class="fa fa-list-ol"></i> 
 							</button>
@@ -83,7 +83,7 @@
 						
 						
 						<!-- APPROVAL BUTTON START -->
-						<a class="showStep" target="{{ @i + 6 }}">
+						<a class="showStep" target="{{ @i + 5 }}">
 							<button type="button" title="Approval" class="btn btn-warning" alt="Approval"> 
 								<i class="fa fa-check"></i> 
 							</button>
@@ -175,10 +175,9 @@
 										<check if="{{ @schedule['track_id'] == @track['track_id'] }}">
 											<true>
 												<tr>
-													<td>{{ @schedule['workType'] }}</td>
-													<td>{{ @schedule['schedule'] }}</td>
-													<td>{{ @schedule['cost'] }}</td>
-													<td>{{ @schedule['contact'] }}</td>
+													<td>{{ @schedule['title'] }}</td>
+													<td>{{ @schedule['quantity'] }}</td>
+													<td>{{ @schedule['notes'] }}</td>
 													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
 													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
 												</tr>
@@ -189,46 +188,8 @@
 							</table>
 						</div>
 						
-						<!-- MATERIALS START -->
-						<div id="div{{ @i + 3 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Materials:</h5>
-							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
-							<br>
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Type</th>
-										<th>Unit</th>
-										<th>Cost</th> <!-- is this necessary? -->
-										<th>Notes</th>
-										<th>Edit</th>
-										<th>Delete</th>
-									</tr>
-								</thead>
-								
-								<tbody>
-									<!-- CHECK FOR VALID MATERIAL -->
-									<!--<repeat group="{{ @materialDisplay }}" value="{{ @material }}">
-										<check if="{{ @material['track_id']==@track['track_id'] }}">
-											<true>
-												<tr>
-													<td>{{ @material['materialType'] }}</td>
-													<td>{{ @material['materialUnit'] }}</td>
-													<td>{{ @material['cost'] }}</td>
-													<td>{{ @material['notes'] }}</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
-													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
-												</tr>
-											</true>
-										</check>
-									</repeat>-->
-								</tbody>
-							</table>
-							
-						</div>
-						
 						<!-- CONSTRUCTION START -->
-						<div id="div{{ @i + 4 }}" class="targetDiv{{ @i }}">
+						<div id="div{{ @i + 3 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Construction:</h5>
 							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
 							<br>
@@ -270,7 +231,7 @@
 						</div>
 						
 						<!-- PUNCH LIST START -->
-						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
+						<div id="div{{ @i + 4 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Final Punch List:</h5>
 							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
 							<br>
@@ -310,7 +271,7 @@
 						</div>
 						
 						<!-- ACCEPTANCE START -->
-						<div id="div{{ @i + 6 }}" class="targetDiv{{ @i }}">
+						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Acceptance:</h5>
 							<p>{{ @track['project_name'] }}</p>
 						</div>

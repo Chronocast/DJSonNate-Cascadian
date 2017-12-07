@@ -24,9 +24,6 @@
 	$schedulingDB = new SchedulingDB();
 
 	// Create a material database object
-	//$materialDB = new MaterialDB();
-	
-	// Create a material database object
 	$constructionDB = new ConstructionDB();
 	
 	// Create a punchlist database object
@@ -76,14 +73,13 @@
 		$projectDetails = $GLOBALS['db']->projectDetails($trackingID);
 		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
 		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
-		//$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
+		$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
 		$constructionDetails = $GLOBALS['db']->constructionDetails($trackingID);
 		$punchListDetails = $GLOBALS['db']->punchListDetails($trackingID);
 
 		$f3->set('projectDetails', $projectDetails);
 		$f3->set('documentDetails', $documentDetails);
 		$f3->set('schedulingDetails', $schedulingDetails);
-		//$f3->set('materialDetails', $materialDetails);
 		$f3->set('constructionDetails', $constructionDetails);
 		$f3->set('punchListDetails', $punchListDetails);
 		// end Sonie
@@ -122,13 +118,11 @@
 
 		/* Duck codes */
 		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
-		//$materialDisplay = $GLOBALS['materialDB']->projectMaterialDisplay();
 		$constructionDisplay = $GLOBALS['constructionDB']->projectConstructionDisplay();
 		$punchListDisplay = $GLOBALS['punchListDB']->projectPunchListDisplay();
 		
 		$f3->set('i', 0); // increment value
 		$f3->set('scheduleDisplay', $scheduleDisplay);
-		//$f3->set('materialDisplay', $materialDisplay);
 		$f3->set('constructionDisplay', $constructionDisplay);
 		$f3->set('punchListDisplay', $punchListDisplay);
 		/* End Duck */
@@ -343,7 +337,7 @@
 			{
 				$GLOBALS['db']->addProject($trackingId, $project_name, $start_date, $end_date, $project_description);
 				$GLOBALS['clientDB']->addClient($trackingId, $client_name, $client_email);
-				$f3->reroute('http://cascadianlandworks.greenrivertech.net/admin');
+				$f3->reroute('./admin');
 			}
 			else
 			{
