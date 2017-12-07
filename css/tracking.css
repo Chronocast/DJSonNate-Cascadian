@@ -216,7 +216,7 @@ a, a:hover, a:focus {
 } 
 
 /* ---------------------------------------------------
-    CONTRACT TAB
+    DOCUMENT TAB
 ----------------------------------------------------- */
 .document-box{
 	width:30em;
@@ -256,7 +256,7 @@ a, a:hover, a:focus {
     height: 200px;
 }
 /* ---------------------------------------------------
-    CONSTRUCTION 
+    CONSTRUCTION TAB
 ----------------------------------------------------- */
 .construction-item{
 	margin-top:1em;
@@ -265,7 +265,7 @@ a, a:hover, a:focus {
 }
 
 /* ---------------------------------------------------
-    PUNCH LIST
+    PUNCH LIST TAB
 ----------------------------------------------------- */
 .punch-list-item{
 	padding:5px;
@@ -277,7 +277,7 @@ a, a:hover, a:focus {
 	color:#d9534f;
 }
 /* ---------------------------------------------------
-    ACCEPTANCE
+    ACCEPTANCE TAB
 ----------------------------------------------------- */
 .acceptance{
 	padding:10px;

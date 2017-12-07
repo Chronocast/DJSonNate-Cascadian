@@ -55,11 +55,16 @@
 					<i class="fa fa-info-circle" aria-hidden="true"></i>
 					<span class="nav-text">Overview</span>
 				</a>
+				
+				<!-- DISPLAY NOTIFICATION -->
+				<check if= "{{ @progressStatus['overviewStatus'] == 2 }}">
+					<true><span class="notification"></span></true>
+				</check>
 			</li>
 			
 			<li>
 				<a class="showStep" target="1">
-					<i class="fa fa-file-text-o" aria-hidden="true"></i>
+					<i class="fa fa-file-text" aria-hidden="true"></i>
 					<span class="nav-text">Documents</span>
 					
 					<!-- DISPLAY NOTIFICATION -->
@@ -70,8 +75,9 @@
 			</li>
 			<li>
 				<a class="showStep" target="2">
-					<i class="fa fa-cogs" aria-hidden="true"></i>
-					<span class="nav-text">Labor & Mats</span>
+					<!--<i class="fa fa-calendar-check-o" aria-hidden="true"></i>-->
+					<i class="fa fa-truck" aria-hidden="true"></i>
+					<span class="nav-text">Scheduling</span>
 					
 					<!-- DISPLAY NOTIFICATION -->
 					<check if= "{{ @progressStatus['schedulingStatus'] == 2 }}">
@@ -81,7 +87,7 @@
 				</a>
 			</li>
 			<li>
-				<a class="showStep" target="4">
+				<a class="showStep" target="3">
 					<i class="fa fa-cubes" aria-hidden="true"></i>
 					<span class="nav-text">Construction</span>
 					
@@ -92,13 +98,13 @@
 				</a>
 			</li>
 			<li>
-				<a class="showStep" target="5">
+				<a class="showStep" target="4">
 					<i class="fa fa-list-ol" aria-hidden="true"></i>
 					<span class="nav-text">Punch List</span>
 				</a>
 			</li>
 			<li>
-				<a class="showStep" target="6">
+				<a class="showStep" target="5">
 					<i class="fa fa-check" aria-hidden="true"></i>
 					<span class="nav-text">Accept</span>
 				</a>
@@ -135,10 +141,10 @@
 						Scheduling
 					</div>
 					<div class="progress-bar {{ @progressBar[2] }}" role="progressbar" style="width:25%">
-						Material
+						Construction
 					</div>
 					<div class="progress-bar {{ @progressBar[3] }}" role="progressbar" style="width:25%">
-						Construction
+						Acceptance
 					</div>
 				</div>		
 			</div>
@@ -150,7 +156,7 @@
 			<div class="bg-info">
 				<h1>Overview</h1>
 			</div>
-			<h3>{{ @$projectDetails['project_name'] }}</h3>
+			<h2>{{ @$projectDetails['project_name'] }}</h2>
 			<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
 			<br>
 			<h4>Description:</h4>
@@ -163,8 +169,7 @@
 			<p>Email: {{ @clientInfo['email'] }}</p>
 		</div>
 		<!-- OVERVIEW END -->
-		
-		
+
 		
 		<!-- DIV 1 - CONTRACT START -->
 		<div id="div1" class="targetDiv">
@@ -191,6 +196,7 @@
 		</div>
 		<!-- DIV 1 ENDS -->
 
+
 		<!-- DIV 2 - SCHEDULING START -->
 		<div id="div2" class="targetDiv">
 			<div class="bg-info">
@@ -199,10 +205,9 @@
 			<table class="mytable table table-hover">
 				<thead>
 					<tr>
-						<th>Work Type</th>
-						<th>Schedule Detail </th>
-						<th>Cost</th>
-						<th>Contact</th>
+						<th>Title</th>
+						<th>Quantity</th>
+						<th>Notes</th>
 					</tr>
 				</thead>
 				
@@ -212,19 +217,18 @@
 							<true><tr class="recently-updated"></true>
 							<false><tr></false>
 						</check>
-							<td>{{ @schedule['workType'] }}</td>
-							<td>{{ @schedule['schedule'] }}</td>
-							<td>{{ @schedule['cost'] }}</td>
-							<td>{{ @schedule['contact'] }}</td>
+							<td>{{ @schedule['title'] }}</td>
+							<td>{{ @schedule['quantity'] }}</td>
+							<td>{{ @schedule['notes'] }}</td>
 						</tr>
 					</repeat>
 				</tbody>
 			</table>
 		</div>	
-		<!-- DIV 2 ENDS -->
 		
-		<!-- DIV 4 - CONSTRUCTION START -->
-		<div id="div4" class="targetDiv">
+		
+		<!-- DIV 3 - CONSTRUCTION START -->
+		<div id="div3" class="targetDiv">
 			<div class="bg-info">
 				<h1>Construction</h1>
 			</div>
@@ -245,11 +249,11 @@
 			</repeat>
 			<div class="line"></div>
 		</div>
-		<!-- DIV 4 ENDS -->
+		<!-- DIV 3 ENDS -->
 
 
-		<!-- DIV 5 - PUNCH LIST START -->
-		<div id="div5" class="targetDiv">
+		<!-- DIV 4 - PUNCH LIST START -->
+		<div id="div4" class="targetDiv">
 			<div class="bg-info">
 				<h1>Final punch list</h1>
 			</div>
@@ -268,11 +272,11 @@
 			</repeat>
 			<div class="line"></div>
 		</div>
-		<!-- DIV 5 ENDS -->
+		<!-- DIV 4 ENDS -->
 		
 		
-		<!-- DIV 6 - ACCEPTANCE START -->
-		<div id="div6" class="targetDiv">
+		<!-- DIV 5 - ACCEPTANCE START -->
+		<div id="div5" class="targetDiv">
 			<div class="bg-info">
 				<h1>Acceptance</h1>
 			</div>
@@ -294,7 +298,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- DIV 6 ENDS -->
+		<!-- DIV 5 ENDS -->
 		
 	</div>
 	
@@ -314,10 +318,6 @@
 	
 	<!-- FONT AWESOME -->
 	<script src="https://use.fontawesome.com/a516aa6fdc.js"></script>
-	
-	<!-- LIGHT BOX -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-	
 	
 	<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
 	<script>
@@ -412,14 +412,6 @@
 			if ($(window).width() < 1024) {
 				jQuery('#sidebar').toggleClass('navigation-toggle');
 			}
-		});
-	</script>
-	
-	<!-- LIGHTBOX -->
-	<script>
-		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-			event.preventDefault();
-			$(this).ekkoLightbox();
 		});
 	</script>
     </body>
