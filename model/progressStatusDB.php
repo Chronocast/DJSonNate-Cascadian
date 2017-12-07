@@ -41,7 +41,7 @@ class ProgressStatusDB {
 	 */
 	function getStatus($track_id)
 	{
-		$select = 'SELECT documentsStatus, schedulingStatus, materialStatus, constructionStatus FROM progress_status WHERE track_id=:track_id';
+		$select = 'SELECT documentsStatus, schedulingStatus, constructionStatus FROM progress_status WHERE track_id=:track_id';
 		
 		$statement = $this ->_pdo->prepare($select);
 		$statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);

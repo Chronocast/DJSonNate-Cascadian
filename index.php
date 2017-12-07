@@ -23,7 +23,7 @@
 	// Create a scheduling database object
 	$schedulingDB = new SchedulingDB();
 
-	// Create a material database object
+	// Create a construction database object
 	$constructionDB = new ConstructionDB();
 	
 	// Create a punchlist database object
@@ -73,7 +73,6 @@
 		$projectDetails = $GLOBALS['db']->projectDetails($trackingID);
 		$documentDetails = $GLOBALS['docsDB']->documentDetails($trackingID);
 		$schedulingDetails = $GLOBALS['db']->schedulingDetails($trackingID);
-		$materialDetails = $GLOBALS['db']->materialDetails($trackingID);
 		$constructionDetails = $GLOBALS['db']->constructionDetails($trackingID);
 		$punchListDetails = $GLOBALS['db']->punchListDetails($trackingID);
 
@@ -266,9 +265,6 @@
 			$error = false;
 			$errorsArray = [];
 
-			// TODO: REMOVE THE NEXT LINE
-			$trackingId = $_POST['tracking_id'];
-
 			if(!empty($_POST['project_name']))
 			{
 				$project_name = $_POST['project_name'];
@@ -333,11 +329,40 @@
 			$verify = $_POST['verify'];
 
 			//TODO:  Refactor to remove $trackingId
-			if(!$error && !empty($_POST['tracking_id']))
+			if(!$error)
 			{
-				$GLOBALS['db']->addProject($trackingId, $project_name, $start_date, $end_date, $project_description);
-				$GLOBALS['clientDB']->addClient($trackingId, $client_name, $client_email);
-				$f3->reroute('./admin');
+				$error = TRUE;
+				
+				while ($error == TRUE)
+				{
+					// generate a tracking id
+					$tracking_id = $GLOBALS['db']->generateTrackID($project_name);
+					$result = $GLOBALS['db']->trackingIdCheck($tracking_id);
+					
+					// check the result
+					if (count($result) == 1)
+					{   
+						$error = FALSE;
+						echo "1. ".$tracking_id;
+						
+						$to = $client_email;
+						$subject = "Order confirmation and tracking information";
+						$message = "Great to have you here lol. Here's your tracking ID: ".$tracking_id;
+						$headers = "From: hunteo1889@yahoo.com";
+						
+						mail($to, $subhect, $message, $headers);
+						
+						//$GLOBALS['db']->addProject($track_id, $project_name, $start_date, $end_date, $project_description);
+						//$GLOBALS['clientDB']->addClient($track_id, $client_name, $client_email);
+						//
+						//$f3->reroute('./admin');
+					}
+					else if (count($result) > 1)
+					{
+						echo "2. ".$track_id;
+					}
+				}
+
 			}
 			else
 			{

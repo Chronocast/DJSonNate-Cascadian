@@ -76,17 +76,7 @@ class TrackingDB
          
         return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
-    /** Sonie's code **/
-        function materialDetails($track_id)
-        {
-        $select = 'SELECT * FROM material WHERE track_id=:track_id';
-        
-        $statement = $this->_pdo->prepare($select);
-        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
-        $statement->execute();
-         
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-        }
+
               
         function constructionDetails($track_id)
         {
@@ -165,20 +155,15 @@ class TrackingDB
     /** Jeremy's Code **/
     //TODO: remove $trackingId from this method after we figure out how to
     //automatically generate tracking ids
-    function addProject($trackingId, $project_name, $start_date, $end_date, $project_description)
+    function addProject($track_id, $project_name, $start_date, $end_date, $project_description)
     {
-        echo "<br>TrackingId: $trackingId";
-        echo "<br>Project Name: $project_name";
-        echo "<br>Start: $start_date";
-        echo "<br>End: $end_date";
-        echo "<br>Description: $project_description";
         
         $insert = 'INSERT INTO track_content (track_id, project_name, start_date, end_date, project_description)
         VALUES (:track_id, :project_name, :start_date, :end_date, :project_description)';
         
         $statement = $this->_pdo->prepare($insert);
         
-        $statement->bindValue(':track_id', $trackingId, PDO::PARAM_INT);   
+        $statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);   
         $statement->bindValue(':project_name', $project_name, PDO::PARAM_STR);            
         $statement->bindValue(':start_date', $start_date, PDO::PARAM_STR);
         $statement->bindValue(':end_date', $end_date, PDO::PARAM_STR);
@@ -187,7 +172,33 @@ class TrackingDB
        
         $statement->execute();
     }
+    
+    /**
+     * Method to check if tracking id already exsits 
+     *
+     * @author Duck 
+     * @param tracking id to look for
+     */
+    function trackingIdCheck($track_id)
+    {
+        $select = 'SELECT * FROM track_content WHERE track_id=:track_id';
 
+        $statement = $this->_pdo->prepare($select);
+        $statement ->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+        $statement ->execute();
+        
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return result;
+    }
+    function generateTrackID($project_name)
+    {
+        $x = crypt($project_name);
+        $x2 = strtoupper(preg_replace('/[^A-Za-z0-9\-]/', '', $x));
+        $track_id = substr($x2, 0,15);
+        
+        return $track_id;
+    }
+    
     /** Jeremy's code **/
         function archiveProject($track_id)
         {

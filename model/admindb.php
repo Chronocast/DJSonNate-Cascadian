@@ -64,7 +64,7 @@ class AdminDB
 		 */
 		function login($email)
 		{
-			$select = 'SELECT * FROM admin WHERE email = :email';
+			$select = 'SELECT * FROM admin WHERE email=:email';
 			
 			$statement = $this->_pdo->prepare($select);
 			$statement ->bindValue(':email', $email, PDO::PARAM_STR);
