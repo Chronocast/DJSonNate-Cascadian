@@ -214,7 +214,6 @@
 				$f3->reroute('/admin-login');
 			}
 		}
-
 		$f3->reroute('/admin-signup');
 	});
 
@@ -328,12 +327,12 @@
 
 			$verify = $_POST['verify'];
 
-			//TODO:  Refactor to remove $trackingId
+			// if no errors
 			if(!$error)
 			{
-				$error = TRUE;
+				$check = FALSE;
 				
-				while ($error == TRUE)
+				while ($check == FALSE)
 				{
 					// generate a tracking id
 					$tracking_id = $GLOBALS['db']->generateTrackID($project_name);
@@ -342,24 +341,20 @@
 					// check the result
 					if (count($result) == 1)
 					{   
-						$error = FALSE;
-						echo "1. ".$tracking_id;
+						$check = TRUE;
+						//echo "1. ".$tracking_id;
 						
+						$GLOBALS['db']->addProject($tracking_id, $project_name, $start_date, $end_date, $project_description);
+						$GLOBALS['clientDB']->addClient($tracking_id, $client_name, $client_email);
+						
+						// send out the email
 						$to = $client_email;
 						$subject = "Order confirmation and tracking information";
 						$message = "Great to have you here lol. Here's your tracking ID: ".$tracking_id;
 						$headers = "From: hunteo1889@yahoo.com";
-						
 						mail($to, $subhect, $message, $headers);
 						
-						//$GLOBALS['db']->addProject($track_id, $project_name, $start_date, $end_date, $project_description);
-						//$GLOBALS['clientDB']->addClient($track_id, $client_name, $client_email);
-						//
-						//$f3->reroute('./admin');
-					}
-					else if (count($result) > 1)
-					{
-						echo "2. ".$track_id;
+						$f3->reroute('./admin');
 					}
 				}
 
