@@ -407,6 +407,7 @@
 			$project_dir = "uploads/" . $_POST['projectID'];
 			$upload_dir = $project_dir . "/documents/";
 			$fileName = basename($_FILES["fileInput"]["name"]);
+			$fileTitle = $_POST['fileTitle'];
 			$destination = $upload_dir . $fileName;
 
 			if (!file_exists($project_dir)) {
@@ -418,13 +419,22 @@
 			}
 
 			if (file_exists($destination)) {
-				$fileName .= "_1";
+				$fileName = "1_" . $fileName;
 				$destination = $upload_dir . $fileName;
 			}
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
 			
-			$adminDB->addDocument($fileName, $_POST['projectID']);
+			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
+
+			$f3->reroute('/admin');
+	});
+	
+	$f3->route('POST /delete', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			$documentID = $_POST['id'];
+			
+			$adminDB->delDocument($documentID);
 
 			$f3->reroute('/admin');
 	});

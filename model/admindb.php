@@ -81,17 +81,27 @@ class AdminDB
 		 * @param Name of the document
 		 * @param Tracking ID
 		 */
-		function addDocument($name, $trackID)
+		function addDocument($name, $trackID, $title)
 		{
-			$select = "INSERT INTO documents (track_id, documentName, viewStatus) VALUES (:track_id, :name, 0)";
+			$select = "INSERT INTO documents (track_id, documentName, viewStatus, documentLink) VALUES (:track_id, :name, 0, :title)";
 			
 			$statement = $this->_pdo->prepare($select);
 			$statement ->bindValue(':track_id', $trackID, PDO::PARAM_INT);
 			$statement ->bindValue(':name', $name, PDO::PARAM_STR);
+			$statement ->bindValue(':title', $title, PDO::PARAM_STR);
 			$statement ->execute();
 			
 			//Return ID of inserted row
             return $this->_pdo->lastInsertId();
 		}
+		
+		function delDocument($id)
+        {
+            $select = "DELETE FROM documents WHERE documentID = :id";
+             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+        }
     }
 ?>

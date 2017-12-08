@@ -117,8 +117,9 @@
 						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Documents:</h5>
 							<form action="./upload" method="post" enctype="multipart/form-data">
-							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
-							<input type="file" name="fileInput" accept="image/*" required/>
+							<a href="#" onclick="document.getElementById('fileID').click(); return false;" /><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+							<input type="file" name="fileInput" id="fileID" style="visibility: hidden;" accept="image/*" required/>
+							Title: <input type="text" name="fileTitle" required/>
 							<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
 							<br>
 							<input name="action" type="submit" value="Add Document" class="btn">
@@ -140,11 +141,14 @@
 										<check if="{{ @doc['track_id'] == @track['track_id'] }}">
 											<true>
 												<tr>
-													<td>{{ @doc['documentName'] }}</td>
+													<td>{{ @doc['documentLink'] }}</td>
 													<td><i class="fa fa-download" aria-hidden="true"></i></td>
 													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
-													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+													<td><a class="delete" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
+												<form method="post" class="delete" action="./delete" style="visibility: hidden;">
+													<input type="text" name="id" style="visibility: hidden;" value="{{ @doc['documentID'] }}" required/>
+												</form>
 											</true>
 										</check>
 									</repeat>

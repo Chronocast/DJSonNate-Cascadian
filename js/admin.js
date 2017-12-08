@@ -19,3 +19,8 @@ $(document).ready(function () {
 //$('#myModal').on('shown.bs.modal', function () {
 //  $('#myInput').focus()
 //})
+
+
+$('a.delete').click(function(){
+	$(this).parent().parent().parent().find("form.delete").submit();
+});
