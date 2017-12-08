@@ -117,12 +117,11 @@
 						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Documents:</h5>
 							<form action="./upload" method="post" enctype="multipart/form-data">
-							<a href="#" onclick="document.getElementById('fileID').click(); return false;" /><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
-							<input type="file" name="fileInput" id="fileID" style="visibility: hidden;" accept="image/*" required/>
-							Title: <input type="text" name="fileTitle" required/>
-							<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
-							<br>
-							<input name="action" type="submit" value="Add Document" class="btn">
+								<a href="#" class="input"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
+								<input type="file" name="fileInput" class="fileID" style="visibility: hidden;" accept="image/*" required/>
+								<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
+								<br><input type="text" placeholder="Title" name="fileTitle" required/><br>
+								<input name="action" type="submit" value="Add Document" class="btn">
 							</form>
 							
 							<table class="table table-striped">

@@ -24,3 +24,13 @@ $(document).ready(function () {
 $('a.delete').click(function(){
 	$(this).parent().parent().parent().find("form.delete").submit();
 });
+
+$('input.fileID').change(function(){
+	var name = this.value;
+	var filename = name.replace(/C:\\fakepath\\/i, ': ');
+	$(this).parent().find("span.imgName").text(filename);
+});
+
+$('a.input').click(function(){
+	$(this).parent().find("input.fileID").click();
+});
