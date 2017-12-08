@@ -386,7 +386,8 @@
 		$f3->reroute('/admin');
 
 	});
-
+	//End Jeremy
+	
 	// activate
 	$f3->route('GET /activate=@id', function($f3, $params)
 	{
@@ -437,12 +438,6 @@
 			$adminDB->delDocument($documentID);
 
 			$f3->reroute('/admin');
-	});
-
-	//Route to admin-slack
-	$f3->route('GET /admin-slack', function($f3) {
-		echo Template::instance()->render('pages/admin-slack.html');
-
 	});
 	//Run fat-free
 	$f3->run();
