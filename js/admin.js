@@ -22,7 +22,8 @@ $(document).ready(function () {
 
 
 $('a.delete').click(function(){
-	$(this).parent().parent().parent().find("form.delete").submit();
+	var id = $(this).attr('id');
+	$('#delInput').attr("value",id);
 });
 
 $('input.fileID').change(function(){

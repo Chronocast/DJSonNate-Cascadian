@@ -143,11 +143,8 @@
 													<td>{{ @doc['documentLink'] }}</td>
 													<td><i class="fa fa-download" aria-hidden="true"></i></td>
 													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
-													<td><a class="delete" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
+													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="{{ @doc['documentID'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
-												<form method="post" class="delete" action="./delete" style="visibility: hidden;">
-													<input type="text" name="id" style="visibility: hidden;" value="{{ @doc['documentID'] }}" required/>
-												</form>
 											</true>
 										</check>
 									</repeat>
@@ -298,6 +295,30 @@
 		<!-- CARD DECK/COLUMNS END -->
 	</div>
 	<!-- ACTIVE PROJECT END -->
+	
+	<!-- Delete Modal -->
+	<div id="delModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Delete Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form method="post" class="delete" action="./delete">
+						<input type="text" name="id" style="visibility: hidden;" id="delInput" value="" required/>
+						<input name="action" type="submit" value="Delete" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+	
+		</div>
+	</div>
 	
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />
