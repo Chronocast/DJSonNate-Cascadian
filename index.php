@@ -223,7 +223,7 @@
 	{
 		$_SESSION = array();
 		session_destroy();
-		$f3->reroute('/');
+		$f3->reroute('/admin-login');
 	});
 
 	//Route to admin-login
@@ -342,22 +342,43 @@
 					if (count($result) == 1)
 					{   
 						$check = TRUE;
-						//echo "1. ".$tracking_id;
 						
 						$GLOBALS['db']->addProject($tracking_id, $project_name, $start_date, $end_date, $project_description);
 						$GLOBALS['clientDB']->addClient($tracking_id, $client_name, $client_email);
 						
-						// send out the email
-						$to = $client_email;
-						$subject = "Order confirmation and tracking information";
-						$message = "Great to have you here lol. Here's your tracking ID: ".$tracking_id;
-						$headers = "From: hunteo1889@yahoo.com";
-						mail($to, $subhect, $message, $headers);
+						$mail = new PHPMailer(true);
+						
+						//Get email template and repalce content
+						$emailBody = file_get_contents('pages/email.html');
+						$emailBody = str_replace('%project_name%', $project_name, $emailBody);
+						$emailBody = str_replace('%tracking_id%', $tracking_id, $emailBody);
+						
+						try {
+							$mail->From = "dnguyen94@mail.greenriver.edu";
+							$mail->FromName = "Cascadian Landworks";
+							
+							$mail->addAddress($client_email, $client_name);
+							
+							//Address to which replient will reply
+							$mail->addReplyTo("hunteo1889@yahoo.com");
+						
+							//Content
+							$mail->isHTML(true);
+							$mail->Subject = 'Your order confirmation';
+							$mail->MsgHTML($emailBody);
+							$mail->AltBody = (strip_tags($emailBody));
+							
+							//Send email
+							$mail->send();
+							echo 'Message has been sent';
+						} catch (Exception $e) {
+							echo 'Message could not be sent.';
+							echo 'Mailer Error: ' . $mail->ErrorInfo;
+						}
 						
 						$f3->reroute('./admin');
 					}
 				}
-
 			}
 			else
 			{
