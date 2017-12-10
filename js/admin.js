@@ -49,6 +49,11 @@ $('a.delete').click(function(){
 	$('#delInput').attr("value",id);
 });
 
+$('a.edit').click(function(){
+	var src = $(this).attr('id');
+	$('#modalImg').attr("src",src);
+});
+
 $('input.fileID').change(function(){
 	var name = this.value;
 	var filename = name.replace(/C:\\fakepath\\/i, ': ');
