@@ -140,7 +140,6 @@
 									<tr>
 										<th>Document Title</th>
 										<th>View</th> <!-- is this necessary -->
-										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
 								</thead>
@@ -153,7 +152,6 @@
 												<tr>
 													<td>{{ @doc['documentLink'] }}</td>
 													<td><a class="view" data-toggle="modal" data-target="#viewModal" id="uploads/{{ @doc['track_id'] }}/documents/{{ @doc['documentName'] }}" href="#"/><i class="fa fa-download" aria-hidden="true"></i></a></td>
-													<td><a class="edit" href="#"/><i class="fa fa-pencil-square" aria-hidden="true"></i></a></td>
 													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="{{ @doc['documentID'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
