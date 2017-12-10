@@ -10,13 +10,6 @@
 	// Create a progress status database object
 	$statusDB = new ProgressStatusDB();
 
-
-	// Create a admin database object
-	$adminDB = new AdminDB();
-
-	// Create a client database object
-	$clientDB = new ClientDB();
-
 	// Create a document database object
 	$docsDB = new DocumentDB();
 
@@ -28,6 +21,14 @@
 	
 	// Create a punchlist database object
 	$punchListDB = new PunchListDB();
+	
+	
+	// Create a admin database object
+	$adminDB = new AdminDB();
+	
+	// Create a client database object
+	$clientDB = new ClientDB();
+
 	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
@@ -48,7 +49,7 @@
 		$track = $GLOBALS['db']->getTracker($trackingID);
 		if($trackingID!= NULL) {
 			if(empty($track)) {
-				$f3->reroute('/');
+					$f3->reroute('/');
 			}
 			else{
 				//reroute //pass in the array
