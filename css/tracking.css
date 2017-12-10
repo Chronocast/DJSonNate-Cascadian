@@ -150,12 +150,6 @@ a, a:hover, a:focus {
     background: #7386D5;
 }
 
-.progress-bar-success{
-    background-color:#428bca;
-}
-.progress-bar-warning{
-    background-color: white;
-}
 /* ---------------------------------------------------
     RESIZING STYLE
 ----------------------------------------------------- */
@@ -200,6 +194,9 @@ a, a:hover, a:focus {
 	cursor:pointer;
 }
 
+.progress-bar-warning{
+    background-color: white;
+}
 #content {
     position: relative;
     padding: 20px;

@@ -54,16 +54,16 @@
 			else{
 				//reroute //pass in the array
 				$_SESSION['trackingID'] = $trackingID;
-				$f3->reroute('/tracking');
+				$f3->reroute('/tracking-id='.$trackingID);
 			}
 		}
 	});
 
 	// Route to tracking page
-	$f3->route('GET|POST /tracking', function($f3) {
+	$f3->route('GET /tracking-id=@trackingID', function($f3, $params) {
 
 		// reroute to home if no id was found
-		if ($_SESSION['trackingID'] == NULL)
+		if ( ($_SESSION['trackingID'] == NULL) || ($params['trackingID'] != $_SESSION['trackingID']) )
 		{
 			$f3->reroute('/');
 		}
@@ -89,7 +89,6 @@
 		$progressStatus = $GLOBALS['statusDB']->getStatus($trackingID);
 		$progressBar = $GLOBALS['statusDB']->toProgressBar($progressStatus);
 
-		//print_r($progressStatus);
 		$f3->set('clientInfo', $clientInfo);
 		$f3->set('trackingID', $trackingID);
 		$f3->set('progressStatus', $progressStatus);
@@ -351,6 +350,9 @@
 						$emailBody = file_get_contents('pages/email.html');
 						$emailBody = str_replace('%project_name%', $project_name, $emailBody);
 						$emailBody = str_replace('%tracking_id%', $tracking_id, $emailBody);
+						
+						$url = './tracking-id='.$tracking_id;
+						$emailBody = str_replace('%track_url%', $url, $emailBody);
 						
 						try {
 							$mail->From = "dnguyen94@mail.greenriver.edu";
