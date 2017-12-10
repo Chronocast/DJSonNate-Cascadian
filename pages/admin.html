@@ -125,7 +125,7 @@
 											<input type="file" name="fileInput" class="fileID" accept="image/*" required/>
 										</div>
 										<!--<input name="action" type="submit" value="Add Document" class="btn">-->
-										<a name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
+										<button name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
 									</form>
 								</div>
 							</div>
@@ -319,21 +319,20 @@
 	<!-- Delete Modal -->
 	<div id="delModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-	
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Delete Modal</h4>
+					<h5 class="modal-title">Confirm Deletion</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<form method="post" class="delete" action="./delete">
-						<input type="text" name="id" style="visibility: hidden;" id="delInput" value="" required/>
-						<input name="action" type="submit" value="Delete" class="btn">
-					</form>
-				</div>
-				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<input type="text" name="id" style="visibility: hidden;" id="delInput" value="" required/>
+						<input name="action" type="submit" value="Confirm" class="btn">
+					</form>
 				</div>
 			</div>
 	
