@@ -10,6 +10,10 @@
 #active-div{
 	margin-bottom: 1em;
 }
+
+/* ---------------------------------------------------
+    CARD
+----------------------------------------------------- */
 .card-columns{
 	margin-top:-1em;
 }
@@ -25,12 +29,12 @@
     }
 }
 .card{
+	display: block;
 	border-bottom: 1px groove #DCAE10;
 	border-left: 1px groove #DCAE10;
 	border-right: 1px groove #DCAE10;
-    
-    /*flex: 0 0 100px;*/
-    
+	height:650px;
+	overflow: auto;
 }
 .card .btn.btn-title{
 	background:#DCAE10;
@@ -40,11 +44,10 @@
 	overflow: hidden;
 }
 .card .btn.btn-title:hover{
-	cursor: pointer;
+	cursor: default;
 }
 
 .card .d-inline-block {
-	/*background:#00303F;*/
 	background:#F7F5E6;
 	border-bottom: 1px groove #DCAE10;
 	padding-top:6px;
@@ -77,10 +80,31 @@
 	/*color:#DCAE10;*/
 	color:#333A56;
 }
+
+/* CARD BODY START */
 .card .card-body{
 	margin-bottom: 2.5em;
 }
+.card .card-body .fa{
+	font-size:20px;
+	padding:5px;
+	border-radius: 50%;
+	border: 2px solid;
+}
+.card .card-body .fa-plus-square{
+	color:#007bff;
+}
+.card .card-body .fa-pencil-square{
+	color: #ffc107;
+}
+.card .card-body .fa-archive{
+	color: #17a2b8;
+}
+.card .card-body .fa-minus-square{
+	color: #dc3545;
+}
 
+/* CARD FOOTER START */
 .card .card-footer{
 	position: absolute;
 	bottom:0;
@@ -107,7 +131,25 @@
 	cursor:pointer;
 }
 
+/* ---------------------------------------------------
+    CARD CONTENT - OVERVIEW 
+----------------------------------------------------- */
+.card-title,
+.main-options{
+	display: inline-block;
+}
+.main-options{
+	float:right;
+}
 
+/* ---------------------------------------------------
+    CARD CONTENT - DOCUMENT 
+----------------------------------------------------- */
+
+
+/* ---------------------------------------------------
+    CARD CONTENT - CONSTRUCTION 
+----------------------------------------------------- */
 .construction-heading h5,
 .construction-heading p{
 	display: inline-block;

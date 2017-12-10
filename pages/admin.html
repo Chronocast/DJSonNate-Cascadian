@@ -62,9 +62,6 @@
 						<!-- CONSTRUCTION BUTTON START -->
 						<a class="showStep" target="{{ @i + 3 }}">
 							<button type="button"  title="Construction" class="btn btn-warning" alt="Construction"> 
-								<!-- temporarally removed for consistency with tracking page
-								<i class="fa fa-wrench"></i>
-								-->
 								<i class="fa fa-cubes"></i> 
 							</button>
 						</a>
@@ -96,13 +93,13 @@
 						<!-- OVERVIEW START -->
 						<div id="div{{ @i }}" class="targetDiv{{ @i }} overview{{ @i }}">
 							<div class="overview-headings">
-								
-								<h5 class="card-title">Overview:</h5>
-								<div class="overview-options">
-									<i class="fa fa-pencil-square" aria-hidden="true"></i>
-									<i class="fa fa-archive" aria-hidden="true"></i>
+								<div class="card-title">
+									<h5>Overview:</h5>
 								</div>
-								
+								<div class="main-options">
+									<a href=""><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+									<a href=""><i class="fa fa-archive" aria-hidden="true"></i></a>
+								</div>
 							</div>
 							<br>
 							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
@@ -113,14 +110,26 @@
 						
 						<!-- DOCUMENTS START -->
 						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Documents:</h5>
-							<form action="./upload" method="post" enctype="multipart/form-data">
-								<a href="#" class="input"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
-								<input type="file" name="fileInput" class="fileID" style="visibility: hidden;" accept="image/*" required/>
-								<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
-								<br><input type="text" placeholder="Title" name="fileTitle" required/><br>
-								<input name="action" type="submit" value="Add Document" class="btn">
-							</form>
+							<div class="overview-headings">
+								<div class="card-title">
+									<h5>Documents:</h5>
+								</div>
+								<div class="main-options">
+									<form action="./upload" method="post" enctype="multipart/form-data" class="upload-document form-inline">
+										<div class="form-group">
+											<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
+											<input type="text" placeholder="Title" name="fileTitle" required/><br>
+										</div>
+										<div class="form-group">
+											<!--<a href="#" class="input"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>-->
+											<input type="file" name="fileInput" class="fileID" accept="image/*" required/>
+										</div>
+										<!--<input name="action" type="submit" value="Add Document" class="btn">-->
+										<a name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
+									</form>
+								</div>
+							</div>
+							<br>
 							
 							<table class="table table-striped">
 								<thead>
@@ -152,8 +161,12 @@
 						
 						<!-- SCHEDULING START -->
 						<div id="div{{ @i + 2 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Scheduling:</h5>
-							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<div class="card-title">
+								<h5>Scheduling:</h5>
+							</div>
+							<div class="main-options">
+								<a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+							</div>
 							<br>
 							<table class="table table-striped">
 								<thead>
@@ -187,9 +200,14 @@
 						
 						<!-- CONSTRUCTION START -->
 						<div id="div{{ @i + 3 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Construction:</h5>
-							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<div class="card-title">
+								<h5>Consutrction:</h5>
+							</div>
+							<div class="main-options">
+								<a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+							</div>
 							<br>
+							
 							<table class="table table-striped">
 								<thead>
 									<tr>
@@ -229,9 +247,14 @@
 						
 						<!-- PUNCH LIST START -->
 						<div id="div{{ @i + 4 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Final Punch List:</h5>
-							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<div class="card-title">
+								<h5>Final Punch List:</h5>
+							</div>
+							<div class="main-options">
+								<a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+							</div>
 							<br>
+							
 							<table class="table table-striped">
 								<thead>
 									<tr>
