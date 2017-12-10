@@ -66,13 +66,13 @@
 	background:#F7F5E6;
 	border:1px solid #52658F;
 }
-.card .d-inline-block a .btn .active{
-	border:3px solid #ffc107;
+.card .d-inline-block a .btn.active{
+	color:white;
 }
 .card .d-inline-block a .btn:hover{
 	border:2px solid #ffc107;
 }
-.card .d-inline-block a .btn .fa {
+.card .d-inline-block a .btn{
 	font-size: 1.2em;
 	/*color:#DCAE10;*/
 	color:#333A56;

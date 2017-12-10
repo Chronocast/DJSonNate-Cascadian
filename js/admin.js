@@ -4,10 +4,33 @@
 //Description: javascript for admin pages
 
 
+jQuery(function(){
+	
+	jQuery('div[class*=targetDiv]').hide();
+	jQuery('div[class*=overview]').show();
+	
+	jQuery('.showStep').click(function(){
+		
+		// get data number 
+		var classData = jQuery($(this)).parent().attr('class');
+		var target = classData.substring(classData.indexOf("data-")+5);
+		
+		// add to targetDiv
+		jQuery('.targetDiv'+target).hide();
+		console.log(jQuery('.btn.active:first'));
+		jQuery('.btn.active:first').removeClass('active');
+		
+		// add active class to current tab
+		jQuery($(this)).children(":first").addClass('active');
+		
+		// show the div
+		jQuery('#div'+$(this).attr('target')).show();
+	});
+});
+
 // Duck's codes modified from
 // https://stackoverflow.com/questions/35427641/how-to-dynamically-set-the-active-class-in-bootstrap-navbar/35428555
 $(document).ready(function () {
-	console.log("we're in the js file");
 	var url = window.location;
 	$('ul.nav a[href="'+ url +'"]').addClass('active');
 	$('ul.nav a').filter(function() {
