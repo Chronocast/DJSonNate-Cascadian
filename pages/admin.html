@@ -110,6 +110,7 @@
 							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 							<p>{{ @track['project_description'] }}</p>
+							<p>Project Last updated {{ @track['last_update'] }}</p>
 						</div>
 						
 						<!-- DOCUMENTS START -->
@@ -316,12 +317,8 @@
 						</div>
 					</div>										
 					<!-- END CARD BODY -->
-					
-					<!-- CARD FOOTER START-->
-					<div class="card-footer">
-						<small class="text-muted">Last updated {{ @track['last_update'] }}</small>
-					</div>				
-				</div>
+							
+			</div>
 				<!-- END CARD -->
 		
 			
