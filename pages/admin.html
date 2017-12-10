@@ -8,6 +8,7 @@
 	<include href="pages/admin-header.html" />
 	<title>Admin | Cascadian Landworks Tracking</title>
 	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+	
 </head>
 	
 	<!-- ADMIN - NAVIGATION -->
@@ -83,7 +84,10 @@
 								<i class="fa fa-check"></i> 
 							</button>
 						</a>
-						<!-- APPROVAL BUTTON END -->
+						<!-- APPROVAL BUTTON END  -->
+						
+
+						
 					</div>
 					<!-- TOOLS BUTTONS END -->
 					
@@ -293,7 +297,16 @@
 						<!-- ACCEPTANCE START -->
 						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
 							<h5 class="card-title">Acceptance:</h5>
-							<p>{{ @track['project_name'] }}</p>
+							
+							
+							<!-- Sonie's toggle code -- to be moved to one of the options -->
+							
+							<div class="switch">
+								
+							<input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+							
+							<label for="cmn-toggle-4"></label>
+							</div>
 						</div>
 					</div>										
 					<!-- END CARD BODY -->
