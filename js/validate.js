@@ -29,25 +29,14 @@ $(document).ready(function()
             report("error", "The Tracking ID cannot be empty!");
             error = true;
         }
-        else if(trackingNum.length != 10)
+        else if(trackingNum.length < 15)
             {
-                report("error", "Please enter the 10 digit tracking number!");
+                report("error", "Please enter a valid tracking number!");
                 error = true;
             }
             else
             {
-                trackingNum = parseInt(trackingNum, 10);
-                //console.log(typeof trackingNum);
-                if (trackingNum.isNaN)
-                {
-                    report("error", "Please enter a valid tracking number!");
-                    error = true;
-                }
-                else
-                {
-                    console.log("youre in");
-                    document.getElementById("tracking-form").submit();
-                }
+                document.getElementById("tracking-form").submit();
             }
     }
     
