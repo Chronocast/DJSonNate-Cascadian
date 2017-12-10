@@ -130,21 +130,20 @@ class TrackingDB
     }
     
     /**
-     * @author Nate
+     * @author Nate, Duck
      * Returns all inactive projects.
      * @return an associative array of project and their specific data
      */
     function inactiveProjectDisplay()
     {
         
-        $select = 'SELECT * FROM track_content WHERE project_status = 0 ORDER BY start_date';
+        //$select = 'SELECT * FROM track_content WHERE project_status = 0 ORDER BY start_date';
+        // updated query
+        $select = 'SELECT * FROM `track_content` INNER JOIN clients ON track_content.track_id = clients.track_id WHERE track_content.project_status=0 ORDER BY track_content.start_date';
         
         $results = $this->_pdo->prepare($select);
-        //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);
         $results->execute();
-         
-        $resultsArray = array();
-         
+        
         //map each project to a row of data by date
         $rows = $results->fetchAll(PDO::FETCH_ASSOC);
          

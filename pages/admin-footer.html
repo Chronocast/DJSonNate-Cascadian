@@ -16,34 +16,5 @@
 	<!-- CUSTOM JS -->
     <script type="text/javascript" src="./js/upload.js"></script>
     <script src="./js/admin.js"></script>
-    
-	
-		<!-- ACTIVE TAB AND SHOW/HIDE DIVS -->
-	<script>
-		jQuery(function(){
-			
-			jQuery('div[class*=targetDiv]').hide();
-			jQuery('div[class*=overview]').show();
-			
-			jQuery('.showStep').click(function(){
-				
-				// get data number 
-				var classData = jQuery($(this)).parent().attr('class');
-				var target = classData.substring(classData.indexOf("data-")+5);
-				
-				// add to targetDiv
-				jQuery('.targetDiv'+target).hide();
-				jQuery('.active:first').removeClass('active');
-				
-				// add active class to current tab
-				jQuery($(this)).children(":first").addClass('active');
-				
-				// show the div
-				jQuery('#div'+$(this).attr('target')).show();
-			});
-		});
-	</script>
-
-
 </body>
 </html>

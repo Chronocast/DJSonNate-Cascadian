@@ -131,28 +131,14 @@
 
 	});
 
-	// Route to tabbed admin page
-	$f3->route('GET|POST /admin-tabs', function($f3) {
-
-		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
-		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
-
-
-		$f3->set('projectDisplay', $projectDisplay);
-		$f3->set('docDisplay', $docDisplay);
-
-		echo Template::instance()->render('pages/admin-tabs.html');
-
-	});
-
 	// Route to admin-project page
 	$f3->route('GET|POST /admin-projects', function($f3) {
-
-		$projectDisplay = $GLOBALS['db']->inactiveProjectDisplay();
-		$clientsInfo = $GLOBALS['clientDB']->getAllClient();
-
-		$f3->set('projectDisplay', $projectDisplay);
-		$f3->set('clientsInfo', $clientsInfo);
+		
+		$adminName = $_SESSION['adminName'];
+		$inactiveProjectDisplay = $GLOBALS['db']->inactiveProjectDisplay();
+	
+		$f3->set('adminName', $adminName);
+		$f3->set('projectDisplay', $inactiveProjectDisplay);
 		echo Template::instance()->render('pages/admin-projects.html');
 
 	});
@@ -260,6 +246,9 @@
 	//Route to add-a-project page
 	$f3->route('GET|POST /admin-add', function($f3)
 	{
+		$adminName = $_SESSION['adminName'];
+		$f3->set('adminName', $adminName);
+		
 		if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		{
 			$error = false;

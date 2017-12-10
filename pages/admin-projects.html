@@ -1,15 +1,15 @@
 <!--
-	Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
-	Date: 10/13/17
-	Filename: home.html
-	Description: Admin page for Track-king. Cascadian Landworks tracking system.
+	Author: Nate Hascup, Duck Nguyen
+	Date: 12/09/17
+	Filename: admin-projects.html
+	Description: Display all inactive projects 
 -->
 
 	<include href="pages/admin-header.html" />
 	<title>Admin | Projects list</title>
 	<link rel="stylesheet" type="text/css" href="./css/admin-projects.css">
-</head>	
-	
+</head>
+
 	<!-- ADMIN - NAVIGATION -->
 	<include href="pages/admin-navbar.html"/>
 	
@@ -24,32 +24,23 @@
 			<div class="list-group">
 				<!-- repeat to display templated data -->
 				<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
-				<repeat group="{{ @clientsInfo }}" value="{{ @info }}">
-					<check if="{{ @track['track_id']==@info['track_id'] }}">
-						<true>
-							<!-- BEGIN PROJECT ENTRY -->
-							<div>
-							<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-								<div class="d-flex w-100 justify-content-between">
-									<h5 class="mb-1">{{ @track['project_name'] }}</h5>
-									<small>End date: {{ @track['end_date'] }}</small>
-								</div>
-								<h6 class="mb-1 text-muted">{{ @track['project_description'] }}</h6>
-								<small class="text-muted">Client: {{ @info['name'] }}</small>
-								<br>
-								<small class="text-muted">Email: {{ @info['email'] }}</small>
-							</a>
-							
-
-							<a type="button" id="archive" class="btn btn-danger pull-left" href="./activate={{ @track['track_id'] }}" >Archive</a>
-							<a type="button" id="archive" class="btn btn-success" href="./activate={{ @track['track_id'] }}" >Activate Project</a>
+					<!-- BEGIN PROJECT ENTRY -->
+					<div>
+						<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1">{{ @track['project_name'] }}</h5>
+								<small>End date: {{ @track['end_date'] }}</small>
 							</div>
+							<h6 class="mb-1 text-muted">{{ @track['project_description'] }}</h6>
+							<small class="text-muted">Client: {{ @track['name'] }}</small>
 							<br>
-							
-							<!-- END PROJECT ENTRY -->
-						</true>
-					</check>
-				</repeat>
+							<small class="text-muted">Email: {{ @track['email'] }}</small>
+						</a>
+						
+						<a class="btn btn-danger" href="./activate={{ @track['track_id'] }}" >Archive</a>
+						<a class="btn btn-success" href="./activate={{ @track['track_id'] }}" >Activate Project</a>
+					</div>
+					<br>
 				</repeat>
 				<!-- REPEAT END -->
 			<!-- END LIST GROUP -->  
