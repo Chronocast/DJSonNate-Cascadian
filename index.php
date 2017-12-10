@@ -133,6 +133,10 @@
 
 	// Route to admin-project page
 	$f3->route('GET|POST /admin-projects', function($f3) {
+		if ($_SESSION['adminID'] == NULL)
+		{
+			$f3->reroute('/admin-login');
+		}
 		
 		$adminName = $_SESSION['adminName'];
 		$inactiveProjectDisplay = $GLOBALS['db']->inactiveProjectDisplay();
@@ -246,6 +250,11 @@
 	//Route to add-a-project page
 	$f3->route('GET|POST /admin-add', function($f3)
 	{
+		if ($_SESSION['adminID'] == NULL)
+		{
+			$f3->reroute('/admin-login');
+		}
+		
 		$adminName = $_SESSION['adminName'];
 		$f3->set('adminName', $adminName);
 		
