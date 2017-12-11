@@ -16,11 +16,19 @@
 	// Create a scheduling database object
 	$schedulingDB = new SchedulingDB();
 
+<<<<<<< Updated upstream
 	// Create a construction database object
+=======
+	// Create a material database object
+	$materialDB = new MaterialDB();
+
+	// Create a material database object
+>>>>>>> Stashed changes
 	$constructionDB = new ConstructionDB();
-	
+
 	// Create a punchlist database object
 	$punchListDB = new PunchListDB();
+<<<<<<< Updated upstream
 	
 	
 	// Create a admin database object
@@ -30,6 +38,9 @@
 	$clientDB = new ClientDB();
 
 	
+=======
+
+>>>>>>> Stashed changes
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 
@@ -119,7 +130,7 @@
 		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
 		$constructionDisplay = $GLOBALS['constructionDB']->projectConstructionDisplay();
 		$punchListDisplay = $GLOBALS['punchListDB']->projectPunchListDisplay();
-		
+
 		$f3->set('i', 0); // increment value
 		$f3->set('scheduleDisplay', $scheduleDisplay);
 		$f3->set('constructionDisplay', $constructionDisplay);
@@ -424,6 +435,7 @@
 
 	//Route to admin-login validation
 	$f3->route('POST /admin-validation', function($f3) {
+
 	});
 
 	$f3->route('POST /upload', function($f3) {
@@ -448,8 +460,13 @@
 			}
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+<<<<<<< Updated upstream
 			
 			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
+=======
+
+			$adminDB->addDocument($fileName, $_POST['projectID']);
+>>>>>>> Stashed changes
 
 			$f3->reroute('/admin');
 	});
@@ -460,7 +477,104 @@
 			
 			$adminDB->delDocument($documentID);
 
+<<<<<<< Updated upstream
 			$f3->reroute('/admin');
+=======
+	$f3->route('POST /add-construction-report/upload-photo', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			$project_dir = "uploads/" . $_POST['projectID'];
+			$upload_dir = $project_dir . "/images/";
+			$fileName = basename($_FILES["fileInput"]["name"]);
+			$destination = $upload_dir . $fileName;
+
+			if (!file_exists($project_dir)) {
+				mkdir ($project_dir, 0777);
+			}
+
+			if (!file_exists($upload_dir)) {
+				mkdir ($upload_dir, 0777);
+			}
+
+			if (file_exists($destination)) {
+				$fileName .= "_1";
+				$destination = $upload_dir . $fileName;
+			}
+
+			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
 	});
+
+	//Route to admin-slack
+	$f3->route('GET /admin-slack', function($f3) {
+		echo Template::instance()->render('pages/admin-slack.html');
+
+>>>>>>> Stashed changes
+	});
+
+	$f3->route('GET /add-construction-report/@id', function($f3,$params) {
+		$f3->set('track_id',$params['id']);
+		echo Template::instance()->render('pages/add-construction-report.html');
+	});
+
+	//route for adding construction report
+	$f3->route('POST /add-construction-report/add-construction-report', function($f3) {
+
+
+		$project_dir = "uploads/" . $_POST['tracking_id'];
+		$upload_dir = $project_dir . "/images/";
+		$fileName = basename($_FILES["fileInput"]["name"]);
+		$destination = $upload_dir . $fileName;
+
+		if (!file_exists($project_dir)) {
+			mkdir ($project_dir, 0777);
+		}
+
+		if (!file_exists($upload_dir)) {
+			mkdir ($upload_dir, 0777);
+		}
+
+		if (file_exists($destination)) {
+			$fileName .= "_1";
+			$destination = $upload_dir . $fileName;
+		}
+
+
+		move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+
+		$constructionDB = new ConstructionDB();
+
+		$trackid = $_POST['tracking_id'];
+		$reportName = $_POST['reportName'];
+		$details = $_POST['details'];
+ 		$photoPath = $_POST['photoPath'];
+		$viewStatus = '0';
+
+		$results = $constructionDB->insertNewConstructionRecord($trackid,$reportName,$details,$photoPath,$viewStatus);
+
+
+
+		if($results > 0){
+			include('pages/snippets/successful-entry.html');
+		}
+
+		 $f3->reroute('@activeprojects');
+	});
+
+$f3->route('GET @activeprojects: /view-active-projects', function($f3) {
+
+
+	$adminName = $_SESSION['adminName'];
+	$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
+	$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
+
+	$f3->set('adminName', $adminName);
+	$f3->set('projectDisplay', $projectDisplay);
+	$f3->set('docDisplay', $docDisplay);
+
+
+
+	echo Template::instance()->render('pages/view-active-projects.html');
+
+});
+
 	//Run fat-free
 	$f3->run();
