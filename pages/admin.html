@@ -127,7 +127,7 @@
 										</div>
 										<div class="form-group">
 											<!--<a href="#" class="input"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>-->
-											<input type="file" name="fileInput" class="fileID" accept="image/*" required/>
+											<input type="file" name="fileInput" class="fileID" accept="pdf" required/>
 										</div>
 										<!--<input name="action" type="submit" value="Add Document" class="btn">-->
 										<button name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
@@ -204,10 +204,10 @@
 						<!-- CONSTRUCTION START -->
 						<div id="div{{ @i + 3 }}" class="targetDiv{{ @i }}">
 							<div class="card-title">
-								<h5>Consutrction:</h5>
+								<h5>Construction:</h5>
 							</div>
 							<div class="main-options">
-								<a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+								<a class="construction" data-toggle="modal" data-target="#constructionModal" id="c-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>
 							
@@ -376,6 +376,30 @@
 	
 		</div>
 	</div>
+	
+	<!-- View Modal -->
+<div id="constructionModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Construction Modal</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<input type="text" placeholder="Title" name="title">
+					<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
 	
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />

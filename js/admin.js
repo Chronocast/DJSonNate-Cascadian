@@ -54,6 +54,11 @@ $('a.edit').click(function(){
 	$('#modalImg').attr("src",src);
 });
 
+$('a.construction').click(function(){
+	var src = $(this).attr('id');
+	$('#constructionTitle').attr("value",src.substring(2));
+});
+
 $('input.fileID').change(function(){
 	var name = this.value;
 	var filename = name.replace(/C:\\fakepath\\/i, ': ');
