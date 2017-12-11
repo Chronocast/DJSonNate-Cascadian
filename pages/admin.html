@@ -27,7 +27,7 @@
 			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
 				
 				<!-- CARD START -->
-				<div class="card mx-auto">
+				<div class="card card-{{ @track['acceptance'] }} mx-auto">
 					
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
 					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
@@ -86,8 +86,6 @@
 						</a>
 						<!-- APPROVAL BUTTON END  -->
 						
-
-						
 					</div>
 					<!-- TOOLS BUTTONS END -->
 					
@@ -130,7 +128,7 @@
 											<input type="file" name="fileInput" class="fileID" accept="pdf" required/>
 										</div>
 										<!--<input name="action" type="submit" value="Add Document" class="btn">-->
-										<button name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
+										<button name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</button><span class="imgName"></span>
 									</form>
 								</div>
 							</div>
@@ -215,9 +213,6 @@
 								<thead>
 									<tr>
 										<th>Title</th>
-										<!-- <th>Date</th>
-										<th>Image</th> is this necessary? 
-										<th>Details</td>-->
 										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
@@ -302,7 +297,15 @@
 							<!-- Sonie's toggle code -- to be moved to one of the options -->
 							<div class="switch">
 								<p>Toggle project</p>
-								<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+								<check if="{{ @track['acceptance'] == 0 }}">
+									<true>
+										<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+									</true>
+									<false>
+										<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked>
+									</false>
+								</check>
+								
 								<label for="cmn-toggle-{{ @track['track_id'] }}"></label>
 							</div>
 						</div>
@@ -367,28 +370,28 @@
 	</div>
 	
 	<!-- View Modal -->
-<div id="constructionModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Construction Modal</h4>
+	<div id="constructionModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Construction Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="text" placeholder="Title" name="title">
+						<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
-			<div class="modal-body">
-				<form>
-					<input type="text" placeholder="Title" name="title">
-					<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
+	
 		</div>
-
 	</div>
-</div>
 	
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />

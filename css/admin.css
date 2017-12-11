@@ -36,6 +36,10 @@
 	height:650px;
 	overflow: auto;
 }
+.card-1{
+	border:3px solid green;
+}
+
 .card .btn.btn-title{
 	background:#DCAE10;
 	color:white;

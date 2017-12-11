@@ -5,7 +5,6 @@
 
 
 jQuery(function(){
-	
 	jQuery('div[class*=targetDiv]').hide();
 	jQuery('div[class*=overview]').show();
 	
@@ -27,6 +26,31 @@ jQuery(function(){
 		jQuery('#div'+$(this).attr('target')).show();
 	});
 });
+
+jQuery(function(){
+	jQuery('input[id*=cmn-toggle]').click(function(){
+		var idData = ($(this).attr('id'));
+		var checkStatus = $(this).prop('checked');
+		var target = idData.substring(idData.indexOf("toggle-")+7);
+		
+		$.post(
+		   "./controller/acceptance-toggle-logic.php",
+		   { track_id : target, checkStatus : checkStatus }
+		);
+		
+		var cardParent = $(this).parent().closest('.card');
+		console.log(cardParent);
+		console.log(checkStatus);
+		if (checkStatus == true)
+		{
+			cardParent.addClass('card-1');
+		} else {
+			cardParent.removeClass('card-1');
+		}
+	});
+});
+
+
 
 // Duck's codes modified from
 // https://stackoverflow.com/questions/35427641/how-to-dynamically-set-the-active-class-in-bootstrap-navbar/35428555

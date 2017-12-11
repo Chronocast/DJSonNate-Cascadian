@@ -354,14 +354,14 @@
 					var track_id = $('#trackingID').html();
 					var targetName = $(':nth-child(2)', current).html().toLowerCase();
 					
-					console.log(track_id + " --- " + targetName);
+					//console.log(track_id + " --- " + targetName);
 					$.post(
-						   "./controller/notification-logic.php",
-						   { track_id : track_id, targetName : targetName },
-						   function(result) {
-							$('#result').html(result);
-						   } 
-						);
+						"./controller/notification-logic.php",
+						{ track_id : track_id, targetName : targetName },
+						function(result) {
+						 $('#result').html(result);
+						} 
+					 );
 				}
 			});
 		});
