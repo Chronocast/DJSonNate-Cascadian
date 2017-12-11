@@ -295,24 +295,22 @@
 						
 						<!-- ACCEPTANCE START -->
 						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Acceptance:</h5>
-							
+							<div class="card-title">
+								<h5>Acceptance:</h5>
+							</div>
 							
 							<!-- Sonie's toggle code -- to be moved to one of the options -->
-							
 							<div class="switch">
+								<p>Toggle project</p>
 								<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
 								<label for="cmn-toggle-{{ @track['track_id'] }}"></label>
 							</div>
-							
 						</div>
 					</div>										
 					<!-- END CARD BODY -->
-							
 			</div>
-				<!-- END CARD -->
+			<!-- END CARD -->
 		
-			
 			 <!--incremental value-->
 			{~ @i+=7 ~}
 			

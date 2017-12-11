@@ -38,11 +38,6 @@ $(document).ready(function () {
 	}).addClass('active');
 });
 
-// Nate's codes
-//$('#myModal').on('shown.bs.modal', function () {
-//  $('#myInput').focus()
-//})
-
 
 $('a.delete').click(function(){
 	var id = $(this).attr('id');

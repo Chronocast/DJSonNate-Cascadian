@@ -16,20 +16,11 @@
 	// Create a scheduling database object
 	$schedulingDB = new SchedulingDB();
 
-<<<<<<< Updated upstream
 	// Create a construction database object
-=======
-	// Create a material database object
-	$materialDB = new MaterialDB();
-
-	// Create a material database object
->>>>>>> Stashed changes
 	$constructionDB = new ConstructionDB();
 
 	// Create a punchlist database object
 	$punchListDB = new PunchListDB();
-<<<<<<< Updated upstream
-	
 	
 	// Create a admin database object
 	$adminDB = new AdminDB();
@@ -37,10 +28,6 @@
 	// Create a client database object
 	$clientDB = new ClientDB();
 
-	
-=======
-
->>>>>>> Stashed changes
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 
@@ -365,7 +352,6 @@
 						//url needs update
 						$url = 'href="http://dnguyen.greenrivertech.net/355/cascadian/tracking-id='.$tracking_id.'"';
 						$emailBody = str_replace('%track_url%', $url, $emailBody);
-						echo $url;
 						try {
 							$mail->From = "bryan@cascadianlandworks.com";
 							$mail->FromName = "Cascadian Landworks";
@@ -430,7 +416,6 @@
 		//print_r($trackingID);
 
 		$f3->reroute('/admin');
-
 	});
 
 	//Route to admin-login validation
@@ -460,14 +445,10 @@
 			}
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
-<<<<<<< Updated upstream
 			
 			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
-=======
 
 			$adminDB->addDocument($fileName, $_POST['projectID']);
->>>>>>> Stashed changes
-
 			$f3->reroute('/admin');
 	});
 	
@@ -477,9 +458,8 @@
 			
 			$adminDB->delDocument($documentID);
 
-<<<<<<< Updated upstream
 			$f3->reroute('/admin');
-=======
+	});
 	$f3->route('POST /add-construction-report/upload-photo', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
 			$project_dir = "uploads/" . $_POST['projectID'];
@@ -501,13 +481,6 @@
 			}
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
-	});
-
-	//Route to admin-slack
-	$f3->route('GET /admin-slack', function($f3) {
-		echo Template::instance()->render('pages/admin-slack.html');
-
->>>>>>> Stashed changes
 	});
 
 	$f3->route('GET /add-construction-report/@id', function($f3,$params) {
@@ -559,22 +532,20 @@
 		 $f3->reroute('@activeprojects');
 	});
 
-$f3->route('GET @activeprojects: /view-active-projects', function($f3) {
-
-
-	$adminName = $_SESSION['adminName'];
-	$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
-	$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
-
-	$f3->set('adminName', $adminName);
-	$f3->set('projectDisplay', $projectDisplay);
-	$f3->set('docDisplay', $docDisplay);
-
-
-
-	echo Template::instance()->render('pages/view-active-projects.html');
-
-});
+	$f3->route('GET @activeprojects: /view-active-projects', function($f3) {
+	
+	
+		$adminName = $_SESSION['adminName'];
+		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
+		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
+	
+		$f3->set('adminName', $adminName);
+		$f3->set('projectDisplay', $projectDisplay);
+		$f3->set('docDisplay', $docDisplay);
+	
+		echo Template::instance()->render('pages/view-active-projects.html');
+	
+	});
 
 	//Run fat-free
 	$f3->run();
