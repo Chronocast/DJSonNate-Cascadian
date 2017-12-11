@@ -63,7 +63,7 @@
 	$f3->route('GET /tracking-id=@trackingID', function($f3, $params) {
 
 		// reroute to home if no id was found
-		if ( ($_SESSION['trackingID'] == NULL) || ($params['trackingID'] != $_SESSION['trackingID']) )
+		if ( ($params['trackingID'] == NULL) )
 		{
 			$f3->reroute('/');
 		}
@@ -351,17 +351,18 @@
 						$emailBody = str_replace('%project_name%', $project_name, $emailBody);
 						$emailBody = str_replace('%tracking_id%', $tracking_id, $emailBody);
 						
-						$url = './tracking-id='.$tracking_id;
+						//url needs update
+						$url = 'href="http://dnguyen.greenrivertech.net/355/cascadian/tracking-id='.$tracking_id.'"';
 						$emailBody = str_replace('%track_url%', $url, $emailBody);
-						
+						echo $url;
 						try {
-							$mail->From = "dnguyen94@mail.greenriver.edu";
+							$mail->From = "bryan@cascadianlandworks.com";
 							$mail->FromName = "Cascadian Landworks";
 							
 							$mail->addAddress($client_email, $client_name);
 							
 							//Address to which replient will reply
-							$mail->addReplyTo("hunteo1889@yahoo.com");
+							//$mail->addReplyTo("hunteo1889@yahoo.com");
 						
 							//Content
 							$mail->isHTML(true);
