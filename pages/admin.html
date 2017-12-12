@@ -333,7 +333,7 @@
 										<check if="{{ @construction['track_id']==@track['track_id'] }}">
 											<true>
 												<tr>
-													<td>
+													<td class="construction-info">
 														<div class="construction-heading">
 															<h5>{{ @construction['reportName'] }}</h5>
 															<p>{{ @construction['reportDate'] }}</p>
@@ -342,7 +342,7 @@
 															<p><img src="uploads/{{ @track['track_id'] }}/construction/{{ @construction['photo'] }}" class="construction-image">{{ @construction['details'] }}</p>
 														</div>
 													</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td><a class="editConstruction" id="{{ @construction['constructionID'] }}-{{ @track['track_id'] }}" data-toggle="modal" data-target="#constructionEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square"></i></a></td>
 													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="c{{ @construction['constructionID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
@@ -350,6 +350,57 @@
 									</repeat>
 								</tbody>
 							</table>
+							
+							
+							<!-- CONSTRUCTION EDIT MODAL -->
+							<div id="constructionEdit{{ @track['track_id'] }}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+							
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Construction Item</h4>
+										</div>
+										<div class="modal-body">
+											<form action="./update-item" method="post">
+												<!-- report name -->
+												<div class="form-group">
+													<label class="col-form-label" for="reportName">Report name</label>
+													<input type="text" class="form-control report-name" name="reportName" value="">
+												</div>
+												
+												<!-- report date -->
+												<div class="form-group">
+													<label class="col-form-label" for="reportDate">Report date</label>
+													<input name="reportDate" class="form-control report-date" type="date" value="">
+												</div>
+												
+												<!-- photo -->
+												<div class="form-group">
+													<label class="col-form-label" for="fileInput">Photo</label>
+													<img class="photo-construction-preview" src="">
+													<input type="file" name="fileInput" class="form-control" accept="image/*"/> 
+												</div>
+												
+												<!-- details -->
+												<div class="form-group">
+													<label class="col-form-label" for="details">Details</label>
+													<textarea name="details" rows="5" cols="30" class="form-control details"></textarea>
+												</div>
+												
+												<input type="text" name="id" class="updateConstructionID" value="" required/>
+												<input type="text" name="type" value="c" required/>
+												<input name="action" type="submit" value="Update construction detail" class="btn">
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+								
+									</div>
+								</div>
+							</div>
 						</div>
 						
 						<!-- PUNCH LIST START -->

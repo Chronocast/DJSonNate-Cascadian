@@ -16,7 +16,6 @@ jQuery(function(){
 		
 		// add to targetDiv
 		jQuery('.targetDiv'+target).hide();
-		console.log(jQuery('.btn.active:first'));
 		jQuery('.btn.active:first').removeClass('active');
 		
 		// add active class to current tab
@@ -39,8 +38,6 @@ jQuery(function(){
 		);
 		
 		var cardParent = $(this).parent().closest('.card');
-		//console.log(cardParent);
-		//console.log(checkStatus);
 		if (checkStatus === true)
 		{
 			cardParent.addClass('card-1');
@@ -113,5 +110,27 @@ $('a.editScheduling').click(function(){
 	
 	var notes = $(this).parent().siblings(".schedule-notes").html();
 	$('.notes').attr("value",notes);
-	console.log(notes);
+});
+
+$('a.editConstruction').click(function(){
+	var src = $(this).attr('id');
+	var typeID = src.substring(0, src.indexOf('-'));
+	$('.updateConstructionID').attr("value",typeID);
+	
+	var targetParent = $(this).parent().siblings(".construction-info");
+	var reportName = targetParent.children().eq(0).children('h5').html();
+	$('.report-name').attr("value",reportName);
+	
+	var reportDate = targetParent.children().eq(0).children('p').html();
+	$('.report-date').attr("value",reportDate);
+	
+	var test = targetParent.children().eq(1).children('p').html();
+	
+	var imgSrc = test.substring(10, test.indexOf('" '));
+	$('.photo-construction-preview').attr("src",imgSrc);
+	
+	var details = test.substring(test.indexOf(">") +1);
+	$('.details').val(details);
+	
+	
 });

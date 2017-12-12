@@ -631,15 +631,25 @@
 		else if ($updateType == 's')
 		{
 			$id = $_POST['id'];
-			echo $updateType;
-			echo $id;
+			
 			$worktype = $_POST['worktype'];
 			$quantity = $_POST['quantity'];
 			$notes = $_POST['notes'];
-			echo $worktype;
-			echo $quantity;
-			echo $notes;
 			$adminDB->updateScheduleItem($worktype, $quantity, $notes, $id);
+			
+			$f3->reroute('/admin');
+		}
+		else if ($updateType == 'c')
+		{
+			$id = $_POST['id'];
+			
+			$reportName = $_POST['reportName'];
+			$reportDate = $_POST['reportDate'];
+			$details = $_POST['details'];
+			$imgURL = $_POST['fileInput'];
+			
+			// need help with putting photo here
+			$adminDB->updateConstructionItem($reportName, $reportDate, $details, $id);
 		}
 	});
 	

@@ -184,7 +184,6 @@ class AdminDB
 		function updateOverview($title, $startDate, $endDate, $description, $id)
 		{
 			$updateOverview = "UPDATE track_content SET project_name = :project_name, start_date = :start_date, end_date = :end_date, project_description = :project_description WHERE track_id = :track_id";
-			//$updateClient = "UPDATE clients SET name = :name, email = :email WHERE track_id = :track_id";
 			
 			$statement = $this->_pdo->prepare($updateOverview);
 			$statement ->bindValue(':track_id', $id, PDO::PARAM_INT);
@@ -229,13 +228,35 @@ class AdminDB
 		 */
 		function updateScheduleItem($title, $quantity, $notes, $id)
 		{
-			$updateScheduling = "UPDATE scheduling SET title = :title, quantity = :quantity, notes = :notes, viewStatus = 1 WHERE schedulingID = :schedulingID";
+			$updateScheduling = "UPDATE scheduling SET title = :title, quantity = :quantity, notes = :notes, viewStatus = 0 WHERE schedulingID = :schedulingID";
 			
 			$statement = $this->_pdo->prepare($updateScheduling);
 			$statement ->bindValue(':schedulingID', $id, PDO::PARAM_INT);
 			$statement ->bindValue(':title', $title, PDO::PARAM_STR);
 			$statement ->bindValue(':quantity', $quantity, PDO::PARAM_STR);
 			$statement ->bindValue(':notes', $notes, PDO::PARAM_STR);
+			
+			$statement ->execute();
+		}
+		
+		/**
+		 * update construction item
+		 *
+		 * @author: Duck
+		 * @param title - item type
+		 * @param quantity - item quantity
+		 * @param notes - item notes
+		 * @param id - col id to be updated
+		 */
+		function updateConstructionItem($title, $date, $details, $id)
+		{
+			$updateConstruction = "UPDATE construction SET reportName = :reportName, reportDate = :reportDate, details = :details, viewStatus = 0 WHERE constructionID = :constructionID";
+			
+			$statement = $this->_pdo->prepare($updateConstruction);
+			$statement ->bindValue(':constructionID', $id, PDO::PARAM_INT);
+			$statement ->bindValue(':reportName', $title, PDO::PARAM_STR);
+			$statement ->bindValue(':reportDate', $date, PDO::PARAM_STR);
+			$statement ->bindValue(':details', $details, PDO::PARAM_STR);
 			
 			$statement ->execute();
 		}

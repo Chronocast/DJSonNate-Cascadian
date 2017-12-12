@@ -175,7 +175,10 @@
 	width:140px;
 	margin:0 10px 10px 10px;
 }
-
+.photo-construction-preview{
+	height:150px;
+	width:140px;
+}
 /*
  *Toggle slider code
  */
