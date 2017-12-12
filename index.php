@@ -448,7 +448,6 @@
 			
 			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
 
-			$adminDB->addDocument($fileName, $_POST['projectID']);
 			$f3->reroute('/admin');
 	});
 	
@@ -487,25 +486,25 @@
 	$f3->route('POST /upload_scheduling', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
 			
-			
-			$fileTitle = $_POST['fileTitle'];
+			$worktype = $_POST['worktype'];
+			$quantity = $_POST['quantity'];
+			$notes = $_POST['notes'];
+			$id = $_POST['id'];
 
+			$adminDB->addScheduling($worktype, $quantity, $notes, $id);
 			
-			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
-
-			$adminDB->addDocument($fileName, $_POST['projectID']);
 			$f3->reroute('/admin');
 	});
 	
 	$f3->route('POST /upload_final', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
 			
-			$fileTitle = $_POST['fileTitle'];
-
+			$item = $_POST['item'];
+			$status = $_POST['status'];
+			$id = $_POST['id'];
 			
-			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
-
-			$adminDB->addDocument($fileName, $_POST['projectID']);
+			$adminDB->addFinal($item, $status, $id);
+			
 			$f3->reroute('/admin');
 	});
 	

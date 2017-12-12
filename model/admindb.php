@@ -133,5 +133,36 @@ class AdminDB
 			//Return ID of inserted row
             return $this->_pdo->lastInsertId();
 		}
+		
+		function addScheduling($worktype, $quantity, $notes, $id)
+		{
+			$select = "INSERT INTO scheduling (track_id, title, quantity, notes) VALUES (:track_id, :title, :quantity, :notes)";
+			
+			$statement = $this->_pdo->prepare($select);
+			$statement ->bindValue(':track_id', $id, PDO::PARAM_INT);
+			$statement ->bindValue(':title', $worktype, PDO::PARAM_STR);
+			$statement ->bindValue(':quantity', $quantity, PDO::PARAM_STR);
+			$statement ->bindValue(':notes', $notes, PDO::PARAM_STR);
+
+			$statement ->execute();
+			
+			//Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+		}
+		
+		function addFinal($item, $status, $id)
+		{
+			$select = "INSERT INTO punchlist (track_id, status, name) VALUES (:track_id, :status, :name)";
+			
+			$statement = $this->_pdo->prepare($select);
+			$statement ->bindValue(':track_id', $id, PDO::PARAM_INT);
+			$statement ->bindValue(':status', $status, PDO::PARAM_INT);
+			$statement ->bindValue(':name', $item, PDO::PARAM_STR);
+
+			$statement ->execute();
+			
+			//Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+		}
     }
 ?>
