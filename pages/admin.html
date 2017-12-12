@@ -418,8 +418,7 @@
 									<tr>
 										<th>{~ @num = 0 ~}</th>
 										<th>Item</th>
-										<th>Status</th>
-										<th>Edit</th>
+										<th>Status Toggle</th>
 										<th>Delete</th>
 									</tr>
 								</thead>
@@ -434,11 +433,10 @@
 													<td>{{ @punchy['name'] }}</td>
 													<td>
 														<check if="{{ @punchy['status']==0 }}">
-															<true>Not done</true>
-															<false>Done</false>
+															<true><input type="checkbox" id="punchlist-checkbox-{{ @track['track_id'] }}" name="punch-not" value="{{ @punchy['punchID'] }}-{{ @punchy['status'] }}"></true>
+															<false><input type="checkbox" id="punchlist-checkbox-{{ @track['track_id'] }}" name="punch-done" value="{{ @punchy['punchID'] }}-{{ @punchy['status'] }}" checked></false>
 														</check>
 													</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
 													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="p{{ @punchy['punchID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>

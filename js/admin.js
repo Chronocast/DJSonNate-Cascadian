@@ -47,7 +47,19 @@ jQuery(function(){
 	});
 });
 
-
+jQuery(function(){
+	jQuery('input[id*=punchlist-checkbox-]').click(function(){
+		var dataID = ($(this).attr('value'));
+		
+		var targetID = dataID.substring(0, dataID.indexOf('-'));
+		var targetValue = dataID.substring(dataID.indexOf('-') +1);
+		
+		$.post(
+			"./controller/punchlist-toggle-logic.php",
+		   { targetID : targetID, targetValue : targetValue }
+		);
+	});
+});
 
 // Duck's codes modified from
 // https://stackoverflow.com/questions/35427641/how-to-dynamically-set-the-active-class-in-bootstrap-navbar/35428555
