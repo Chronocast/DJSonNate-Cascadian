@@ -425,7 +425,7 @@
 
 	$f3->route('POST /upload', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
-			$project_dir = "uploads/" . $_POST['projectID'];
+			$project_dir = "uploads/" . $_POST['id'];
 			$upload_dir = $project_dir . "/documents/";
 			$fileName = basename($_FILES["fileInput"]["name"]);
 			$fileTitle = $_POST['fileTitle'];
@@ -446,8 +446,7 @@
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
 			
-			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
-
+			$adminDB->addDocument($fileName, $_POST['id'], $fileTitle);
 			$f3->reroute('/admin');
 	});
 	
@@ -648,7 +647,7 @@
 			$details = $_POST['details'];
 			$imgURL = $_POST['fileInput'];
 			
-			// need help with putting photo here
+			// need help with putting photo 
 			$adminDB->updateConstructionItem($reportName, $reportDate, $details, $id);
 		}
 	});

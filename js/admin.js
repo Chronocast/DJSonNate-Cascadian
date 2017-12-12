@@ -81,6 +81,10 @@ $('a.delete').click(function(){
 	$('#delTypeID').attr("value",typeID);
 	$('#delType').attr("value",type);
 });
+$('a.document').click(function(){
+	var src = $(this).attr('id');
+	$('#documentTitle').attr("value",src.substring(2));
+});
 
 $('a.construction').click(function(){
 	var src = $(this).attr('id');
