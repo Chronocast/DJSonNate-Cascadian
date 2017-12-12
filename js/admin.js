@@ -39,9 +39,9 @@ jQuery(function(){
 		);
 		
 		var cardParent = $(this).parent().closest('.card');
-		console.log(cardParent);
-		console.log(checkStatus);
-		if (checkStatus == true)
+		//console.log(cardParent);
+		//console.log(checkStatus);
+		if (checkStatus === true)
 		{
 			cardParent.addClass('card-1');
 		} else {
@@ -68,18 +68,9 @@ $('a.delete').click(function(){
 	var type = name.substring(0,1);
 	var typeID = name.substring(1, name.indexOf('-'));
 	var trackingID = name.substring(name.indexOf('-') + 1);
-	alert(name);
-	alert(type);
-	alert(typeID);
-	alert(trackingID);
 	$('#delInput').attr("value",trackingID);
 	$('#delTypeID').attr("value",typeID);
 	$('#delType').attr("value",type);
-});
-
-$('a.edit').click(function(){
-	var src = $(this).attr('id');
-	$('#modalImg').attr("src",src);
 });
 
 $('a.construction').click(function(){

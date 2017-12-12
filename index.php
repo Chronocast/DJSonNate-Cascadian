@@ -500,10 +500,9 @@
 			$adminDB = $GLOBALS['adminDB'];
 			
 			$item = $_POST['item'];
-			$status = $_POST['status'];
 			$id = $_POST['id'];
 			
-			$adminDB->addFinal($item, $status, $id);
+			$adminDB->addFinal($item, $id);
 			
 			$f3->reroute('/admin');
 	});
@@ -604,6 +603,32 @@
 		echo Template::instance()->render('pages/view-active-projects.html');
 	
 	});
-
+	
+	// Route to update item
+	$f3->route('POST /update-item', function($f3) {
+		$adminDB = $GLOBALS['adminDB'];
+	
+		$updateType = $_POST['type'];
+		
+		if ($updateType == 'o')
+		{
+			$id = $_POST['id'];
+			
+			// project overview related
+			$project_name = $_POST['project_name'];
+			$project_description = $_POST['project_description'];
+			$start_date = $_POST['start_date'];
+			$end_date = $_POST['end_date'];
+			$adminDB->updateOverview($project_name, $start_date, $end_date, $project_description, $id);
+			
+			// client info related
+			$client_name = $_POST['client_name'];
+			$client_email = $_POST['client_email'];
+			$adminDB->updateClient($client_name, $client_email, $id);
+			
+			$f3->reroute('/admin');
+		}
+	});
+	
 	//Run fat-free
 	$f3->run();

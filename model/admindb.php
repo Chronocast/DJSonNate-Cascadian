@@ -77,7 +77,7 @@ class AdminDB
 		
 		/**
 		 * Method to upload a new document
-		 *
+		 * @author Caleb 
 		 * @param Name of the document
 		 * @param Tracking ID
 		 */
@@ -95,6 +95,13 @@ class AdminDB
             return $this->_pdo->lastInsertId();
 		}
 		
+		/**
+		 * Method to delete an item
+		 * @author Caleb 
+		 * @param type - type of the item
+		 * @param typeID - id of item
+		 * @param id - Tracking ID
+		 */
 		function delDocument($id, $type, $typeID)
         {
             $select = "DELETE FROM :documents WHERE :typeID = :id";
@@ -150,19 +157,65 @@ class AdminDB
             return $this->_pdo->lastInsertId();
 		}
 		
-		function addFinal($item, $status, $id)
+		function addFinal($item, $id)
 		{
-			$select = "INSERT INTO punchlist (track_id, status, name) VALUES (:track_id, :status, :name)";
+			$select = "INSERT INTO punchlist (track_id, name) VALUES (:track_id, :name)";
 			
 			$statement = $this->_pdo->prepare($select);
 			$statement ->bindValue(':track_id', $id, PDO::PARAM_INT);
-			$statement ->bindValue(':status', $status, PDO::PARAM_INT);
 			$statement ->bindValue(':name', $item, PDO::PARAM_STR);
 
 			$statement ->execute();
 			
 			//Return ID of inserted row
             return $this->_pdo->lastInsertId();
+		}
+		
+		/**
+		 * update project overview
+		 *
+		 * @author: Duck
+		 * @param title - project title
+		 * @param startDate - project start Date
+		 * @param endDate - project end Date
+		 * @param descripiton - project description
+		 * @param id - track id to update to
+		 */
+		function updateOverview($title, $startDate, $endDate, $description, $id)
+		{
+			$updateOverview = "UPDATE track_content SET project_name = :project_name, start_date = :start_date, end_date = :end_date, project_description = :project_description WHERE track_id = :track_id";
+			//$updateClient = "UPDATE clients SET name = :name, email = :email WHERE track_id = :track_id";
+			
+			$statement = $this->_pdo->prepare($updateOverview);
+			$statement ->bindValue(':track_id', $id, PDO::PARAM_INT);
+			$statement ->bindValue(':project_name', $title, PDO::PARAM_STR);
+			$statement ->bindValue(':project_description', $description, PDO::PARAM_STR);
+			$statement ->bindValue(':start_date', $startDate, PDO::PARAM_STR);
+			$statement ->bindValue(':end_date', $endDate, PDO::PARAM_STR);
+			
+			$statement ->execute();
+		}
+		
+		/**
+		 * update project overview
+		 *
+		 * @author: Duck
+		 * @param title - project title
+		 * @param startDate - project start Date
+		 * @param endDate - project end Date
+		 * @param descripiton - project description
+		 * @param id - track id to update to
+		 */
+		function updateClient($name, $email, $id)
+		{
+			$updateClient = "UPDATE clients SET name = :name, email = :email WHERE track_id = :track_id";
+			
+			$statement = $this->_pdo->prepare($updateClient);
+			$statement ->bindValue(':track_id', $id, PDO::PARAM_INT);
+			$statement ->bindValue(':name', $name, PDO::PARAM_STR);
+			$statement ->bindValue(':email', $email, PDO::PARAM_STR);
+			
+			$statement ->execute();
 		}
     }
 ?>

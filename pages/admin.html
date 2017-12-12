@@ -30,7 +30,7 @@
 				<div class="card card-{{ @track['acceptance'] }} mx-auto">
 					
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
-					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
+					<button type="button" class="btn btn-title btn-block">
 						<h3>{{ @track['project_name'] }}</h3>
 					</button>
 					
@@ -99,17 +99,83 @@
 									<h5>Overview:</h5>
 								</div>
 								<div class="main-options">
-									<a href=""><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+									<a class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}" id="o-{{ @track['track_id'] }}" href="#"/><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
 									<a id="archive" title="Archive" class="fa fa-archive" href="./archive={{ @track['track_id'] }}" ></i></a>
 								</div>
 							</div>
 							<br>
-							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
+							<p class="card-text">Tracking ID: {{ @track['track_id'] }}</p>
+							<p class="card-text">Client: {{ @track['name'] }}</p>
+							<p class="card-text">Email: {{ @track['email'] }}</p>
+							<br>
 							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 							<p>{{ @track['project_description'] }}</p>
 							<p>Project Last updated {{ @track['last_update'] }}</p>
+							
+							<!-- OVERVIEW EDIT MODAL -->
+							<div id="overviewEdit{{ @track['track_id'] }}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+							
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Overview</h4>
+										</div>
+										<div class="modal-body">
+											<form action="./update-item" method="post">
+												<!-- project name -->
+												<div class="form-group">
+													<label class="col-form-label" for="project_name">Project title</label>
+													<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+												</div>
+												
+												<!-- client name -->
+												<div class="form-group">
+													<label class="col-form-label" for="client_name">Client</label>
+													<input name="client_name" id="client_name" class="form-control" type="text" value="{{ @track['name'] }}">
+												</div>
+												
+												<!-- client email -->
+												<div class="form-group">
+													<label class="col-form-label" for="client_email">Contact information</label>
+													<input name="client_email" id="client_email" class="form-control" type="email" value="{{ @track['email'] }}">
+												</div>
+												
+												<!-- project start date -->
+												<div class="form-group">
+													<label class="col-form-label" for="start_date">Start date</label>
+													<input name="start_date" id="start_date" class="form-control" type="date" value="{{ @track['start_date'] }}">
+												</div>
+												
+												<!-- project end date -->
+												<div class="form-group">
+													<label class="col-form-label" for="end_date">End date</label>
+													<input name="end_date" id="end_date" class="form-control" type="date" value="{{ @track['end_date'] }}">
+												</div>
+												
+												<!-- project description -->
+												<div class="form-group">
+													<label class="col-form-label" for="project_description">Description</label>
+													<textarea name="project_description" rows="7" cols="30" class="form-control">{{ @track['project_description'] }}</textarea>
+												</div>
+												
+												<input type="text" name="id" value="{{ @track['track_id'] }}" required/>
+												<input type="text" name="type" value="o" required/>
+												<input name="action" type="submit" value="Update project overview" class="btn">
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+								
+									</div>
+								</div>
+							</div>
 						</div>
+					
+
 						
 						<!-- DOCUMENTS START -->
 						<div id="div{{ @i + 1 }}" class="targetDiv{{ @i }}">
@@ -325,7 +391,12 @@
 	</div>
 	<!-- ACTIVE PROJECT END -->
 	
-	<!-- Delete Modal -->
+	
+	<!-- ***********************************************************************
+		 ** MODAL CODES
+	     *********************************************************************** -->
+	
+	<!-- DELETE MODAL ALL -->
 	<div id="delModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -350,7 +421,7 @@
 		</div>
 	</div>
 	
-	<!-- View Modal -->
+	<!-- DOCUMENT - VIEW DOC MODAL -->
 	<div id="viewModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 	
@@ -371,84 +442,87 @@
 		</div>
 	</div>
 	
-<div id="constructionModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Construction Modal</h4>
-			</div>
-			<div class="modal-body">
-				<form action="./upload_construction" method="post" enctype="multipart/form-data">
-					<input type="text" placeholder="Title" name="title">
-					<input type="textarea" placeholder="Description" name="description">
-					<input type="file" name="fileInput" accept="image/*" required/> 
-					<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
-					<input name="action" type="submit" value="Add Construction" class="btn">
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-
-	<!-- Scheduling Modal -->
-<div id="schedulingModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Scheduling Modal</h4>
-			</div>
-			<div class="modal-body">
-				<form action="./upload_scheduling" method="post" enctype="multipart/form-data">
-					<input type="text" placeholder="Worktype" name="worktype">
-					<input type="text" placeholder="Quantity" name="quantity">
-					<input type="text" placeholder="Notes" name="notes">
-					<input type="text" name="id" style="visibility: hidden;" id="schedulingTitle" value="" required/>
-					<input name="action" type="submit" value="Add Schedule" class="btn">
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-	<!-- Final Modal -->
-<div id="finalModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Final PunchList Modal</h4>
-			</div>
-			<div class="modal-body">
-				<form action="./upload_final" method="post" enctype="multipart/form-data">
-					<input type="text" placeholder="Item" name="item">
-					<input type="text" placeholder="Status" name="status">
-					<input type="text" name="id" style="visibility: hidden;" id="finalTitle" value="" required/>
-					<input name="action" type="submit" value="Add Final PunchList" class="btn">
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<!-- *************************
+		 **      ADD MODALS     **
+	     ************************* -->
+	<!-- ADD CONSTRUCTION ITEM MODAL -->
+	<div id="constructionModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Construction Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload_construction" method="post" enctype="multipart/form-data">
+						<input type="text" placeholder="Title" name="title">
+						<input type="textarea" placeholder="Description" name="description">
+						<input type="file" name="fileInput" accept="image/*" required/> 
+						<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
+						<input name="action" type="submit" value="Add Construction" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 	
 		</div>
 	</div>
-</div>
+
+
+	<!-- ADD SCHEDULING MODAL -->
+	<div id="schedulingModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Scheduling Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload_scheduling" method="post" enctype="multipart/form-data">
+						<input type="text" placeholder="Worktype" name="worktype">
+						<input type="text" placeholder="Quantity" name="quantity">
+						<input type="text" placeholder="Notes" name="notes">
+						<input type="text" name="id" style="visibility: hidden;" id="schedulingTitle" value="" required/>
+						<input name="action" type="submit" value="Add Schedule" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ADD PUNCH LIST ITEM MODAL -->
+	<div id="finalModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Final PunchList Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload_final" method="post" enctype="multipart/form-data">
+						<input type="text" placeholder="Item description" name="item">
+						<input type="text" name="id" style="visibility: hidden;" id="finalTitle" value="" required/>
+						<input name="action" type="submit" value="Add Final PunchList" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />
