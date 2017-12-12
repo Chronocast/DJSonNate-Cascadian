@@ -64,8 +64,17 @@ $(document).ready(function () {
 
 
 $('a.delete').click(function(){
-	var id = $(this).attr('id');
-	$('#delInput').attr("value",id);
+	var name = $(this).attr('id');
+	var type = name.substring(0,1);
+	var typeID = name.substring(1, name.indexOf('-'));
+	var trackingID = name.substring(name.indexOf('-') + 1);
+	alert(name);
+	alert(type);
+	alert(typeID);
+	alert(trackingID);
+	$('#delInput').attr("value",trackingID);
+	$('#delTypeID').attr("value",typeID);
+	$('#delType').attr("value",type);
 });
 
 $('a.edit').click(function(){
@@ -76,6 +85,16 @@ $('a.edit').click(function(){
 $('a.construction').click(function(){
 	var src = $(this).attr('id');
 	$('#constructionTitle').attr("value",src.substring(2));
+});
+
+$('a.scheduling').click(function(){
+	var src = $(this).attr('id');
+	$('#schedulingTitle').attr("value",src.substring(2));
+});
+
+$('a.final').click(function(){
+	var src = $(this).attr('id');
+	$('#finalTitle').attr("value",src.substring(2));
 });
 
 $('input.fileID').change(function(){

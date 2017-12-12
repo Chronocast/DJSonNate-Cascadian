@@ -95,13 +95,43 @@ class AdminDB
             return $this->_pdo->lastInsertId();
 		}
 		
-		function delDocument($id)
+		function delDocument($id, $type, $typeID)
         {
-            $select = "DELETE FROM documents WHERE documentID = :id";
-             
+            $select = "DELETE FROM :documents WHERE :typeID = :id";
+			
+			
+			if ($type == 'c') {
+				$select = "DELETE FROM construction WHERE constructionID = :id";
+			} elseif ($type == 'd') {
+				$select = "DELETE FROM documents WHERE documentID = :id";
+			} elseif ($type == 's') {
+				$select = "DELETE FROM scheduling WHERE schedulingID = :id";
+			} else {
+				$select = "DELETE FROM punchlist WHERE punchID = :id";
+			}
+			
             $statement = $this->_pdo->prepare($select);
-            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->bindValue(':id', $typeID, PDO::PARAM_INT);
             $statement->execute();
         }
+		
+		function addConstruction($reportName, $trackID, $photoTitle, $details)
+		{
+			$select = "INSERT INTO construction (track_id, reportName, photo, details, reportDate) VALUES (:track_id, :reportName, :photoTitle, :details, :date)";
+			
+			$date = date('Y/m/d');
+			
+			$statement = $this->_pdo->prepare($select);
+			$statement ->bindValue(':track_id', $trackID, PDO::PARAM_INT);
+			$statement ->bindValue(':reportName', $reportName, PDO::PARAM_STR);
+			$statement ->bindValue(':photoTitle', $photoTitle, PDO::PARAM_STR);
+			$statement ->bindValue(':details', $details, PDO::PARAM_STR);
+			$statement ->bindValue(':date', $date, PDO::PARAM_STR);
+
+			$statement ->execute();
+			
+			//Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+		}
     }
 ?>

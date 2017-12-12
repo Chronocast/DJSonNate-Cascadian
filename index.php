@@ -452,11 +452,70 @@
 			$f3->reroute('/admin');
 	});
 	
+	$f3->route('POST /upload_construction', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			$project_dir = "uploads/" . $_POST['id'];
+			$upload_dir = $project_dir . "/construction/";
+			$fileName = basename($_FILES["fileInput"]["name"]);
+			$fileTitle = basename($_FILES["fileInput"]["tmp_name"]);
+			$destination = $upload_dir . $fileName;
+			
+			$reportName = $_POST['title'];
+			$trackID = $_POST['id'];
+			$details = $_POST['description'];
+
+			if (!file_exists($project_dir)) {
+				mkdir ($project_dir, 0777);
+			}
+
+			if (!file_exists($upload_dir)) {
+				mkdir ($upload_dir, 0777);
+			}
+
+			if (file_exists($destination)) {
+				$fileName = "1_" . $fileName;
+				$destination = $upload_dir . $fileName;
+			}
+
+			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+			
+			$adminDB->addConstruction($reportName, $trackID, $fileName, $details);
+
+			$f3->reroute('/admin');
+	});
+	
+	$f3->route('POST /upload_scheduling', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			
+			
+			$fileTitle = $_POST['fileTitle'];
+
+			
+			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
+
+			$adminDB->addDocument($fileName, $_POST['projectID']);
+			$f3->reroute('/admin');
+	});
+	
+	$f3->route('POST /upload_final', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			
+			$fileTitle = $_POST['fileTitle'];
+
+			
+			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
+
+			$adminDB->addDocument($fileName, $_POST['projectID']);
+			$f3->reroute('/admin');
+	});
+	
 	$f3->route('POST /delete', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
 			$documentID = $_POST['id'];
+			$type = $_POST['type'];
+			$typeID = $_POST['typeID'];
 			
-			$adminDB->delDocument($documentID);
+			$adminDB->delDocument($documentID, $type, $typeID);
 
 			$f3->reroute('/admin');
 	});
