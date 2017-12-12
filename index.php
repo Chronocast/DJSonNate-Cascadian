@@ -628,6 +628,19 @@
 			
 			$f3->reroute('/admin');
 		}
+		else if ($updateType == 's')
+		{
+			$id = $_POST['id'];
+			echo $updateType;
+			echo $id;
+			$worktype = $_POST['worktype'];
+			$quantity = $_POST['quantity'];
+			$notes = $_POST['notes'];
+			echo $worktype;
+			echo $quantity;
+			echo $notes;
+			$adminDB->updateScheduleItem($worktype, $quantity, $notes, $id);
+		}
 	});
 	
 	//Run fat-free

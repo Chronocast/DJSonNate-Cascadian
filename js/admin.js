@@ -97,3 +97,21 @@ $('input.fileID').change(function(){
 $('a.input').click(function(){
 	$(this).parent().find("input.fileID").click();
 });
+
+
+
+$('a.editScheduling').click(function(){
+	var src = $(this).attr('id');
+	var typeID = src.substring(0, src.indexOf('-'));
+	$('.updateID').attr("value",typeID);
+	
+	var title = $(this).parent().siblings(".schedule-title").html();
+	$('.worktype').attr("value",title);
+	
+	var quantity = $(this).parent().siblings(".schedule-quantity").html();
+	$('.quantity').attr("value",quantity);
+	
+	var notes = $(this).parent().siblings(".schedule-notes").html();
+	$('.notes').attr("value",notes);
+	console.log(notes);
+});

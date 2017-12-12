@@ -217,5 +217,27 @@ class AdminDB
 			
 			$statement ->execute();
 		}
+		
+		/**
+		 * update schedulnig item
+		 *
+		 * @author: Duck
+		 * @param title - item type
+		 * @param quantity - item quantity
+		 * @param notes - item notes
+		 * @param id - col id to be updated
+		 */
+		function updateScheduleItem($title, $quantity, $notes, $id)
+		{
+			$updateScheduling = "UPDATE scheduling SET title = :title, quantity = :quantity, notes = :notes, viewStatus = 1 WHERE schedulingID = :schedulingID";
+			
+			$statement = $this->_pdo->prepare($updateScheduling);
+			$statement ->bindValue(':schedulingID', $id, PDO::PARAM_INT);
+			$statement ->bindValue(':title', $title, PDO::PARAM_STR);
+			$statement ->bindValue(':quantity', $quantity, PDO::PARAM_STR);
+			$statement ->bindValue(':notes', $notes, PDO::PARAM_STR);
+			
+			$statement ->execute();
+		}
     }
 ?>

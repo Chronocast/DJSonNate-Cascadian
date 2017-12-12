@@ -99,7 +99,7 @@
 									<h5>Overview:</h5>
 								</div>
 								<div class="main-options">
-									<a class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}" id="o-{{ @track['track_id'] }}" href="#"/><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+									<a class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
 									<a id="archive" title="Archive" class="fa fa-archive" href="./archive={{ @track['track_id'] }}" ></i></a>
 								</div>
 							</div>
@@ -252,10 +252,10 @@
 										<check if="{{ @schedule['track_id'] == @track['track_id'] }}">
 											<true>
 												<tr>
-													<td>{{ @schedule['title'] }}</td>
-													<td>{{ @schedule['quantity'] }}</td>
-													<td>{{ @schedule['notes'] }}</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
+													<td class="schedule-title">{{ @schedule['title'] }}</td>
+													<td class="schedule-quantity">{{ @schedule['quantity'] }}</td>
+													<td class="schedule-notes">{{ @schedule['notes'] }}</td>
+													<td><a class="editScheduling" id="{{ @schedule['schedulingID'] }}-{{ @track['track_id'] }}" data-toggle="modal" data-target="#scheduleEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a></td>
 													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="s{{ @schedule['schedulingID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
@@ -263,6 +263,49 @@
 									</repeat>
 								</tbody>
 							</table>
+							
+							<!-- SCHEDULE EDIT MODAL -->
+							<div id="scheduleEdit{{ @track['track_id'] }}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+							
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Scheduling Item</h4>
+										</div>
+										<div class="modal-body">
+											<form action="./update-item" method="post">
+												<!-- work type -->
+												<div class="form-group">
+													<label class="col-form-label" for="worktype">Work type</label>
+													<input type="text" class="form-control worktype" name="worktype" value="">
+												</div>
+												
+												<!-- quantity -->
+												<div class="form-group">
+													<label class="col-form-label" for="quantity">Quantity</label>
+													<input name="quantity" class="form-control quantity" type="text" value="">
+												</div>
+												
+												<!-- notes -->
+												<div class="form-group">
+													<label class="col-form-label" for="notes">Notes</label>
+													<input name="notes" class="form-control notes" type="text" value="">
+												</div>
+												
+												<input type="text" name="id" class="updateID" value="" required/>
+												<input type="text" name="type" value="s" required/>
+												<input name="action" type="submit" value="Update schedule detail" class="btn">
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+								
+									</div>
+								</div>
+							</div>
 						</div>
 						
 						<!-- CONSTRUCTION START -->
