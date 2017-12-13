@@ -21,11 +21,34 @@
 		
 		<!-- Portfolio container -->
 		<div id="inactive-div" class="portfolio">	
-			<div class="list-group">
+			<div id="accordion" role="tablist">
 				<!-- repeat to display templated data -->
 				<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
 					<!-- BEGIN PROJECT ENTRY -->
-					<div>
+						<div class="card">
+							<div class="card-header" role="tab" id="heading{{ @track['track_id'] }}">
+								<h5 class="mb-0">
+									<a data-toggle="collapse" href="#collapse{{ @track['track_id'] }}" aria-expanded="true" aria-controls="collapse{{ @track['track_id'] }}">
+										{{ @track['project_name'] }}: {{ @track['track_id'] }}
+									</a>
+								</h5>
+							</div>
+						
+							<div id="collapse{{ @track['track_id'] }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ @track['track_id'] }}" data-parent="#accordion">
+								<div class="card-body">
+									<h6 class="mb-1 text-muted">{{ @track['project_description'] }}</h6>
+									<small>End date: {{ @track['end_date'] }}</small>
+									<br>
+									<small class="text-muted">Client: {{ @track['name'] }}</small>
+									<br>
+									<small class="text-muted">Email: {{ @track['email'] }}</small>
+									<br>
+									<a class="btn btn-info" href="./activate={{ @track['track_id'] }}" >Activate Project</a>
+								</div>
+							</div>
+						</div>
+					
+					<!--<div>
 						<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
 							<div class="d-flex w-100 justify-content-between">
 								<h5 class="mb-1">{{ @track['project_name'] }}</h5>
@@ -35,16 +58,19 @@
 							<small class="text-muted">Client: {{ @track['name'] }}</small>
 							<br>
 							<small class="text-muted">Email: {{ @track['email'] }}</small>
+							
+							<a class="btn btn-danger" href="./activate={{ @track['track_id'] }}" >Archive</a>
+							<a class="btn btn-success" href="./activate={{ @track['track_id'] }}" >Activate Project</a>
 						</a>
 						
-						<a class="btn btn-danger" href="./activate={{ @track['track_id'] }}" >Archive</a>
-						<a class="btn btn-success" href="./activate={{ @track['track_id'] }}" >Activate Project</a>
+						
 					</div>
-					<br>
+					<br>-->
 				</repeat>
+			</div>
+				
 				<!-- REPEAT END -->
 			<!-- END LIST GROUP -->  
-			</div>
 		</div>
 	<!-- PROJECT END -->
 	</div>
