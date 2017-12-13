@@ -135,6 +135,12 @@
 	cursor:pointer;
 }
 
+.done-done{
+	color:green;
+}
+.not-done-done{
+	color:grey;
+}
 /* ---------------------------------------------------
     CARD CONTENT - OVERVIEW 
 ----------------------------------------------------- */

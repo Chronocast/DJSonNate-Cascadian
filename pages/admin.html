@@ -182,6 +182,20 @@
 									<h5>Documents:</h5>
 								</div>
 								<div class="main-options">
+									<!-- CHECK FOR VALID STATUS -->
+									<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+										<check if="{{ @status['track_id'] == @track['track_id'] }}">
+											<check if="{{ @status['documentsStatus'] == 1}}">
+												<true>
+													<p id="statusTog-{{ @status['documentsStatus'] }}-{{ @status['track_id'] }}-d" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+												</true>
+												<false>
+													<p id="statusTog-{{ @status['documentsStatus'] }}-{{ @status['track_id'] }}-d" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+												</false>
+											</check>
+										</check>
+									</repeat>
+									
 									<a class="document" data-toggle="modal" data-target="#documentModal" id="d-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 								</div>
 							</div>
@@ -219,6 +233,19 @@
 								<h5>Scheduling:</h5>
 							</div>
 							<div class="main-options">
+								<!-- CHECK FOR VALID STATUS -->
+								<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+									<check if="{{ @status['track_id'] == @track['track_id'] }}">
+										<check if="{{ @status['schedulingStatus'] == 1}}">
+											<true>
+												<p id="statusTog-{{ @status['schedulingStatus'] }}-{{ @status['track_id'] }}-s" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</true>
+											<false>
+												<p id="statusTog-{{ @status['schedulingStatus'] }}-{{ @status['track_id'] }}-s" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</false>
+										</check>
+									</check>
+								</repeat>
 								<a class="scheduling" data-toggle="modal" data-target="#schedulingModal" id="s-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>
@@ -301,6 +328,19 @@
 								<h5>Construction:</h5>
 							</div>
 							<div class="main-options">
+								<!-- CHECK FOR VALID STATUS -->
+								<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+									<check if="{{ @status['track_id'] == @track['track_id'] }}">
+										<check if="{{ @status['constructionStatus'] == 1}}">
+											<true>
+												<p id="statusTog-{{ @status['constructionStatus'] }}-{{ @status['track_id'] }}-c" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</true>
+											<false>
+												<p id="statusTog-{{ @status['constructionStatus'] }}-{{ @status['track_id'] }}-c" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</false>
+										</check>
+									</check>
+								</repeat>
 								<a class="construction" data-toggle="modal" data-target="#constructionModal" id="c-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>
@@ -396,6 +436,19 @@
 								<h5>Final Punch List:</h5>
 							</div>
 							<div class="main-options">
+								<!-- CHECK FOR VALID STATUS -->
+								<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+									<check if="{{ @status['track_id'] == @track['track_id'] }}">
+										<check if="{{ @status['punchlistStatus'] == 1}}">
+											<true>
+												<p id="statusTog-{{ @status['punchlistStatus'] }}-{{ @status['track_id'] }}-f" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</true>
+											<false>
+												<p id="statusTog-{{ @status['punchlistStatus'] }}-{{ @status['track_id'] }}-f" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</false>
+										</check>
+									</check>
+								</repeat>
 								<a class="final" data-toggle="modal" data-target="#finalModal" id="f-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>

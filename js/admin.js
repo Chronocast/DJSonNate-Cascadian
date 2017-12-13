@@ -61,6 +61,37 @@ jQuery(function(){
 	});
 });
 
+jQuery(function(){
+	jQuery('p[id*=statusTog-]').click(function(){
+		var src = ($(this).attr('id'));
+		var data = [];
+		data = src.split('-');
+		
+		var trackID = data[2];
+		var value = data[1];
+		var type = data[3];
+		console.log(data);
+		
+		if ( $(this).hasClass("done-done"))
+		{
+			console.log($(this));
+			$(this).removeClass('done-done');
+			$(this).addClass('not-done-done');
+		}
+		else if ( $(this).hasClass("not-done-done") )
+		{
+			$(this).removeClass('not-done-done');
+			$(this).addClass('done-done');
+		}
+
+		$.post(
+			"./controller/done-toggle-logic.php",
+		   { trackID : trackID, value : value, type : type }
+		);
+	});
+});
+
+
 // Duck's codes modified from
 // https://stackoverflow.com/questions/35427641/how-to-dynamically-set-the-active-class-in-bootstrap-navbar/35428555
 $(document).ready(function () {

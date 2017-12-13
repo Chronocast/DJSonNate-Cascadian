@@ -108,20 +108,22 @@
 		$adminName = $_SESSION['adminName'];
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
-
+		
 		$f3->set('adminName', $adminName);
 		$f3->set('projectDisplay', $projectDisplay);
 		$f3->set('docDisplay', $docDisplay);
+		
 
 		/* Duck codes */
 		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
 		$constructionDisplay = $GLOBALS['constructionDB']->projectConstructionDisplay();
 		$punchListDisplay = $GLOBALS['punchListDB']->projectPunchListDisplay();
-
+		$statusCheck = $GLOBALS['statusDB']->getAllStatus();
 		$f3->set('i', 0); // increment value
 		$f3->set('scheduleDisplay', $scheduleDisplay);
 		$f3->set('constructionDisplay', $constructionDisplay);
 		$f3->set('punchListDisplay', $punchListDisplay);
+		$f3->set('statusCheck', $statusCheck);
 		/* End Duck */
 
 		echo Template::instance()->render('pages/admin.html');
@@ -341,7 +343,7 @@
 						
 						$GLOBALS['db']->addProject($tracking_id, $project_name, $start_date, $end_date, $project_description);
 						$GLOBALS['clientDB']->addClient($tracking_id, $client_name, $client_email);
-						
+						$GLOBALS['$statusDB']-addNew($tracking_id);
 						$mail = new PHPMailer(true);
 						
 						//Get email template and repalce content
