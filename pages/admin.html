@@ -99,7 +99,7 @@
 									<h5>Overview:</h5>
 								</div>
 								<div class="main-options">
-									<a title="Edit" class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+									<a class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
 									<a id="archive" title="Archive" class="fa fa-archive" href="./archive={{ @track['track_id'] }}" ></i></a>
 								</div>
 							</div>
@@ -605,10 +605,11 @@
 						</div>
 						
 						<input type="text" name="id" style="visibility: hidden;" id="documentTitle" value="" required/>
+						
+					<input name="action" type="submit" value="Add Document" class="btn btn-primary">
 					</form>
 				</div>
 				<div class="modal-footer">
-					<input name="action" type="submit" value="Add Document" class="btn btn-primary">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -643,10 +644,12 @@
 							<input type="file" name="fileInput" class="form-control" accept="image/*" required/> 
 						</div>
 						<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
+					
+					<input name="action" type="submit" value="Add Construction" class="btn btn-primary">
 					</form>
+					
 				</div>
 				<div class="modal-footer">
-					<input name="action" type="submit" value="Add Construction" class="btn btn-primary">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>

@@ -143,9 +143,11 @@
 					<div class="progress-bar {{ @progressBar[2] }}" role="progressbar" style="width:25%">
 						Construction
 					</div>
-					<div class="progress-bar {{ @progressBar[3] }}" role="progressbar" style="width:25%">
-						Acceptance
-					</div>
+					<check if="{{ @projectDetails['acceptance'] == 1 }}">
+						<div class="progress-bar progress-bar-primary" role="progressbar" style="width:25%">
+							Acceptance
+						</div>
+					</check>
 				</div>		
 			</div>
 		</div>
