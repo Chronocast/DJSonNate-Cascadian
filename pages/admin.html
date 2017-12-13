@@ -120,8 +120,8 @@
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
-											<h4 class="modal-title">Edit Overview</h4>
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Overview</h4>
 										</div>
 										<div class="modal-body">
 											<form action="./update-item" method="post">
@@ -286,8 +286,8 @@
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
 											<h4 class="modal-title">Edit Scheduling Item</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
 											<form action="./update-item" method="post">
@@ -309,8 +309,8 @@
 													<input name="notes" class="form-control notes" type="text" value="">
 												</div>
 												
-												<input type="text" name="id" class="updateID" value="" required/>
-												<input type="text" name="type" value="s" required/>
+												<input type="text" name="id" style="visibility: hidden;" class="updateID" value="" required/>
+												<input type="text" name="type" style="visibility: hidden;" value="s" required/>
 												<input name="action" type="submit" value="Update schedule detail" class="btn">
 											</form>
 										</div>
@@ -387,8 +387,8 @@
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
 											<h4 class="modal-title">Edit Construction Item</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
 											<form action="./update-item" method="post">
@@ -417,8 +417,8 @@
 													<textarea name="details" rows="5" cols="30" class="form-control details"></textarea>
 												</div>
 												
-												<input type="text" name="id" class="updateConstructionID" value="" required/>
-												<input type="text" name="type" value="c" required/>
+												<input type="text" name="id" style="visibility: hidden;" class="updateConstructionID" value="" required/>
+												<input type="text" name="type" style="visibility: hidden;" value="c" required/>
 												<input name="action" type="submit" value="Update construction detail" class="btn">
 											</form>
 										</div>
@@ -546,8 +546,11 @@
 						<input type="text" name="id" style="visibility: hidden;" id="delInput" value="" required/>
 						<input type="text" name="type" style="visibility: hidden;" id="delType" value="" required/>
 						<input type="text" name="typeID" style="visibility: hidden;" id="delTypeID" value="" required/>
-						<input name="action" type="submit" value="Confirm" class="btn">
 					</form>
+				</div>
+				<div class="modal-footer">
+					<input name="action" type="submit" value="Confirm" class="btn btn-primary">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 	
@@ -585,42 +588,27 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Add new document</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="./upload" method="post" enctype="multipart/form-data" class="upload-document form-inline">
-						<!-- project name -->
+					<form action="./upload" method="post" enctype="multipart/form-data" class="upload-document">
+						<!-- document name -->
 						<div class="form-group">
-							<label class="col-form-label" for="project_name">Project title</label>
-							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+							<label class="col-form-label" for="fileTitle">Project title</label>
+							<input type="text" class="form-control" placeholder="Title" name="fileTitle" required/>
 						</div>
 						
-						<!-- project name -->
+						<!-- upload doc -->
 						<div class="form-group">
-							<label class="col-form-label" for="project_name">Project title</label>
-							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
-						</div>
-						
-						<!-- project name -->
-						<div class="form-group">
-							<label class="col-form-label" for="project_name">Project title</label>
-							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
-						</div>
-						
-						<!-- project name -->
-						<div class="form-group">
-							<label class="col-form-label" for="project_name">Project title</label>
-							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+							<input type="file" name="fileInput" class="form-control" class="fileID" accept="pdf" required/>
 						</div>
 						
 						<input type="text" name="id" style="visibility: hidden;" id="documentTitle" value="" required/>
-						<input type="text" placeholder="Title" name="fileTitle" required/>
-						<input type="file" name="fileInput" class="fileID" accept="pdf" required/>
-						<input name="action" type="submit" value="Add Document" class="btn">
 					</form>
 				</div>
 				<div class="modal-footer">
+					<input name="action" type="submit" value="Add Document" class="btn btn-primary">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -636,19 +624,29 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Construction Modal</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<form action="./upload_construction" method="post" enctype="multipart/form-data">
-						<input type="text" placeholder="Title" name="title">
-						<input type="textarea" placeholder="Description" name="description">
-						<input type="file" name="fileInput" accept="image/*" required/> 
+						<!-- upload doc -->
+						<div class="form-group">
+							<label class="col-form-label" for="title">Work type</label>
+							<input type="text" placeholder="Type" class="form-control" name="title">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label" for="description">Upload document</label>
+							<input type="textarea" class="form-control" placeholder="Description" name="description">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label" for="fileInput">Upload document</label>
+							<input type="file" name="fileInput" class="form-control" accept="image/*" required/> 
+						</div>
 						<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
-						<input name="action" type="submit" value="Add Construction" class="btn">
 					</form>
 				</div>
 				<div class="modal-footer">
+					<input name="action" type="submit" value="Add Construction" class="btn btn-primary">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -664,19 +662,30 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Scheduling Modal</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<form action="./upload_scheduling" method="post" enctype="multipart/form-data">
-						<input type="text" placeholder="Worktype" name="worktype">
-						<input type="text" placeholder="Quantity" name="quantity">
-						<input type="text" placeholder="Notes" name="notes">
+						<div class="form-group">
+							<label class="col-form-label" for="workType">Work type</label>
+							<input type="text" placeholder="Worktype" name="worktype" class="form-control">
+						</div>
+						
+						<div class="form-group">
+							<label class="col-form-label" for="quantity">Quantity</label>
+							<input type="text" placeholder="Quantity" name="quantity" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label" for="notes">Notes</label>
+							<input type="text" placeholder="Notes" name="notes" class="form-control">
+						</div>
+						
 						<input type="text" name="id" style="visibility: hidden;" id="schedulingTitle" value="" required/>
-						<input name="action" type="submit" value="Add Schedule" class="btn">
 					</form>
 				</div>
 				<div class="modal-footer">
+					<input name="action" type="submit" value="Add Schedule" class="btn btn-primary">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -690,20 +699,23 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Final PunchList Modal</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<form action="./upload_final" method="post" enctype="multipart/form-data">
-						<input type="text" placeholder="Item description" name="item">
+						<div class="form-group">
+							<label class="col-form-label" for="notes">Notes</label>
+							<input type="text" placeholder="Item description" class="form-control" name="item">
+						</div>
+						
 						<input type="text" name="id" style="visibility: hidden;" id="finalTitle" value="" required/>
-						<input name="action" type="submit" value="Add Final PunchList" class="btn">
 					</form>
 				</div>
 				<div class="modal-footer">
+					<input name="action" type="submit" value="Add Final PunchList" class="btn btn-primary">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
-		
 			</div>
 		</div>
 	</div>

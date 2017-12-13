@@ -4,10 +4,10 @@
  * Description: styling for admin layout
  */
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: #fafafa;
 }
 
