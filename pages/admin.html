@@ -99,7 +99,7 @@
 									<h5>Overview:</h5>
 								</div>
 								<div class="main-options">
-									<a title="Edit" class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+									<a class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
 									<a id="archive" title="Archive" class="fa fa-archive" href="./archive={{ @track['track_id'] }}" ></i></a>
 								</div>
 							</div>
@@ -120,8 +120,8 @@
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
 											<h4 class="modal-title">Edit Overview</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
 											<form action="./update-item" method="post">
@@ -161,12 +161,13 @@
 													<textarea name="project_description" rows="7" cols="30" class="form-control">{{ @track['project_description'] }}</textarea>
 												</div>
 												
-												<input type="text" name="id" value="{{ @track['track_id'] }}" required/>
-												<input type="text" name="type" value="o" required/>
-												<input name="action" type="submit" value="Update project overview" class="btn">
+												<input type="text" name="id" style="visibility: hidden;" value="{{ @track['track_id'] }}" required/>
+												<input type="text" name="type" style="visibility: hidden;" value="o" required/>
+												
 											</form>
 										</div>
 										<div class="modal-footer">
+											<input name="action" type="submit" value="Update overview" class="btn btn-primary">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										</div>
 								
@@ -589,6 +590,30 @@
 				</div>
 				<div class="modal-body">
 					<form action="./upload" method="post" enctype="multipart/form-data" class="upload-document form-inline">
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
 						<input type="text" name="id" style="visibility: hidden;" id="documentTitle" value="" required/>
 						<input type="text" placeholder="Title" name="fileTitle" required/>
 						<input type="file" name="fileInput" class="fileID" accept="pdf" required/>
