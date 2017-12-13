@@ -157,16 +157,17 @@
 				<h1>Overview</h1>
 			</div>
 			<h2>{{ @$projectDetails['project_name'] }}</h2>
-			<h3>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h3>
+			<br>
+			<h4>Tracking ID: <span id="trackingID">{{ @trackingID }}</span></h4>
 			<br>
 			<h4>Description:</h4>
-			<p>{{ @projectDetails['project_description'] }}</p>
+			<h4>{{ @projectDetails['project_description'] }}</h4>
 			
 			<div class="line"></div>
 			
 			<h4>Your Information:</h4>
-			<p>Name: {{ @clientInfo['name'] }}</p>
-			<p>Email: {{ @clientInfo['email'] }}</p>
+			<h5>Name: {{ @clientInfo['name'] }}</h5>
+			<h5>Email: {{ @clientInfo['email'] }}</h5>
 		</div>
 		<!-- OVERVIEW END -->
 
@@ -354,14 +355,14 @@
 					var track_id = $('#trackingID').html();
 					var targetName = $(':nth-child(2)', current).html().toLowerCase();
 					
-					console.log(track_id + " --- " + targetName);
+					//console.log(track_id + " --- " + targetName);
 					$.post(
-						   "./controller/notification-logic.php",
-						   { track_id : track_id, targetName : targetName },
-						   function(result) {
-							$('#result').html(result);
-						   } 
-						);
+						"./controller/notification-logic.php",
+						{ track_id : track_id, targetName : targetName },
+						function(result) {
+						 $('#result').html(result);
+						} 
+					 );
 				}
 			});
 		});

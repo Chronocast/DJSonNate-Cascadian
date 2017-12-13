@@ -18,10 +18,9 @@
 
 	// Create a construction database object
 	$constructionDB = new ConstructionDB();
-	
+
 	// Create a punchlist database object
 	$punchListDB = new PunchListDB();
-	
 	
 	// Create a admin database object
 	$adminDB = new AdminDB();
@@ -29,7 +28,6 @@
 	// Create a client database object
 	$clientDB = new ClientDB();
 
-	
 	//Create an instance of the Base Class
 	$f3 = Base::instance();
 
@@ -63,7 +61,7 @@
 	$f3->route('GET /tracking-id=@trackingID', function($f3, $params) {
 
 		// reroute to home if no id was found
-		if ( ($_SESSION['trackingID'] == NULL) || ($params['trackingID'] != $_SESSION['trackingID']) )
+		if ( ($params['trackingID'] == NULL) )
 		{
 			$f3->reroute('/');
 		}
@@ -110,20 +108,22 @@
 		$adminName = $_SESSION['adminName'];
 		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
 		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
-
+		
 		$f3->set('adminName', $adminName);
 		$f3->set('projectDisplay', $projectDisplay);
 		$f3->set('docDisplay', $docDisplay);
+		
 
 		/* Duck codes */
 		$scheduleDisplay = $GLOBALS['schedulingDB']->projectSchedulingDisplay();
 		$constructionDisplay = $GLOBALS['constructionDB']->projectConstructionDisplay();
 		$punchListDisplay = $GLOBALS['punchListDB']->projectPunchListDisplay();
-		
+		$statusCheck = $GLOBALS['statusDB']->getAllStatus();
 		$f3->set('i', 0); // increment value
 		$f3->set('scheduleDisplay', $scheduleDisplay);
 		$f3->set('constructionDisplay', $constructionDisplay);
 		$f3->set('punchListDisplay', $punchListDisplay);
+		$f3->set('statusCheck', $statusCheck);
 		/* End Duck */
 
 		echo Template::instance()->render('pages/admin.html');
@@ -343,7 +343,7 @@
 						
 						$GLOBALS['db']->addProject($tracking_id, $project_name, $start_date, $end_date, $project_description);
 						$GLOBALS['clientDB']->addClient($tracking_id, $client_name, $client_email);
-						
+						$GLOBALS['statusDB']->addNew($tracking_id);
 						$mail = new PHPMailer(true);
 						
 						//Get email template and repalce content
@@ -351,17 +351,17 @@
 						$emailBody = str_replace('%project_name%', $project_name, $emailBody);
 						$emailBody = str_replace('%tracking_id%', $tracking_id, $emailBody);
 						
-						$url = './tracking-id='.$tracking_id;
+						//url needs update
+						$url = 'href="http://dnguyen.greenrivertech.net/355/cascadian/tracking-id='.$tracking_id.'"';
 						$emailBody = str_replace('%track_url%', $url, $emailBody);
-						
 						try {
-							$mail->From = "dnguyen94@mail.greenriver.edu";
+							$mail->From = "bryan@cascadianlandworks.com";
 							$mail->FromName = "Cascadian Landworks";
 							
 							$mail->addAddress($client_email, $client_name);
 							
 							//Address to which replient will reply
-							$mail->addReplyTo("hunteo1889@yahoo.com");
+							//$mail->addReplyTo("hunteo1889@yahoo.com");
 						
 							//Content
 							$mail->isHTML(true);
@@ -418,16 +418,16 @@
 		//print_r($trackingID);
 
 		$f3->reroute('/admin');
-
 	});
 
 	//Route to admin-login validation
 	$f3->route('POST /admin-validation', function($f3) {
+
 	});
 
 	$f3->route('POST /upload', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
-			$project_dir = "uploads/" . $_POST['projectID'];
+			$project_dir = "uploads/" . $_POST['id'];
 			$upload_dir = $project_dir . "/documents/";
 			$fileName = basename($_FILES["fileInput"]["name"]);
 			$fileTitle = $_POST['fileTitle'];
@@ -448,18 +448,211 @@
 
 			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
 			
-			$adminDB->addDocument($fileName, $_POST['projectID'], $fileTitle);
+			$adminDB->addDocument($fileName, $_POST['id'], $fileTitle);
+			$f3->reroute('/admin');
+	});
+	
+	$f3->route('POST /upload_construction', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			$project_dir = "uploads/" . $_POST['id'];
+			$upload_dir = $project_dir . "/construction/";
+			$fileName = basename($_FILES["fileInput"]["name"]);
+			$fileTitle = basename($_FILES["fileInput"]["tmp_name"]);
+			$destination = $upload_dir . $fileName;
+			
+			$reportName = $_POST['title'];
+			$trackID = $_POST['id'];
+			$details = $_POST['description'];
 
+			if (!file_exists($project_dir)) {
+				mkdir ($project_dir, 0777);
+			}
+
+			if (!file_exists($upload_dir)) {
+				mkdir ($upload_dir, 0777);
+			}
+
+			if (file_exists($destination)) {
+				$fileName = "1_" . $fileName;
+				$destination = $upload_dir . $fileName;
+			}
+
+			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+			
+			$adminDB->addConstruction($reportName, $trackID, $fileName, $details);
+
+			$f3->reroute('/admin');
+	});
+	
+	$f3->route('POST /upload_scheduling', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			
+			$worktype = $_POST['worktype'];
+			$quantity = $_POST['quantity'];
+			$notes = $_POST['notes'];
+			$id = $_POST['id'];
+
+			$adminDB->addScheduling($worktype, $quantity, $notes, $id);
+			
+			$f3->reroute('/admin');
+	});
+	
+	$f3->route('POST /upload_final', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			
+			$item = $_POST['item'];
+			$id = $_POST['id'];
+			
+			$adminDB->addFinal($item, $id);
+			
 			$f3->reroute('/admin');
 	});
 	
 	$f3->route('POST /delete', function($f3) {
 			$adminDB = $GLOBALS['adminDB'];
 			$documentID = $_POST['id'];
+			$type = $_POST['type'];
+			$typeID = $_POST['typeID'];
 			
-			$adminDB->delDocument($documentID);
+			$adminDB->delDocument($documentID, $type, $typeID);
 
 			$f3->reroute('/admin');
 	});
+	$f3->route('POST /add-construction-report/upload-photo', function($f3) {
+			$adminDB = $GLOBALS['adminDB'];
+			$project_dir = "uploads/" . $_POST['projectID'];
+			$upload_dir = $project_dir . "/images/";
+			$fileName = basename($_FILES["fileInput"]["name"]);
+			$destination = $upload_dir . $fileName;
+
+			if (!file_exists($project_dir)) {
+				mkdir ($project_dir, 0777);
+			}
+
+			if (!file_exists($upload_dir)) {
+				mkdir ($upload_dir, 0777);
+			}
+
+			if (file_exists($destination)) {
+				$fileName .= "_1";
+				$destination = $upload_dir . $fileName;
+			}
+
+			move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+	});
+
+	$f3->route('GET /add-construction-report/@id', function($f3,$params) {
+		$f3->set('track_id',$params['id']);
+		echo Template::instance()->render('pages/add-construction-report.html');
+	});
+
+	//route for adding construction report
+	$f3->route('POST /add-construction-report/add-construction-report', function($f3) {
+
+
+		$project_dir = "uploads/" . $_POST['tracking_id'];
+		$upload_dir = $project_dir . "/images/";
+		$fileName = basename($_FILES["fileInput"]["name"]);
+		$destination = $upload_dir . $fileName;
+
+		if (!file_exists($project_dir)) {
+			mkdir ($project_dir, 0777);
+		}
+
+		if (!file_exists($upload_dir)) {
+			mkdir ($upload_dir, 0777);
+		}
+
+		if (file_exists($destination)) {
+			$fileName .= "_1";
+			$destination = $upload_dir . $fileName;
+		}
+
+
+		move_uploaded_file($_FILES["fileInput"]["tmp_name"], $destination);
+
+		$constructionDB = new ConstructionDB();
+
+		$trackid = $_POST['tracking_id'];
+		$reportName = $_POST['reportName'];
+		$details = $_POST['details'];
+ 		$photoPath = $_POST['photoPath'];
+		$viewStatus = '0';
+
+		$results = $constructionDB->insertNewConstructionRecord($trackid,$reportName,$details,$photoPath,$viewStatus);
+
+
+
+		if($results > 0){
+			include('pages/snippets/successful-entry.html');
+		}
+
+		 $f3->reroute('@activeprojects');
+	});
+
+	$f3->route('GET @activeprojects: /view-active-projects', function($f3) {
+	
+	
+		$adminName = $_SESSION['adminName'];
+		$projectDisplay = $GLOBALS['db']->activeProjectDisplay();
+		$docDisplay = $GLOBALS['docsDB']->projectDocumentsDisplay();
+	
+		$f3->set('adminName', $adminName);
+		$f3->set('projectDisplay', $projectDisplay);
+		$f3->set('docDisplay', $docDisplay);
+	
+		echo Template::instance()->render('pages/view-active-projects.html');
+	
+	});
+	
+	// Route to update item
+	$f3->route('POST /update-item', function($f3) {
+		$adminDB = $GLOBALS['adminDB'];
+	
+		$updateType = $_POST['type'];
+		
+		if ($updateType == 'o')
+		{
+			$id = $_POST['id'];
+			
+			// project overview related
+			$project_name = $_POST['project_name'];
+			$project_description = $_POST['project_description'];
+			$start_date = $_POST['start_date'];
+			$end_date = $_POST['end_date'];
+			$adminDB->updateOverview($project_name, $start_date, $end_date, $project_description, $id);
+			
+			// client info related
+			$client_name = $_POST['client_name'];
+			$client_email = $_POST['client_email'];
+			$adminDB->updateClient($client_name, $client_email, $id);
+			
+			$f3->reroute('/admin');
+		}
+		else if ($updateType == 's')
+		{
+			$id = $_POST['id'];
+			
+			$worktype = $_POST['worktype'];
+			$quantity = $_POST['quantity'];
+			$notes = $_POST['notes'];
+			$adminDB->updateScheduleItem($worktype, $quantity, $notes, $id);
+			
+			$f3->reroute('/admin');
+		}
+		else if ($updateType == 'c')
+		{
+			$id = $_POST['id'];
+			
+			$reportName = $_POST['reportName'];
+			$reportDate = $_POST['reportDate'];
+			$details = $_POST['details'];
+			$imgURL = $_POST['fileInput'];
+			
+			// need help with putting photo 
+			$adminDB->updateConstructionItem($reportName, $reportDate, $details, $id);
+		}
+	});
+	
 	//Run fat-free
 	$f3->run();

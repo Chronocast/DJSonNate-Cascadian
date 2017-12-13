@@ -5,7 +5,6 @@
 
 
 jQuery(function(){
-	
 	jQuery('div[class*=targetDiv]').hide();
 	jQuery('div[class*=overview]').show();
 	
@@ -17,7 +16,6 @@ jQuery(function(){
 		
 		// add to targetDiv
 		jQuery('.targetDiv'+target).hide();
-		console.log(jQuery('.btn.active:first'));
 		jQuery('.btn.active:first').removeClass('active');
 		
 		// add active class to current tab
@@ -27,6 +25,72 @@ jQuery(function(){
 		jQuery('#div'+$(this).attr('target')).show();
 	});
 });
+
+jQuery(function(){
+	jQuery('input[id*=cmn-toggle]').click(function(){
+		var idData = ($(this).attr('id'));
+		var checkStatus = $(this).prop('checked');
+		var target = idData.substring(idData.indexOf("toggle-")+7);
+		
+		$.post(
+		   "./controller/acceptance-toggle-logic.php",
+		   { track_id : target, checkStatus : checkStatus }
+		);
+		
+		var cardParent = $(this).parent().closest('.card');
+		if (checkStatus === true)
+		{
+			cardParent.addClass('card-1');
+		} else {
+			cardParent.removeClass('card-1');
+		}
+	});
+});
+
+jQuery(function(){
+	jQuery('input[id*=punchlist-checkbox-]').click(function(){
+		var dataID = ($(this).attr('value'));
+		
+		var targetID = dataID.substring(0, dataID.indexOf('-'));
+		var targetValue = dataID.substring(dataID.indexOf('-') +1);
+		
+		$.post(
+			"./controller/punchlist-toggle-logic.php",
+		   { targetID : targetID, targetValue : targetValue }
+		);
+	});
+});
+
+jQuery(function(){
+	jQuery('p[id*=statusTog-]').click(function(){
+		var src = ($(this).attr('id'));
+		var data = [];
+		data = src.split('-');
+		
+		var trackID = data[2];
+		var value = data[1];
+		var type = data[3];
+		console.log(data);
+		
+		if ( $(this).hasClass("done-done"))
+		{
+			console.log($(this));
+			$(this).removeClass('done-done');
+			$(this).addClass('not-done-done');
+		}
+		else if ( $(this).hasClass("not-done-done") )
+		{
+			$(this).removeClass('not-done-done');
+			$(this).addClass('done-done');
+		}
+
+		$.post(
+			"./controller/done-toggle-logic.php",
+		   { trackID : trackID, value : value, type : type }
+		);
+	});
+});
+
 
 // Duck's codes modified from
 // https://stackoverflow.com/questions/35427641/how-to-dynamically-set-the-active-class-in-bootstrap-navbar/35428555
@@ -38,25 +102,34 @@ $(document).ready(function () {
 	}).addClass('active');
 });
 
-// Nate's codes
-//$('#myModal').on('shown.bs.modal', function () {
-//  $('#myInput').focus()
-//})
-
 
 $('a.delete').click(function(){
-	var id = $(this).attr('id');
-	$('#delInput').attr("value",id);
+	var name = $(this).attr('id');
+	var type = name.substring(0,1);
+	var typeID = name.substring(1, name.indexOf('-'));
+	var trackingID = name.substring(name.indexOf('-') + 1);
+	$('#delInput').attr("value",trackingID);
+	$('#delTypeID').attr("value",typeID);
+	$('#delType').attr("value",type);
 });
-
-$('a.edit').click(function(){
+$('a.document').click(function(){
 	var src = $(this).attr('id');
-	$('#modalImg').attr("src",src);
+	$('#documentTitle').attr("value",src.substring(2));
 });
 
 $('a.construction').click(function(){
 	var src = $(this).attr('id');
 	$('#constructionTitle').attr("value",src.substring(2));
+});
+
+$('a.scheduling').click(function(){
+	var src = $(this).attr('id');
+	$('#schedulingTitle').attr("value",src.substring(2));
+});
+
+$('a.final').click(function(){
+	var src = $(this).attr('id');
+	$('#finalTitle').attr("value",src.substring(2));
 });
 
 $('input.fileID').change(function(){
@@ -67,4 +140,44 @@ $('input.fileID').change(function(){
 
 $('a.input').click(function(){
 	$(this).parent().find("input.fileID").click();
+});
+
+
+
+$('a.editScheduling').click(function(){
+	var src = $(this).attr('id');
+	var typeID = src.substring(0, src.indexOf('-'));
+	$('.updateID').attr("value",typeID);
+	
+	var title = $(this).parent().siblings(".schedule-title").html();
+	$('.worktype').attr("value",title);
+	
+	var quantity = $(this).parent().siblings(".schedule-quantity").html();
+	$('.quantity').attr("value",quantity);
+	
+	var notes = $(this).parent().siblings(".schedule-notes").html();
+	$('.notes').attr("value",notes);
+});
+
+$('a.editConstruction').click(function(){
+	var src = $(this).attr('id');
+	var typeID = src.substring(0, src.indexOf('-'));
+	$('.updateConstructionID').attr("value",typeID);
+	
+	var targetParent = $(this).parent().siblings(".construction-info");
+	var reportName = targetParent.children().eq(0).children('h5').html();
+	$('.report-name').attr("value",reportName);
+	
+	var reportDate = targetParent.children().eq(0).children('p').html();
+	$('.report-date').attr("value",reportDate);
+	
+	var test = targetParent.children().eq(1).children('p').html();
+	
+	var imgSrc = test.substring(10, test.indexOf('" '));
+	$('.photo-construction-preview').attr("src",imgSrc);
+	
+	var details = test.substring(test.indexOf(">") +1);
+	$('.details').val(details);
+	
+	
 });

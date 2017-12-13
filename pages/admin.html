@@ -27,10 +27,10 @@
 			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
 				
 				<!-- CARD START -->
-				<div class="card mx-auto">
+				<div class="card card-{{ @track['acceptance'] }} mx-auto">
 					
 					<!-- CARD TITLE + OPTIONS BUTTONS-->
-					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
+					<button type="button" class="btn btn-title btn-block">
 						<h3>{{ @track['project_name'] }}</h3>
 					</button>
 					
@@ -86,8 +86,6 @@
 						</a>
 						<!-- APPROVAL BUTTON END  -->
 						
-
-						
 					</div>
 					<!-- TOOLS BUTTONS END -->
 					
@@ -101,16 +99,81 @@
 									<h5>Overview:</h5>
 								</div>
 								<div class="main-options">
-									<a href=""><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+									<a class="editOverview" data-toggle="modal" data-target="#overviewEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
 									<a id="archive" title="Archive" class="fa fa-archive" href="./archive={{ @track['track_id'] }}" ></i></a>
 								</div>
 							</div>
 							<br>
-							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
+							<p class="card-text">Tracking ID: {{ @track['track_id'] }}</p>
+							<p class="card-text">Client: {{ @track['name'] }}</p>
+							<p class="card-text">Email: {{ @track['email'] }}</p>
+							<br>
 							<p class="card-text">Start Date: {{ @track['start_date'] }}</p>
 							<p class="card-text">End Date: {{ @track['end_date'] }}</p>
 							<p>{{ @track['project_description'] }}</p>
 							<p>Project Last updated {{ @track['last_update'] }}</p>
+							
+							<!-- OVERVIEW EDIT MODAL -->
+							<div id="overviewEdit{{ @track['track_id'] }}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+							
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Edit Overview</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<form action="./update-item" method="post">
+												<!-- project name -->
+												<div class="form-group">
+													<label class="col-form-label" for="project_name">Project title</label>
+													<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+												</div>
+												
+												<!-- client name -->
+												<div class="form-group">
+													<label class="col-form-label" for="client_name">Client</label>
+													<input name="client_name" id="client_name" class="form-control" type="text" value="{{ @track['name'] }}">
+												</div>
+												
+												<!-- client email -->
+												<div class="form-group">
+													<label class="col-form-label" for="client_email">Contact information</label>
+													<input name="client_email" id="client_email" class="form-control" type="email" value="{{ @track['email'] }}">
+												</div>
+												
+												<!-- project start date -->
+												<div class="form-group">
+													<label class="col-form-label" for="start_date">Start date</label>
+													<input name="start_date" id="start_date" class="form-control" type="date" value="{{ @track['start_date'] }}">
+												</div>
+												
+												<!-- project end date -->
+												<div class="form-group">
+													<label class="col-form-label" for="end_date">End date</label>
+													<input name="end_date" id="end_date" class="form-control" type="date" value="{{ @track['end_date'] }}">
+												</div>
+												
+												<!-- project description -->
+												<div class="form-group">
+													<label class="col-form-label" for="project_description">Description</label>
+													<textarea name="project_description" rows="7" cols="30" class="form-control">{{ @track['project_description'] }}</textarea>
+												</div>
+												
+												<input type="text" name="id" style="visibility: hidden;" value="{{ @track['track_id'] }}" required/>
+												<input type="text" name="type" style="visibility: hidden;" value="o" required/>
+												
+											</form>
+										</div>
+										<div class="modal-footer">
+											<input name="action" type="submit" value="Update overview" class="btn btn-primary">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+								
+									</div>
+								</div>
+							</div>
 						</div>
 						
 						<!-- DOCUMENTS START -->
@@ -120,18 +183,21 @@
 									<h5>Documents:</h5>
 								</div>
 								<div class="main-options">
-									<form action="./upload" method="post" enctype="multipart/form-data" class="upload-document form-inline">
-										<div class="form-group">
-											<input type="hidden" name="projectID" value="{{ @track['track_id'] }}"/>
-											<input type="text" placeholder="Title" name="fileTitle" required/><br>
-										</div>
-										<div class="form-group">
-											<!--<a href="#" class="input"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>-->
-											<input type="file" name="fileInput" class="fileID" accept="pdf" required/>
-										</div>
-										<!--<input name="action" type="submit" value="Add Document" class="btn">-->
-										<button name="action" type="submit"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a><span class="imgName"></span>
-									</form>
+									<!-- CHECK FOR VALID STATUS -->
+									<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+										<check if="{{ @status['track_id'] == @track['track_id'] }}">
+											<check if="{{ @status['documentsStatus'] == 1}}">
+												<true>
+													<p id="statusTog-{{ @status['documentsStatus'] }}-{{ @status['track_id'] }}-d" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+												</true>
+												<false>
+													<p id="statusTog-{{ @status['documentsStatus'] }}-{{ @status['track_id'] }}-d" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+												</false>
+											</check>
+										</check>
+									</repeat>
+									
+									<a class="document" data-toggle="modal" data-target="#documentModal" id="d-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 								</div>
 							</div>
 							<br>
@@ -153,7 +219,7 @@
 												<tr>
 													<td>{{ @doc['documentLink'] }}</td>
 													<td><a class="view" data-toggle="modal" data-target="#viewModal" id="uploads/{{ @doc['track_id'] }}/documents/{{ @doc['documentName'] }}" href="#"/><i class="fa fa-download" aria-hidden="true"></i></a></td>
-													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="{{ @doc['documentID'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
+													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="d{{ @doc['documentID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
 										</check>
@@ -168,7 +234,20 @@
 								<h5>Scheduling:</h5>
 							</div>
 							<div class="main-options">
-								<a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+								<!-- CHECK FOR VALID STATUS -->
+								<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+									<check if="{{ @status['track_id'] == @track['track_id'] }}">
+										<check if="{{ @status['schedulingStatus'] == 1}}">
+											<true>
+												<p id="statusTog-{{ @status['schedulingStatus'] }}-{{ @status['track_id'] }}-s" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</true>
+											<false>
+												<p id="statusTog-{{ @status['schedulingStatus'] }}-{{ @status['track_id'] }}-s" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</false>
+										</check>
+									</check>
+								</repeat>
+								<a class="scheduling" data-toggle="modal" data-target="#schedulingModal" id="s-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>
 							<table class="table table-striped">
@@ -188,17 +267,60 @@
 										<check if="{{ @schedule['track_id'] == @track['track_id'] }}">
 											<true>
 												<tr>
-													<td>{{ @schedule['title'] }}</td>
-													<td>{{ @schedule['quantity'] }}</td>
-													<td>{{ @schedule['notes'] }}</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
-													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+													<td class="schedule-title">{{ @schedule['title'] }}</td>
+													<td class="schedule-quantity">{{ @schedule['quantity'] }}</td>
+													<td class="schedule-notes">{{ @schedule['notes'] }}</td>
+													<td><a class="editScheduling" id="{{ @schedule['schedulingID'] }}-{{ @track['track_id'] }}" data-toggle="modal" data-target="#scheduleEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a></td>
+													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="s{{ @schedule['schedulingID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
 										</check>
 									</repeat>
 								</tbody>
 							</table>
+							
+							<!-- SCHEDULE EDIT MODAL -->
+							<div id="scheduleEdit{{ @track['track_id'] }}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+							
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Scheduling Item</h4>
+										</div>
+										<div class="modal-body">
+											<form action="./update-item" method="post">
+												<!-- work type -->
+												<div class="form-group">
+													<label class="col-form-label" for="worktype">Work type</label>
+													<input type="text" class="form-control worktype" name="worktype" value="">
+												</div>
+												
+												<!-- quantity -->
+												<div class="form-group">
+													<label class="col-form-label" for="quantity">Quantity</label>
+													<input name="quantity" class="form-control quantity" type="text" value="">
+												</div>
+												
+												<!-- notes -->
+												<div class="form-group">
+													<label class="col-form-label" for="notes">Notes</label>
+													<input name="notes" class="form-control notes" type="text" value="">
+												</div>
+												
+												<input type="text" name="id" class="updateID" value="" required/>
+												<input type="text" name="type" value="s" required/>
+												<input name="action" type="submit" value="Update schedule detail" class="btn">
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+								
+									</div>
+								</div>
+							</div>
 						</div>
 						
 						<!-- CONSTRUCTION START -->
@@ -207,6 +329,19 @@
 								<h5>Construction:</h5>
 							</div>
 							<div class="main-options">
+								<!-- CHECK FOR VALID STATUS -->
+								<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+									<check if="{{ @status['track_id'] == @track['track_id'] }}">
+										<check if="{{ @status['constructionStatus'] == 1}}">
+											<true>
+												<p id="statusTog-{{ @status['constructionStatus'] }}-{{ @status['track_id'] }}-c" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</true>
+											<false>
+												<p id="statusTog-{{ @status['constructionStatus'] }}-{{ @status['track_id'] }}-c" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</false>
+										</check>
+									</check>
+								</repeat>
 								<a class="construction" data-toggle="modal" data-target="#constructionModal" id="c-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>
@@ -215,9 +350,6 @@
 								<thead>
 									<tr>
 										<th>Title</th>
-										<!-- <th>Date</th>
-										<th>Image</th> is this necessary? 
-										<th>Details</td>-->
 										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
@@ -229,23 +361,74 @@
 										<check if="{{ @construction['track_id']==@track['track_id'] }}">
 											<true>
 												<tr>
-													<td>
+													<td class="construction-info">
 														<div class="construction-heading">
 															<h5>{{ @construction['reportName'] }}</h5>
 															<p>{{ @construction['reportDate'] }}</p>
 														</div>
 														<div class="construction-body">
-															<p><img src="{{ @construction['photo'] }}" class="construction-image">{{ @construction['details'] }}</p>
+															<p><img src="uploads/{{ @track['track_id'] }}/construction/{{ @construction['photo'] }}" class="construction-image">{{ @construction['details'] }}</p>
 														</div>
 													</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
-													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+													<td><a class="editConstruction" id="{{ @construction['constructionID'] }}-{{ @track['track_id'] }}" data-toggle="modal" data-target="#constructionEdit{{ @track['track_id'] }}"><i class="fa fa-pencil-square"></i></a></td>
+													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="c{{ @construction['constructionID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
 										</check>
 									</repeat>
 								</tbody>
 							</table>
+							
+							
+							<!-- CONSTRUCTION EDIT MODAL -->
+							<div id="constructionEdit{{ @track['track_id'] }}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+							
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Construction Item</h4>
+										</div>
+										<div class="modal-body">
+											<form action="./update-item" method="post">
+												<!-- report name -->
+												<div class="form-group">
+													<label class="col-form-label" for="reportName">Report name</label>
+													<input type="text" class="form-control report-name" name="reportName" value="">
+												</div>
+												
+												<!-- report date -->
+												<div class="form-group">
+													<label class="col-form-label" for="reportDate">Report date</label>
+													<input name="reportDate" class="form-control report-date" type="date" value="">
+												</div>
+												
+												<!-- photo -->
+												<div class="form-group">
+													<label class="col-form-label" for="fileInput">Photo</label>
+													<img class="photo-construction-preview" src="">
+													<input type="file" name="fileInput" class="form-control" accept="image/*"/> 
+												</div>
+												
+												<!-- details -->
+												<div class="form-group">
+													<label class="col-form-label" for="details">Details</label>
+													<textarea name="details" rows="5" cols="30" class="form-control details"></textarea>
+												</div>
+												
+												<input type="text" name="id" class="updateConstructionID" value="" required/>
+												<input type="text" name="type" value="c" required/>
+												<input name="action" type="submit" value="Update construction detail" class="btn">
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+								
+									</div>
+								</div>
+							</div>
 						</div>
 						
 						<!-- PUNCH LIST START -->
@@ -254,7 +437,20 @@
 								<h5>Final Punch List:</h5>
 							</div>
 							<div class="main-options">
-								<a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
+								<!-- CHECK FOR VALID STATUS -->
+								<repeat group="{{ @statusCheck }}" value="{{ @status }}">
+									<check if="{{ @status['track_id'] == @track['track_id'] }}">
+										<check if="{{ @status['punchlistStatus'] == 1}}">
+											<true>
+												<p id="statusTog-{{ @status['punchlistStatus'] }}-{{ @status['track_id'] }}-f" class="done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</true>
+											<false>
+												<p id="statusTog-{{ @status['punchlistStatus'] }}-{{ @status['track_id'] }}-f" class="not-done-done"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
+											</false>
+										</check>
+									</check>
+								</repeat>
+								<a class="final" data-toggle="modal" data-target="#finalModal" id="f-{{ @track['track_id'] }}" href="#"/><i class="fa fa-plus-square" aria-hidden="true"></i> ADD</a>
 							</div>
 							<br>
 							
@@ -263,8 +459,7 @@
 									<tr>
 										<th>{~ @num = 0 ~}</th>
 										<th>Item</th>
-										<th>Status</th>
-										<th>Edit</th>
+										<th>Status Toggle</th>
 										<th>Delete</th>
 									</tr>
 								</thead>
@@ -279,12 +474,11 @@
 													<td>{{ @punchy['name'] }}</td>
 													<td>
 														<check if="{{ @punchy['status']==0 }}">
-															<true>Not done</true>
-															<false>Done</false>
+															<true><input type="checkbox" id="punchlist-checkbox-{{ @track['track_id'] }}" name="punch-not" value="{{ @punchy['punchID'] }}-{{ @punchy['status'] }}"></true>
+															<false><input type="checkbox" id="punchlist-checkbox-{{ @track['track_id'] }}" name="punch-done" value="{{ @punchy['punchID'] }}-{{ @punchy['status'] }}" checked></false>
 														</check>
 													</td>
-													<td><i class="fa fa-pencil-square" aria-hidden="true"></i></td>
-													<td><i class="fa fa-minus-square" aria-hidden="true"></i></td>
+													<td><a class="delete" data-toggle="modal" data-target="#delModal" id="p{{ @punchy['punchID'] }}-{{ @track['track_id'] }}" href="#"/><i class="fa fa-minus-square" aria-hidden="true"></i></a></td>
 												</tr>
 											</true>
 										</check>
@@ -295,24 +489,30 @@
 						
 						<!-- ACCEPTANCE START -->
 						<div id="div{{ @i + 5 }}" class="targetDiv{{ @i }}">
-							<h5 class="card-title">Acceptance:</h5>
-							
-							
-							<!-- Sonie's toggle code -- to be moved to one of the options -->
-							
-							<div class="switch">
-								<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-								<label for="cmn-toggle-{{ @track['track_id'] }}"></label>
+							<div class="card-title">
+								<h5>Acceptance:</h5>
 							</div>
 							
+							<!-- Sonie's toggle code -- to be moved to one of the options -->
+							<div class="switch">
+								<p>Toggle project</p>
+								<check if="{{ @track['acceptance'] == 0 }}">
+									<true>
+										<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+									</true>
+									<false>
+										<input id="cmn-toggle-{{ @track['track_id'] }}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked>
+									</false>
+								</check>
+								
+								<label for="cmn-toggle-{{ @track['track_id'] }}"></label>
+							</div>
 						</div>
 					</div>										
 					<!-- END CARD BODY -->
-							
 			</div>
-				<!-- END CARD -->
+			<!-- END CARD -->
 		
-			
 			 <!--incremental value-->
 			{~ @i+=7 ~}
 			
@@ -324,7 +524,12 @@
 	</div>
 	<!-- ACTIVE PROJECT END -->
 	
-	<!-- Delete Modal -->
+	
+	<!-- ***********************************************************************
+		 ** MODAL CODES
+	     *********************************************************************** -->
+	
+	<!-- DELETE MODAL ALL -->
 	<div id="delModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -339,6 +544,8 @@
 					<form method="post" class="delete" action="./delete">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<input type="text" name="id" style="visibility: hidden;" id="delInput" value="" required/>
+						<input type="text" name="type" style="visibility: hidden;" id="delType" value="" required/>
+						<input type="text" name="typeID" style="visibility: hidden;" id="delTypeID" value="" required/>
 						<input name="action" type="submit" value="Confirm" class="btn">
 					</form>
 				</div>
@@ -347,7 +554,7 @@
 		</div>
 	</div>
 	
-	<!-- View Modal -->
+	<!-- DOCUMENT - VIEW DOC MODAL -->
 	<div id="viewModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 	
@@ -368,29 +575,138 @@
 		</div>
 	</div>
 	
-	<!-- View Modal -->
-<div id="constructionModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<!-- *************************
+		 **      ADD MODALS     **
+	     ************************* -->
+	
+	<!-- ADD DOCUMENT ITEM MODAL -->
+	<div id="documentModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add new document</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload" method="post" enctype="multipart/form-data" class="upload-document form-inline">
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<!-- project name -->
+						<div class="form-group">
+							<label class="col-form-label" for="project_name">Project title</label>
+							<input name="project_name" id="project_name" class="form-control" type="text" value="{{ @track['project_name'] }}">
+						</div>
+						
+						<input type="text" name="id" style="visibility: hidden;" id="documentTitle" value="" required/>
+						<input type="text" placeholder="Title" name="fileTitle" required/>
+						<input type="file" name="fileInput" class="fileID" accept="pdf" required/>
+						<input name="action" type="submit" value="Add Document" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+	
+	
+	<!-- ADD CONSTRUCTION ITEM MODAL -->
+	<div id="constructionModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Construction Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload_construction" method="post" enctype="multipart/form-data">
+						<input type="text" placeholder="Title" name="title">
+						<input type="textarea" placeholder="Description" name="description">
+						<input type="file" name="fileInput" accept="image/*" required/> 
+						<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
+						<input name="action" type="submit" value="Add Construction" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+	
+		</div>
+	</div>
 
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Construction Modal</h4>
-			</div>
-			<div class="modal-body">
-				<form>
-					<input type="text" placeholder="Title" name="title">
-					<input type="text" name="id" style="visibility: hidden;" id="constructionTitle" value="" required/>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+	<!-- ADD SCHEDULING MODAL -->
+	<div id="schedulingModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Scheduling Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload_scheduling" method="post" enctype="multipart/form-data">
+						<input type="text" placeholder="Worktype" name="worktype">
+						<input type="text" placeholder="Quantity" name="quantity">
+						<input type="text" placeholder="Notes" name="notes">
+						<input type="text" name="id" style="visibility: hidden;" id="schedulingTitle" value="" required/>
+						<input name="action" type="submit" value="Add Schedule" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
-
 	</div>
-</div>
+
+	<!-- ADD PUNCH LIST ITEM MODAL -->
+	<div id="finalModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
 	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Final PunchList Modal</h4>
+				</div>
+				<div class="modal-body">
+					<form action="./upload_final" method="post" enctype="multipart/form-data">
+						<input type="text" placeholder="Item description" name="item">
+						<input type="text" name="id" style="visibility: hidden;" id="finalTitle" value="" required/>
+						<input name="action" type="submit" value="Add Final PunchList" class="btn">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+
 	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
 	<include href="pages/admin-footer.html" />

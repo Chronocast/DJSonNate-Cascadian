@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+    Author: Jeremy Manalo
+ 	Date: 11/5/17
+ 	Filename: add.html
+ 	Description: Form to add a new project for Cascadian Landworks tracking system.
+-->
+<html>
+	<title>Construction Report</title>
+	<link rel="stylesheet" type="text/css" href="../css/admin-add.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../css/admin-layout.css">
+
+
+
+</head>
+    <body>
+		<!-- PROJECT START -->
+		<div id="" class="portfolio container-fluid">
+
+			<!-- Portfolio container -->
+			<div id="form-div" class="portfolio">
+				<div class="col-sm-12 text-center">
+					<h1>Add Construction Report</h1>
+				</div>
+
+
+
+				<!-- FORM BEGIN -->
+				<form action="add-construction-report" method="post" id="project_form" enctype="multipart/form-data">
+
+					<!--Tracking id -->
+						<label class="col-form-label" for="tracking_id">Tracking ID</label>
+					<input name="tracking_id" id="tracking_id" type="number" class="form-control" placeholder="Tracking ID" value={{@track_id}} /><br><br>
+
+					<check if="{{ isset(@errors) }}">
+
+						<true>
+							<!-- Title  -->
+							<div class="form-group">
+								<label class="col-form-label" for="reportName">Title</label>
+								<input name="reportName" id="reportName" class="form-control" type="text" placeholder="Report Title">
+								<span class="error">{{ @errors['tracking_id_err'] }}</span><br/>
+							</div>
+
+							<!-- Photo Path -->
+								<input name="photoPath" id="photoPath" class="form-control" type="text" placeholder="Photo Path" hidden="true">
+
+
+							<!-- Detail Entry -->
+							<div class="form-group">
+								<label class="col-form-label" for="details">Description of work</label>
+								<input name="details" id="details" class="form-control" type="text">
+								<span class="error">{{ @errors['descriptionErr'] }}</span><br/>
+							</div>
+
+
+
+							<label class="col-form-label" for="photoPath">Add Photo</label>
+							<i class="fa fa-plus-square" aria-hidden="true"></i> ADD
+							<input id="filepath" type="file" name="fileInput" accept="image/*" required/>
+							<br>
+
+						<!-- submit button -->
+						<div class="form-group">
+							<div class="col-md-6">
+								<input type="submit" value="Submit" class="btn btn-primary" onclick="submitForm()" />
+
+								<a><input  value="Go Back" class="btn btn-danger" onclick="goBack()" /></a>
+							</div>
+						</div>
+          </form>
+			</div>
+
+
+		<!-- PROJECT END -->
+		</div>
+
+	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
+	<include href="pages/admin-footer.html" />
+    </body>
+ </html>
+
+
+<script type="text/javascript">
+function goBack() {
+    window.history.back();
+}
+
+function submitForm(){
+		populatePhotoFilePath();
+		var projectform = document.getElementById("project_form");
+		projectform.submit();
+}
+
+function populatePhotoFilePath(){
+	var file = document.getElementById("filepath");
+	var photoPath = "images/" + file.files.item(0).name;
+	document.getElementById("photoPath").setAttribute("value",photoPath);
+}
+
+</script>

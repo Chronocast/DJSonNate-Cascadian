@@ -1,0 +1,67 @@
+<!--
+	Author: Nate Hascup, Duck Nguyen, Jeremy Manalo, Sonie Moon
+	Date: 10/13/17
+	Filename: home.html
+	Description: Admin page for Track-king. Cascadian Landworks tracking system.
+-->
+
+	<include href="pages/admin-header.html" />
+	<title>Admin | Cascadian Landworks Tracking</title>
+	<link rel="stylesheet" type="text/css" href="./css/admin.css">
+</head>
+
+	<!-- ACTIVE PROJECT START -->
+	<div id="active-div" class="portfolio container-fluid col-md-6 col-md-offset-3">
+		<div class="col-sm-12 text-center">
+			<h1>Active Projects</h1>
+			<h3>Select a project to add a note.</h3>
+		</div>
+
+		<!-- CARD DECK/COLUMNS START -->
+		<div class="card-deck">
+
+			<!-- repeat to display templated data -->
+			<repeat group="{{ @projectDisplay }}" value="{{ @track }}">
+
+				<!-- CARD START -->
+				<div class="card mx-auto">
+
+					<!-- CARD TITLE + OPTIONS BUTTONS-->
+					<button type="button" class="btn btn-title btn-block" data-toggle="modal" data-target="#infoModal-{{ @track['track_id'] }}">
+						<a href="add-construction-report/{{ @track['track_id']}}"><h3>{{ @track['project_name'] }}</h3></a>
+					</button>
+
+					<!-- CARD BODY -->
+					<div class="card-body">
+
+						<!-- OVERVIEW START -->
+						<div id="div{{ @i }}" class="targetDiv{{ @i }} overview{{ @i }}">
+							<br>
+							<p class="card-text">Tracking # {{ @track['track_id'] }}</p>
+							<p>{{ @track['project_description'] }}</p>
+						</div>
+
+
+					<!-- CARD FOOTER START-->
+					<div class="card-footer">
+						<small class="text-muted">Last updated {{ @track['last_update'] }}</small>
+					</div>
+				</div>
+			</div>
+				<!-- END CARD -->
+
+
+
+
+			 <!--incremental value-->
+			{~ @i+=7 ~}
+
+			</repeat>
+			<!-- END repeat to display templated data -->
+		</div>
+		<!-- CARD DECK/COLUMNS END -->
+	</div>
+	<!-- ACTIVE PROJECT END -->
+
+	<!-- ADMIN FOOTER WITH JS SCRIPTS-->
+	<include href="pages/admin-footer.html" />

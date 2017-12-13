@@ -94,6 +94,38 @@ class ProgressStatusDB {
 		
 		$statement->execute();
 	}
+	
+	/**
+	 * add new row to table
+	 *
+	 * @param - tracking ID of a project
+	 */
+	function addNew($track_id)
+	{
+		$insert = 'INSERT INTO progress_status (track_id) VALUES (:track_id)';
+		$statement = $this->_pdo->prepare($insert);
+		$statement->bindValue(':track_id', $track_id, PDO::PARAM_INT);
+		
+		$statement->execute();
+	}
+	
+	/**
+	 * retrieve all status from db
+	 *
+	 * @param - tracking ID of a project
+	 */
+	function getAllStatus()
+	{
+		$select = 'SELECT * FROM progress_status';
+		$statement = $this->_pdo->prepare($select);
+		
+		$statement->execute();
+		
+		//map each project to a row of data by date
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+         
+        return $rows;
+	}
  }
  
  ?>

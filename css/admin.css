@@ -36,6 +36,10 @@
 	height:650px;
 	overflow: auto;
 }
+.card-1{
+	border:3px solid green;
+}
+
 .card .btn.btn-title{
 	background:#DCAE10;
 	color:white;
@@ -131,6 +135,12 @@
 	cursor:pointer;
 }
 
+.done-done{
+	color:green;
+}
+.not-done-done{
+	color:grey;
+}
 /* ---------------------------------------------------
     CARD CONTENT - OVERVIEW 
 ----------------------------------------------------- */
@@ -171,18 +181,23 @@
 	width:140px;
 	margin:0 10px 10px 10px;
 }
-
+.photo-construction-preview{
+	height:150px;
+	width:140px;
+}
 /*
  *Toggle slider code
  */
-
+.switch p,
+.switch .cmn-toggle + label {
+   display: inline-block; 
+}
 .cmn-toggle {
   position: absolute;
   margin-left: -9999px;
   visibility: hidden;
 }
 .cmn-toggle + label {
-  display: block;
   position: relative;
   cursor: pointer;
 }

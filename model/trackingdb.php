@@ -115,7 +115,7 @@ class TrackingDB
     function activeProjectDisplay()
     {
         
-        $select = 'SELECT * FROM track_content WHERE project_status = 1 ORDER BY start_date';
+        $select = 'SELECT * FROM `track_content` INNER JOIN clients ON track_content.track_id = clients.track_id WHERE track_content.project_status=1 ORDER BY track_content.start_date';
         
         $results = $this->_pdo->prepare($select);
         //$results->bindValue(':user_ID', $user_ID, PDO::PARAM_INT);

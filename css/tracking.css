@@ -4,15 +4,14 @@
  * Description: styling for tracking page
  */
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -190,8 +189,9 @@ a, a:hover, a:focus {
 .progress-bar{
 	padding-top:6px;
 }
+.progreess:hover,
 .progress-bar:hover{
-	cursor:pointer;
+	cursor:default;
 }
 
 .progress-bar-warning{
@@ -294,7 +294,6 @@ a, a:hover, a:focus {
 #unaccepted .fa{
 	font-size:40px;
 }
-
 
 /* ---------------------------------------------------
     BACK TO TOP BUTTON
