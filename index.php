@@ -343,7 +343,7 @@
 						
 						$GLOBALS['db']->addProject($tracking_id, $project_name, $start_date, $end_date, $project_description);
 						$GLOBALS['clientDB']->addClient($tracking_id, $client_name, $client_email);
-						$GLOBALS['statusDB']-addNew($tracking_id);
+						$GLOBALS['statusDB']->addNew($tracking_id);
 						$mail = new PHPMailer(true);
 						
 						//Get email template and repalce content
